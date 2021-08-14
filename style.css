@@ -1,0 +1,100 @@
+/*general*/
+
+body{
+    background-color: #334756;
+    
+}
+
+
+/*header*/
+header{
+    background-color: #082032;
+    height: 100vh;
+    width: 15vw;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 100;
+    justify-content: space-between;
+    
+}
+
+.logo{
+    font-family: 'Bebas Neue', cursive;
+    color: #FF4C29;
+    font-size: 30px;
+    width: 60%;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.logo h1{
+    border: solid 5px #FF4C29;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.menu-button {
+    width: 60%;
+    border: solid 4px #FF4C29;
+    border-radius: 3px;
+    color: #082032;
+    background-color: #FF4C29;
+    font-size: 20px;
+    padding: 5px 0;
+    margin: 5vh 0;
+}
+
+.menu-button:hover{
+    transform: scale(1.025);
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+/*main*/
+
+
+.area-cards{
+    position: absolute;
+    top: 2vh;
+    left: 16vw;
+    height: 95vh;
+    display: flex;
+
+}
+
+.card{
+    height: 93vh;
+    width: 20vw;
+    border-radius: 3px;
+    background-color: rgb(154, 166, 184);
+    margin: 0 0.5vw;
+}
+
+.edit{
+    height: 3vw;
+    width: 3vw;
+    color: #FF4C29;
+    border: none;
+    background-color: transparent;
+    font-size: 30px;
+    margin-left: 17vw;
+    
+    
+}
+
+.edit:hover{
+    transform: scale(1.2);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+::-webkit-scrollbar{
+    background-color: #082032;
+    position: absolute;
+    left: 20vw;
+}
+::-webkit-scrollbar-thumb {
+    background: #FF4C29;
+  }
