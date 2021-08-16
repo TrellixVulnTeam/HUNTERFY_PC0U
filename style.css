@@ -3,7 +3,7 @@ body{
     background-color: #334756;
 }
 
-main{
+main, button, h2, h3, h4{
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -19,6 +19,15 @@ header{
     align-items: center;
     z-index: 100;
     justify-content: space-between;
+}
+
+header div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 4vh;
+    width: 100%;
+
 }
 
 .logo{
@@ -44,13 +53,30 @@ header{
     background-color: #FF4C29;
     font-size: 20px;
     padding: 5px 0;
-    margin: 5vh 0;
+    margin: 1vh 0;
+    
 }
 
 .menu-button:hover{
     transform: scale(1.025);
     cursor: pointer;
     transition: 0.5s;
+}
+
+.menu-info{
+    width: 60%;
+    height: 10vh;
+    background-color: #FF4C29;
+    display: none;
+    border-radius: 3px;
+    color: #082032;
+    font-size: 18px;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.menu-info h2{
+    margin: 1vh;
 }
 
 /*main*/
@@ -163,3 +189,87 @@ header{
     transform: scale(1.1);
     transition: 0.5s;
 }
+
+label,input{
+    display: block;
+    color: #082032;
+}
+
+label{
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.card-edit input[type="text"]{
+    width: 20vw;
+    border: none;
+    border-bottom: 1px solid #FF4C29;
+    background-color: transparent;
+    font-size: 24px;
+    padding-top: 1vh;
+}
+
+.card-edit input[type="file"]{
+    display: none;
+}
+
+.card-edit label{
+    margin-bottom: 1vh;
+}
+
+.card-edit form div{
+    margin-bottom: 4vh;
+    width: 25vw;
+}
+
+form {
+    display: flex;
+}
+
+.campo1 div{
+    height: 10vh;
+}
+
+.campo2 div{
+    height: 10vh;
+}
+
+.campo3 div{
+    height: 10vh;
+}
+
+form button{
+    width: 20.5vw;
+    height: 9vh;
+    background-color: #FF4C29;
+    border:none;
+    border-radius: 3px;
+    font-size: 22px;
+    color: #082032;
+}
+
+form button:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+
+.up-icon{
+    font-size: 3vh;
+    color: #082032;
+    height: 5vh;
+    background-color: #FF4C29;
+    border-radius: 3px;
+    width: 20.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.up-icon:hover{
+    cursor: pointer;
+    transform: scale(1.01);
+    transition: 0.5s;
+}
+
+
