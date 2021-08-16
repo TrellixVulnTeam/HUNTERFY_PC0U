@@ -19,7 +19,6 @@ header{
     align-items: center;
     z-index: 100;
     justify-content: space-between;
-    
 }
 
 .logo{
@@ -55,21 +54,19 @@ header{
 }
 
 /*main*/
-
-
 .area-cards{
     position: absolute;
     top: 2vh;
-    left: 16vw;
+    left: 15vw;
     height: 95vh;
     display: flex;
-    
-
+    flex-direction: row-reverse;
+    padding-left: 0.5vw;
 }
 
 .card{
     height: 89vh;
-    width: 20vw;
+    width: 25.12vw;
     border-radius: 3px;
     background-color: rgb(154, 166, 184);
     margin: 0 0.5vw;
@@ -79,11 +76,10 @@ header{
     padding: 2vh 2vh;
     overflow: hidden;
     overflow-y: scroll;
-    
 }
 
 .edit{
-    height: 3vw;
+    height: 2vw;
     width: 3vw;
     color: #FF4C29;
     border: none;
@@ -93,7 +89,6 @@ header{
     position: relative;
     text-align: end;
     vertical-align: top;
-    
 }
 
 .edit:hover{
@@ -139,4 +134,32 @@ header{
 
 .info-img{
     height: 25vh;
+}
+
+.card-edit{
+    background-color: rgb(195, 184, 255);
+    height: 93vh;
+    width: 80.8vw;
+    position: fixed;
+    top: 0.2vh;
+    left: 15.1vw;
+    border-radius: 3px;
+    z-index: 99;
+    padding: 2vh 2vw;
+    display: none;
+}
+
+.fechar-card{
+    color: #FF4C29;
+    font-size: 5vh;
+    position: absolute;
+    right: 1vw;
+    border: none;
+    background-color: transparent;
+}
+
+.fechar-card:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.5s;
 }
