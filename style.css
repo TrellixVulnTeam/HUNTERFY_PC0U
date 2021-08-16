@@ -1,8 +1,10 @@
 /*general*/
-
 body{
     background-color: #334756;
-    
+}
+
+main{
+    font-family: 'Montserrat', sans-serif;
 }
 
 
@@ -61,15 +63,23 @@ header{
     left: 16vw;
     height: 95vh;
     display: flex;
+    
 
 }
 
 .card{
-    height: 93vh;
+    height: 89vh;
     width: 20vw;
     border-radius: 3px;
     background-color: rgb(154, 166, 184);
     margin: 0 0.5vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2vh 2vh;
+    overflow: hidden;
+    overflow-y: scroll;
+    
 }
 
 .edit{
@@ -79,8 +89,10 @@ header{
     border: none;
     background-color: transparent;
     font-size: 30px;
-    margin-left: 17vw;
-    
+    padding: 0;
+    position: relative;
+    text-align: end;
+    vertical-align: top;
     
 }
 
@@ -97,4 +109,34 @@ header{
 }
 ::-webkit-scrollbar-thumb {
     background: #FF4C29;
-  }
+}
+
+.infos{
+    margin-top: 1vh;
+    width: 92%;
+}
+
+.info-card{
+    margin-bottom: 3vh;
+}
+
+.info-card h2:nth-child(1){
+    font-weight: 800;
+    font-size: 2.5vh;
+    color: #334756;
+    margin-bottom: 1vh;
+}
+
+.info-card h2:nth-child(2){
+    font-weight: 200;
+    font-size: 2vh;
+    color: #ffffff;
+}
+
+.info-text{
+    height: 7vh;
+}
+
+.info-img{
+    height: 25vh;
+}
