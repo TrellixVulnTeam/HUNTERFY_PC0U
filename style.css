@@ -155,7 +155,7 @@ main{
 .info-card h2:nth-child(1){
     font-weight: 800;
     font-size: 2.5vh;
-    color: #000000;
+    color: #503925;
     margin-bottom: 1vh;
 }
 
@@ -174,7 +174,7 @@ main{
 }
 
 .card-edit{
-    background-color: rgb(195, 184, 255);
+    background-color: #E0C097;
     height: 93vh;
     width: 80.8vw;
     position: fixed;
@@ -187,7 +187,7 @@ main{
 }
 
 .fechar-card{
-    color: #FF4C29;
+    color: #503925;
     font-size: 5vh;
     position: absolute;
     right: 1vw;
@@ -203,7 +203,7 @@ main{
 
 label,input{
     display: block;
-    color: #082032;
+    color: #000000;
 }
 
 label{
@@ -214,7 +214,7 @@ label{
 .card-edit input[type="text"]{
     width: 20vw;
     border: none;
-    border-bottom: 1px solid #FF4C29;
+    border-bottom: 1px solid #000000;
     background-color: transparent;
     font-size: 24px;
     padding-top: 1vh;
@@ -252,11 +252,11 @@ form {
 form button{
     width: 20.5vw;
     height: 9vh;
-    background-color: #FF4C29;
+    background-color:#ffb429;
     border:none;
     border-radius: 3px;
     font-size: 22px;
-    color: #082032;
+    color: #000000;
 }
 
 form button:hover{
@@ -267,9 +267,9 @@ form button:hover{
 
 .up-icon{
     font-size: 3vh;
-    color: #082032;
+    color: #000000;
     height: 5vh;
-    background-color: #FF4C29;
+    background-color: #ffb429;
     border-radius: 3px;
     width: 20.5vw;
     display: flex;
