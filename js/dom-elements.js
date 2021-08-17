@@ -1,0 +1,5 @@
+var newCardButton = document.querySelector(".add-card")
+var areaCards = document.querySelector(".area-cards")
+var rootEditArea = document.querySelector(".root-edit")
+var contador = document.querySelector(".contador")
+var contagem = document.querySelectorAll('.card')
