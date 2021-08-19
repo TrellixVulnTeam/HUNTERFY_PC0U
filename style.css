@@ -23,16 +23,46 @@ main, button, h2, h3, h4{
 
 .janela-login{
     width: 25vw;
-    height: 50vh;
-    background-color: cornsilk;
+    height: 60vh;
+    background-color: rgb(228, 202, 116);
     border-radius: 1vh;
-
+    box-shadow: 0.5vh 1vh 1vh rgba(0, 0, 0, 0.692);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    
+    z-index: 3;
 }
 
+.janela-login .logo{
+    height: 20vh;
+
+}
+
+.janela-login .logo img{
+    padding: 0;
+    margin-bottom: 10vh;
+    width: 60%;
+
+}
+
+.papel{
+    width: 25vw;
+    height: 60vh;
+    background-color: rgb(221, 192, 94);
+    box-shadow: 1vh 2vh 2vh rgba(0, 0, 0, 0.692);
+    border-radius: 1vh;
+    position: absolute;
+    top: 19vh;
+    transform: rotate(2deg);
+    z-index: 2;
+}
+
+.papel2{
+    z-index: 1;
+    transform: rotate(3.3deg);
+    background-color: rgb(192, 162, 64);
+}
 
 
 
@@ -59,6 +89,7 @@ header div{
     align-items: center;
     margin-bottom: 4vh;
     width: 100%;
+    
 
 }
 
@@ -69,12 +100,21 @@ header div{
     width: 60%;
     padding: 20px 0;
     text-align: center;
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 .logo h1{
     border: solid 5px #ffb429;
     padding: 10px;
     border-radius: 3px;
+    
+}
+
+.logo img{
+    width: 100%;
+    align-self: flex-start;
+    
 }
 
 .menu-button {
@@ -108,6 +148,10 @@ header div{
 }
 
 .menu-info h2{
+    margin: 1vh;
+}
+.janela-info{
+    padding: 0;
     margin: 1vh;
 }
 
