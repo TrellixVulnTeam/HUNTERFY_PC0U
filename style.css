@@ -1,8 +1,8 @@
 /*general*/
 body{
-    background-image: url(./img/background2.jpg);
+    background-image: url(./img/background.jpg);
     
-    background-repeat: cover;
+    background-repeat: repeat-x;
     background-size: cover;
     background-position: center;
     height: 97vh;
@@ -12,11 +12,37 @@ main, button, h2, h3, h4{
     font-family: 'Montserrat', sans-serif;
 }
 
+/*login*/
+.login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.janela-login{
+    width: 25vw;
+    height: 50vh;
+    background-color: cornsilk;
+    border-radius: 1vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+
 
 /*header*/
 header{
     background-color: #503925;
-    
+    background-image: url(./img/black-bumpy-old-book-cover-texture-3.jpg);
+    background-size: 100vh;
+    background-repeat: no-repeat;
+    background-position-x: -24.9vw;
     height: 100vh;
     width: 15vw;
     position: fixed;
@@ -86,10 +112,6 @@ header div{
 }
 
 /*main*/
-main{
-    
-}
-
 .area-cards{
     position: absolute;
     top: 2vh;
@@ -140,7 +162,8 @@ main{
     left: 20vw;
 }
 ::-webkit-scrollbar-thumb {
-    background: #d89923;
+    background-color: #d89923;
+    
 }
 
 .infos{
@@ -155,14 +178,14 @@ main{
 .info-card h2:nth-child(1){
     font-weight: 800;
     font-size: 2.5vh;
-    color: #503925;
+    color: #202020;
     margin-bottom: 1vh;
 }
 
 .info-card h2:nth-child(2){
     font-weight: 400;
     font-size: 3vh;
-    color: #503925;
+    color: #202020;
 }
 
 .info-text{
@@ -171,6 +194,11 @@ main{
 
 .info-img{
     height: 25vh;
+    
+}
+
+.info-img img{
+    height:20vh;
 }
 
 .card-edit{
