@@ -1,0 +1,425 @@
+/*general*/
+body{
+    background-image: url(./img/background.jpg);
+    
+    background-repeat: repeat-x;
+    background-size: cover;
+    background-position: center;
+    height: 97vh;
+}
+
+main, button, h2, h3, h4, label{
+    font-family: 'Montserrat', sans-serif;
+}
+
+/*login*/
+.login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.janela-login{
+    width: 25vw;
+    height: 60vh;
+    background-color: rgb(228, 202, 116);
+    border-radius: 1vh;
+    box-shadow: 0.5vh 1vh 1vh rgba(0, 0, 0, 0.692);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 3;
+    
+}
+
+.janela-login .logo{
+    height: 20vh;
+    
+
+}
+
+.janela-login .logo img{
+    padding: 0;
+    margin-bottom: 10vh;
+    width: 60%;
+    margin-top: 4vh;
+
+}
+
+.papel{
+    width: 25vw;
+    height: 60vh;
+    background-color: rgb(221, 192, 94);
+    box-shadow: 1vh 2vh 2vh rgba(0, 0, 0, 0.692);
+    border-radius: 1vh;
+    position: absolute;
+    top: 19vh;
+    transform: rotate(2deg);
+    z-index: 2;
+}
+
+.papel2{
+    z-index: 1;
+    transform: rotate(3.3deg);
+    background-color: rgb(192, 162, 64);
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    height: 40vh;
+    margin-top: 1vh;
+}
+
+.login-form div{
+    width: 20vw;
+    margin: 2vh;
+    margin-top: 0;
+}
+
+.login-form input{
+    border: none;
+    border-bottom: black 1px solid;
+    border-left: black 1px solid;
+    border-radius: 2px;
+    background-color: transparent;
+    margin-top: 1vh;
+    width: 98%;
+    font-size: 3vh;
+}
+
+.login-button{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    background-color: rgb(201, 164, 43);
+    margin-top: none;
+    border-radius: 3px;
+}
+
+
+.login-button:hover{
+    transform: scale(1.05);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+
+/*header*/
+header{
+    background-color: #503925;
+    background-image: url(./img/black-bumpy-old-book-cover-texture-3.jpg);
+    background-size: 100vh;
+    background-repeat: no-repeat;
+    background-position-x: -24.9vw;
+    height: 100vh;
+    width: 15vw;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 100;
+    justify-content: space-between;
+}
+
+header div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 4vh;
+    width: 100%;
+    
+
+}
+
+.logo{
+    font-family: 'Bebas Neue', cursive;
+    color: #ffb429;
+    font-size: 30px;
+    width: 60%;
+    padding: 20px 0;
+    text-align: center;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.logo h1{
+    border: solid 5px #ffb429;
+    padding: 10px;
+    border-radius: 3px;
+    
+}
+
+.logo img{
+    width: 100%;
+    align-self: flex-start;
+    
+}
+
+.menu-button {
+    width: 60%;
+    border: solid 4px #ffb429;
+    border-radius: 3px;
+    color: #000000;
+    background-color: #ffb429;
+    font-size: 20px;
+    padding: 5px 0;
+    margin: 1vh 0;
+    
+}
+
+.menu-button:hover{
+    transform: scale(1.025);
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.menu-info{
+    width: 60%;
+    height: 10vh;
+    background-color: #ffb429;
+    display: none;
+    border-radius: 3px;
+    color: #000000;
+    font-size: 18px;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.menu-info h2{
+    margin: 1vh;
+}
+.janela-info{
+    padding: 0;
+    margin: 1vh;
+}
+
+/*main*/
+.area-cards{
+    position: absolute;
+    top: 2vh;
+    left: 15vw;
+    height: 95vh;
+    display: flex;
+    flex-direction: row-reverse;
+    padding-left: 0.5vw;
+}
+
+.card{
+    height: 89vh;
+    width: 25.12vw;
+    border-radius: 3px;
+    background-color: #E0C097;
+    background-image: url("./img/antique-texture.jpg");
+    margin: 0 0.5vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2vh 2vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.edit{
+    height: 2vw;
+    width: 3vw;
+    color: #503925;
+    border: none;
+    background-color: transparent;
+    font-size: 30px;
+    padding: 0;
+    position: relative;
+    text-align: end;
+    vertical-align: top;
+}
+
+.edit:hover{
+    transform: scale(1.2);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.exclude{
+    height: 2vw;
+    width: 3vw;
+    color: #502b25;
+    border: none;
+    background-color: transparent;
+    font-size: 28px;
+    padding: 0;
+    position: relative;
+    text-align: end;
+    vertical-align: top;
+}
+
+.exclude:hover{
+    transform: scale(1.2);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+::-webkit-scrollbar{
+    background-color: #503925;
+    position: absolute;
+    left: 20vw;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #d89923;
+    
+}
+
+.infos{
+    margin-top: 1vh;
+    width: 92%;
+}
+
+.info-card{
+    margin-bottom: 3vh;
+}
+
+.info-card h2:nth-child(1){
+    font-weight: 800;
+    font-size: 2.5vh;
+    color: #202020;
+    margin-bottom: 1vh;
+}
+
+.info-card h2:nth-child(2){
+    font-weight: 400;
+    font-size: 3vh;
+    color: #202020;
+}
+
+.info-text{
+    height: 7vh;
+}
+
+.info-img{
+    height: 25vh;
+    
+}
+
+.info-img img{
+    height:20vh;
+}
+
+.card-edit{
+    background-color: #E0C097;
+    height: 93vh;
+    width: 80.8vw;
+    position: fixed;
+    top: 0.2vh;
+    left: 15.1vw;
+    border-radius: 3px;
+    z-index: 99;
+    padding: 2vh 2vw;
+    display: flex;
+}
+
+.fechar-card{
+    color: #503925;
+    font-size: 5vh;
+    position: absolute;
+    right: 1vw;
+    border: none;
+    background-color: transparent;
+}
+
+.fechar-card:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
+label,input{
+    display: block;
+    color: #000000;
+}
+
+label{
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.card-edit input[type="text"]{
+    width: 20vw;
+    border: none;
+    border-bottom: 1px solid #000000;
+    background-color: transparent;
+    font-size: 24px;
+    padding-top: 1vh;
+}
+
+.card-edit input[type="file"]{
+    display: none;
+}
+
+.card-edit label{
+    margin-bottom: 1vh;
+}
+
+.card-edit form div{
+    margin-bottom: 4vh;
+    width: 25vw;
+}
+
+form {
+    display: flex;
+}
+
+.campo1 div{
+    height: 10vh;
+}
+
+.campo2 div{
+    height: 10vh;
+}
+
+.campo3 div{
+    height: 10vh;
+}
+
+form button{
+    width: 20.5vw;
+    height: 9vh;
+    background-color:#ffb429;
+    border:none;
+    border-radius: 3px;
+    font-size: 22px;
+    color: #000000;
+}
+
+form button:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+
+.up-icon{
+    font-size: 3vh;
+    color: #000000;
+    height: 5vh;
+    background-color: #ffb429;
+    border-radius: 3px;
+    width: 20.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.up-icon:hover{
+    cursor: pointer;
+    transform: scale(1.01);
+    transition: 0.5s;
+}
+
+
