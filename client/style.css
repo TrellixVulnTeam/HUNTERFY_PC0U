@@ -346,12 +346,12 @@ label,input{
 }
 
 label{
-    font-size: 28px;
+    font-size: 2vh;
     font-weight: 600;
 }
 
 .card-edit input[type="text"]{
-    width: 20vw;
+    width: 17vw;
     border: none;
     border-bottom: 1px solid #000000;
     background-color: transparent;
@@ -369,7 +369,7 @@ label{
 
 .card-edit form div{
     margin-bottom: 4vh;
-    width: 25vw;
+    width: 20vw;
 }
 
 form {
@@ -389,7 +389,7 @@ form {
 }
 
 form button{
-    width: 20.5vw;
+    width: 17.5vw;
     height: 9vh;
     background-color:#ffb429;
     border:none;
@@ -410,7 +410,7 @@ form button:hover{
     height: 5vh;
     background-color: #ffb429;
     border-radius: 3px;
-    width: 20.5vw;
+    width: 17.5vw;
     display: flex;
     justify-content: center;
     align-items: center;

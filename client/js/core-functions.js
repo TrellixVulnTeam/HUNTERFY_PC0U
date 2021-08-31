@@ -51,18 +51,18 @@ function checkValueText(element){
     if (element[0].innerHTML.length < 2) {
         return element[1]
     }else{
-        return `<label>PARCEL ID:</label><input value="${element[0].innerHTML}" name="${element[2]}" type="text">`
+        return `<label>${element[3]}</label><input value="${element[0].innerHTML}" name="${element[2]}" type="text">`
     }
 }
 
 function checkValueImg(element){
     console.log(element[0].src.length)
-    if (element[0].src.length === 38) {
+    if (element[0].src.length === 29) {
        return `<img src='' id="${element[3]}" style='display:none;'><label>${element[1]}</label><label class="up-icon" for="${element[2]}"><i class="fas fa-arrow-circle-up"></i></label><input id="${element[2]}"  type="file" accept=".jpg, .png, .pdf">`
 
     }
     else{
-        return `<img src='${element[0].src}' id="${element[3]}" style='display:none;'><label>${element[1]}</label><label class="up-icon" for="${element[2]}"><i class="fas fa-arrow-circle-up"></i></label><input id="${element[2]}"  type="file" accept=".jpg, .png, .pdf">`
+        return `<img src='${element[0].src}' id="${element[3]}" style='display:none;'><label>${element[1]}</label><label style="background-color:green;" class="up-icon" for="${element[2]}"><i class="fas fa-arrow-circle-up"></i></label><input id="${element[2]}"  type="file" accept=".jpg, .png, .pdf">`
         
     }
     //<label>SATELITE IMAGE</label><label class="up-icon" for="imagem-satelite"><i class="fas fa-arrow-circle-up"></i></label><input id="imagem-satelite" type="file" accept=".jpg, .png, .pdf">
