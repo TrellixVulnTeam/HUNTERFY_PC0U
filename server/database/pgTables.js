@@ -1,11 +1,7 @@
-
 class tables{
-    
     init(connection){
-            console.log('tabelas foram chamadas')
-            this.connection = connection
-            this.criarTabela()
-            
+        console.log('tabelas foram chamadas')
+        this.connection = connection
     }
 
     criarTabela(){
@@ -28,8 +24,6 @@ class tables{
 
         })
     }
-
-    
 }
 
 module.exports = new tables
