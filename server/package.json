@@ -1,17 +1,21 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
+  "description": "hunterfy backend",
   "main": "index.js",
-  "scripts": {
+    "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "gvmolin",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "consign": "^0.1.6",
     "express": "^4.17.1",
-    "mongoose": "^6.0.2",
-    "morgan": "^1.10.0",
     "pg": "^8.7.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
   }
 }
