@@ -14,6 +14,6 @@ dbClient.connect(error => {
         tables.criarTabela(dbClient)
     }
 })
-app.listen(3000, ()=> console.log('servidor rodando na porta 3000'))
+app.listen(process.env.PORT || 5432, ()=> console.log('servidor rodando na porta 3000'))
 
 
