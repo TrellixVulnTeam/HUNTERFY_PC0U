@@ -1,10 +1,15 @@
+require('dotenv/config');
 const Client = require('pg').Client
 const dbClient = new Client({
-    user: "postgres",
-    password: "123",
-    host: "127.0.0.1",
-    port: "5432",
-    database: "postgres"
+    user: process.env.USER,
+    password: process.env.DB_PASS,
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    database: process.env.DB_NAME,
+    define:{
+        timestamps:true,
+        underscored:true,
+    },
 })
 
 module.exports = dbClient

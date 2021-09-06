@@ -2,6 +2,8 @@ const customExpress = require("./config/customExpress")
 const dbClient = require("./database/connectionPG")
 const connection = require('./database/connectionPG')
 const tables = require('./database/pgTables')
+require('dotenv/config');
+
 const app = customExpress()
 
 dbClient.connect(error => {
@@ -16,4 +18,4 @@ dbClient.connect(error => {
 })
 app.listen(process.env.PORT || 5432, ()=> console.log('servidor rodando na porta 3000'))
 
-22222
+ 
