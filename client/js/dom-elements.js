@@ -23,27 +23,44 @@ async function cardToJson(card){
     var mapsimage = cardInfo.children[5].children[1]
     var streetviewimage = cardInfo.children[7].children[1]
 
+    var username = 'gvmolinadmin'
+
     var cardString = `{
+        "userinfo":[{
+            "username":"${username}",
+            "time":"${new Date(Date.now())}"
+        }],
         "parcelid":"${parcelid.innerHTML}",
         "gis":[{
-            "linkgis":"${linkgis.innerHTML}"
+            "gisimg":"",
+            "gislink":"${linkgis.innerHTML}"
         }],
         "floodzone":[{
+            "floodzoneimg":"",
             "floodzonetext":"${floodzonetext.innerHTML}"
         }],
         "maps":[{
-            "mapslink":"${mapslink.innerHTML}"
+            "mapsimg":"",
+            "linkmaps":"${mapslink.innerHTML}"
         }],
         "streetview":[{
             "streetviewimg":""
         }],
-        "taxowned":"${taxowned.innerHTML}"
-
+        "marketvalue":"${marketvalue.innerHTML}",
+        "latitude":"${latitude.innerHTML}",
+        "longitude":"${longitude.innerHTML}",
+        "acres":"${acres.innerHTML}",
+        "adress":"${adress.innerHTML}",
+        "adressn1":"${adressn1.innerHTML}",
+        "adressn2":"${adressn2.innerHTML}",
+        "adressn3":"${adressn3.innerHTML}",
+        "adressn4":"${adressn4.innerHTML}",
+        "rank":"${rank.innerHTML}",
+        "obs":"${obs.innerHTML}"
     }`
-
     var cardJson = JSON.parse(cardString)
     console.log(cardString)
     console.log(cardJson)
 
-
+    return cardJson
 }
