@@ -267,6 +267,25 @@ header div{
     cursor: pointer;
 }
 
+.send{
+    height: 2vw;
+    width: 3vw;
+    color: #502b25;
+    border: none;
+    background-color: transparent;
+    font-size: 28px;
+    padding: 0;
+    position: relative;
+    text-align: end;
+    vertical-align: top;
+}
+
+.send:hover{
+    transform: scale(1.2);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
 ::-webkit-scrollbar{
     background-color: #503925;
     position: absolute;

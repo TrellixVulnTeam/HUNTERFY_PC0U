@@ -1,3 +1,7 @@
+var newCardButton = document.querySelector(".add-card")
+var areaCards = document.querySelector(".area-cards")
+var rootEditArea = document.querySelector(".root-edit")
+
 newCardButton.addEventListener("click", ()=>{
     criarPaginaEdit()
 
@@ -86,7 +90,9 @@ function criarCard(){
             <div class="info-card info-text"><h2>OBS:</h2> <h2>${checkValue(form.obs.value)}</h2></div>
         </div>
         <button class="edit" onclick="editarCard(this.parentElement)"><i class="fas fa-pen-square"></i></button>
-        <button class="exclude" onclick="excluirCard(this.parentElement)"><i class="fas fa-trash"></i></i></button>    
+        <button class="exclude" onclick="excluirCard(this.parentElement)"><i class="fas fa-trash"></i></i></button> 
+        <button class="send" onclick="cardToJson(this.parentElement)"><i class="fas fa-share"></i></button>   
+        
     </div>  
     `
     areaCards.append(novoCard)
