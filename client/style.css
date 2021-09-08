@@ -1,4 +1,4 @@
-/*general*/
+
 body{
     background-image: url(./img/background.jpg);
     
@@ -11,6 +11,7 @@ body{
 main, button, h2, h3, h4, label{
     font-family: 'Montserrat', sans-serif;
 }
+/*general*/
 
 /*login*/
 .login{

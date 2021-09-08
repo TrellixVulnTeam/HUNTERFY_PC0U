@@ -49,7 +49,6 @@ function criarPaginaEdit(){
                     <div><label>RANK:</label><input name="rank" type="text"></div>
                     <div><label>OBS:</label><input name="obs" type="text"></div>
                     <div><button class="save-button">SALVAR</button></div>
-                    <div><label>test file</label><input onchange="console.log('eeer')" style="display:block" id="test-file" type="file" accept=".jpg, .png, .pdf"></div>
                 </div>
             </form>
         </div>
@@ -92,7 +91,7 @@ function criarCard(){
         </div>
         <button class="edit" onclick="editarCard(this.parentElement)"><i class="fas fa-pen-square"></i></button>
         <button class="exclude" onclick="excluirCard(this.parentElement)"><i class="fas fa-trash"></i></i></button> 
-        <button class="send" onclick="cardToJson(this.parentElement)"><i class="fas fa-share"></i></button>   
+        <button class="send" onclick="postJson(this.parentElement)"><i class="fas fa-share"></i></button>   
         
     </div>  
     `
