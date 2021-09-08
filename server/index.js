@@ -2,6 +2,7 @@ const customExpress = require("./config/customExpress")
 const dbClient = require("./database/connectionPG")
 const connection = require('./database/connectionPG')
 const tables = require('./database/pgTables')
+require('dotenv/config');
 const app = customExpress()
 
 
