@@ -9,11 +9,20 @@ module.exports = app => {
         res.render('app.ejs')
     })
 
-    app.post('../client/app.html', (req,res) => {
-        const terreno = req.body
-        //pgProgram.addOnDatabase()
-        console.log(terreno)
-        res.send('ok')
+    app.post('/app', (req,res) => {
+        
+        //pgProgram.addOnDatabase(req)
+        async function printarBody(req){
+            const terreno = await req.body
+            console.log(terreno)
+            res.send('ok')
+        }
+        try{
+            printarBody(req)
+            
+        }
+        catch{}
+        
 
         
     })

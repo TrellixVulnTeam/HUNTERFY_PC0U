@@ -65,7 +65,6 @@ async function getJson(card){
 async function postJson(card) {
     try{
     var json = await getJson(card)
-
     const options = {
         method: 'POST',
         headers:{
@@ -73,8 +72,7 @@ async function postJson(card) {
         },
         body: JSON.stringify(json)
     }
-    fetch('./client/app.html', options)
-
+    fetch('/app', options)
     }
     catch(error){
         console.log(error)
