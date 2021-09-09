@@ -1,19 +1,22 @@
 const dbClient = require('../database/connectionPG')
 
 class pgProgram{
-    addOnDatabase(db){
-        var inf1 = 'gvmolinadmin'
-        var inf2 = '8989898989898'
-        var inf3 = 'minimo'
-        const pgRow = `INSERT INTO hunterfyterrenos("user_id", "PARCELID", "FLOODZONE") VALUES('${inf1}', '${inf2}', '${inf3}');`
-        dbClient.query(pgRow, db, (error, result) => {
-            if(error){
-                console.log(error)
-            }
-            else{
-                console.log(result)
-            }
-        })
+    addOnDatabase(req){
+    var terreno = req.body	    
+    let insertQuery = `insert into hunterfyterrenos(user_id, PARCELID, FLOODZONE) 
+                       values('gvmolinadmin', '${terreno.parcelid}', 'teste')`
+
+    dbClient.query(insertQuery, (err, result)=>{
+        if(!err){
+            res.send('Insertion was successful')
+        }
+        else{ console.log(err.message) }
+    })
+   dbClient.end;
+    
+    
+    
+    
     }
 
     printTable(db){

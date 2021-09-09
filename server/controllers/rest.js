@@ -10,18 +10,19 @@ module.exports = app => {
     })
 
     app.post('/app', (req,res) => {
-        
-        //pgProgram.addOnDatabase(req)
         async function printarBody(req){
-            const terreno = await req.body
-            console.log(terreno)
-            res.send('ok')
+	    const terreno = await req.body
+	    console.log(terreno.parcelid)
+
         }
         try{
             printarBody(req)
+	    pgProgram.addOnDatabase(req)
             
         }
-        catch{}
+        catch(error){
+	console.log(error)
+	}
         
 
         
