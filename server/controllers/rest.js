@@ -39,7 +39,7 @@ module.exports = app => {
 
         }
         try{
-		    printarBody(req)
+	    searchTable(req.body.user, req.body.date)
             
         }
         catch(error){

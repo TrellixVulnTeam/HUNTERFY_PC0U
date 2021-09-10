@@ -60,10 +60,7 @@ class pgProgram{
                 console.log(result)
             }
         })
-
-
     }
-	
 }
 
 module.exports = new pgProgram
