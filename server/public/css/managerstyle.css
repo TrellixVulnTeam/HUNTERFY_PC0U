@@ -7,14 +7,25 @@ E3D18A
 
 h1, h2, h3, li, label{
     font-family: 'Montserrat', sans-serif;
+    color: #F6E9E9;
 }
 
 header{
     height: 10vh;
-    background-color: #85603F;
+    background-color: #a14418;
     padding: 0 2vw;
     display: flex;
     align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 10;
+}
+
+body{
+    background-color: #363333;
+    
 }
 
 .logo{
@@ -33,10 +44,12 @@ header{
 }
 
 .controller{
-    background-color: #BD9354;
-    height: 82vh;
+    background-color: #272121;
+    height: 100vh;
     width: 10vw;
     position: fixed;
+    z-index: 9;
+    
 }
 
 .janela{
@@ -44,7 +57,7 @@ header{
 }
 
 .valist-container{
-    height: 100%;
+    margin-top: 13vh;
 }
 
 .valist-container h2{
@@ -63,9 +76,14 @@ header{
 }
 
 .program {
-    background-color:#E3D18A;
+    background-color:#363333;
     padding-left: 15vw;
     height: 82vh;
+
+}
+
+.username{
+    margin-top: 10vh;
 }
 
 .columns{
@@ -88,9 +106,10 @@ header{
 }
 
 .item{
-    background-color: #ecda8f;
+    background-color: #423f3f;
     border-radius: 1vh;
     padding: 1vh;
+    margin: 2vh 0;
 }
 
 .values{
@@ -104,3 +123,51 @@ form{
 #search-form div{
     margin-bottom: 0.5vh;
 }
+
+#search-form input[type=text]{
+    width: 90%;
+    border: none;
+    height: 4vh;
+    font-size: 2vh;
+    border-radius: 0.5vh;
+    padding: 0 1vh;
+}
+
+#search-form input[type=date]{
+    width: 90%;
+    border: none;
+    height: 4vh;
+    font-size: 1.8vh;
+    border-radius: 0.5vh;
+    padding: 0 1vh;
+}
+
+.search-button{
+    border: none;
+    border-radius: 0.5vh;
+    width: 100%;
+    height: 5ch;
+    background-color: #a14418;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #a14418;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  body::-webkit-scrollbar-track {
+    background: orange;        /* color of the tracking area */
+  }
+  
+  .values img{
+      height: 3vh;
+  }
+
+  .values img:hover{
+    transform: scale(10);
+    transition: 1s;
+    z-index: 12;
+  }

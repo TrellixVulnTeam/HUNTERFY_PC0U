@@ -7,8 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/managerstyle.css">
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./managerstyle.css">
     <title>HUNTERFY MANAGER</title>
 </head>
 <body>
@@ -37,11 +37,378 @@
         
            <h2 class="username">username</h2>
            <div class="itens-container">
-               
+               <!--item-->
+        <ul class="item">
+            <!--campo1-->
+            <li class="title">
+                <ul class="columns">
+                    <li>user</li>
+                    <li>date</li>
+                    <li>PARCELID</li>
+                    <li>GIS IMAGE</li>
+                    <li>FLOODZONE</li>
+                    <li>FLOODZONE IMAGE</li>
+
+                </ul>
+            </li>
+            <li class="values">
+                <ul class="columns">
+                    <li>${element.user_id}</li>
+                    <li>${element.date}</li>
+                    <li>${element.parcelid}</li>
+                    <li><img src="./img/background2.jpg"></li>
+                    <li>${element.floodzonetext}</li>
+                    <li><img src="${element.floodzonetext}"></li>
+                </ul>
+            </li>
+            <!--campo2-->
+            <li class="title">
+                <ul class="columns">
+                    <li>MAPS LINK</li>
+                    <li>MAPS IMAGE</li>
+                    <li>STREETVIEW IMAGE</li>
+                    <li>TAX OWNED</li>
+                    <li>MARKET VALUE</li>
+                    <li>ACRES</li>
+
+                </ul>
+            </li>
+            <li class="values">
+                <ul class="columns">
+                    <li></li>
+                    <li>loremipsun</li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </li>
+            <!--campo3-->
+            <li class="title">
+                <ul class="columns">
+                    <li>LATITUDE</li>
+                    <li>LONGITUDE</li>
+                    <li>ADRESS</li>
+                    <li>N1 ADRESS</li>
+                    <li>N2 ADRESS</li>
+                    <li>N3 ADRESS</li>
+
+                </ul>
+            </li>
+            <li class="values">
+                <ul class="columns">
+                    <li></li>
+                    <li>loremipsun</li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </li>
+            <!--campo4-->
+            <li class="title">
+                <ul class="columns">
+                    <li>N4 ADRESS</li>
+                    <li>RANK LEVEL1</li>
+                    <li>OBS (LV1)</li>
+                    <li>RANK LEVEL 2</li>
+                    <li>RL2 USER</li>
+                    <li>RL2 OBS</li>
+
+                </ul>
+            </li>
+            <li class="values">
+                <ul class="columns">
+                    <li></li>
+                    <li>loremipsun</li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </li>
+
+        </ul><!--item-->
+        <!--item-->
+        <ul class="item">
+            <!--campo1-->
+            <li class="title">
+                <ul class="columns">
+                    <li>user</li>
+                    <li>date</li>
+                    <li>PARCELID</li>
+                    <li>GIS IMAGE</li>
+                    <li>FLOODZONE</li>
+                    <li>FLOODZONE IMAGE</li>
+
+                </ul>
+            </li>
+            <li class="values">
+                <ul class="columns">
+                    <li>${element.user_id}</li>
+                    <li>${element.date}</li>
+                    <li>${element.parcelid}</li>
+                    <li><img src="${element.gisimg}"></li>
+                    <li>${element.floodzonetext}</li>
+                    <li><img src="${element.floodzonetext}"></li>
+                </ul>
+            </li>
+            <!--campo2-->
+            <li class="title">
+                <ul class="columns">
+                    <li>MAPS LINK</li>
+                    <li>MAPS IMAGE</li>
+                    <li>STREETVIEW IMAGE</li>
+                    <li>TAX OWNED</li>
+                    <li>MARKET VALUE</li>
+                    <li>ACRES</li>
+
+                </ul>
+            </li>
+            <li class="values">
+                <ul class="columns">
+                    <li></li>
+                    <li>loremipsun</li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </li>
+            <!--campo3-->
+            <li class="title">
+                <ul class="columns">
+                    <li>LATITUDE</li>
+                    <li>LONGITUDE</li>
+                    <li>ADRESS</li>
+                    <li>N1 ADRESS</li>
+                    <li>N2 ADRESS</li>
+                    <li>N3 ADRESS</li>
+
+                </ul>
+            </li>
+            <li class="values">
+                <ul class="columns">
+                    <li></li>
+                    <li>loremipsun</li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </li>
+            <!--campo4-->
+            <li class="title">
+                <ul class="columns">
+                    <li>N4 ADRESS</li>
+                    <li>RANK LEVEL1</li>
+                    <li>OBS (LV1)</li>
+                    <li>RANK LEVEL 2</li>
+                    <li>RL2 USER</li>
+                    <li>RL2 OBS</li>
+
+                </ul>
+            </li>
+            <li class="values">
+                <ul class="columns">
+                    <li></li>
+                    <li>loremipsun</li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </li>
+
+        </ul><!--item-->
            </div>
+           <!--item-->
+        <ul class="item">
+            <!--campo1-->
+            <li class="title">
+                <ul class="columns">
+                    <li>user</li>
+                    <li>date</li>
+                    <li>PARCELID</li>
+                    <li>GIS IMAGE</li>
+                    <li>FLOODZONE</li>
+                    <li>FLOODZONE IMAGE</li>
+
+                </ul>
+            </li>
+            <li class="values">
+                <ul class="columns">
+                    <li>${element.user_id}</li>
+                    <li>${element.date}</li>
+                    <li>${element.parcelid}</li>
+                    <li><img src="${element.gisimg}"></li>
+                    <li>${element.floodzonetext}</li>
+                    <li><img src="${element.floodzonetext}"></li>
+                </ul>
+            </li>
+            <!--campo2-->
+            <li class="title">
+                <ul class="columns">
+                    <li>MAPS LINK</li>
+                    <li>MAPS IMAGE</li>
+                    <li>STREETVIEW IMAGE</li>
+                    <li>TAX OWNED</li>
+                    <li>MARKET VALUE</li>
+                    <li>ACRES</li>
+
+                </ul>
+            </li>
+            <li class="values">
+                <ul class="columns">
+                    <li></li>
+                    <li>loremipsun</li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </li>
+            <!--campo3-->
+            <li class="title">
+                <ul class="columns">
+                    <li>LATITUDE</li>
+                    <li>LONGITUDE</li>
+                    <li>ADRESS</li>
+                    <li>N1 ADRESS</li>
+                    <li>N2 ADRESS</li>
+                    <li>N3 ADRESS</li>
+
+                </ul>
+            </li>
+            <li class="values">
+                <ul class="columns">
+                    <li></li>
+                    <li>loremipsun</li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </li>
+            <!--campo4-->
+            <li class="title">
+                <ul class="columns">
+                    <li>N4 ADRESS</li>
+                    <li>RANK LEVEL1</li>
+                    <li>OBS (LV1)</li>
+                    <li>RANK LEVEL 2</li>
+                    <li>RL2 USER</li>
+                    <li>RL2 OBS</li>
+
+                </ul>
+            </li>
+            <li class="values">
+                <ul class="columns">
+                    <li></li>
+                    <li>loremipsun</li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </li>
+
+        </ul><!--item-->
+        <!--item-->
+        <ul class="item">
+            <!--campo1-->
+            <li class="title">
+                <ul class="columns">
+                    <li>user</li>
+                    <li>date</li>
+                    <li>PARCELID</li>
+                    <li>GIS IMAGE</li>
+                    <li>FLOODZONE</li>
+                    <li>FLOODZONE IMAGE</li>
+
+                </ul>
+            </li>
+            <li class="values">
+                <ul class="columns">
+                    <li>${element.user_id}</li>
+                    <li>${element.date}</li>
+                    <li>${element.parcelid}</li>
+                    <li><img src="./img/pesquisar.jpg"></li>
+                    <li>${element.floodzonetext}</li>
+                    <li><img src="${element.floodzonetext}"></li>
+                </ul>
+            </li>
+            <!--campo2-->
+            <li class="title">
+                <ul class="columns">
+                    <li>MAPS LINK</li>
+                    <li>MAPS IMAGE</li>
+                    <li>STREETVIEW IMAGE</li>
+                    <li>TAX OWNED</li>
+                    <li>MARKET VALUE</li>
+                    <li>ACRES</li>
+
+                </ul>
+            </li>
+            <li class="values">
+                <ul class="columns">
+                    <li></li>
+                    <li>loremipsun</li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </li>
+            <!--campo3-->
+            <li class="title">
+                <ul class="columns">
+                    <li>LATITUDE</li>
+                    <li>LONGITUDE</li>
+                    <li>ADRESS</li>
+                    <li>N1 ADRESS</li>
+                    <li>N2 ADRESS</li>
+                    <li>N3 ADRESS</li>
+
+                </ul>
+            </li>
+            <li class="values">
+                <ul class="columns">
+                    <li></li>
+                    <li>loremipsun</li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </li>
+            <!--campo4-->
+            <li class="title">
+                <ul class="columns">
+                    <li>N4 ADRESS</li>
+                    <li>RANK LEVEL1</li>
+                    <li>OBS (LV1)</li>
+                    <li>RANK LEVEL 2</li>
+                    <li>RL2 USER</li>
+                    <li>RL2 OBS</li>
+
+                </ul>
+            </li>
+            <li class="values">
+                <ul class="columns">
+                    <li></li>
+                    <li>loremipsun</li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </li>
+
+        </ul><!--item-->
         
     </section>
 
-    <script src="js/manager.js" async></script>
+    <!--<script src="js/manager.js" async></script>-->
 </body>
 </html>
