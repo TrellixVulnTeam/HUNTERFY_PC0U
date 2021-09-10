@@ -43,11 +43,27 @@ class pgProgram{
             else{
                 console.log(result)
             }
-        })
-        
-            
+        })   
     }
 
+    searchTable(user,date){
+        const searchQuery = `
+		SELECT user_id, parcelid, floodzone, date, dateandtime, gisimg, gislink, floodzoneimg, floodzonetext
+		FROM public.hunterfyterrenos
+		WHERE parcelid = '${user}' AND date = '${date}';
+	    `
+        dbClient.query(searchQuery, (error, result) => {
+            if(error){
+                console.log(error)
+            }
+            else{
+                console.log(result)
+            }
+        })
+
+
+    }
+	
 }
 
 module.exports = new pgProgram
