@@ -3,12 +3,27 @@ const dbClient = require('../database/connectionPG')
 class pgProgram{
     addOnDatabase(req){
     var terreno = req.body	    
-    let insertQuery = `insert into hunterfyterrenos(user_id, PARCELID, FLOODZONE) 
-                       values('gvmolinadmin', '${terreno.parcelid}', 'teste')`
+    let insertQuery = `insert into hunterfyterrenos(
+	    user_id,
+	    parcelid,
+	    gisimg, 
+	    gislink, 
+	    floodzoneimg, 
+	    floodzonetext
+    )
+                       values(
+			       '${terreno.userinfo[0].username}', 
+			       '${terreno.parcelid}', 
+			       '${terreno.gis[0].gisimg}',
+			       '${terreno.gis[0].gislink}',
+			       '${terreno.floodzone[0].floodzoneimg}',
+			       '${terreno.floodzone[0].floodzonetext}'
+			       
+		       )`
 
     dbClient.query(insertQuery, (err, result)=>{
         if(!err){
-            res.send('Insertion was successful')
+            console.log('Insertion was successful')
         }
         else{ console.log(err.message) }
     })
