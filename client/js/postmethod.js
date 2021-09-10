@@ -1,4 +1,0 @@
-import { postCard } from './getjson'
-
-
-
