@@ -15,9 +15,8 @@ async function runUser(){
         
     }
 
-    function postUserDate(json) {
+async function postUserDate(json) {
         try{
-        console.log(json)
         const options = {
             method: 'POST',
             headers:{
@@ -25,17 +24,38 @@ async function runUser(){
             },
             body: JSON.stringify(json)
         }
-        fetch('/manager', options)
+        const rawResponse = await fetch('/manager', options)
+	const content = await rawResponse.json();
+	console.log(content)
+	
+
+
+	for (var i = 0; i < content.length; i++) {
+            var contentIndex = content[i]
+            createItem(contentIndex)
+            console.log(contentIndex)
+        
+        
+        
+        
+        
+        
+        
+        }
+
+
         }
         catch(error){
             console.log(error)
         }
+
     }
 
 
-    await getJson()
-    await postUserDate(getJson())
+    await getJson()	
     buildPage(getJson());
+    await postUserDate(getJson())
+
 }
 
 async function buildPage(json){
@@ -52,8 +72,9 @@ async function buildPage(json){
     sectionPrograma.innerHTML = createItem
 }
 
-async function createItem(){
+async function createItem(element){
     var itensContainer = document.querySelector('.itens-container')
+    var div = document.createElement('div')
     var item = `
         <!--item-->
         <ul class="item">
@@ -66,17 +87,17 @@ async function createItem(){
                     <li>GIS IMAGE</li>
                     <li>FLOODZONE</li>
                     <li>FLOODZONE IMAGE</li>
-                    
+
                 </ul>
             </li>
             <li class="values">
                 <ul class="columns">
-                    <li>gvmolinadmin</li>
-                    <li>date</li>
-                    <li>4567890-5678</li>
-                    <li>GIS IMAGE</li>
-                    <li>FLOODZONE</li>
-                    <li>FLOODZONE IMAGE</li>
+                    <li>${element.user_id}</li>
+                    <li>${element.date}</li>
+                    <li>${element.parcelid}</li>
+                    <li><img src="${element.gisimg}"></li>
+                    <li>${element.floodzonetext}</li>
+                    <li><img src="${element.floodzonetext}"></li>
                 </ul>
             </li>
             <!--campo2-->
@@ -88,7 +109,7 @@ async function createItem(){
                     <li>TAX OWNED</li>
                     <li>MARKET VALUE</li>
                     <li>ACRES</li>
-                    
+
                 </ul>
             </li>
             <li class="values">
@@ -110,7 +131,7 @@ async function createItem(){
                     <li>N1 ADRESS</li>
                     <li>N2 ADRESS</li>
                     <li>N3 ADRESS</li>
-                    
+
                 </ul>
             </li>
             <li class="values">
@@ -132,7 +153,7 @@ async function createItem(){
                     <li>RANK LEVEL 2</li>
                     <li>RL2 USER</li>
                     <li>RL2 OBS</li>
-                    
+
                 </ul>
             </li>
             <li class="values">
@@ -145,9 +166,9 @@ async function createItem(){
                     <li></li>
                 </ul>
             </li>
-            
+
         </ul><!--item-->
     `
-    itensContainer.append(item)
+    div.innerHTML = item
+    itensContainer.append(div)
 }
-

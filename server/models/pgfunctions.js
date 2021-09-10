@@ -44,7 +44,7 @@ class pgProgram{
         })   
     }
 
-    searchTable(user,date){
+    searchTable(user,date, res){
         const searchQuery = `
 		SELECT user_id, parcelid, floodzone, date, dateandtime, gisimg, gislink, floodzoneimg, floodzonetext
 		FROM public.hunterfyterrenos
@@ -55,10 +55,10 @@ class pgProgram{
                 console.log(error)
             }
             else{
-                //console.log(result)
-                return result
+	       console.log(result.rows)		    
+	       res.send(result.rows)  
             }
-            return result
+            
         })
     }
 }

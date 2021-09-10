@@ -18,7 +18,7 @@ module.exports = app => {
 	app.post('/app', (req,res) => {
 	    console.log(req.body)
         try{
-            printarBody(req)
+           // printarBody(req)
 	        pgProgram.addOnDatabase(req)
             
         }
@@ -30,8 +30,8 @@ module.exports = app => {
 	app.post('/manager', async(req,res) => {
         try{
             const userDate = await req.body
-            const pgresults = await pgProgram.searchTable(userDate.user, userDate.date)  
-            res.send(pgresults) 
+            pgProgram.searchTable(userDate.user, userDate.date, res)
+
         }
             catch(error){
             console.log(error)
