@@ -13,12 +13,8 @@ module.exports = app => {
         res.render('manager.ejs')
     })	
 
-    app.post('/app', (req,res) => {
-        async function printarBody(req){
-	    const terreno = await req.body
-	    console.log(terreno.parcelid)
-
-        }
+	    app.post('/app', (req,res) => {
+	    console.log(req.body)
         try{
             printarBody(req)
 	    pgProgram.addOnDatabase(req)
@@ -32,14 +28,12 @@ module.exports = app => {
         
     })
 
-    app.post('/manager', (req,res) => {
-        async function printarBody(req){
-	    const userDate = await req.body
-	    console.log(req.body)
-
-        }
+	    app.post('/manager', async(req,res) => {
         try{
-	    searchTable(req.body.user, req.body.date)
+	    const userDate = await req.body
+            console.log(req.body)
+	 		
+	    pgProgram.searchTable(userDate.user, userDate.date)
             
         }
         catch(error){

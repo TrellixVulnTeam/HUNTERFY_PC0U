@@ -50,7 +50,7 @@ class pgProgram{
         const searchQuery = `
 		SELECT user_id, parcelid, floodzone, date, dateandtime, gisimg, gislink, floodzoneimg, floodzonetext
 		FROM public.hunterfyterrenos
-		WHERE parcelid = '${user}' AND date = '${date}';
+		WHERE user_id = '${user}' AND date = '${date}';
 	    `
         dbClient.query(searchQuery, (error, result) => {
             if(error){
