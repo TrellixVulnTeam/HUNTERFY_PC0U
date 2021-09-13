@@ -73,6 +73,7 @@ async function postJson(card) {
         body: JSON.stringify(json)
     }
     fetch('/app', options)
+    excluirCard(card)
     }
     catch(error){
         console.log(error)
