@@ -171,3 +171,11 @@ form{
     transition: 1s;
     z-index: 12;
   }
+
+  .submitrank{
+    border: none;
+    border-radius: 0.5vh;
+    width: 100%;
+    height: 5ch;
+    background-color: #a14418;
+  }
