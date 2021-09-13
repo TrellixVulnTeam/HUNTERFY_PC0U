@@ -54,9 +54,8 @@ class pgProgram{
             if(error){
                 console.log(error)
             }
-            else{
-	       console.log(result.rows)		    
-	       res.send(result.rows)  
+            else{		    
+	            res.send(result.rows)  
             }
             
         })

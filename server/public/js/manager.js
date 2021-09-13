@@ -80,7 +80,7 @@ async function createItem(element){
             <li class="values">
                 <ul class="columns">
                     <li>${element.user_id}</li>
-                    <li>${element.date}</li>
+                    <li>${element.dateandtime}</li>
                     <li>${element.parcelid}</li>
                     <li><img src="${element.gisimg}"></li>
                     <li>${element.floodzonetext}</li>
@@ -171,7 +171,7 @@ async function createItem(element){
                     <li><input type="text"></li>
                     <li></li>
                     <li></li>
-                    <li><button class="submitrank" type="submit">submit</button></li>
+                    <button class="submitrank" type="submit">submit</button>
                  
                 </ul>
             </li>
