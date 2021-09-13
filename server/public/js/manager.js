@@ -171,7 +171,7 @@ async function createItem(element){
                     <li><input type="text"></li>
                     <li></li>
                     <li></li>
-                    <button class="submitrank" type="submit">submit</button>
+                    <li><button class="submitrank" type="submit">submit</button></li>
                  
                 </ul>
             </li>
