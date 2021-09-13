@@ -17,38 +17,25 @@ async function runUser(){
 
 async function postUserDate(json) {
         try{
-        const options = {
-            method: 'POST',
-            headers:{
-                'Content-Type':'application/json'
-            },
-            body: JSON.stringify(json)
-        }
-        const rawResponse = await fetch('/manager', options)
-	const content = await rawResponse.json();
-	console.log(content)
-	
-
-
-	for (var i = 0; i < content.length; i++) {
-            var contentIndex = content[i]
-            createItem(contentIndex)
-            console.log(contentIndex)
-        
-        
-        
-        
-        
-        
-        
-        }
-
-
+            const options = {
+                method: 'POST',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify(json)
+            }
+            const rawResponse = await fetch('/manager', options)
+            const content = await rawResponse.json();
+            console.log(content)
+	        for (var i = 0; i < content.length; i++) {
+                var contentIndex = content[i]
+                createItem(contentIndex)
+                console.log(contentIndex)
+            }
         }
         catch(error){
             console.log(error)
         }
-
     }
 
 
@@ -184,7 +171,7 @@ async function createItem(element){
                     <li><input type="text"></li>
                     <li></li>
                     <li></li>
-                    <li></li>
+                    <li><button type="submit">submit</button></li>
                  
                 </ul>
             </li>
