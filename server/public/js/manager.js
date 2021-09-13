@@ -97,7 +97,7 @@ async function createItem(element){
                     <li>${element.parcelid}</li>
                     <li><img src="${element.gisimg}"></li>
                     <li>${element.floodzonetext}</li>
-                    <li><img src="${element.floodzonetext}"></li>
+                    <li><img src="${element.floodzoneimg}"></li>
                 </ul>
             </li>
             <!--campo2-->
@@ -159,13 +159,36 @@ async function createItem(element){
             <li class="values">
                 <ul class="columns">
                     <li></li>
-                    <li>loremipsun</li>
                     <li></li>
                     <li></li>
-                    <li></li>
-                    <li></li>
+                    <li><input type="text"></li>
+                    <li><input type="text"></li>
+                    <li><input type="text"></li>
                 </ul>
             </li>
+            <li class="title">
+                <ul class="columns">
+                    <li>RANK LEVEL3</li>
+                    <li>RL3 USER</li>
+                    <li>RL3 OBS</li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+
+                </ul>
+            </li>
+            <li class="values">
+                <ul class="columns">
+		    <li><input type="text"></li>
+                    <li><input type="text"></li>
+                    <li><input type="text"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                 
+                </ul>
+            </li>
+
 
         </ul><!--item-->
     `
