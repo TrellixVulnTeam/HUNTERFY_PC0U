@@ -183,8 +183,11 @@ var i;
 
 
 function accordion(item){
-    console.log(item.children[1])
-    
-
+    var hide = item.children[1]    
+    if (hide.style.display === "block") {
+        hide.style.display = "none";
+      } else {
+        hide.style.display = "block";
+      }
     
 }
