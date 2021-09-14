@@ -66,7 +66,7 @@ async function createItem(element){
     <!--item-->
     <ul class="item">
         <!--campo1-->
-        <button class="accordion">
+        <button class="accordion" onclick="accordion(this.parentElement)">
         <li class="title">
             <ul class="columns">
                 <li>user</li>
@@ -178,17 +178,12 @@ async function createItem(element){
     div.innerHTML = item
     itensContainer.append(div)
 }
-
 var acc = document.getElementsByClassName("accordion");
 var i;
 
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    var panel = this.nextElementSibling;
-    if (panel.style.display === "block") {
-      panel.style.display = "none";
-    } else {
-      panel.style.display = "block";
-    }
-  });
+
+function accordion(item){
+    console.log(item)
+
+    
 }
