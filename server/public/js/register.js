@@ -24,9 +24,8 @@ button.addEventListener("click", async (event)=> {
             if(passwordInput.length !== 8){
                 alert ('senha deve conter 8 digitos')
             }else{
-                alert('usuario cadastrado com sucesso!')
                 await sendNewUserToServer(infoJson).then(
-                    alert('bululu')
+                    alert('Successful insert')
                 )
             }
         }
