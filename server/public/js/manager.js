@@ -183,7 +183,8 @@ var i;
 
 
 function accordion(item){
-    console.log(item)
+    console.log(item.children[1])
+    
 
     
 }
