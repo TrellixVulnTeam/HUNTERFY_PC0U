@@ -45,10 +45,18 @@ async function sendNewUserToServer(json){
         }
         const rawRes = await fetch('/register', options);
         const content = await rawRes.json();
-        console.log(content)
+        for (var i = 0; i < content.length; i++) {
+            var contentIndex = content[i]
+            showUser(contentIndex)
+        }
 
     }
     catch(error){
             console.log(error)
     }
+}
+
+function showUser(content){
+    var userView = `<li><h2>${content.username}</h2> <h2>${content.password}</h2> <h2>${content.creationdate}</h2></li>` 
+    console.log(userView)
 }
