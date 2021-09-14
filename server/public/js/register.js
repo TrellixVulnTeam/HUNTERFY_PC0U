@@ -35,7 +35,7 @@ button.addEventListener("click", async (event)=> {
 
 async function sendNewUserToServer(json){
     try{
-        console.log(json)
+        //console.log(json)
         const options = {
             method: 'POST',
             headers:{
@@ -58,5 +58,7 @@ async function sendNewUserToServer(json){
 
 function showUser(content){
     var userView = `<li><h2>${content.username}</h2> <h2>${content.password}</h2> <h2>${content.creationdate}</h2></li>` 
-    console.log(userView)
+    var usersContainer = document.querySelector('.users-container')
+    usersContainer.append(userView)
+    //console.log(userView)
 }
