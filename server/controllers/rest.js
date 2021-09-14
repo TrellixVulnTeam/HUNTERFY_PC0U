@@ -21,7 +21,7 @@ module.exports = app => {
 
     app.post('/register', (req, res)=>{
         try{
-            insertNewUser(req)
+            insertNewUser(req, res)
         }
         catch(error){console.log(error)}
     })
