@@ -78,6 +78,21 @@ class pgProgram{
         })
         dbClient.end;
     }
+
+    getUsers(req, res){
+        const sql = 'select * from public.userinfo'
+        dbClient.query(sql, db, (error, result) => {
+            if(error){
+                console.log(error)
+            }
+            else{
+                console.log(result.rows)
+            }
+        })   
+        dbClient.end;
+    }
+
+
 }
 
 module.exports = new pgProgram

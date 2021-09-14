@@ -1,4 +1,4 @@
-const { searchTable, insertNewUser } = require('../models/pgfunctions')
+const { searchTable, insertNewUser, getUsers } = require('../models/pgfunctions')
 
 pgProgram = require('../models/pgfunctions')
 
@@ -22,6 +22,7 @@ module.exports = app => {
     app.post('/register', (req, res)=>{
         try{
             insertNewUser(req, res)
+            getUsers(req, res)
         }
         catch(error){console.log(error)}
     })
@@ -31,6 +32,7 @@ module.exports = app => {
         try{
            // printarBody(req)
 	        pgProgram.addOnDatabase(req)
+
             
         }
         catch(error){
