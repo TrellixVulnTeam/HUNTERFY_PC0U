@@ -61,10 +61,23 @@ class pgProgram{
         })
     }
 
-    insertUser(user, password){
-        
-    }
+    insertNewUser(req){
+        var user = req.body	    
+        let insertQuery = 
+        `
+        INSERT INTO public.userinfo(
+            username, password)
+            VALUES ('${user.newusername}', '${user.newpassword}');
+        `
 
+        dbClient.query(insertQuery, (err, result)=>{
+            if(!err){
+                console.log('Insertion was successful')
+            }
+            else{ console.log(err.message) }
+        })
+        dbClient.end;
+    }
 }
 
 module.exports = new pgProgram
