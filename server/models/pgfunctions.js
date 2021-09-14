@@ -73,6 +73,7 @@ class pgProgram{
         dbClient.query(insertQuery, (err, result)=>{
             if(!err){
                 console.log('Insertion was successful')
+                alert("User insertion was successful")
             }
             else{ console.log(err.message) }
         })
