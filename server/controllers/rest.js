@@ -19,6 +19,10 @@ module.exports = app => {
         res.render('register.ejs')
     })
 
+    app.get('/searchbyuser', (req, res) => {
+        res.render('searchbyuser.ejs')
+    })
+
     app.post('/register', (req, res)=>{
         try{
             insertNewUser(req, res)
@@ -40,7 +44,7 @@ module.exports = app => {
 	    }
     })
 
-	app.post('/manager', async(req,res) => {
+	app.post('/searchbyuser', async(req,res) => {
         try{
             const userDate = await req.body
             pgProgram.searchTable(userDate.user, userDate.date, res)
