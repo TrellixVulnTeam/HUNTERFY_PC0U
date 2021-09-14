@@ -81,7 +81,7 @@ class pgProgram{
 
     getUsers(req, res){
         const sql = 'select * from public.userinfo'
-        dbClient.query(sql, db, (error, result) => {
+        dbClient.query(sql, (error, result) => {
             if(error){
                 console.log(error)
             }
