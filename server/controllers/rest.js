@@ -13,7 +13,11 @@ module.exports = app => {
 
     app.get('/manager', (req, res) => {
         res.render('manager.ejs')
-    })		
+    })
+    
+    app.get('/register', (req, res) => {
+        res.render('register.ejs')
+    })
 
 	app.post('/app', (req,res) => {
 	    console.log(req.body)

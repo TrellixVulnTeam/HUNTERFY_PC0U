@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/managerstyle.css">
+    <script src="https://kit.fontawesome.com/30836ed2bd.js" crossorigin="anonymous"></script>
+    <title>HUNTERFY MANAGER</title>
+</head>
+<body>
+    <header>
+        <div class="janela-header">
+            <div class="logo"><a href="./manager.html"><img src="./img/Hunterfy.png" alt="Hunterfy logo"></a><h1>MANAGER v1.0</h1></div>
+            <div><a href="./register.html"><button class="add-user"><i class="fas fa-user-plus"></i></button></a></div>
+        </div>
+    </header>
+    <section class="controller janela">
+        <div class="valist-container">
+            <h2>My user:</h2>
+            <h3>gvmolinadmin</h3>
+        </div>
+
+        
+    </section>
+    <section class="program janela">
+        <form class="register">
+           <h2>Register a new user:</h2>
+           <div>
+               <label name="newusername">Username:</label>
+               <input type="text" name="newusername" id="newusername">
+            </div>
+            <div>
+                <label name="newpassword">Password:</label>
+                <input type="password" name="newpassword" id="newpassword">
+            </div>
+            <div>
+                <label name="newpassword">Confirm password:</label>
+                <input type="password" name="confpassword" id="confpassword">
+            </div>
+            <button class="submit-register">Register</button>
+           
+           
+
+        </form>
+           
+    </section>
+  
+
+    <script src="js/manager.js" async></script>
+</body>

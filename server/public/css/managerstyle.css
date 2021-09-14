@@ -5,7 +5,7 @@ BD9354
 E3D18A
 */
 
-h1, h2, h3, li, label{
+h1, h2, h3, li, label, button{
     font-family: 'Montserrat', sans-serif;
     color: #F6E9E9;
 }
@@ -13,9 +13,8 @@ h1, h2, h3, li, label{
 header{
     height: 10vh;
     background-color: #a14418;
-    padding: 0 2vw;
-    display: flex;
     align-items: center;
+    width: 30vw;
     position: fixed;
     top: 0;
     left: 0;
@@ -28,6 +27,15 @@ body{
     
 }
 
+.janela-header{
+    width: 95%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .logo{
     height: 100%;
     display: flex;
@@ -35,12 +43,30 @@ body{
     color: white;
 }
 
+.logo a{
+    text-decoration: none;
+}
+
 .logo img{
-    height: 60%;
+    height: 6vh;
 }
 
 .logo h1{
     margin-top: 2vh;
+}
+
+.add-user{
+    height: 5vh;
+    width: 5vh;
+    background-color: transparent;
+    font-size: 3vh;
+    border: none;
+}
+
+.add-user:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.5s;
 }
 
 .controller{
@@ -93,6 +119,7 @@ body{
 
 .columns li{
     width: 16.6666666%;
+    height: 2vh;
 }
 
 .title{
@@ -150,34 +177,107 @@ form{
     background-color: #a14418;
 }
 
+.search-button:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+
 ::-webkit-scrollbar-thumb {
     background-color: #a14418;
-  }
+}
 
-  ::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
     background: #f1f1f1;
-  }
+}
 
-  body::-webkit-scrollbar-track {
+body::-webkit-scrollbar-track {
     background: orange;        /* color of the tracking area */
-  }
+}
   
-  .values img{
+.values img{
       height: 3vh;
-  }
+}
 
-  .values img:hover{
+.values img:hover{
     transform: scale(10);
     transition: 1s;
     z-index: 12;
-  }
+}
 
-  .submitrank{
+.submitrank{
     border: none;
     border-radius: 0.5vh;
-    width: 100%;
+    width: 12.5vw;
     height: 5ch;
     background-color: #a14418;
-  }
+    height: 4vh;
+    font-size: 2vh;
+}
 
+.submitrank:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+
+.columns input{
+    border: none;
+    border-bottom: 2px white solid;
+    background-color: transparent;
+    color: white;
+    font-size: 2vh;
+    width: 12VW;
+}
   
+.values li{
+    font-size: 2vh;
+}
+
+.register{
+    margin-top: 13vh;
+    margin-left: 2vw;
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    justify-content: space-between;
+}
+
+.register div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2vh;
+}
+
+.register label{
+    font-size: 2vh;
+}
+
+.register input{
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid white;
+    height: 3vh;
+    font-size: 2vh;
+    color: rgb(197, 197, 197);
+}
+
+.register h2{
+    font-size: 3vh;
+}
+
+.submit-register{
+    background-color:#a14418;
+    margin-top: 2vh;
+    height: 4vh;
+    border: none;
+    border-radius: 3px;
+    font-size: 2vh;
+}
+
+.submit-register:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.5s;
+}

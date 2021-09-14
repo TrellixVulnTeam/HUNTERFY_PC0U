@@ -60,6 +60,11 @@ class pgProgram{
             
         })
     }
+
+    insertUser(user, password){
+        
+    }
+
 }
 
 module.exports = new pgProgram
