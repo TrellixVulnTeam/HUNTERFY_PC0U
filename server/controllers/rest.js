@@ -19,6 +19,10 @@ module.exports = app => {
         res.render('register.ejs')
     })
 
+    app.post('/register', (req, res)=>{
+        console.log(req.body)
+    })
+
 	app.post('/app', (req,res) => {
 	    console.log(req.body)
         try{
