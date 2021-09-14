@@ -63,46 +63,47 @@ async function createItem(element){
     var itensContainer = document.querySelector('.itens-container')
     var div = document.createElement('div')
     var item = `
-        <!--item-->
-        <ul class="item">
-            <!--campo1-->
-            <li class="title">
-                <ul class="columns">
-                    <li>user</li>
-                    <li>date</li>
-                    <li>PARCELID</li>
-                    <li>GIS IMAGE</li>
-                    <li>FLOODZONE</li>
-                    <li>FLOODZONE IMAGE</li>
-
-                </ul>
-            </li>
-            <li class="values">
-                <ul class="columns">
-                    <li>${element.user_id}</li>
-                    <li>${element.dateandtime}</li>
-                    <li>${element.parcelid}</li>
-                    <li><img src="${element.gisimg}"></li>
-                    <li>${element.floodzonetext}</li>
-                    <li><img src="${element.floodzoneimg}"></li>
-                </ul>
-            </li>
+    <!--item-->
+    <ul class="item">
+        <!--campo1-->
+        <button class="accordion">
+        <li class="title">
+            <ul class="columns">
+                <li>user</li>
+                <li>date</li>
+                <li>PARCELID</li>
+                <li>GIS IMAGE</li>
+                <li>FLOODZONE IMAGE</li>
+                <li>MAPS IMAGE</li>
+            </ul>
+        </li>
+        <li class="values">
+            <ul class="columns">
+                <li>${element.user_id}</li>
+                <li>${element.dateandtime}</li>
+                <li>${element.parcelid}</li>
+                <li><img src="${element.gisimg}"></li>
+                <li><img src="${element.floodzoneimg}"></li>
+                <li></li>
+            </ul>
+        </li>
+        </button>
+        <div style="display: none;">
             <!--campo2-->
             <li class="title">
                 <ul class="columns">
-                    <li>MAPS LINK</li>
-                    <li>MAPS IMAGE</li>
                     <li>STREETVIEW IMAGE</li>
+                    <li>FLOODZONE</li>
+                    <li>MAPS LINK</li>
                     <li>TAX OWNED</li>
                     <li>MARKET VALUE</li>
                     <li>ACRES</li>
-
                 </ul>
             </li>
             <li class="values">
                 <ul class="columns">
                     <li></li>
-                    <li>loremipsun</li>
+                    <li>${element.floodzonetext}</li>
                     <li></li>
                     <li></li>
                     <li></li>
@@ -118,13 +119,12 @@ async function createItem(element){
                     <li>N1 ADRESS</li>
                     <li>N2 ADRESS</li>
                     <li>N3 ADRESS</li>
-
                 </ul>
             </li>
             <li class="values">
                 <ul class="columns">
                     <li></li>
-                    <li>loremipsun</li>
+                    <li></li>
                     <li></li>
                     <li></li>
                     <li></li>
@@ -140,7 +140,6 @@ async function createItem(element){
                     <li>RANK LEVEL 2</li>
                     <li>RL2 USER</li>
                     <li>RL2 OBS</li>
-
                 </ul>
             </li>
             <li class="values">
@@ -161,24 +160,35 @@ async function createItem(element){
                     <li></li>
                     <li></li>
                     <li></li>
-
                 </ul>
             </li>
             <li class="values">
                 <ul class="columns">
-		            <li><input type="text"></li>
+                    <li><input type="text"></li>
                     <li><input type="text"></li>
                     <li><input type="text"></li>
                     <li></li>
                     <li></li>
                     <li><button class="submitrank" type="submit">submit</button></li>
-                 
                 </ul>
             </li>
-
-
-        </ul><!--item-->
+        </div>
+    </ul><!--item-->
     `
     div.innerHTML = item
     itensContainer.append(div)
+}
+
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
 }

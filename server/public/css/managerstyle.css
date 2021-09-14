@@ -55,19 +55,7 @@ body{
     margin-top: 2vh;
 }
 
-.add-user{
-    height: 5vh;
-    width: 5vh;
-    background-color: transparent;
-    font-size: 3vh;
-    border: none;
-}
 
-.add-user:hover{
-    cursor: pointer;
-    transform: scale(1.05);
-    transition: 0.5s;
-}
 
 .controller{
     background-color: #272121;
@@ -75,6 +63,7 @@ body{
     width: 10vw;
     position: fixed;
     z-index: 9;
+    margin-top: 9vh;
     
 }
 
@@ -119,7 +108,8 @@ body{
 
 .columns li{
     width: 16.6666666%;
-    height: 2vh;
+    height: 3vh;
+    font-size: 2vh;
 }
 
 .title{
@@ -137,6 +127,11 @@ body{
     border-radius: 1vh;
     padding: 1vh;
     margin: 2vh 0;
+}
+
+.item:hover{
+    background-color: #524e4e;
+    transition: 0.5s;
 }
 
 .values{
@@ -195,9 +190,7 @@ body::-webkit-scrollbar-track {
     background: orange;        /* color of the tracking area */
 }
   
-.values img{
-      height: 3vh;
-}
+
 
 .values img:hover{
     transform: scale(10);
@@ -234,13 +227,24 @@ body::-webkit-scrollbar-track {
     font-size: 2vh;
 }
 
+.values img{
+    height: 10vh;
+}
+
+.register-program{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .register{
-    margin-top: 13vh;
-    margin-left: 2vw;
+    margin: 0 auto;
+    margin-top: 20vh;
+    
     display: flex;
     flex-direction: column;
     width: 20vw;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .register div{
@@ -269,7 +273,7 @@ body::-webkit-scrollbar-track {
 
 .submit-register{
     background-color:#a14418;
-    margin-top: 2vh;
+    margin-top: 3vh;
     height: 4vh;
     border: none;
     border-radius: 3px;
@@ -280,4 +284,57 @@ body::-webkit-scrollbar-track {
     cursor: pointer;
     transform: scale(1.05);
     transition: 0.5s;
+}
+
+.manager {
+    padding-top: 15vh;
+    
+}
+
+.manager-line{
+    display: flex;
+    justify-content: space-between;
+}
+
+.manager-item{
+    width: 10vw;
+    height: 10vw;
+    border: white solid 2px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6vh;
+}
+
+.manager-item:hover{
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
+.manager-item button{
+    font-size: 5vw;
+    background-color: transparent;
+    border: none;
+}
+
+.manager-item button:hover{
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
+.inv{
+    border: none;
+}
+
+.accordion{
+    width: 100%;
+    background-color: transparent;
+    border: none;
+}
+
+.accordion ul li{
+    text-align: left;
 }

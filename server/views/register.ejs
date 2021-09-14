@@ -7,26 +7,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/managerstyle.css">
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./managerstyle.css">
     <script src="https://kit.fontawesome.com/30836ed2bd.js" crossorigin="anonymous"></script>
     <title>HUNTERFY MANAGER</title>
 </head>
 <body>
     <header>
         <div class="janela-header">
-            <div class="logo"><a href="./manager"><img src="./img/Hunterfy.png" alt="Hunterfy logo"></a><h1>MANAGER v1.0</h1></div>
-            <div><a href="./register"><button class="add-user"><i class="fas fa-user-plus"></i></button></a></div>
+            <div class="logo"><a href="./manager.html"><img src="./img/Hunterfy.png" alt="Hunterfy logo"></a><h1>MANAGER v1.0</h1></div>
+            <div class="user-container">
+                <h2>My user:</h2>
+                <h3>gvmolinadmin</h3>
+            </div>
         </div>
     </header>
-    <section class="controller janela">
-        <div class="valist-container">
-            <h2>My user:</h2>
-            <h3>gvmolinadmin</h3>
-        </div>
-    </section>
     
-    <section class="program janela">
+    <section class="register-program janela">
         <form class="register">
            <h2>Register a new user:</h2>
            <div>
@@ -43,15 +40,9 @@
             </div>
             <button class="submit-register">Register</button>
         </form>
-
-        <div class="users-list">
-            <h2>All Users</h2>
-            <div class="users-container"></div>
-        </div>
-
            
     </section>
   
 
-    <script src="js/register.js" async></script>
+    <script src="./register.js" async></script>
 </body>

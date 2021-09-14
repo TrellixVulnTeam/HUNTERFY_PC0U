@@ -24,9 +24,7 @@ button.addEventListener("click", async (event)=> {
             if(passwordInput.length !== 8){
                 alert ('senha deve conter 8 digitos')
             }else{
-                await sendNewUserToServer(infoJson).then(
-                    alert('Successful insert')
-                )
+                await sendNewUserToServer(infoJson)
             }
         }
     }
@@ -35,7 +33,7 @@ button.addEventListener("click", async (event)=> {
 
 async function sendNewUserToServer(json){
     try{
-        //console.log(json)
+        console.log(json)
         const options = {
             method: 'POST',
             headers:{
@@ -43,24 +41,9 @@ async function sendNewUserToServer(json){
             },
             body: JSON.stringify(json)
         }
-        const rawRes = await fetch('/register', options);
-        const content = await rawRes.json();
-        for (var i = 0; i < content.length; i++) {
-            var contentIndex = content[i]
-            showUser(contentIndex)
-        }
-
+        fetch('/register', options)
     }
     catch(error){
             console.log(error)
     }
-}
-
-function showUser(content){
-    var userView = `<li><h2>${content.username}</h2> <h2>${content.password}</h2> <h2>${content.creationdate}</h2></li>` 
-    var usersContainer = document.querySelector('.users-container')
-    var li = document.createElement("li")
-    li.innerHTML = userView
-    usersContainer.append(li)
-    //console.log(userView)
 }

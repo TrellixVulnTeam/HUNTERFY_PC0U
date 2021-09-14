@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./managerstyle.css">
+    <script src="https://kit.fontawesome.com/30836ed2bd.js" crossorigin="anonymous"></script>
+    <title>HUNTERFY MANAGER</title>
+</head>
+<body>
+    <header>
+        <div class="janela-header">
+            <div class="logo"><a href="./manager.html"><img src="./img/Hunterfy.png" alt="Hunterfy logo"></a><h1>MANAGER v1.0</h1></div>
+            <div class="user-container">
+                <h2>My user:</h2>
+                <h3>gvmolinadmin</h3>
+            </div>
+        </div>
+    </header>
+    <section class="controller janela">
+        
+             <form id="search-form">
+                <h2>Search</h2>
+                <div><label for="user">by user:</label><input type="text" id="user" name=""></div>
+                <div><label>and by date:</label><input type="date" id="date" name=""></div>
+                <button class="search-button">SEARCH</button>
+
+
+            </form>
+       
+
+        
+    </section>
+    <section class="program janela">
+        <h2 class="username">username</h2>
+        <div class="itens-container">
+            <!--item-->
+            <ul class="item">
+                <!--campo1-->
+                <button class="accordion">
+                <li class="title">
+                    <ul class="columns">
+                        <li>user</li>
+                        <li>date</li>
+                        <li>PARCELID</li>
+                        <li>GIS IMAGE</li>
+                        <li>FLOODZONE IMAGE</li>
+                        <li>MAPS IMAGE</li>
+                    </ul>
+                </li>
+                <li class="values">
+                    <ul class="columns">
+                        <li>${element.user_id}</li>
+                        <li>${element.dateandtime}</li>
+                        <li>${element.parcelid}</li>
+                        <li><img src="${element.gisimg}"></li>
+                        <li><img src="${element.floodzoneimg}"></li>
+                        <li></li>
+                    </ul>
+                </li>
+                </button>
+                <div style="display: none;">
+                    <!--campo2-->
+                    <li class="title">
+                        <ul class="columns">
+                            <li>STREETVIEW IMAGE</li>
+                            <li>FLOODZONE</li>
+                            <li>MAPS LINK</li>
+                            <li>TAX OWNED</li>
+                            <li>MARKET VALUE</li>
+                            <li>ACRES</li>
+                        </ul>
+                    </li>
+                    <li class="values">
+                        <ul class="columns">
+                            <li></li>
+                            <li>${element.floodzonetext}</li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </li>
+                    <!--campo3-->
+                    <li class="title">
+                        <ul class="columns">
+                            <li>LATITUDE</li>
+                            <li>LONGITUDE</li>
+                            <li>ADRESS</li>
+                            <li>N1 ADRESS</li>
+                            <li>N2 ADRESS</li>
+                            <li>N3 ADRESS</li>
+                        </ul>
+                    </li>
+                    <li class="values">
+                        <ul class="columns">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </li>
+                    <!--campo4-->
+                    <li class="title">
+                        <ul class="columns">
+                            <li>N4 ADRESS</li>
+                            <li>RANK LEVEL1</li>
+                            <li>OBS (LV1)</li>
+                            <li>RANK LEVEL 2</li>
+                            <li>RL2 USER</li>
+                            <li>RL2 OBS</li>
+                        </ul>
+                    </li>
+                    <li class="values">
+                        <ul class="columns">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li><input type="text"></li>
+                            <li><input type="text"></li>
+                            <li><input type="text"></li>
+                        </ul>
+                    </li>
+                    <li class="title">
+                        <ul class="columns">
+                            <li>RANK LEVEL3</li>
+                            <li>RL3 USER</li>
+                            <li>RL3 OBS</li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </li>
+                    <li class="values">
+                        <ul class="columns">
+                            <li><input type="text"></li>
+                            <li><input type="text"></li>
+                            <li><input type="text"></li>
+                            <li></li>
+                            <li></li>
+                            <li><button class="submitrank" type="submit">submit</button></li>
+                        </ul>
+                    </li>
+                </div>
+            </ul><!--item-->
+        </div>
+            
+  
+
+    <script src="./manager.js" async></script>
+</body>
+</html>
