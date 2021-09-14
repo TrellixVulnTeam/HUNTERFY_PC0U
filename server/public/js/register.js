@@ -43,7 +43,10 @@ async function sendNewUserToServer(json){
             },
             body: JSON.stringify(json)
         }
-        fetch('/register', options)
+        const rawRes = await fetch('/register', options);
+        const content = await rawRes.json();
+        console.log(content)
+
     }
     catch(error){
             console.log(error)

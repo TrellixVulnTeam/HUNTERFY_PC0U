@@ -86,7 +86,7 @@ class pgProgram{
                 console.log(error)
             }
             else{
-                console.log(result.rows)
+                res.send(result.rows)
             }
         })   
         dbClient.end;
