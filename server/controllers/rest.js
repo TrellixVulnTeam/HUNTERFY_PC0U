@@ -26,7 +26,7 @@ module.exports = app => {
         catch(error){console.log(error)}
     })
 
-	app.post('/app', (req,res) => {
+	app.post('/app', (req) => {
 	    console.log(req.body)
         try{
            // printarBody(req)

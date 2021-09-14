@@ -61,7 +61,7 @@ class pgProgram{
         })
     }
 
-    insertNewUser(req, res){
+    insertNewUser(req){
         var user = req.body	    
         let insertQuery = 
         `
@@ -73,7 +73,6 @@ class pgProgram{
         dbClient.query(insertQuery, (err, result)=>{
             if(!err){
                 console.log('Insertion was successful')
-                res.send.alert("User insertion was successful")
             }
             else{ console.log(err.message) }
         })
