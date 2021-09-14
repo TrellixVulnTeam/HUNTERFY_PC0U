@@ -24,7 +24,7 @@ async function postUserDate(json) {
                 },
                 body: JSON.stringify(json)
             }
-            const rawResponse = await fetch('/manager', options)
+            const rawResponse = await fetch('/searchbyuser', options)
             const content = await rawResponse.json();
             console.log(content)
 	        for (var i = 0; i < content.length; i++) {
