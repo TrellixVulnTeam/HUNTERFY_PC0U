@@ -59,6 +59,8 @@ async function sendNewUserToServer(json){
 function showUser(content){
     var userView = `<li><h2>${content.username}</h2> <h2>${content.password}</h2> <h2>${content.creationdate}</h2></li>` 
     var usersContainer = document.querySelector('.users-container')
-    usersContainer.append(userView)
+    var li = document.createElement("li")
+    li.innerHTML = userView
+    usersContainer.append(li)
     //console.log(userView)
 }
