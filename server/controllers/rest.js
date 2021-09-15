@@ -34,10 +34,8 @@ module.exports = app => {
 	app.post('/app', (req) => {
 	    console.log(req.body)
         try{
-           // printarBody(req)
+            console.log(req.body)
 	        pgProgram.addOnDatabase(req)
-
-            
         }
         catch(error){
 	        console.log(error)
