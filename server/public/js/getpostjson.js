@@ -28,7 +28,6 @@ async function getJson(card){
     var cardString = `{
         "userinfo":[{
             "username":"${username}",
-            "time":"${new Date(Date.now())}"
         }],
         "parcelid":"${parcelid.innerHTML}",
         "gis":[{
@@ -41,7 +40,7 @@ async function getJson(card){
         }],
         "maps":[{
             "mapsimg":"${mapsimage.src}",
-            "linkmaps":"${mapslink.innerHTML}"
+            "mapslink":"${mapslink.innerHTML}"
         }],
         "streetview":[{
             "streetviewimg":"${streetviewimage.src}"
@@ -55,8 +54,8 @@ async function getJson(card){
         "adressn2":"${adressn2.innerHTML}",
         "adressn3":"${adressn3.innerHTML}",
         "adressn4":"${adressn4.innerHTML}",
-        "rank":"${rank.innerHTML}",
-        "obs":"${obs.innerHTML}"
+        "rank1":"${rank.innerHTML}",
+        "obs1":"${obs.innerHTML}"
     }`
     var cardJson = JSON.parse(cardString)
     return cardJson

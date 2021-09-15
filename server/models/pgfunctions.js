@@ -5,22 +5,59 @@ class pgProgram{
         var terreno = req.body	    
         let insertQuery = 
         `
-            insert into hunterfyterrenos(
-            user_id,
-            parcelid,
+        INSERT INTO public."september2021-data"(
+            "user", 
+            parcelid, 
             gisimg, 
             gislink, 
             floodzoneimg, 
-            floodzonetext
+            floodzonetext, 
+            mapsimg, 
+            mapslink, 
+            streetviewimg, 
+            marketvalue, 
+            latitude, 
+            longitude, 
+            acres, 
+            adress, 
+            n1adress, 
+            n2adress, 
+            n3adress, 
+            n4adress, 
+            rank1, 
+            obs1, 
+            rank2, 
+            userrank2, 
+            obs2, 
+            rank3, 
+            userrank3, 
+            obs3, 
+            item_id, 
+            dateandtime
             )
-            values(
+
+            VALUES (
             '${terreno.userinfo[0].username}', 
             '${terreno.parcelid}', 
-            '${terreno.gis[0].gisimg}',
-            '${terreno.gis[0].gislink}',
-            '${terreno.floodzone[0].floodzoneimg}',
-            '${terreno.floodzone[0].floodzonetext}'      
-            )
+            '${terreno.gis[0].gisimg}', 
+            '${terreno.gis[0].gislink}', 
+            '${terreno.floodzone[0].floodzoneimg}', 
+            '${terreno.floodzone[0].floodzonetext}', 
+            '${terreno.maps[0].mapsimg}', 
+            '${terreno.maps[0].mapslink}', 
+            '${terreno.streetview[0].streetview}', 
+            '${terreno.marketvalue}', 
+            '${terreno.latitude}', 
+            '${terreno.longitude}', 
+            '${terreno.acres}', 
+            '${terreno.adress}', 
+            '${terreno.adressn1}', 
+            '${terreno.adressn2}', 
+            '${terreno.adressn3}', 
+            '${terreno.adressn4}', 
+            '${terreno.rank1}', 
+            '${terreno.obs1}'
+            );
         `
 
         dbClient.query(insertQuery, (err, result)=>{

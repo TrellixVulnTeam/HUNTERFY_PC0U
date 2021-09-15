@@ -30,7 +30,6 @@ async function postUserDate(json) {
 	        for (var i = 0; i < content.length; i++) {
                 var contentIndex = content[i]
                 createItem(contentIndex)
-                console.log(contentIndex)
             }
         }
         catch(error){
@@ -178,9 +177,6 @@ async function createItem(element){
     div.innerHTML = item
     itensContainer.append(div)
 }
-var acc = document.getElementsByClassName("accordion");
-var i;
-
 
 function accordion(item){
     var hide = item.children[1]    
