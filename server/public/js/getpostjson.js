@@ -64,6 +64,7 @@ async function getJson(card){
 async function postJson(card) {
     try{
     var json = await getJson(card)
+    console.log(json)
     const options = {
         method: 'POST',
         headers:{
