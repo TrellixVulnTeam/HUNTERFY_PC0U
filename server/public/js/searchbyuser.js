@@ -76,7 +76,7 @@ var item = `
     </li>
     <li class="values">
         <ul class="columns">
-            <li>${element.user}</li>
+            <li>${element.username}</li>
             <li>${element.dateandtime}</li>
             <li>${element.parcelid}</li>
             <li><img src="${element.gisimg}"></li>
