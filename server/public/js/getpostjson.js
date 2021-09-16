@@ -45,6 +45,7 @@ async function getJson(card){
         "streetview":[{
             "streetviewimg":"${streetviewimage.src}"
         }],
+        "taxowned":"${taxowned.innerHTML}",
         "marketvalue":"${marketvalue.innerHTML}",
         "latitude":"${latitude.innerHTML}",
         "longitude":"${longitude.innerHTML}",
@@ -64,7 +65,6 @@ async function getJson(card){
 async function postJson(card) {
     try{
     var json = await getJson(card)
-    
     /*const options = {
         method: 'POST',
         headers:{
