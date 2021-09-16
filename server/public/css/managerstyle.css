@@ -104,11 +104,11 @@ body{
 .columns{
     display: flex;
     width: 100%;
+    height: 4vh;
 }
 
 .columns li{
     width: 16.6666666%;
-    height: 3vh;
     font-size: 2vh;
 }
 
@@ -189,14 +189,6 @@ form{
 body::-webkit-scrollbar-track {
     background: orange;        /* color of the tracking area */
 }
-  
-
-
-.values img:hover{
-    transform: scale(10);
-    transition: 1s;
-    z-index: 12;
-}
 
 .submitrank{
     border: none;
@@ -225,10 +217,6 @@ body::-webkit-scrollbar-track {
   
 .values li{
     font-size: 2vh;
-}
-
-.values img{
-    height: 10vh;
 }
 
 .register-program{
@@ -333,8 +321,26 @@ body::-webkit-scrollbar-track {
     width: 100%;
     background-color: transparent;
     border: none;
+    height: 25vh;
+}
+
+#firstcolumn{
+    height: 20vh;
+}
+
+#firstcolumn img{
+    width: 90%;
+}
+
+#firstcolumn img:hover{
+    transform: scale(3);
 }
 
 .accordion ul li{
     text-align: left;
 }
+
+.item div{
+    margin-top: 2vh;
+}
+
