@@ -333,7 +333,8 @@ body::-webkit-scrollbar-track {
 }
 
 #firstcolumn img:hover{
-    transform: scale(3);
+    transform: scale(4);
+    transition: 0.5s;
 }
 
 .accordion ul li{
