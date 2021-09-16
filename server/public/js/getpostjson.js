@@ -64,15 +64,16 @@ async function getJson(card){
 async function postJson(card) {
     try{
     var json = await getJson(card)
-    console.log(json)
-    const options = {
+    
+    /*const options = {
         method: 'POST',
         headers:{
             'Content-Type':'application/json'
         },
         body: JSON.stringify(json)
     }
-    fetch('/app', options)
+    fetch('/app', options)*/
+    console.log(json)
     excluirCard(card)
     }
     catch(error){
