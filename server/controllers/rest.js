@@ -3,6 +3,8 @@ const { searchTable, insertNewUser, getUsers } = require('../models/pgfunctions'
 pgProgram = require('../models/pgfunctions')
 
 module.exports = app => {
+
+    //GETS----------------------->
     app.get('/', (req, res) => {
         res.render('index.ejs')
     })
@@ -23,6 +25,7 @@ module.exports = app => {
         res.render('searchbyuser.ejs')
     })
 
+    //POSTS----------------------->
     app.post('/register', (req, res)=>{
         try{
             insertNewUser(req, res)
@@ -50,5 +53,12 @@ module.exports = app => {
             catch(error){
             console.log(error)
 	    }
-    })    
+    })
+    
+    app.post('/login', async(req,res) => {
+        try{console.log(req.body)}
+        catch(error){
+            console.log(error)
+        }
+    })
 }
