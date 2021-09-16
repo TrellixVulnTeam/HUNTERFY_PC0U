@@ -30,7 +30,7 @@ async function postUserDate(json) {
         for (var i = 0; i < content.length; i++) {
             var contentIndex = content[i]
             createItem(contentIndex)
-            console.log(contentIndex.username)
+            console.log(contentIndex.username   )
         }
     }
     catch(error){
@@ -66,7 +66,7 @@ var item = `
     <button class="accordion" onclick="accordion(this.parentElement)">
     <li class="title">
         <ul class="columns">
-            <li>user</li>
+            <li></li>
             <li>date</li>
             <li>PARCELID</li>
             <li>GIS IMAGE</li>
@@ -76,7 +76,7 @@ var item = `
     </li>
     <li class="values">
         <ul class="columns">
-            <li>${element.username}</li>
+            <li></li>
             <li>${element.dateandtime}</li>
             <li>${element.parcelid}</li>
             <li><img src="${element.gisimg}"></li>
