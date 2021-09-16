@@ -74,7 +74,7 @@ var item = `
         </ul>
     </li>
     <li class="values">
-        <ul class="columns">
+        <ul class="columns" id="firstcolumn">
             <li>${element.dateandtime}</li>
             <li>${element.parcelid}</li>
             <li><img src="${element.gisimg}"></li>
