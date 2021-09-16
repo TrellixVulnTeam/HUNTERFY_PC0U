@@ -1,3 +1,4 @@
+
 async function getJson(card){
     var cardInfo = card.children[0]
 
@@ -27,7 +28,7 @@ async function getJson(card){
 
     var cardString = `{
         "userinfo":[{
-            "username":"${username}",
+            "username":"${username}"
         }],
         "parcelid":"${parcelid.innerHTML}",
         "gis":[{
@@ -45,7 +46,6 @@ async function getJson(card){
         "streetview":[{
             "streetviewimg":"${streetviewimage.src}"
         }],
-        "taxowned":"${taxowned.innerHTML}",
         "marketvalue":"${marketvalue.innerHTML}",
         "latitude":"${latitude.innerHTML}",
         "longitude":"${longitude.innerHTML}",
@@ -55,27 +55,25 @@ async function getJson(card){
         "adressn2":"${adressn2.innerHTML}",
         "adressn3":"${adressn3.innerHTML}",
         "adressn4":"${adressn4.innerHTML}",
-        "rank1":"${rank.innerHTML}",
-        "obs1":"${obs.innerHTML}"
+        "rank":"${rank.innerHTML}",
+        "obs":"${obs.innerHTML}",
+        "taxowned":${taxowned}
     }`
     var cardJson = JSON.parse(cardString)
-    console.log(cardJson)
-    //return cardJson
+    return cardJson
 }
 
 async function postJson(card) {
     try{
-    getJson(card)
-    //var json = await getJson(card)
-    /*const options = {
+    var json = await getJson(card)
+    const options = {
         method: 'POST',
         headers:{
             'Content-Type':'application/json'
         },
         body: JSON.stringify(json)
     }
-    fetch('/app', options)*/
-    
+    fetch('/app', options)
     excluirCard(card)
     }
     catch(error){
