@@ -57,7 +57,7 @@ async function getJson(card){
         "adressn4":"${adressn4.innerHTML}",
         "rank":"${rank.innerHTML}",
         "obs":"${obs.innerHTML}",
-        "taxowned":"${taxowned}"
+        "taxowned":"${taxowned.innerHTML}"
     }`
     var cardJson = JSON.parse(cardString)
     return cardJson

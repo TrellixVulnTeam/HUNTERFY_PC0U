@@ -30,7 +30,7 @@ async function postUserDate(json) {
         for (var i = 0; i < content.length; i++) {
             var contentIndex = content[i]
             createItem(contentIndex)
-            console.log(contentIndex)
+            console.log(contentIndex.username)
         }
     }
     catch(error){
