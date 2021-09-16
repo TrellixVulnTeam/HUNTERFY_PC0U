@@ -55,8 +55,11 @@ module.exports = app => {
 	    }
     })
     
-    app.post('/login', async(req,res) => {
-        try{console.log(req.body)}
+    app.post('/', async(req,res) => {
+        try{
+            console.log(req.body)
+            res.redirect('/app')
+        }
         catch(error){
             console.log(error)
         }
