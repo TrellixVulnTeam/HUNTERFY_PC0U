@@ -59,12 +59,14 @@ async function getJson(card){
         "obs1":"${obs.innerHTML}"
     }`
     var cardJson = JSON.parse(cardString)
-    return cardJson
+    console.log(cardJson)
+    //return cardJson
 }
 
 async function postJson(card) {
     try{
-    var json = await getJson(card)
+    getJson(card)
+    //var json = await getJson(card)
     /*const options = {
         method: 'POST',
         headers:{
@@ -73,7 +75,7 @@ async function postJson(card) {
         body: JSON.stringify(json)
     }
     fetch('/app', options)*/
-    console.log(json)
+    
     excluirCard(card)
     }
     catch(error){
