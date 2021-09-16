@@ -11,6 +11,7 @@ async function runUser(){
         var jsonModel = `{"user":"${user}", "date":"${date}"}`
         const UserDatejson = JSON.parse(jsonModel)
         
+        console.log(date)
         return UserDatejson
         
     }
@@ -26,7 +27,7 @@ async function postUserDate(json) {
             }
             const rawResponse = await fetch('/searchbyuser', options)
             const content = await rawResponse.json();
-            console.log(content)
+            //console.log(content)
 	        for (var i = 0; i < content.length; i++) {
                 var contentIndex = content[i]
                 createItem(contentIndex)

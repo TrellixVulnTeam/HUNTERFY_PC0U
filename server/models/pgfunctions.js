@@ -77,9 +77,9 @@ class pgProgram{
 
     searchTable(user, date, res){
         const searchQuery = `
-		SELECT "user", parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned
+		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned
 	    FROM public."september2021-data"
-		WHERE user = '${user}' AND date = '${date}';
+		WHERE "user" = '${user}' AND date = '${date}';
 	    `
         dbClient.query(searchQuery, (error, result) => {
             if(error){
