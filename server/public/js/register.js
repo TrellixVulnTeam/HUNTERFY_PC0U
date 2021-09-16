@@ -2,7 +2,6 @@ var form = document.querySelector(".register")
 var button = document.querySelector(".submit-register")
 button.addEventListener("click", async (event)=> {
     event.preventDefault()
-    //console.log('clicado')
     var userInput = document.querySelector("#newusername").value
     var passwordInput = document.querySelector("#newpassword").value
     var confInput = document.querySelector("#confpassword").value
@@ -33,7 +32,6 @@ button.addEventListener("click", async (event)=> {
 
 async function sendNewUserToServer(json){
     try{
-        console.log(json)
         const options = {
             method: 'POST',
             headers:{
