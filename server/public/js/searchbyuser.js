@@ -27,10 +27,10 @@ async function postUserDate(json) {
         }
         const rawResponse = await fetch('/searchbyuser', options)
         const content = await rawResponse.json();
-        //console.log(content)
         for (var i = 0; i < content.length; i++) {
             var contentIndex = content[i]
             createItem(contentIndex)
+            console.log(contentIndex)
         }
     }
     catch(error){
