@@ -78,12 +78,12 @@ async function createItem(element){
         </li>
         <li class="values">
             <ul class="columns">
-                <li>${element.user_id}</li>
+                <li>${element.user}</li>
                 <li>${element.dateandtime}</li>
                 <li>${element.parcelid}</li>
                 <li><img src="${element.gisimg}"></li>
                 <li><img src="${element.floodzoneimg}"></li>
-                <li></li>
+                <li>${element.mapsimg}</li>
             </ul>
         </li>
         </button>
