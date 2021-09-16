@@ -45,7 +45,7 @@ module.exports = app => {
 	app.post('/searchbyuser', async(req,res) => {
         try{
             const userDate = await req.body
-            pgProgram.searchTable(userDate.user, userDate.date, res)
+            pgProgram.searchTableByUser(userDate.user, userDate.date, res)
 
         }
             catch(error){
