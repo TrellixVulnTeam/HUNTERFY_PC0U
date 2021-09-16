@@ -25,15 +25,8 @@ class pgProgram{
             n3adress, 
             n4adress, 
             rank1, 
-            obs1, 
-            rank2, 
-            userrank2, 
-            obs2, 
-            rank3, 
-            userrank3, 
-            obs3, 
-            item_id, 
-            dateandtime
+            obs1,
+	    taxowned
             )
 
             VALUES (
@@ -56,7 +49,8 @@ class pgProgram{
             '${terreno.adressn3}', 
             '${terreno.adressn4}', 
             '${terreno.rank1}', 
-            '${terreno.obs1}'
+            '${terreno.obs1}',
+	    '${terreno.taxowned}'
             );
         `
 
