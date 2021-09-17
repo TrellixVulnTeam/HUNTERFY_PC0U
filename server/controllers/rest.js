@@ -56,12 +56,6 @@ module.exports = app => {
     })
     
     app.post('/', async(req,res) => {
-        try{
-            console.log(req.body)
-            res.redirect('/app')
-        }
-        catch(error){
-            console.log(error)
-        }
+        console.log(req.body)
     })
 }
