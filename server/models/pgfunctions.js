@@ -126,10 +126,7 @@ class pgProgram{
     
     selectUser(req, res){
         var user = req.body	    
-        let insertQuery = 
-        
-        const searchQuery = 
-        `
+        let insertQuery = `
 		SELECT user, password
 	    FROM public.userinfo
 		WHERE "username" = '${user}';
