@@ -123,6 +123,28 @@ class pgProgram{
         })   
         dbClient.end;
     }
+    
+    selectUser(req, res){
+        var user = req.body	    
+        let insertQuery = 
+        `
+        const searchQuery = 
+		SELECT user, password
+	    FROM public.userinfo
+		WHERE "username" = '${user}';
+        `
+
+        dbClient.query(insertQuery, (err, result)=>{
+            if(!err){
+            console.log(result.rows)
+            //res.send(result.rows)
+            }
+            else{console.log(err.message)}
+        })
+        dbClient.end;
+
+    }
+
 
 
 }

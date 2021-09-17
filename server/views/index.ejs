@@ -23,20 +23,68 @@
         <div class="janela-login">
             <div class="logo" style="margin: 0; padding: 0;"><img src="img/Hunterfy.png" alt=""></div>
             <div>
-                <form class="login-form">
-                    <div><label for="username">LOGIN:</label><input name="username" type="text" id="user"></div>
-                    <div><label for="password">PASSWORD:</label><input name="password" type="password" id="pass"></div>
-                    <button type="submit"><h2>LOGIN</h2></button>
+                <form class="login-form" action="/login" method="POST">
+                    <div><label for="username">LOGIN:</label><input id="user" name="username" type="text"></div>
+                    <div><label for="password">PASSWORD:</label><input id="pass" name="password" type="password"></div>
+                    <div class="login-button"><h2>LOGIN</h2></div>
                 </form>
             </div>
                 
         </div>
     </main>
-    <!--<script src="/js/image-file-functions.js" async></script>-->
-    
-    <!--<script src="js/new-card.js" async></script>
-    <script src="./js/edit-card.js" async></script>-->
-    <script src="js/loginpage.js"></script>
+
+
+
+
+
+
+    <script>
+
+        function getUserJson(){
+            var user = document.querySelector('#user').value
+            var pass = document.querySelector('#pass').value
+
+            if(user.length !== 8){
+                alert("usuario deve conter 8 digitos")
+            }else{
+                if(pass.length !== 8){
+                    alert('senha deve conter 8 digitos')
+                }else{
+                    var jsonModel = `{"user":"${user}", "pass":"${pass}"}`
+                    const UserPassJson = JSON.parse(jsonModel)
+                    return UserPassJson
+                }
+            }
+        }
+
+        async function postUserPass(json) {
+            try{
+                const options = {
+                    method: 'POST',
+                    headers:{
+                        'Content-Type':'application/json'
+                    },
+                    body: JSON.stringify(json)
+                }
+                fetch('/', options)
+            }
+            catch(error){
+                console.log(error)
+            }
+        }
+
+        document.querySelector(".login-button").addEventListener("click", (event) => {
+            event.preventDefault()
+            var userPassJson = getUserJson()
+            if(userPassJson == undefined){
+                console.log("falta algo")
+            }else{
+                postUserPass(userPassJson)
+            }
+        })
+
+
+    </script>
     
 </body>
 </html>

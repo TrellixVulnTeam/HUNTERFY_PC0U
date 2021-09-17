@@ -1,4 +1,4 @@
-const { searchTable, insertNewUser, getUsers } = require('../models/pgfunctions')
+const { searchTable, insertNewUser, getUsers, selectUser } = require('../models/pgfunctions')
 
 pgProgram = require('../models/pgfunctions')
 
@@ -56,6 +56,6 @@ module.exports = app => {
     })
     
     app.post('/', async(req,res) => {
-        console.log(req.body)
+        selectUser(req, res)
     })
 }

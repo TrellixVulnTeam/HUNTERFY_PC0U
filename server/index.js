@@ -13,7 +13,6 @@ dbClient.connect(error => {
     else{
         console.log('conectado no banco de dados')
         tables.init(dbClient)
-       // tables.criarTabela(dbClient)
     }
 })
 app.listen(3000, ()=> console.log('servidor rodando na porta 3000'))
