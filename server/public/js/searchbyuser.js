@@ -209,7 +209,10 @@ async function editItem(item){
     }
     `
     var rank2Json = JSON.parse(infoString)
-    postJson(rank2Json)
+    await postJson(rank2Json)
+    ulFirstRow.parentElement.parentElement.innerHTML = ''
+    
+    alert("Rank inserido com sucesso!")
 }
 
 async function postJson(json) {
