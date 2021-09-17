@@ -56,6 +56,9 @@ module.exports = app => {
     })
     
     app.post('/', async(req,res) => {
-        selectUser(req, res)
+        var userData = selectUser(req, res)
+        if(req.body.pass == userData.password){
+            console.log(logado)
+        }
     })
 }
