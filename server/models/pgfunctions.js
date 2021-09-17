@@ -129,7 +129,7 @@ class pgProgram{
         let insertQuery = `
 		SELECT username, password
 	    FROM public.userinfo
-	    WHERE username = '${user.username}';
+	    WHERE username = '${user.user}';
         `
 
         dbClient.query(insertQuery, (err, result)=>{
@@ -140,7 +140,6 @@ class pgProgram{
             else{console.log(err.message)}
         })
         dbClient.end;
-
     }
 
 
