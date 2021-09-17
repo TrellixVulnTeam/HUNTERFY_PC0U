@@ -1,4 +1,4 @@
-const { searchTable, insertNewUser, getUsers, selectUser } = require('../models/pgfunctions')
+const { searchTable, insertNewUser, getUsers, selectUser, editRank2 } = require('../models/pgfunctions')
 
 pgProgram = require('../models/pgfunctions')
 
@@ -48,7 +48,6 @@ module.exports = app => {
         try{
             const userDate = await req.body
             pgProgram.searchTableByUser(userDate.user, userDate.date, res)
-
         }
             catch(error){
             console.log(error)
@@ -57,7 +56,10 @@ module.exports = app => {
     
     app.post('/', async(req,res) => {
         const resultado = await selectUser(req, res)
-        console.log(resultado)
-        
     })
+
+    app.post('/editrank', async(req,res) => {
+        editRank2(req, res)
+    })
+
 }

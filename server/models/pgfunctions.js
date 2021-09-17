@@ -5,7 +5,7 @@ class pgProgram{
         var terreno = req.body	    
         let insertQuery = 
         `
-        INSERT INTO public."september2021-data"(
+        INSERT INTO public."2021-data"(
             username, 
             parcelid, 
             gisimg, 
@@ -78,7 +78,7 @@ class pgProgram{
     searchTableByUser(user, date, res){
         const searchQuery = `
 		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned
-	    FROM public."september2021-data"
+	    FROM public."2021-data"
 		WHERE "username" = '${user}' AND date = '${date}';
 	    `
         dbClient.query(searchQuery, (error, result) => {
@@ -141,6 +141,21 @@ class pgProgram{
             else{console.log(err.message)}
         })
         dbClient.end;
+    }
+
+    editRank2(req, res){
+        var rank2 = req.body
+        let insertQuery = `
+            UPDATE public."2021-data"
+            SET rank2='${rank2.rank2}', userrank2='${rank2.userrank2}', obs2='${rank2.obs2}'
+            WHERE parcelid='${rank2.parcelid}';  
+        `
+        dbClient.query(insertQuery, (err, result)=>{
+            if(!err){
+            console.log("info updated on DB")
+            }
+            else{console.log(err.message)}
+        })
     }
 
 

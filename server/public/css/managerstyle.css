@@ -345,3 +345,70 @@ body::-webkit-scrollbar-track {
     margin-top: 2vh;
 }
 
+#superusername{
+    border: none;
+    border-bottom: 1px white solid;
+    background-color: transparent;
+    color: white;
+    font-size: 2vh;
+}
+
+.addrank2, .addrank3{
+    background-color: #a14418;
+    width: 8vw;
+    height: 5vh;
+    padding:1vh;
+    margin-top: 1vh;
+    margin: 2vh;
+    border: none;
+    border-radius: 0.5vh;
+    color: white;
+    
+}
+
+.addrank2, .addrank3:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
+.rank2data, .rank3data{
+    background-color: rgb(48, 49, 49);
+    width: 15vw;
+    height: 16vh;
+    margin-right: 5vw;
+    border-radius: 1vh;
+    margin: 0;
+    margin-right: 5vw;
+    margin-bottom: 5vh;
+    padding: 1vh;
+    
+}
+
+.rank2data input{
+    width: 7vw;
+}
+
+.rank2data div{
+    display: flex;
+    justify-content: space-around;
+    align-content: baseline;
+}
+
+.rank2data button{
+    width: 6vw;
+    background-color: #a14418;
+    border: none;
+    border-radius: 0.5vh;
+}
+
+.rank2data button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
+.addrankcontainer{
+    display: flex;
+    width: 30vw;
+}

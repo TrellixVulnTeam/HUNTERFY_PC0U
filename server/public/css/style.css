@@ -37,8 +37,6 @@ main, button, h2, h3, h4, label{
 
 .janela-login .logo{
     height: 20vh;
-    
-
 }
 
 .janela-login .logo img{
@@ -185,19 +183,29 @@ header div{
 
 .menu-info{
     width: 60%;
-    height: 10vh;
+    height: 20vh;
     background-color: #ffb429;
     display: none;
     border-radius: 3px;
     color: #000000;
     font-size: 18px;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
 }
 
-.menu-info h2{
-    margin: 1vh;
+.menu-info div{
+    margin-top: 1vh;
 }
+
+
+#usernameinput {
+    background-color: transparent;
+    border: none;
+    border-bottom: black 2px solid;
+    width: 5vw;
+    
+}
+
 .janela-info{
     padding: 0;
     margin: 1vh;

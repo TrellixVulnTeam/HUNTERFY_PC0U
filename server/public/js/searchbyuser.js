@@ -135,41 +135,48 @@ var item = `
                 <li>RANK LEVEL 2</li>
                 <li>RL2 USER</li>
                 <li>RL2 OBS</li>
-                <li></li>
+                <li>RANK LEVEL3</li>
                 
             </ul>
         </li>
         <li class="values">
             <ul class="columns">
-                <li>${element.rank1}</li>
+                <li>${element.rank1}}</li>
                 <li>${element.obs1}</li>
-                <li><input type="text"></li>
-                <li><input type="text"></li>
-                <li><input type="text"></li>
-                <li></li>
+                <li>${element.rank2}</li>
+                <li>${element.userrank2}</li>
+                <li>${element.obs2}</li>
+                <li>${element.rank3}</li>
             </ul>
         </li>
         <li class="title">
-            <ul class="columns">
-                <li>RANK LEVEL3</li>
-                <li>RL3 USER</li>
-                <li>RL3 OBS</li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </li>
-        <li class="values">
-            <ul class="columns">
-                <li><input type="text"></li>
-                <li><input type="text"></li>
-                <li><input type="text"></li>
-                <li></li>
-                <li></li>
-                <li><button class="submitrank" type="submit">submit</button></li>
-            </ul>
-        </li>
+        <ul class="columns">
+            <li>RL3 USER</li>
+            <li>RL3 OBS</li>
+        </ul>
+    </li>
+    <li class="values">
+        <ul class="columns">
+            <li>${element.userrank3}</li>
+            <li>${element.obs3}</li>
+        </ul>
+    </li>
+
+    <div class="addrankcontainer">
+    <button class="addrank2" onclick="accordion(this.parentElement)">ADD RANK 2</button>
+    <div class="rank2data" style="display: none;">
+        <div>
+            <label for="rank2">Rank 2</label>
+            <input type="text" name="rank2" id="rank2input">
+        </div>
+        <div>
+            <label for="obs2">OBS 2</label>
+            <input type="text" name="obs2" id="obs2input">
+        </div>
+        <div><button class="sendrank2" onclick="editItem(this.parentElement)">SEND</button></div>
+    </div></li>
     </div>
+
 </ul><!--item-->
 `
 div.innerHTML = item
@@ -183,5 +190,40 @@ if (hide.style.display === "block") {
   } else {
     hide.style.display = "block";
   }
+}
 
+async function editItem(item){
+    var ulFirstRow = item.parentElement.parentElement.parentElement.parentElement.children[0].children[1]
+    var itemParcelId = ulFirstRow.children[0].children[1].innerHTML
+    var superusername = await document.querySelector('#superusername').value
+    var rank2 = await item.parentElement.children[0].children[1].value
+    var obs2 = await item.parentElement.children[1].children[1].value
+    console.log(itemParcelId, rank2, obs2)
+
+    infoString = `
+    {
+        "parcelid":"${itemParcelId}",
+        "userrank2":"${superusername}",
+        "rank2":"${rank2}",
+        "obs2":"${obs2}"
+    }
+    `
+    var rank2Json = JSON.parse(infoString)
+    postJson(rank2Json)
+}
+
+async function postJson(json) {
+    try{
+    const options = {
+        method: 'POST',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify(json)
+    }
+    fetch('/editrank', options)
+    }
+    catch(error){
+        console.log(error)
+    }
 }
