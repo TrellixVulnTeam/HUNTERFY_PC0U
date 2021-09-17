@@ -5,7 +5,6 @@ const tables = require('./database/pgTables')
 require('dotenv/config');
 const app = customExpress()
 
-
 dbClient.connect(error => {
     if(error){
         console.log(console.log(error))

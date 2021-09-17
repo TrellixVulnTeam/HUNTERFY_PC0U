@@ -38,7 +38,7 @@
 
 
 
-    <script>
+    <script async>
 
         function getUserJson(){
             var user = document.querySelector('#user').value
@@ -57,7 +57,7 @@
             }
         }
 
-        async function postUserPass(json) {
+        async function checkUserPass(json) {
             try{
                 const options = {
                     method: 'POST',
@@ -66,12 +66,22 @@
                     },
                     body: JSON.stringify(json)
                 }
-                fetch('/', options)
+                const rawResponse = await fetch('/', options)
+                const content = await rawResponse.json()
+                
+                if(json.pass == content.password){
+                    console.log('senha correta!')
+                    window.location.replace("./app");
+                }else{
+                    alert('Incorrect data')
+                }
             }
             catch(error){
                 console.log(error)
             }
         }
+
+        
 
         document.querySelector(".login-button").addEventListener("click", (event) => {
             event.preventDefault()
@@ -79,8 +89,9 @@
             if(userPassJson == undefined){
                 console.log("falta algo")
             }else{
-                console.log(userPassJson)
-                postUserPass(userPassJson)
+                //console.log(userPassJson)
+                checkUserPass(userPassJson)
+                
             }
         })
 

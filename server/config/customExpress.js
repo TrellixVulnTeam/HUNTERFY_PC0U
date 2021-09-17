@@ -2,6 +2,7 @@ const express = require('express')
 const consign = require('consign')
 const bodyParser = require('body-parser')
 const path = require('path')
+const dbClient = require('../database/connectionPG');
 
 module.exports = () => {
     const app = express()
@@ -23,7 +24,6 @@ module.exports = () => {
     app.use('/css', express.static(__dirname + 'public'))
     app.use('/js', express.static(__dirname + 'public/js'))
     app.use('/img', express.static(__dirname + 'public/img'))
-    
 
     return app
 }
