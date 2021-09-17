@@ -127,9 +127,9 @@ class pgProgram{
     selectUser(req, res){
         var user = req.body	    
         let insertQuery = `
-		SELECT user, password
+		SELECT username, password
 	    FROM public.userinfo
-		WHERE "username" = '${user}';
+	    WHERE username = '${user.username}';
         `
 
         dbClient.query(insertQuery, (err, result)=>{
