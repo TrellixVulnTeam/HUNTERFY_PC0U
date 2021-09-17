@@ -134,7 +134,7 @@ class pgProgram{
 
         dbClient.query(insertQuery, (err, result)=>{
             if(!err){
-            console.log(result.rows)
+            console.log(result)
             //res.send(result.rows)
             }
             else{console.log(err.message)}
