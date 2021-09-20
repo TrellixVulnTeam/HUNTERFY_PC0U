@@ -412,3 +412,29 @@ body::-webkit-scrollbar-track {
     display: flex;
     width: 30vw;
 }
+
+.titleslog{
+    display: flex;
+    justify-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 3vh;
+    margin-bottom: 2vh;
+}
+
+.titleslog li{
+    font-size: 3vh;
+}
+
+
+.log{
+    display: flex;
+    justify-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 3vh;
+    background-color: #423f3f;
+    margin-bottom: 1vh;    
+}
+
+

@@ -24,15 +24,26 @@ async function checkUserPass(json) {
             },
             body: JSON.stringify(json)
         }
-        const rawResponse = await fetch('/', options)
-        const content = await rawResponse.json()
+        fetch('/', options)
         
-        if(json.pass == content.password){
+        const rawResponse = await fetch('/', options)
+        //const content = await rawResponse.json()
+        console.log(rawResponse.statusText)
+        if(rawResponse.statusText == 'OK'){
+            console.log('logado')
+            window.location.replace('./app');
+        }
+        if(!rawResponse){
+            alert('incorrect info')
+        }
+        //window.location.replace(rawResponse);
+        
+        /*if(json.pass == content.password){
             console.log('senha correta!')
-            window.location.replace("./app");
+            
         }else{
             alert('Incorrect data')
-        }
+        }*/
     }
     catch(error){
         console.log(error)
@@ -44,11 +55,11 @@ async function checkUserPass(json) {
 document.querySelector(".login-button").addEventListener("click", (event) => {
     event.preventDefault()
     var userPassJson = getUserJson()
-    if(userPassJson == undefined){
-        console.log("falta algo")
-    }else{
+    //if(userPassJson == undefined){
+    //    console.log("falta algo")
+    //}else{
         //console.log(userPassJson)
         checkUserPass(userPassJson)
         
-    }
+    //}
 })

@@ -5,11 +5,13 @@ button.addEventListener("click", async (event)=> {
     var userInput = document.querySelector("#newusername").value
     var passwordInput = document.querySelector("#newpassword").value
     var confInput = document.querySelector("#confpassword").value
+    var supervisor = document.querySelector('#supervisor').value
 
     infologin = `
         {
             "newusername":"${userInput}",
-            "newpassword":"${passwordInput}"
+            "newpassword":"${passwordInput}",
+            "supervisor":"${supervisor}"
         }
     `
     var infoJson = JSON.parse(infologin)
@@ -40,6 +42,8 @@ async function sendNewUserToServer(json){
             body: JSON.stringify(json)
         }
         fetch('/register', options)
+        alert('Done!')
+
     }
     catch(error){
             console.log(error)

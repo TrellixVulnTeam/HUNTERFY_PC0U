@@ -29,7 +29,9 @@ async function postUserDate(json) {
         for (var i = 0; i < content.length; i++) {
             var contentIndex = content[i]
             createItem(contentIndex)
-            console.log(contentIndex.username   )
+            console.log(contentIndex.username)
+            var contagem = document.querySelector('.production-count')
+            contagem.innerHTML = `Total: ${i+1}`
         }
     }
     catch(error){
@@ -45,6 +47,7 @@ async function buildPage(json){
 var createItem = `
 <h2 class="username">${json.user}</h2>
 <h2 class="date">${json.date}</h2>
+<h2 class="production-count"></h2>
 
        <div class="itens-container">
            

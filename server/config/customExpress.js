@@ -3,9 +3,19 @@ const consign = require('consign')
 const bodyParser = require('body-parser')
 const path = require('path')
 const dbClient = require('../database/connectionPG');
+const session = require('express-session')
+const cookieParser = require("cookie-parser");
 
 module.exports = () => {
     const app = express()
+
+    const oneDay = 1000 * 60 * 60 * 24;
+    app.use(session({
+    secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
+    saveUninitialized:true,
+    cookie: { maxAge: oneDay },
+    resave: false 
+    }));
 
     app.use
     //app.use(bodyParser.urlencoded({extended: true}))
@@ -24,6 +34,12 @@ module.exports = () => {
     app.use('/css', express.static(__dirname + 'public'))
     app.use('/js', express.static(__dirname + 'public/js'))
     app.use('/img', express.static(__dirname + 'public/img'))
+
+
+    app.use(cookieParser());
+
+    
+
 
     return app
 }

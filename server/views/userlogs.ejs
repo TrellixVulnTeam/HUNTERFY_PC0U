@@ -18,35 +18,30 @@
             <div class="logo"><a href="./manager"><img src="./img/Hunterfy.png" alt="Hunterfy logo"></a><h1>MANAGER v1.0</h1></div>
             <div class="user-container">
                 <h2>My user:</h2>
-                <h3>gvmolinadmin</h3>
+                <input type="text" id="superusername">
             </div>
         </div>
     </header>
-    
-    <section class="register-program janela">
-        <form class="register">
-           <h2>Register a new user</h2>
-           <div>
-               <label name="newusername">Username:</label>
-               <input type="text" name="newusername" id="newusername">
-            </div>
-            <div>
-                <label name="newpassword">Password:</label>
-                <input type="password" name="newpassword" id="newpassword">
-            </div>
-            <div>
-                <label name="newpassword">Confirm password:</label>
-                <input type="password" name="confpassword" id="confpassword">
-            </div>
-            <div>
-                <label name="supervisor">Supervisor:</label>
-                <input type="text" name="supervisor" id="supervisor">
-            </div>
-            <button class="submit-register">Register</button>
-        </form>
-           
+    <section class="controller janela">
+             <form id="search-form">
+                <h2>Search logs</h2>
+                <div><label for="user">by user:</label><input type="text" id="user" name=""></div>
+                <button class="search-button">SEARCH</button>
+            </form>
     </section>
-  
-
-    <script src="js/register.js" async></script>
+    <section class="program janela">
+        <h2 class="username">Username</h2>
+        <div>
+            <ul class="titleslog">
+                <li>USERNAME</li>
+                <li>LOGIN</li>
+                <li>LOGOUT</li>
+            </ul>
+        </div>
+        <div class="logs-container">
+                
+            
+        </div>
+    <script src="js/getlogs.js" async></script>
 </body>
+</html>

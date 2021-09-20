@@ -93,18 +93,19 @@ class pgProgram{
         dbClient.end
     }
 
-    insertNewUser(req){
+    insertNewUser(req, res){
         var user = req.body	    
         let insertQuery = 
         `
         INSERT INTO public.userinfo(
-            username, password)
-            VALUES ('${user.newusername}', '${user.newpassword}');
+            username, password, supervisor)
+            VALUES ('${user.newusername}', '${user.newpassword}', '${user.supervisor}');
         `
 
         dbClient.query(insertQuery, (err, result)=>{
             if(!err){
                 console.log('Insertion was successful')
+                res.send(result.rows)
             }
             else{ console.log(err.message) }
         })
@@ -124,23 +125,28 @@ class pgProgram{
         dbClient.end;
     }
     
-    selectUser(req, res){
+    async selectUser(req, res){
         var user = req.body	    
         let insertQuery = `
 		SELECT username, password
 	    FROM public.userinfo
 	    WHERE username = '${user.user}';
         `
-
-        dbClient.query(insertQuery, (err, result)=>{
+        try {
+            const result = await dbClient.query(insertQuery)
+            dbClient.end;
+            return result.rows[0]
+        }
+        catch(err){console.log(err)}
+        /*dbClient.query(insertQuery, (err, result)=>{
             if(!err){
-            //console.log(result.rows)
-            res.send(result.rows[0])
-            
+            //console.log(result.rows[0].username)
+            var dbQueryResult = result.rows[0]
+            console.log(result.rows[0])
             }
             else{console.log(err.message)}
         })
-        dbClient.end;
+        dbClient.end; */
     }
 
     editRank2(req, res){
@@ -158,8 +164,57 @@ class pgProgram{
         })
     }
 
+    async add2Log(user){   
+        let insertQuery = `
+        INSERT INTO public.userlogs(
+            "user")
+            VALUES ('${user}');
+        `
+        dbClient.query(insertQuery, (err, result)=>{
+            if(!err){
+                console.log('log added')
+            }
+            else{ console.log(err.message) }
+        })
+        dbClient.end;
+    }
 
+    searchLogs(req, res){
+        const searchQuery = `
+            SELECT "user", login, logout
+            FROM public.userlogs
+            WHERE "user" = '${req.body.user}';
+	    `
+        dbClient.query(searchQuery, (error, result) => {
+            if(error){
+                console.log(error)
+            }
+            else{		    
+	            res.send(result.rows)
+                console.log('usuarios buscados')  
+            }
+        })
+        dbClient.end
+    }
 
+    allUsers(res){
+        const searchQuery = `
+            SELECT username, password, supervisor, creationdate
+            FROM public.userinfo;  
+	    `
+        dbClient.query(searchQuery, (error, result) => {
+            if(error){
+                console.log(error)
+            }
+            else{		    
+	            res.send(result.rows)
+                console.log('todos os usuarios buscados')  
+            }
+        })
+        dbClient.end
+    }
+
+    
 }
 
 module.exports = new pgProgram

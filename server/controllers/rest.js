@@ -1,12 +1,15 @@
-const { searchTable, insertNewUser, getUsers, selectUser, editRank2 } = require('../models/pgfunctions')
+const session = require('express-session')
+const { searchTable, insertNewUser, getUsers, selectUser, editRank2, addOnDatabase, searchLogs } = require('../models/pgfunctions')
 
 pgProgram = require('../models/pgfunctions')
 
 module.exports = app => {
+    var session;
 
     //GETS----------------------->
     app.get('/', (req, res) => {
         res.render('index.ejs')
+        console.log(req.session.id)
     })
 
     app.get('/app', (req, res) => {
@@ -25,11 +28,19 @@ module.exports = app => {
         res.render('searchbyuser.ejs')
     })
 
+    app.get('/userlogs', (req,res) => {
+        res.render('userlogs.ejs')
+    })
+
+    app.get('/allusers', (req, res) => {
+        res.render('getallusers.ejs')
+    })
+
     //POSTS----------------------->
     app.post('/register', (req, res)=>{
         try{
-            insertNewUser(req, res)
-            getUsers(req, res)
+            pgProgram.insertNewUser(req, res)
+            
         }
         catch(error){console.log(error)}
     })
@@ -55,11 +66,34 @@ module.exports = app => {
     })
     
     app.post('/', async(req,res) => {
-        const resultado = await selectUser(req, res)
+        const resultado = await pgProgram.selectUser(req, res)
+        console.log(resultado)
+        if(req.body.user !== resultado.username){
+            console.log('incorrect user')
+        }else{
+            if(req.body.pass !== resultado.password){
+                console.log('incorrect password')
+            }else{
+                res.send('OK')
+                await pgProgram.add2Log(req.body.user)
+                
+                
+                
+            }
+        }
+        
     })
 
     app.post('/editrank', async(req,res) => {
         editRank2(req, res)
     })
 
+    app.post('/userlogs', (req, res) => {
+        pgProgram.searchLogs(req, res)
+    })
+
+    app.post('/allusers', (req, res) => {
+        pgProgram.allUsers(res)
+    })
 }
+//
