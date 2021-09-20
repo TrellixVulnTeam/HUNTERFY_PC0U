@@ -36,6 +36,10 @@ module.exports = app => {
         res.render('getallusers.ejs')
     })
 
+    app.get('/searchbyrankone', (req, res) => {
+        res.render('searchbyrankone.ejs')
+    })
+
     //POSTS----------------------->
     app.post('/register', (req, res)=>{
         try{
@@ -76,12 +80,8 @@ module.exports = app => {
             }else{
                 res.send('OK')
                 await pgProgram.add2Log(req.body.user)
-                
-                
-                
             }
         }
-        
     })
 
     app.post('/editrank', async(req,res) => {
@@ -94,6 +94,16 @@ module.exports = app => {
 
     app.post('/allusers', (req, res) => {
         pgProgram.allUsers(res)
+    })
+
+    app.post('/seachbyrankone', async(req, res) => {
+        try{
+            const rankDate = await req.body
+            pgProgram.searchTableByRankOne(rankDate.rank, rankDate.date, res)
+        }
+            catch(error){
+            console.log(error)
+	    }
     })
 }
 //

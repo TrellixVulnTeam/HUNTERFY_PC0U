@@ -33,7 +33,7 @@ async function checkUserPass(json) {
             console.log('logado')
             window.location.replace('./app');
         }
-        if(!rawResponse){
+        else{
             alert('incorrect info')
         }
         //window.location.replace(rawResponse);

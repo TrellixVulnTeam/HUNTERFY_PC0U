@@ -93,6 +93,24 @@ class pgProgram{
         dbClient.end
     }
 
+    searchTableByRankOne(rank, date, res){
+        const searchQuery = `
+		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned
+	    FROM public."2021-data"
+		WHERE "rank1" = '${rank}' AND date = '${date}';
+	    `
+        dbClient.query(searchQuery, (error, result) => {
+            if(error){
+                console.log(error)
+            }
+            else{		    
+	            res.send(result.rows)  
+            }
+            
+        })
+        dbClient.end
+    }
+
     insertNewUser(req, res){
         var user = req.body	    
         let insertQuery = 

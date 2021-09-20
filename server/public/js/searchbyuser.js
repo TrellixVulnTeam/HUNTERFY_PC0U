@@ -177,7 +177,7 @@ var item = `
             <input type="text" name="obs2" id="obs2input">
         </div>
         <div><button class="sendrank2" onclick="editItem(this.parentElement)">SEND</button></div>
-    </div></li>
+    </div>
     </div>
 
 </ul><!--item-->
