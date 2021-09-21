@@ -165,19 +165,24 @@ var item = `
         </ul>
     </li>
 
-    <div class="addrankcontainer">
-    <button class="addrank2" onclick="accordion(this.parentElement)">ADD RANK 2</button>
-    <div class="rank2data" style="display: none;">
-        <div>
-            <label for="rank2">Rank 2</label>
-            <input type="text" name="rank2" id="rank2input">
+    <div class="ranks-container">
+        <div class="addrankcontainer">
+        <button class="addrank2" onclick="accordion(this.parentElement)">ADD RANK 2</button>
+        <div class="rank2data" style="display: none;">
+            <div>
+                <label for="rank2">Rank 2</label>
+                <input type="text" name="rank2" id="rank2input">
+            </div>
+            <div>
+                <label for="obs2">OBS 2</label>
+                <input type="text" name="obs2" id="obs2input">
+            </div>
+            <div><button class="sendrank2" onclick="editItem(this.parentElement)">SEND</button></div>
         </div>
-        <div>
-            <label for="obs2">OBS 2</label>
-            <input type="text" name="obs2" id="obs2input">
-        </div>
-        <div><button class="sendrank2" onclick="editItem(this.parentElement)">SEND</button></div>
-    </div>
+
+        
+
+
     </div>
 
 </ul><!--item-->

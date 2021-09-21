@@ -408,9 +408,32 @@ body::-webkit-scrollbar-track {
     transition: 0.5s;
 }
 
+.rank3data input{
+    width: 7vw;
+}
+
+.rank3data div{
+    display: flex;
+    justify-content: space-around;
+    align-content: baseline;
+}
+
+.rank3data button{
+    width: 6vw;
+    background-color: #a14418;
+    border: none;
+    border-radius: 0.5vh;
+}
+
+.rank3data button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
 .addrankcontainer{
     display: flex;
-    width: 30vw;
+    width: 80vw;
 }
 
 .titleslog{
@@ -436,5 +459,4 @@ body::-webkit-scrollbar-track {
     background-color: #423f3f;
     margin-bottom: 1vh;    
 }
-
 

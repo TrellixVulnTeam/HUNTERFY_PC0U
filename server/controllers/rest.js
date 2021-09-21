@@ -10,10 +10,13 @@ module.exports = app => {
     app.get('/', (req, res) => {
         res.render('index.ejs')
         console.log(req.session.id)
+        req.session.isAuth = false
+        console.log(req.session.isAuth)
     })
 
     app.get('/app', (req, res) => {
         res.render('app.ejs')
+        console.log(session.req.isAuth)
     })
 
     app.get('/manager', (req, res) => {
@@ -80,6 +83,7 @@ module.exports = app => {
             }else{
                 res.send('OK')
                 await pgProgram.add2Log(req.body.user)
+                session.req.isAuth = true
             }
         }
     })
