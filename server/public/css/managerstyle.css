@@ -5,7 +5,7 @@ BD9354
 E3D18A
 */
 
-h1, h2, h3, li, label, button{
+h1, h2, h3, li, label, button, input{
     font-family: 'Montserrat', sans-serif;
     color: #F6E9E9;
 }
@@ -55,8 +55,6 @@ body{
     margin-top: 2vh;
 }
 
-
-
 .controller{
     background-color: #272121;
     height: 100vh;
@@ -64,7 +62,6 @@ body{
     position: fixed;
     z-index: 9;
     margin-top: 9vh;
-    
 }
 
 .janela{
@@ -94,7 +91,6 @@ body{
     background-color:#363333;
     padding-left: 15vw;
     height: 82vh;
-
 }
 
 .username{
@@ -458,5 +454,80 @@ body::-webkit-scrollbar-track {
     height: 3vh;
     background-color: #423f3f;
     margin-bottom: 1vh;    
+}
+
+/* login page */
+.login{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width: 99vw;
+    height: 99vh;
+}
+
+.janela-login{
+    background-color: #a14418;
+    border-radius: 1vh;
+    padding: 2vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25vw;
+    box-shadow:  6px -4px 15px black;
+}
+
+.janela-login div{
+    width: 20vw;
+}
+
+.login-form div{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1vh;
+    align-items: center;
+}
+
+.login-form input{
+    border: none;
+    background-color: transparent;
+    border-bottom: white 1px solid;
+    color: white;
+    font-size: 2vh;
+}
+
+.login-button{
+    text-align: center;
+    
+}
+
+.login-logo{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-logo img{
+    height: 8vh;
+}
+
+.login-logo h2{
+    margin-top: 3vh;
+}
+
+.login-form .login-button{
+    background-color: #272121;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 2vh 0;
+    margin-top: 2vh;
+    border-radius: 1vh;
+}
+
+.login-form .login-button:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.5s;
 }
 

@@ -39,6 +39,10 @@ module.exports = app => {
         res.render('searchbyrankone.ejs')
     })
 
+    app.get('/manager/login', (req, res) => {
+        res.render('manager-login-page.ejs')
+    })
+
     //POSTS----------------------->
     app.post('/register', (req, res)=>{
         try{

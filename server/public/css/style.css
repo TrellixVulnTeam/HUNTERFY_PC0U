@@ -115,10 +115,10 @@ main, button, h2, h3, h4, label{
 /*header*/
 header{
     background-color: #503925;
-    background-image: url(./img/black-bumpy-old-book-cover-texture-3.jpg);
-    background-size: 100vh;
+    background-image: url(./img/book-cover.jpg);
+    background-size: cover;
     background-repeat: no-repeat;
-    background-position-x: -24.9vw;
+    
     height: 100vh;
     width: 15vw;
     position: fixed;
@@ -127,6 +127,8 @@ header{
     align-items: center;
     z-index: 100;
     justify-content: space-between;
+
+    box-shadow: 4px 0px 10px black;
 }
 
 header div{
