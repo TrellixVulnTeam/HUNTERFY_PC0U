@@ -1,45 +1,44 @@
 const session = require('express-session')
 const { searchTable, insertNewUser, getUsers, selectUser, editRank2, addOnDatabase, searchLogs } = require('../models/pgfunctions')
 const isAuth = require('../models/is-auth')
+const isAuthManager = require('../models/is-auth-manager')
 pgProgram = require('../models/pgfunctions')
 
 module.exports = app => {
      //GETS----------------------->
     app.get('/', (req, res) => {
         res.render('index.ejs')
-        console.log(req.session.isAuth)
     })
 
     app.get('/app', isAuth, (req, res) => {
         res.render('app.ejs')
-        console.log(req.session.isAuth)
     })
 
-    app.get('/manager', (req, res) => {
+    app.get('/manager', isAuthManager, (req, res) => {
         res.render('manager.ejs')
     })
     
-    app.get('/register', (req, res) => {
+    app.get('/register', isAuthManager, (req, res) => {
         res.render('register.ejs')
     })
 
-    app.get('/searchbyuser', (req, res) => {
+    app.get('/searchbyuser', isAuthManager, (req, res) => {
         res.render('searchbyuser.ejs')
     })
 
-    app.get('/userlogs', (req,res) => {
+    app.get('/userlogs', isAuthManager, (req,res) => {
         res.render('userlogs.ejs')
     })
 
-    app.get('/allusers', (req, res) => {
+    app.get('/allusers', isAuthManager, (req, res) => {
         res.render('getallusers.ejs')
     })
 
-    app.get('/searchbyrankone', (req, res) => {
+    app.get('/searchbyrankone', isAuthManager, (req, res) => {
         res.render('searchbyrankone.ejs')
     })
 
-    app.get('/manager/login', (req, res) => {
+    app.get('/login', (req, res) => {
         res.render('manager-login-page.ejs')
     })
 
@@ -108,6 +107,22 @@ module.exports = app => {
             catch(error){
             console.log(error)
 	    }
+    })
+
+    app.post('/login', async(req, res) => {
+        const resultado = await pgProgram.selectUser(req, res)
+        console.log(resultado)
+        if(req.body.user !== resultado.username){
+            console.log('incorrect user')
+        }else{
+            if(req.body.pass !== resultado.password){
+                console.log('incorrect password')
+            }else{
+                req.session.isAuth = true
+                await pgProgram.add2Log(req.body.user);
+                res.send('OK')
+            }
+        }
     })
 }
 //
