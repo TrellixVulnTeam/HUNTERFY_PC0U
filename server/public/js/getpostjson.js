@@ -24,7 +24,7 @@ async function getJson(card){
     var mapsimage = cardInfo.children[5].children[1]
     var streetviewimage = cardInfo.children[7].children[1]
 
-    var username = document.querySelector('#usernameinput').value
+    var username = document.querySelector('#username').innerHTML
 
     var cardString = `{
         "userinfo":[{

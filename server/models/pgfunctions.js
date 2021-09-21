@@ -167,6 +167,21 @@ class pgProgram{
         dbClient.end; */
     }
 
+    async selectManager(req, res){
+        var user = req.body	    
+        let insertQuery = `
+		SELECT username, password
+	    FROM public.managerinfo
+	    WHERE username = '${user.user}';
+        `
+        try {
+            const result = await dbClient.query(insertQuery)
+            dbClient.end;
+            return result.rows[0]
+        }
+        catch(err){console.log(err)}
+    }
+
     editRank2(req, res){
         var rank2 = req.body
         let insertQuery = `

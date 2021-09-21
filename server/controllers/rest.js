@@ -11,31 +11,31 @@ module.exports = app => {
     })
 
     app.get('/app', isAuth, (req, res) => {
-        res.render('app.ejs')
+        res.render('app.ejs', {user : req.session.user})
     })
 
     app.get('/manager', isAuthManager, (req, res) => {
-        res.render('manager.ejs')
+        res.render('manager.ejs', {user : req.session.user})
     })
     
     app.get('/register', isAuthManager, (req, res) => {
-        res.render('register.ejs')
+        res.render('register.ejs', {user : req.session.user})
     })
 
     app.get('/searchbyuser', isAuthManager, (req, res) => {
-        res.render('searchbyuser.ejs')
+        res.render('searchbyuser.ejs', {user : req.session.user})
     })
 
     app.get('/userlogs', isAuthManager, (req,res) => {
-        res.render('userlogs.ejs')
+        res.render('userlogs.ejs', {user : req.session.user})
     })
 
     app.get('/allusers', isAuthManager, (req, res) => {
-        res.render('getallusers.ejs')
+        res.render('getallusers.ejs', {user : req.session.user})
     })
 
     app.get('/searchbyrankone', isAuthManager, (req, res) => {
-        res.render('searchbyrankone.ejs')
+        res.render('searchbyrankone.ejs', {user : req.session.user})
     })
 
     app.get('/login', (req, res) => {
@@ -52,7 +52,6 @@ module.exports = app => {
     })
 
 	app.post('/app', (req) => {
-	    console.log(req.body)
         try{
 	        pgProgram.addOnDatabase(req)
         }
@@ -73,7 +72,6 @@ module.exports = app => {
     
     app.post('/', async(req,res) => {
         const resultado = await pgProgram.selectUser(req, res)
-        console.log(resultado)
         if(req.body.user !== resultado.username){
             console.log('incorrect user')
         }else{
@@ -81,6 +79,7 @@ module.exports = app => {
                 console.log('incorrect password')
             }else{
                 req.session.isAuth = true
+                req.session.user = `${resultado.username}`
                 await pgProgram.add2Log(req.body.user);
                 res.send('OK')
             }
@@ -110,15 +109,15 @@ module.exports = app => {
     })
 
     app.post('/login', async(req, res) => {
-        const resultado = await pgProgram.selectUser(req, res)
-        console.log(resultado)
+        const resultado = await pgProgram.selectManager(req, res)
         if(req.body.user !== resultado.username){
             console.log('incorrect user')
         }else{
             if(req.body.pass !== resultado.password){
                 console.log('incorrect password')
             }else{
-                req.session.isAuth = true
+                req.session.isAuthManager = true
+                req.session.user = `${resultado.username}`
                 await pgProgram.add2Log(req.body.user);
                 res.send('OK')
             }

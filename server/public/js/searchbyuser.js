@@ -203,7 +203,7 @@ if (hide.style.display === "block") {
 async function editItem(item){
     var ulFirstRow = item.parentElement.parentElement.parentElement.parentElement.children[0].children[1]
     var itemParcelId = ulFirstRow.children[0].children[1].innerHTML
-    var superusername = await document.querySelector('#superusername').value
+    var superusername = await document.querySelector('#username').innerHTML
     var rank2 = await item.parentElement.children[0].children[1].value
     var obs2 = await item.parentElement.children[1].children[1].value
     console.log(itemParcelId, rank2, obs2)

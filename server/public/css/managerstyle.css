@@ -5,9 +5,13 @@ BD9354
 E3D18A
 */
 
-h1, h2, h3, li, label, button, input{
+h1, h2, h3, li, label, button{
     font-family: 'Montserrat', sans-serif;
     color: #F6E9E9;
+}
+
+input{
+    font-family: 'Montserrat', sans-serif;
 }
 
 header{
