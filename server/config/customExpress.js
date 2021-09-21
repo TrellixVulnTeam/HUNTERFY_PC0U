@@ -1,10 +1,11 @@
-const express = require('express')
-const consign = require('consign')
-const bodyParser = require('body-parser')
-const path = require('path')
+const express = require('express');
+const consign = require('consign');
+//const bodyParser = require('body-parser');
+const path = require('path');
 const dbClient = require('../database/connectionPG');
-const session = require('express-session')
+const session = require('express-session');
 const cookieParser = require("cookie-parser");
+const isAuth = require('../models/is-auth');
 
 module.exports = () => {
     const app = express()
@@ -16,6 +17,8 @@ module.exports = () => {
     cookie: { maxAge: oneDay },
     resave: false 
     }));
+
+    //app.use(isAuth)
 
     app.use
     //app.use(bodyParser.urlencoded({extended: true}))

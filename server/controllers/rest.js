@@ -1,22 +1,18 @@
 const session = require('express-session')
 const { searchTable, insertNewUser, getUsers, selectUser, editRank2, addOnDatabase, searchLogs } = require('../models/pgfunctions')
-
+const isAuth = require('../models/is-auth')
 pgProgram = require('../models/pgfunctions')
 
 module.exports = app => {
-    var session;
-
-    //GETS----------------------->
+     //GETS----------------------->
     app.get('/', (req, res) => {
         res.render('index.ejs')
-        console.log(req.session.id)
-        req.session.isAuth = false
         console.log(req.session.isAuth)
     })
 
-    app.get('/app', (req, res) => {
+    app.get('/app', isAuth, (req, res) => {
         res.render('app.ejs')
-        console.log(session.req.isAuth)
+        console.log(req.session.isAuth)
     })
 
     app.get('/manager', (req, res) => {
@@ -81,9 +77,9 @@ module.exports = app => {
             if(req.body.pass !== resultado.password){
                 console.log('incorrect password')
             }else{
+                req.session.isAuth = true
+                await pgProgram.add2Log(req.body.user);
                 res.send('OK')
-                await pgProgram.add2Log(req.body.user)
-                session.req.isAuth = true
             }
         }
     })
