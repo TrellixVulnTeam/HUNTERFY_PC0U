@@ -200,7 +200,7 @@ header div{
 
 .menu-info{
     width: 60%;
-    height: 20vh;
+    height: 25vh;
     background-color: #ffb429;
     /*display: none;*/
     border-radius: 3px;
@@ -209,11 +209,6 @@ header div{
     flex-direction: column;
     justify-content: center;
 }
-
-.menu-info div{
-    margin-top: 1vh;
-}
-
 
 #usernameinput {
     background-color: transparent;
@@ -224,8 +219,19 @@ header div{
 }
 
 .janela-info{
-    padding: 0;
+    padding: 1vh;
     margin: 1vh;
+}
+
+.janela-info h2{
+    font-size: 2vh;
+}
+
+.janela-info input{
+    background-color: transparent;
+    border: none;
+    border-bottom: black 1px solid;
+    width: 70%;
 }
 
 /*main*/

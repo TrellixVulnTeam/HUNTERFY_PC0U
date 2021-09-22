@@ -23,6 +23,10 @@ async function getJson(card){
     var floodzoneimage = cardInfo.children[3].children[1]
     var mapsimage = cardInfo.children[5].children[1]
     var streetviewimage = cardInfo.children[7].children[1]
+    var state = document.querySelector('#state').value
+    var county = document.querySelector('#county').value
+
+    console.log(state, county)
 
     var username = document.querySelector('#username').innerHTML
 
@@ -57,7 +61,9 @@ async function getJson(card){
         "adressn4":"${adressn4.innerHTML}",
         "rank":"${rank.innerHTML}",
         "obs":"${obs.innerHTML}",
-        "taxowned":"${taxowned.innerHTML}"
+        "taxowned":"${taxowned.innerHTML}",
+        "state":"${state}",
+        "county":"${county}"
     }`
     var cardJson = JSON.parse(cardString)
     return cardJson

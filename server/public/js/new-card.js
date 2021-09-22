@@ -91,7 +91,7 @@ function criarCard(){
         </div>
         <button class="edit" onclick="editarCard(this.parentElement)"><i class="fas fa-pen-square"></i></button>
         <button class="exclude" onclick="excluirCard(this.parentElement)"><i class="fas fa-trash"></i></i></button> 
-        <button class="send" onclick="postJson(this.parentElement)"><i class="fas fa-share"></i></button>   
+        <button class="send" onclick="postJson(this.parentElement)" style="margin-right:2vw"><i class="fas fa-share"></i></button>   
         
     </div>  
     `
