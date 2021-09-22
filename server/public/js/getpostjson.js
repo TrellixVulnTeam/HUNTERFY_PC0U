@@ -74,8 +74,7 @@ async function postJson(card) {
         body: JSON.stringify(json)
     }
     fetch('/app', options)
-    card.style.backgroundImage = 'none'
-    card.style.backgroundColor = '#B1E693'
+    card.style.backgroundImage = "url('img/antique-texture-green.jpg')"
     }
     catch(error){
         console.log(error)

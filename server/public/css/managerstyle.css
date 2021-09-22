@@ -80,17 +80,6 @@ body{
     font-weight: 900;
 }
 
-.valist button{
-    border: none;
-    background-color: transparent;
-}
-
-.valist button:hover{
-    transform: scale(1.1);
-    transition: 0.5s;
-    cursor: pointer;
-}
-
 .program {
     background-color:#363333;
     padding-left: 15vw;
@@ -125,7 +114,7 @@ body{
 .item{
     background-color: #423f3f;
     border-radius: 1vh;
-    padding: 1vh;
+    padding: 3vh;
     margin: 2vh 0;
 }
 
@@ -366,7 +355,17 @@ body::-webkit-scrollbar-track {
     
 }
 
-.addrank2, .addrank3:hover{
+.addrank2{
+    margin-left: 0;
+}
+
+.addrank2:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
+.addrank3:hover{
     cursor: pointer;
     transform: scale(1.1);
     transition: 0.5s;
@@ -404,8 +403,7 @@ body::-webkit-scrollbar-track {
 
 .rank2data button:hover{
     cursor: pointer;
-    transform: scale(1.1);
-    transition: 0.5s;
+    
 }
 
 .rank3data input{
@@ -427,8 +425,7 @@ body::-webkit-scrollbar-track {
 
 .rank3data button:hover{
     cursor: pointer;
-    transform: scale(1.1);
-    transition: 0.5s;
+    
 }
 
 .addrankcontainer{

@@ -86,8 +86,12 @@ module.exports = app => {
         }
     })
 
-    app.post('/editrank', async(req,res) => {
-        editRank2(req, res)
+    app.post('/editrank2', async(req,res) => {
+        pgProgram.editRank2(req, res)
+    })
+
+    app.post('/editrank3', async(req,res) => {
+        pgProgram.editRank3(req, res)
     })
 
     app.post('/userlogs', (req, res) => {
@@ -98,7 +102,7 @@ module.exports = app => {
         pgProgram.allUsers(res)
     })
 
-    app.post('/seachbyrankone', async(req, res) => {
+    app.post('/searchbyrankone', async(req, res) => {
         try{
             const rankDate = await req.body
             pgProgram.searchTableByRankOne(rankDate.rank, rankDate.date, res)
@@ -122,6 +126,11 @@ module.exports = app => {
                 res.send('OK')
             }
         }
+    })
+
+    app.post('/logoff', async(req, res) => {
+        console.log('deslogado')
+        console.log(req.session.user)
     })
 }
 //

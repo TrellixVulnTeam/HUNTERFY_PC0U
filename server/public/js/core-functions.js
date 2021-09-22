@@ -52,11 +52,26 @@ function checkValueImg(element){
     }
 }
 
-
 function excluirCard(card){
     if (card.parentNode) {
         card.parentNode.removeChild(card);
     }
     attContador()
 }
+
+var botaoLogoff = document.querySelector('#logoff')
+botaoLogoff.addEventListener('click', async()=>{
+    try{
+        const options = {
+            method: 'POST',
+            body: 'logoff'
+        }
+        fetch('/logoff', options)
+        }
+        catch(error){
+            console.log(error)
+        }
+})
+
+
 

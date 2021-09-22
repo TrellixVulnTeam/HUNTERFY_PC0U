@@ -3,7 +3,7 @@ module.exports = (req, res, next) => {
       next();
     } else {
       req.session.error = "You have to Login first";
-      console.log('nao logado!')
+      //console.log('nao logado!')
       res.redirect("/login");
     }
   };

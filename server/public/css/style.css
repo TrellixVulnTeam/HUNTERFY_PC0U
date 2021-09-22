@@ -135,10 +135,8 @@ header div{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 4vh;
+    margin-bottom: 2vh;
     width: 100%;
-    
-
 }
 
 .logo{
@@ -162,11 +160,10 @@ header div{
 .logo img{
     width: 100%;
     align-self: flex-start;
-    
 }
 
 .menu-button {
-    width: 60%;
+    width: 100%;
     border: solid 4px #ffb429;
     border-radius: 3px;
     color: #000000;
@@ -174,7 +171,25 @@ header div{
     font-size: 20px;
     padding: 5px 0;
     margin: 1vh 0;
-    
+}
+
+.buttons-window div{
+    margin: 0;
+}
+
+.buttons-window div:nth-child(1){
+    padding-right: 7%;
+}
+
+.buttons-window div:nth-child(2){
+    padding-left: 7%;
+}
+
+.buttons-window{
+    display: flex;
+    flex-direction: row;
+    padding: 0 2vh;
+    width: 60%;
 }
 
 .menu-button:hover{
@@ -187,7 +202,7 @@ header div{
     width: 60%;
     height: 20vh;
     background-color: #ffb429;
-    display: none;
+    /*display: none;*/
     border-radius: 3px;
     color: #000000;
     font-size: 18px;
@@ -237,6 +252,8 @@ header div{
     padding: 2vh 2vh;
     overflow: hidden;
     overflow-y: scroll;
+
+    box-shadow: 1px 1px 10px black;
 }
 
 .edit{

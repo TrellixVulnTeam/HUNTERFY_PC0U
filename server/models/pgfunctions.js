@@ -85,10 +85,9 @@ class pgProgram{
             if(error){
                 console.log(error)
             }
-            else{		    
+            else{	   
 	            res.send(result.rows)  
-            }
-            
+            } 
         })
         dbClient.end
     }
@@ -191,7 +190,23 @@ class pgProgram{
         `
         dbClient.query(insertQuery, (err, result)=>{
             if(!err){
-            console.log("info updated on DB")
+            console.log("rank2 updated on DB")
+            }
+            else{console.log(err.message)}
+        })
+    }
+
+    editRank3(req, res){
+        var rank3 = req.body
+        console.log(rank3)
+        let insertQuery = `
+            UPDATE public."2021-data"
+            SET rank3='${rank3.rank3}', userrank3='${rank3.userrank3}', obs3='${rank3.obs3}'
+            WHERE parcelid='${rank3.parcelid}';  
+        `
+        dbClient.query(insertQuery, (err, result)=>{
+            if(!err){
+            console.log("rank3 updated on DB")
             }
             else{console.log(err.message)}
         })
