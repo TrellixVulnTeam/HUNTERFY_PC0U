@@ -17,49 +17,56 @@
 <body style="background-image: url(img/background.jpg)">
     <header style="background-image: url(img/book-cover-resize.jpg)">
         
-        <div>
+        <div style="width: 60%;">
             <div class="logo"><h1><img src="./img/Hunterfy.png" alt=""></h1></div>
             
         </div>
-            <div>
-                <div class="menu-info janela-info">
-                    <div>
-                        <h2>State:</h2>
-                        <input type="text" id="state">
-                    </div>
-                    <div>
-                        <h2>County:</h2>
-                        <input type="text" id="county">
-                    </div>
-                    <div>
-                        <h2>Contagem:</h2>
-                        <h2 class="contador">0</h2>
-                    </div>
-                    <div>
-                        <h2>Username</h2>
-                        <h2 id="username"><%= user %></h2>
-                    </div>
-                </div>
-                <div class="menu-info janela-logs" style="display: none;">
-                    <div>
-                        <h2>Logs:</h2>
-                        <h2 class="contador">0</h2>
-                    </div>
-                    
-                </div>
 
-                
-                <div class="buttons-window">
-                    <div>
-                        <button class="menu-button"><i class="fas fa-clock"></i></button>
-                        <button class="menu-button" id="logoff" ><i class="fas fa-power-off"></i></i></button>
-                    </div>
-                    <div>
-                        <button class="menu-button info-button"><i class="fas fa-info"></i></button>
-                        <button class="menu-button add-card"><i class="fas fa-plus"></i></button>
-                    </div>
+        <div style="width: 60%;">
+            <div class="menu-info janela-info">
+                <div>
+                    <h2>State:</h2>
+                    <input type="text" id="state">
+                </div>
+                <div>
+                    <h2>County:</h2>
+                    <input type="text" id="county">
+                </div>
+                <div>
+                    <h2>Contagem:</h2>
+                    <h3 class="contador">0</h2>
+                </div>
+                <div>
+                    <h2>Username</h2>
+                    <h3 id="username"><%= user %></h2>
                 </div>
             </div>
+
+            <div class="menu-info janela-logs">
+                <div>
+                    <h2>Logs:</h2>
+                    <div class="area-logs">
+                        
+                    </div>
+                    <button class="get-logs">Get Logs</button>
+                </div>
+                
+            </div>
+
+                
+            <div class="buttons-window">
+                <div>
+                    <button class="menu-button logs-button"><i class="fas fa-clock"></i></button>
+                    <button class="menu-button" id="logoff" ><i class="fas fa-power-off"></i></i></button>
+                </div>
+                <div>
+                    <button class="menu-button info-button"><i class="fas fa-info"></i></button>
+                    <button class="menu-button add-card"><i class="fas fa-plus"></i></button>
+                </div>
+                
+            </div>
+            <div class="searchcard"><input type="text"><button><i class="fas fa-search"></i></button></div>
+        </div>
             
         
     </header>

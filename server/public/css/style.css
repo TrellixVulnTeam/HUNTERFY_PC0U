@@ -7,7 +7,7 @@ body{
     height: 97vh;
 }
 
-main, button, h2, h3, h4, label{
+main, button, h2, h3, h4, label, li{
     font-family: 'Montserrat', sans-serif;
 }
 /*general*/
@@ -120,7 +120,7 @@ header{
     background-repeat: no-repeat;
     
     height: 100vh;
-    width: 15vw;
+    width: 14.4vw;
     position: fixed;
     display: flex;
     flex-direction: column;
@@ -129,13 +129,14 @@ header{
     justify-content: space-between;
 
     box-shadow: 4px 0px 10px black;
+    padding: 1vh 0.3vw;
 }
 
 header div{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 2vh;
+    margin-bottom: 1vh;
     width: 100%;
 }
 
@@ -143,7 +144,7 @@ header div{
     font-family: 'Bebas Neue', cursive;
     color: #ffb429;
     font-size: 30px;
-    width: 60%;
+    width: 100%;
     padding: 20px 0;
     text-align: center;
     margin-bottom: 0;
@@ -188,8 +189,7 @@ header div{
 .buttons-window{
     display: flex;
     flex-direction: row;
-    padding: 0 2vh;
-    width: 60%;
+    width: 100%;
 }
 
 .menu-button:hover{
@@ -199,15 +199,24 @@ header div{
 }
 
 .menu-info{
-    width: 60%;
     height: 25vh;
     background-color: #ffb429;
-    /*display: none;*/
     border-radius: 3px;
     color: #000000;
     font-size: 18px;
     flex-direction: column;
     justify-content: center;
+    width: 60%;
+    padding: 1vh 0.1vw;
+}
+
+.menu-info h2{
+    font-size: 2vh;
+    font-weight: 600;
+}
+
+.menu-info h3{
+    font-size: 2vh;
 }
 
 #usernameinput {
@@ -219,12 +228,9 @@ header div{
 }
 
 .janela-info{
-    padding: 1vh;
     margin: 1vh;
-}
-
-.janela-info h2{
-    font-size: 2vh;
+    display: none;
+    width: 100%;
 }
 
 .janela-info input{
@@ -233,6 +239,84 @@ header div{
     border-bottom: black 1px solid;
     width: 70%;
 }
+
+.janela-logs{
+    width: 100%;
+    margin: 1vh;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 1.5vh;
+}
+
+.janela-logs h2{
+    margin-top: 1vh;
+}
+
+.janela-logs div{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.get-logs{
+    width: 70%;
+    border: none;
+    background-color: #000000;
+    border-radius: 3px;
+    color: #ffb429;
+    padding: 1vh 0;
+}
+
+.get-logs:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+
+.area-logs{
+    height: 12vh;
+    overflow: hidden;
+    overflow-y: scroll;
+    margin: 0.2vh 0;
+}
+
+.searchcard{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    background-color: #ffb429;
+    border-radius: 3px;
+    margin-bottom: 2vh;
+}
+
+.searchcard input{
+    width: 70%;
+    background-color: transparent;
+    border: none;
+    border-bottom: #ffb429 1px solid;
+    height: 3vh;
+    padding-left: 1vh;
+    margin-bottom: 0.3vh;
+}
+
+.searchcard button{
+    width: 25%;
+    border: none;
+    background-color: transparent;
+    color: #000000;
+    font-size: 3vh;
+    padding-top: 0.5vh;
+    margin-right: 1.5vh;
+}
+
+.searchcard button:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: 0.5s;
+}
+
 
 /*main*/
 .area-cards{
@@ -258,7 +342,6 @@ header div{
     padding: 2vh 2vh;
     overflow: hidden;
     overflow-y: scroll;
-
     box-shadow: 1px 1px 10px black;
 }
 

@@ -36,6 +36,16 @@ botaoInfo.addEventListener("click", ()=>{
     }
 })
 
+var botaoLogs = document.querySelector(".logs-button")
+botaoLogs.addEventListener("click", ()=>{
+    var areaLogs = document.querySelector(".janela-logs")
+    if(areaLogs.style.display == "flex"){
+        areaLogs.style.display = "none"
+    }else{
+        areaLogs.style.display = "flex"
+    }
+})
+
 function checkValueText(element){
     if (element[0].innerHTML.length < 2) {
         return element[1]
@@ -67,11 +77,49 @@ botaoLogoff.addEventListener('click', async()=>{
             body: 'logoff'
         }
         fetch('/logoff', options)
+        location.href = '/';
         }
         catch(error){
             console.log(error)
         }
 })
+
+
+function logsCreateUl(){
+    var areaLogs = document.querySelector('.area-logs')
+    areaLogs.innerHTML = ''
+    var logsUl = document.createElement('ul')
+    areaLogs.append(logsUl)
+}
+
+async function appGetLogs(element){
+    var logsContainer = document.querySelector('.area-logs ul')
+    var li = document.createElement('li') 
+    li.innerHTML = `${element.logtype}/${element.timestamp}`
+    logsContainer.append(li)
+}
+
+var botaoGetLogs = document.querySelector('.get-logs')
+botaoGetLogs.addEventListener('click', async()=>{
+    try{
+        const options = {
+            method: 'POST',
+            body: 'get-logs'
+        }
+        const appLogsResponse = await fetch('/appgetlogs', options)
+        const appLogsJson = await appLogsResponse.json();
+        logsCreateUl()
+        for (var i = 0; i < 15; i++) {
+            var contentIndex = appLogsJson[i]
+            
+            appGetLogs(contentIndex)
+        }
+    }
+    catch(error){
+        console.log(error)
+    }    
+})
+
 
 
 

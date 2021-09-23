@@ -1,5 +1,5 @@
 const session = require('express-session')
-const { searchTable, insertNewUser, getUsers, selectUser, editRank2, addOnDatabase, searchLogs } = require('../models/pgfunctions')
+const { searchTable, insertNewUser, getUsers, selectUser, editRank2, addOnDatabase, searchLogs, add2Log } = require('../models/pgfunctions')
 const isAuth = require('../models/is-auth')
 const isAuthManager = require('../models/is-auth-manager')
 pgProgram = require('../models/pgfunctions')
@@ -10,7 +10,8 @@ module.exports = app => {
         res.render('index.ejs')
     })
 
-    app.get('/app', isAuth, (req, res) => {
+    app.get('/app', isAuth, async(req, res) => {
+        await pgProgram.add2Log(req.session.user, 'V.A', 'LOGIN');
         res.render('app.ejs', {user : req.session.user})
     })
 
@@ -72,40 +73,44 @@ module.exports = app => {
     
     app.post('/', async(req,res) => {
         const resultado = await pgProgram.selectUser(req, res)
-        if(req.body.user !== resultado.username){
-            console.log('incorrect user')
+        if(req.body.user == resultado.username){
+                req.session.isAuth = true
+                req.session.user = `${resultado.username}`
+                res.send('OK')
         }else{
             if(req.body.pass !== resultado.password){
                 console.log('incorrect password')
             }else{
-                req.session.isAuth = true
-                req.session.user = `${resultado.username}`
-                await pgProgram.add2Log(req.body.user);
-                res.send('OK')
+                console.log(resultado.username, 'incorrect user')
             }
         }
     })
 
     app.post('/editrank2', async(req,res) => {
         pgProgram.editRank2(req, res)
+        console.log(req.session.user, 'edited rank 2')
     })
 
     app.post('/editrank3', async(req,res) => {
         pgProgram.editRank3(req, res)
+        console.log(req.session.user, 'edited rank 3')
     })
 
     app.post('/userlogs', (req, res) => {
-        pgProgram.searchLogs(req, res)
+        pgProgram.searchLogs(req.body.user, req, res)
+        console.log(req.session.user, 'searched logs')
     })
 
     app.post('/allusers', (req, res) => {
         pgProgram.allUsers(res)
+        console.log(req.session.user, 'searched all users')
     })
 
     app.post('/searchbyrankone', async(req, res) => {
         try{
             const rankDate = await req.body
             pgProgram.searchTableByRankOne(rankDate.rank, rankDate.date, res)
+            console.log(req.session.user, 'searched data by rank one')
         }
             catch(error){
             console.log(error)
@@ -115,22 +120,26 @@ module.exports = app => {
     app.post('/login', async(req, res) => {
         const resultado = await pgProgram.selectManager(req, res)
         if(req.body.user !== resultado.username){
-            console.log('incorrect user')
+            console.log(resultado.username,'incorrect user')
         }else{
             if(req.body.pass !== resultado.password){
                 console.log('incorrect password')
             }else{
                 req.session.isAuthManager = true
                 req.session.user = `${resultado.username}`
-                await pgProgram.add2Log(req.body.user);
                 res.send('OK')
             }
         }
     })
 
     app.post('/logoff', async(req, res) => {
-        console.log('deslogado')
-        console.log(req.session.user)
+        await add2Log(req.session.user, 'V.A', 'LOGOUT')
+        console.log(req.session.user, 'deslogado')
+        req.session.destroy();
+    })
+
+    app.post('/appgetlogs', async(req, res) => {
+        pgProgram.searchLogs(req.session.user, req, res)
     })
 }
 //

@@ -216,32 +216,34 @@ class pgProgram{
         })
     }
 
-    async add2Log(user){   
+    async add2Log(user, usertype, logtype){   
         let insertQuery = `
         INSERT INTO public.userlogs(
-            "user")
-            VALUES ('${user}');
+            username, usertype, logtype)
+            VALUES ('${user}', '${usertype}', '${logtype}');
         `
         dbClient.query(insertQuery, (err, result)=>{
             if(!err){
-                console.log('log added')
+                console.log(user, 'log added', logtype)
             }
             else{ console.log(err.message) }
         })
         dbClient.end;
     }
 
-    searchLogs(req, res){
+    searchLogs(user, req, res){
         const searchQuery = `
-            SELECT "user", login, logout
-            FROM public.userlogs
-            WHERE "user" = '${req.body.user}';
+        SELECT username, usertype, logtype, "timestamp", log_id
+        FROM public.userlogs
+        WHERE "username" = '${user}'
+        ORDER BY log_id DESC;
 	    `
         dbClient.query(searchQuery, (error, result) => {
             if(error){
                 console.log(error)
             }
-            else{		    
+            else{	
+                console.log(result.rows)	///////////////////test    
 	            res.send(result.rows)
                 console.log('usuarios buscados')  
             }

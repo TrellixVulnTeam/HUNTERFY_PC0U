@@ -12,49 +12,37 @@ function getJson(){
     const userDatejson = JSON.parse(jsonModelRank)
     
     return userDatejson
-}
+    }
 
-async function postUserRank(json) {
-    try{
-        console.log(json)
-        const options = {
-            method: 'POST',
-            headers:{
-                'Content-Type':'application/json'
-            },
-            body: JSON.stringify(json)
+    async function postUserRank(json) {
+        try{
+            console.log(json)
+            const options = {
+                method: 'POST',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify(json)
+            }
+            const rawResponse = await fetch('/searchbyrankone', options)
+            const content = await rawResponse.json();
+            for (var i = 0; i < content.length; i++) {
+                var contentIndex = content[i]
+                createItem(contentIndex)
+                var contagem = document.querySelector('.production-count')
+                contagem.innerHTML = `Total: ${i+1}`
+            }
         }
-        const rawResponse = await fetch('/searchbyrankone', options)
-        const content = await rawResponse.json();
-        for (var i = 0; i < content.length; i++) {
-            var contentIndex = content[i]
-            createItem(contentIndex)
-            var contagem = document.querySelector('.production-count')
-            contagem.innerHTML = `Total: ${i+1}`
+        catch(error){
+            console.log(error)
         }
     }
-    catch(error){
-        console.log(error)
-    }
-}
 await getJson()	
 buildPage(getJson());
 await postUserRank(getJson())
 }
 
-async function buildPage(json){
-var createItem = `
-    <h2 class="username">Rank: ${json.rank}</h2>
-    <h2 class="date">${json.date}</h2>
-    <h2 class="production-count"></h2>
-       <div class="itens-container">
-           
-           
-       </div>
-`
-var sectionPrograma = document.querySelector('.program')
-sectionPrograma.innerHTML = createItem
-}
+
 
 async function createItem(element){
     var itensContainer = document.querySelector('.itens-container')

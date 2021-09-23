@@ -44,8 +44,9 @@ async function buildPage(json){
     <h2 class="username">${json.user}</h2>
         <ul class="titleslog">
             <li>USERNAME</li>
-            <li>LOGIN</li>
-            <li>LOGOUT</li>
+            <li>LOG TYPE</li>
+            <li>USER TYPE</li>
+            <li>TIME WITHOUT TIMEZONE</li>
         </ul>
     
            <div class="logs-container">
@@ -63,9 +64,10 @@ async function createItem(element){
     var div = document.createElement('div')
     var item = `
         <ul class="log">
-            <li class="usernamelog">${element.user}</li>
-            <li class="login-time">${element.login}</li>
-            <li class="logout-time">${element.logout}</li>
+            <li class="usernamelog">${element.username}</li>
+            <li class="login-time">${element.logtype}</li>
+            <li class="logout-time">${element.usertype}</li>
+            <li class="logout-time">${element.timestamp}</li>
         </ul>
     `
     div.innerHTML = item
