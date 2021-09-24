@@ -1,7 +1,7 @@
 const dbClient = require('../database/connectionPG')
 
 class pgProgram{
-    addOnDatabase(req){
+    addOnDatabase(user, req){
         var terreno = req.body	    
         let insertQuery = 
         `
@@ -60,23 +60,47 @@ class pgProgram{
 
         dbClient.query(insertQuery, (err, result)=>{
             if(!err){
-                console.log('Insertion was successful')
+                console.log(user, 'Insertion was successful')
             }
-            else{ console.log(err.message) }
+            else{ console.log(user, err.message) }
         })
         dbClient.end;
     }
 
-    printTable(db){
-        const sql = 'select * from hunterfyterrenos'
-        dbClient.query(sql, db, (error, result) => {
-            if(error){
-                console.log(error)
+    editDB(user, req, res){   
+        var newInfo = req.body	    
+        var editQuery = `
+            UPDATE public."2021-data"
+	        SET gisimg='${newInfo.gis[0].gisimg}',
+            gislink='${newInfo.gis[0].gislink}', 
+            floodzoneimg='${newInfo.floodzone[0].floodzoneimg}', 
+            floodzonetext='${newInfo.floodzone[0].floodzonetext}', 
+            mapsimg='${newInfo.maps[0].mapsimg}', 
+            mapslink='${newInfo.maps[0].mapslink}', 
+            streetviewimg='${newInfo.streetview[0].streetview}', 
+            marketvalue='${newInfo.marketvalue}', 
+            latitude='${newInfo.longitude}', 
+            longitude='${newInfo.longitude}', 
+            acres='${newInfo.acres}', 
+            adress='${newInfo.adress}', 
+            n1adress='${newInfo.adressn1}', 
+            n2adress='${newInfo.adressn2}', 
+            n3adress='${newInfo.adressn3}', 
+            n4adress='${newInfo.adressn4}', 
+            rank1='${newInfo.rank}', 
+            obs1='${newInfo.obs}',  
+            taxowned='${newInfo.taxowned}'
+    
+	        WHERE parcelid = '${newInfo.parcelid}';
+        `
+        dbClient.query(editQuery, (err, result)=>{
+            if(!err){
+                console.log(user, 'Edit was successful')
             }
-            else{
-                console.log(result)
-            }
-        })   
+            else{ console.log(user, 'erro durante edit') }
+        })
+        dbClient.end
+
     }
 
     searchTableByUser(user, date, res){
@@ -114,21 +138,19 @@ class pgProgram{
         dbClient.end
     }
 
-    searchByParcel(parcel, res){
+    async searchByParcel(parcel, res){
         const searchQuery = `
 		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned
 	    FROM public."2021-data"
 		WHERE parcelid = '${parcel}';
 	    `
-        dbClient.query(searchQuery, (error, result) => {
-            if(error){
-                console.log(error)
-            }
-            else{	    
-	            res.send(result.rows)  
-            }
-            
-        })
+        try {
+            const result = await dbClient.query(searchQuery)
+            dbClient.end;
+            return result.rows[0]
+        }
+        catch(err){console.log(err)
+        }
         dbClient.end
 
     }
@@ -177,16 +199,8 @@ class pgProgram{
             dbClient.end;
             return result.rows[0]
         }
-        catch(err){console.log(err)}
-        /*dbClient.query(insertQuery, (err, result)=>{
-            if(!err){
-            //console.log(result.rows[0].username)
-            var dbQueryResult = result.rows[0]
-            console.log(result.rows[0])
-            }
-            else{console.log(err.message)}
-        })
-        dbClient.end; */
+        catch(err){console.log(err)
+        }
     }
 
     async selectManager(req, res){

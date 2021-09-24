@@ -1,5 +1,5 @@
 const session = require('express-session')
-const { searchTable, insertNewUser, getUsers, selectUser, editRank2, addOnDatabase, searchLogs, add2Log } = require('../models/pgfunctions')
+const { searchTable, insertNewUser, getUsers, selectUser, editRank2, addOnDatabase, searchLogs, add2Log, editDB } = require('../models/pgfunctions')
 const isAuth = require('../models/is-auth')
 const isAuthManager = require('../models/is-auth-manager')
 pgProgram = require('../models/pgfunctions')
@@ -52,12 +52,18 @@ module.exports = app => {
         catch(error){console.log(error)}
     })
 
-	app.post('/app', (req) => {
+	app.post('/app', async(req, res) => {
         try{
-	        pgProgram.addOnDatabase(req)
+            var searchResult = await pgProgram.searchByParcel(req.body.parcelid, res)
+            if(searchResult == undefined){
+                pgProgram.addOnDatabase(req.session.user, req)
+            }else{
+                editDB(req.session.user, req, res)
+            }
+	        
         }
         catch(error){
-	        console.log(error)
+	        console.log(req.session.user, error)
 	    }
     })
 
@@ -142,8 +148,9 @@ module.exports = app => {
         pgProgram.searchLogs(req.session.user, req, res)
     })
 
-    app.post('/searchbyparcelapp', (req,res)=>{
-        pgProgram.searchByParcel(req.body.parcelid, res)
+    app.post('/searchbyparcelapp', async(req,res)=>{
+        var searchResult = await pgProgram.searchByParcel(req.body.parcelid, res)
+        res.send(searchResult)
     })
 }
 //
