@@ -1,6 +1,6 @@
 
 async function getJson(card){
-    var cardInfo = card.children[0]
+    var cardInfo = card.children[1]
 
     var parcelid = cardInfo.children[0].children[1]
     var linkgis = cardInfo.children[2].children[1]

@@ -67,6 +67,11 @@ function criarCard(){
     
     novoCard.innerHTML = `
     <div class="card" style="background-image: url('./img/antique-texture.jpg');">
+        <div class="options">
+            <button class="send" onclick="postJson(this.parentElement.parentElement)"><i class="fas fa-share"></i></button>   
+            <button class="edit" onclick="editarCard(this.parentElement.parentElement)"><i class="fas fa-pen-square"></i></button>
+            <button class="exclude" onclick="excluirCard(this.parentElement.parentElement)"><i class="fas fa-trash"></i></i></button>   
+        </div>
         <div class="infos">
             <div class="info-card info-text"><h2>PARCEL ID:</h2> <h2>${checkValue(form.parcelid.value)}</h2></div>
             <div class="info-card info-img"><h2>GIS IMAGE:</h2> <img src="${checkFile(sateliteImg)}"></img></div>
@@ -89,14 +94,12 @@ function criarCard(){
             <div class="info-card info-text"><h2>RANK:</h2> <h2>${checkValue(form.rank.value)}</h2></div>
             <div class="info-card info-text"><h2>OBS:</h2> <h2>${checkValue(form.obs.value)}</h2></div>
         </div>
-        <button class="edit" onclick="editarCard(this.parentElement)"><i class="fas fa-pen-square"></i></button>
-        <button class="exclude" onclick="excluirCard(this.parentElement)"><i class="fas fa-trash"></i></i></button> 
-        <button class="send" onclick="postJson(this.parentElement)" style="margin-right:2vw"><i class="fas fa-share"></i></button>   
-        
+             
     </div>  
     `
     areaCards.append(novoCard)
 }
+
 
 
 

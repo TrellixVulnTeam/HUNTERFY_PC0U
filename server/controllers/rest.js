@@ -10,7 +10,7 @@ module.exports = app => {
         res.render('index.ejs')
     })
 
-    app.get('/app', async(req, res) => {
+    app.get('/app', isAuth, async(req, res) => {
         await pgProgram.add2Log(req.session.user, 'V.A', 'LOGIN');
         res.render('app.ejs', {user : req.session.user})
     })

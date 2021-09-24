@@ -275,8 +275,7 @@ class pgProgram{
             if(error){
                 console.log(error)
             }
-            else{	
-                console.log(result.rows)	///////////////////test    
+            else{   
 	            res.send(result.rows)
                 console.log('usuarios buscados')  
             }

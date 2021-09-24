@@ -1,5 +1,5 @@
 function editarCard(card){
-    var cardInfo = card.children[0]
+    var cardInfo = card.children[1]
     
      //--array name   --input inside info              --input empty info                                       --input html name"--label title                    
     var parcelid = [cardInfo.children[0].children[1], `<label>PARCEL ID:</label><input name="parcelid" type="text">`, "parcelid", `PARCEL ID:`]
