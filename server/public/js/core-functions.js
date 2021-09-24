@@ -95,7 +95,7 @@ function logsCreateUl(){
 async function appGetLogs(element){
     var logsContainer = document.querySelector('.area-logs ul')
     var li = document.createElement('li') 
-    li.innerHTML = `${element.logtype}/${element.timestamp}`
+    li.innerHTML = `${element}`
     logsContainer.append(li)
 }
 
@@ -112,7 +112,8 @@ botaoGetLogs.addEventListener('click', async()=>{
         for (var i = 0; i < 15; i++) {
             var contentIndex = appLogsJson[i]
             
-            appGetLogs(contentIndex)
+            appGetLogs(contentIndex.logtype)
+            appGetLogs(contentIndex.timestamp)
         }
     }
     catch(error){

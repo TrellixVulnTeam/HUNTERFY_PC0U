@@ -16,7 +16,6 @@ function getJson(){
 
     async function postUserRank(json) {
         try{
-            console.log(json)
             const options = {
                 method: 'POST',
                 headers:{
@@ -42,6 +41,19 @@ buildPage(getJson());
 await postUserRank(getJson())
 }
 
+async function buildPage(json){
+    var createItem = `
+        <h2 class="username">Rank: ${json.rank}</h2>
+        <h2 class="date">${json.date}</h2>
+        <h2 class="production-count"></h2>
+           <div class="itens-container">
+               
+               
+           </div>
+    `
+    var sectionPrograma = document.querySelector('.program')
+    sectionPrograma.innerHTML = createItem
+    }
 
 
 async function createItem(element){

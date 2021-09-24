@@ -10,7 +10,7 @@ module.exports = app => {
         res.render('index.ejs')
     })
 
-    app.get('/app', isAuth, async(req, res) => {
+    app.get('/app', async(req, res) => {
         await pgProgram.add2Log(req.session.user, 'V.A', 'LOGIN');
         res.render('app.ejs', {user : req.session.user})
     })
@@ -140,6 +140,10 @@ module.exports = app => {
 
     app.post('/appgetlogs', async(req, res) => {
         pgProgram.searchLogs(req.session.user, req, res)
+    })
+
+    app.post('/searchbyparcelapp', (req,res)=>{
+        pgProgram.searchByParcel(req.body.parcelid, res)
     })
 }
 //
