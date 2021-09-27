@@ -2,6 +2,7 @@ const session = require('express-session')
 const { searchTable, insertNewUser, getUsers, selectUser, editRank2, addOnDatabase, searchLogs, add2Log, editDB } = require('../models/pgfunctions')
 const isAuth = require('../models/is-auth')
 const isAuthManager = require('../models/is-auth-manager')
+const isAuthPost = require('../models/is-auth-post')
 pgProgram = require('../models/pgfunctions')
 
 module.exports = app => {
@@ -11,7 +12,6 @@ module.exports = app => {
     })
 
     app.get('/app', isAuth, async(req, res) => {
-        await pgProgram.add2Log(req.session.user, 'V.A', 'LOGIN');
         res.render('app.ejs', {user : req.session.user})
     })
 
@@ -52,7 +52,7 @@ module.exports = app => {
         catch(error){console.log(error)}
     })
 
-	app.post('/app', async(req, res) => {
+	app.post('/app', isAuthPost, async(req, res) => {
         try{
             var searchResult = await pgProgram.searchByParcel(req.body.parcelid, res)
             if(searchResult == undefined){
@@ -82,6 +82,7 @@ module.exports = app => {
         if(req.body.user == resultado.username){
                 req.session.isAuth = true
                 req.session.user = `${resultado.username}`
+                await pgProgram.add2Log(req.session.user, 'V.A', 'LOGIN');
                 res.send('OK')
         }else{
             if(req.body.pass !== resultado.password){
@@ -150,6 +151,9 @@ module.exports = app => {
 
     app.post('/searchbyparcelapp', async(req,res)=>{
         var searchResult = await pgProgram.searchByParcel(req.body.parcelid, res)
+        console.log(req.body)
+
+        console.log(searchResult)
         res.send(searchResult)
     })
 }

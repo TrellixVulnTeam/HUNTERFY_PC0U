@@ -22,10 +22,10 @@ function criarPaginaEdit(){
             <form action="" method="POST">
                 <div class="campo1">
                     <div><label>PARCEL ID:</label><input name="parcelid" type="text"></div>
-                    <div><img src='' id="cachesateliteimg" style='display:none;'><label>GIS IMAGE</label><label class="up-icon" for="imagem-satelite"><i class="fas fa-arrow-circle-up"></i></label><input onchange="preview_image('imagem-satelite')" id="imagem-satelite" type="file" accept=".jpg, .png, .pdf"></div>
-                    <div><img src='' id="cachefloodzoneimg" style='display:none;'><label>FLOODZONE IMAGE:</label><label class="up-icon" for="imagem-floodzone"><i class="fas fa-arrow-circle-up"></i></label><input onchange="preview_image('imagem-floodzone')" id="imagem-floodzone" type="file" accept=".jpg, .png, .pdf"></div>
-                    <div><img src='' id="cachemapsimg" style='display:none;'><label>MAPS IMAGE:</label><label class="up-icon" for="imagem-maps"><i class="fas fa-arrow-circle-up"></i></label><input onchange="preview_image('imagem-maps')" id="imagem-maps" type="file" accept=".jpg, .png, .pdf"></div>
-                    <div><img src='' id="cachestreetviewimg" style='display:none;'><label>STREETVIEW IMAGE:</label><label class="up-icon" for="imagem-streetview"><i class="fas fa-arrow-circle-up"></i></label><input onchange="preview_image('imagem-streetview')" id="imagem-streetview" type="file" accept=".jpg, .png, .pdf"></div>
+                    <div><img src='' id="cachesateliteimg" style='display:none;'><label>GIS IMAGE</label><label class="up-icon" for="imagem-satelite"><i class="fas fa-arrow-circle-up"></i></label><input onchange="preview_image('imagem-satelite')" id="imagem-satelite" type="file" accept=".jpg, .png, .pdf, .jpeg, .bmp"></div>
+                    <div><img src='' id="cachefloodzoneimg" style='display:none;'><label>FLOODZONE IMAGE:</label><label class="up-icon" for="imagem-floodzone"><i class="fas fa-arrow-circle-up"></i></label><input onchange="preview_image('imagem-floodzone')" id="imagem-floodzone" type="file" accept=".jpg, .png, .pdf, .jpeg, .bmp"></div>
+                    <div><img src='' id="cachemapsimg" style='display:none;'><label>MAPS IMAGE:</label><label class="up-icon" for="imagem-maps"><i class="fas fa-arrow-circle-up"></i></label><input onchange="preview_image('imagem-maps')" id="imagem-maps" type="file" accept=".jpg, .png, .pdf, .jpeg, .bmp"></div>
+                    <div><img src='' id="cachestreetviewimg" style='display:none;'><label>STREETVIEW IMAGE:</label><label class="up-icon" for="imagem-streetview"><i class="fas fa-arrow-circle-up"></i></label><input onchange="preview_image('imagem-streetview')" id="imagem-streetview" type="file" accept=".jpg, .png, .pdf, .jpeg, .bmp"></div>
                     <div><label>TAX OWNED:</label><input name="taxowned" type="text"></div>
                 </div>
                 <div class="campo2">

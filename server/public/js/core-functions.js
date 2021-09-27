@@ -56,9 +56,9 @@ function checkValueText(element){
 
 function checkValueImg(element){
     if(element[0].src.length < 150){
-        return `<img src='' id="${element[3]}" style='display:none;'><label>${element[1]}</label><label class="up-icon" for="${element[2]}"><i class="fas fa-arrow-circle-up"></i></label><input id="${element[2]}" onchange="preview_image('${element[2]}')"  type="file" accept=".jpg, .png, .pdf">`
+        return `<img src='' id="${element[3]}" style='display:none;'><label>${element[1]}</label><label class="up-icon" for="${element[2]}"><i class="fas fa-arrow-circle-up"></i></label><input id="${element[2]}" onchange="preview_image('${element[2]}')"  type="file" accept=".jpg, .png, .pdf, .jpeg, .bmp">`
     }else{
-        return `<img src='${element[0].src}' id="${element[3]}" style='display:none;'><label>${element[1]}</label><label style="background-color:green;" class="up-icon" for="${element[2]}"><i class="fas fa-arrow-circle-up"></i></label><input id="${element[2]}" onchange="preview_image('${element[2]}')" type="file" accept=".jpg, .png, .pdf">`
+        return `<img src='${element[0].src}' id="${element[3]}" style='display:none;'><label>${element[1]}</label><label style="background-color:green;" class="up-icon" for="${element[2]}"><i class="fas fa-arrow-circle-up"></i></label><input id="${element[2]}" onchange="preview_image('${element[2]}')" type="file" accept=".jpg, .png, .pdf, .jpeg, .bmp">`
     }
 }
 

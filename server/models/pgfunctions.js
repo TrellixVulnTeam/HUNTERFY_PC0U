@@ -40,7 +40,7 @@ class pgProgram{
             '${terreno.floodzone[0].floodzonetext}', 
             '${terreno.maps[0].mapsimg}', 
             '${terreno.maps[0].mapslink}', 
-            '${terreno.streetview[0].streetview}', 
+            '${terreno.streetview[0].streetviewimg}', 
             '${terreno.marketvalue}', 
             '${terreno.latitude}', 
             '${terreno.longitude}', 

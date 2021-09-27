@@ -5,6 +5,7 @@ var rootEditArea = document.querySelector(".root-edit")
 searchButton.addEventListener("click", async()=>{
     console.log('searched')
     var result = await postSearchParcel(parcelToJson())
+    console.log(result)
     renderResult(result)
 })
 
@@ -46,7 +47,7 @@ function renderResult(element){
 
 function parcelToJson(){
     var parcel = document.querySelector('#searchinputapp').value
-
+    console.log(parcel)
     var parcelStr = `{"parcelid":"${parcel}"}`
     const parcelJson = JSON.parse(parcelStr)
     
