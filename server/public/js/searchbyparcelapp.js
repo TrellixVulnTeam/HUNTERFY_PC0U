@@ -28,7 +28,7 @@ function renderResult(element){
             <div class="info-card info-text"><h2>MAPS LINK:</h2> <h2>${element.mapslink}</h2></div>
             <div class="info-card info-img"><h2>STREETVIEW IMAGE</h2> <img src="${element.streetviewimg}"></div>
             <div class="info-card info-text"><h2>TAX OWNED:</h2> <h2>${element.taxowned}</h2></div>
-            <div class="info-card info-text"><h2>MARKET VALUE</h2> <h2>${element.marketvalue}</h2></div>
+            <div class="info-card info-text"><h2>LAND VALUE</h2> <h2>${element.marketvalue}</h2></div>
             <div class="info-card info-text"><h2>LATITUDE:</h2> <h2>${element.latitude}</h2></div>
             <div class="info-card info-text"><h2>LONGITUDE:</h2> <h2>${element.longitude}</h2></div>
             <div class="info-card info-text"><h2>ACRES:</h2> <h2>${element.acres}</h2></div>

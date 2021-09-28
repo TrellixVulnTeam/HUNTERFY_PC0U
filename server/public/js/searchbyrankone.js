@@ -85,14 +85,14 @@ async function createItem(element){
             </ul>
         </li>
         </button>
-        <div style="display: none;">
+        <div class="content" style="display: none;">
             <!--campo2-->
             <li class="title">
                 <ul class="columns">
                     <li>FLOODZONE</li>
                     <li>MAPS LINK</li>
                     <li>TAX OWNED</li>
-                    <li>MARKET VALUE</li>
+                    <li>LAND VALUE</li>
                     <li>ACRES</li>
                     <li>ADRESS</li>
                 </ul>
@@ -154,12 +154,18 @@ async function createItem(element){
             <ul class="columns">
                 <li>RL3 USER</li>
                 <li>RL3 OBS</li>
+                <li>STATE</li>
+                <li>COUNTY</li>
+                <li>USER 1</li>
             </ul>
         </li>
         <li class="values">
             <ul class="columns">
                 <li>${element.userrank3}</li>
                 <li>${element.obs3}</li>
+                <li>${element.state}</li>
+                <li>${element.county}</li>
+                <li>${element.username}</li>
             </ul>
         </li>
     

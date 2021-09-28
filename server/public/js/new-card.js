@@ -29,7 +29,7 @@ function criarPaginaEdit(){
                     <div><label>TAX OWNED:</label><input name="taxowned" type="text"></div>
                 </div>
                 <div class="campo2">
-                    <div><label>MARKET VALUE:</label><input name="marketvalue" type="text"></div>
+                    <div><label>LAND VALUE:</label><input name="marketvalue" type="text"></div>
                     <div><label>GIS LINK:</label><input name="linkgis" type="text"></div>
                     <div><label>FLOODZONE:</label><input name="floodzone" type="text"></div>
                     <div><label>MAPS LINK:</label><input name="mapslink" type="text"></div>
@@ -82,7 +82,7 @@ function criarCard(){
             <div class="info-card info-text"><h2>MAPS LINK:</h2> <h2>${checkValue(form.mapslink.value)}</h2></div>
             <div class="info-card info-img"><h2>STREETVIEW IMAGE</h2> <img src="${checkFile(streetviewImg)}"></div>
             <div class="info-card info-text"><h2>TAX OWNED:</h2> <h2>${checkValue(form.taxowned.value)}</h2></div>
-            <div class="info-card info-text"><h2>MARKET VALUE</h2> <h2>${checkValue(form.marketvalue.value)}</h2></div>
+            <div class="info-card info-text"><h2>LAND VALUE</h2> <h2>${checkValue(form.marketvalue.value)}</h2></div>
             <div class="info-card info-text"><h2>LATITUDE:</h2> <h2>${checkValue(form.latitude.value)}</h2></div>
             <div class="info-card info-text"><h2>LONGITUDE:</h2> <h2>${checkValue(form.longitude.value)}</h2></div>
             <div class="info-card info-text"><h2>ACRES:</h2> <h2>${checkValue(form.acres.value)}</h2></div>

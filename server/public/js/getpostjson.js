@@ -79,11 +79,8 @@ async function postJson(card) {
             body: JSON.stringify(json)
         }
         const res = await fetch('/app', options)
-        if(res.redirected == false){
-            alert('**DONT IGNORE: LOGIN ERROR! PLEASE LOGIN AGAIN!**')
-            alert('**NAO IGNORE: ERRO DE LOGIN! POR FAVOR RELOGUE!**')
-            location.reload();
-        }
+        card.style.backgroundImage = "url('img/antique-texture-green.jpg')"
+        
     }
     catch(error){
         console.log(error)

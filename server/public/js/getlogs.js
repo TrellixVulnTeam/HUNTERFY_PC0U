@@ -46,7 +46,7 @@ async function buildPage(json){
             <li>USERNAME</li>
             <li>LOG TYPE</li>
             <li>USER TYPE</li>
-            <li>TIME WITHOUT TIMEZONE</li>
+            <li>TIME(BRAZILLIAN TIMEZONE)</li>
         </ul>
     
            <div class="logs-container">
@@ -62,12 +62,20 @@ async function buildPage(json){
 async function createItem(element){
     var itensContainer = document.querySelector('.logs-container')
     var div = document.createElement('div')
+    var dt = new Date(element.timestamp)
+
+    var day = dt.getDate()
+    var mon = dt.getMonth()
+    var year = dt.getUTCFullYear()
+    var hour = dt.getHours() + 3
+    var min = ('0'+dt.getMinutes()).slice(-2);
+
     var item = `
         <ul class="log">
             <li class="usernamelog">${element.username}</li>
             <li class="login-time">${element.logtype}</li>
             <li class="logout-time">${element.usertype}</li>
-            <li class="logout-time">${element.timestamp}</li>
+            <li class="logout-time">${day}/${mon + 1}/${year}, ${hour}:${min}(UTC-3)</li>
         </ul>
     `
     div.innerHTML = item

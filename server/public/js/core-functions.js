@@ -95,7 +95,15 @@ function logsCreateUl(){
 async function appGetLogs(element){
     var logsContainer = document.querySelector('.area-logs ul')
     var li = document.createElement('li') 
-    li.innerHTML = `${element}`
+    var dt = new Date(element.timestamp)
+    
+    var day = dt.getDate()
+    var mon = dt.getMonth()
+    var year = dt.getUTCFullYear()
+    var hour = dt.getHours() + 3
+    var min = ('0'+dt.getMinutes()).slice(-2);
+
+    li.innerHTML = `*${element.logtype}->${day}/${mon + 1}/${year}, ${hour}:${min}(UTC-3)`
     logsContainer.append(li)
 }
 
@@ -111,9 +119,7 @@ botaoGetLogs.addEventListener('click', async()=>{
         logsCreateUl()
         for (var i = 0; i < 15; i++) {
             var contentIndex = appLogsJson[i]
-            
-            appGetLogs(contentIndex.logtype)
-            appGetLogs(contentIndex.timestamp)
+            appGetLogs(contentIndex)
         }
     }
     catch(error){

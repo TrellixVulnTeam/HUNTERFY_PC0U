@@ -316,6 +316,12 @@ header div{
   transition: 0.5s;
 }
 
+.usertype div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 
 /*main*/
 .area-cards{

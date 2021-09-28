@@ -71,6 +71,7 @@ module.exports = app => {
         try{
             const userDate = await req.body
             pgProgram.searchTableByUser(userDate.user, userDate.date, res)
+            console.log(req.session.user, 'searched by user', userDate.user)
         }
             catch(error){
             console.log(error)
