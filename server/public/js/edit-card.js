@@ -17,7 +17,7 @@ function editarCard(card){
     var adressn3 = [cardInfo.children[16].children[1],`<label>ADRESS NEIGHBOOR 3:</label><input name="end3" type="text">`, `end3`, `NEIGHBOOR 3 ADRESS:`]
     var adressn4 = [cardInfo.children[17].children[1],`<label>ADRESS NEIGHBOOR 4:</label><input name="end4" type="text">`, `end4`, `NEIGHBOOR 4 ADRESS:`]
     var rank = [cardInfo.children[18].children[1], `<label>RANK:</label><input name="rank" type="text">`, `rank`, 'RANK:']
-    var obs = [cardInfo.children[19].children[1], `<label>OBS:</label><input name="obs" type="text">`, `obs`]
+    var obs = [cardInfo.children[19].children[1], `<label>OBS:</label><input name="obs" type="text">`, `obs`, `OBS:`]
      //--array name     --input inside info              --label            --class             --cache id
     var sateliteimage = [cardInfo.children[1].children[1], `SATELITE IMAGE`, 'imagem-satelite', 'cachesateliteimg']
     var floodzoneimage = [cardInfo.children[3].children[1], `FLOODZONE IMAGE`, 'imagem-floodzone', 'cachefloodzoneimg']
