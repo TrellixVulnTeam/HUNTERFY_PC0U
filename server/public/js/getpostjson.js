@@ -34,19 +34,19 @@ async function getJson(card){
         }],
         "parcelid":"${formatString(parcelid)}",
         "gis":[{
-            "gisimg":"${formatString(sateliteimage)}",
+            "gisimg":"${sateliteimage}",
             "gislink":"${formatString(linkgis)}"
         }],
         "floodzone":[{
-            "floodzoneimg":"${formatString(floodzoneimage)}",
+            "floodzoneimg":"${floodzoneimage}",
             "floodzonetext":"${formatString(floodzonetext)}"
         }],
         "maps":[{
-            "mapsimg":"${formatString(mapsimage)}",
+            "mapsimg":"${mapsimage}",
             "mapslink":"${formatString(mapslink)}"
         }],
         "streetview":[{
-            "streetviewimg":"${formatString(streetviewimage)}"
+            "streetviewimg":"${streetviewimage}"
         }],
         "marketvalue":"${formatString(marketvalue)}",
         "latitude":"${formatString(latitude)}",
