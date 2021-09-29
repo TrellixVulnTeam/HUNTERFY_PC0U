@@ -73,26 +73,26 @@ function criarCard(){
             <button class="exclude" onclick="excluirCard(this.parentElement.parentElement)"><i class="fas fa-trash"></i></i></button>   
         </div>
         <div class="infos">
-            <div class="info-card info-text"><h2>PARCEL ID:</h2> <h2>${checkValue(form.parcelid.value)}</h2></div>
+            <div class="info-card info-text"><h2>PARCEL ID:</h2> <h2>${formatString(checkValue(form.parcelid.value))}</h2></div>
             <div class="info-card info-img"><h2>GIS IMAGE:</h2> <img src="${checkFile(sateliteImg)}"></img></div>
-            <div class="info-card info-text"><h2>LINK GIS:</h2> <h2>${checkValue(form.linkgis.value)}</h2></div>
+            <div class="info-card info-text"><h2>LINK GIS:</h2> <h2>${formatString(checkValue(form.linkgis.value))}</h2></div>
             <div class="info-card info-img"><h2>FLOODZONE IMAGE:</h2> <img src="${checkFile(floodzoneImg)}"></img></div>
-            <div class="info-card info-text"><h2>FLOODZONE:</h2> <h2>${checkValue(form.floodzone.value)}</h2></div>
+            <div class="info-card info-text"><h2>FLOODZONE:</h2> <h2>${formatString(checkValue(form.floodzone.value))}</h2></div>
             <div class="info-card info-img"><h2>MAPS IMAGE:</h2> <img src="${checkFile(mapsImg)}"></div>
-            <div class="info-card info-text"><h2>MAPS LINK:</h2> <h2>${checkValue(form.mapslink.value)}</h2></div>
+            <div class="info-card info-text"><h2>MAPS LINK:</h2> <h2>${formatString(checkValue(form.mapslink.value))}</h2></div>
             <div class="info-card info-img"><h2>STREETVIEW IMAGE</h2> <img src="${checkFile(streetviewImg)}"></div>
-            <div class="info-card info-text"><h2>TAX OWNED:</h2> <h2>${checkValue(form.taxowned.value)}</h2></div>
-            <div class="info-card info-text"><h2>LAND VALUE</h2> <h2>${checkValue(form.marketvalue.value)}</h2></div>
-            <div class="info-card info-text"><h2>LATITUDE:</h2> <h2>${checkValue(form.latitude.value)}</h2></div>
-            <div class="info-card info-text"><h2>LONGITUDE:</h2> <h2>${checkValue(form.longitude.value)}</h2></div>
-            <div class="info-card info-text"><h2>ACRES:</h2> <h2>${checkValue(form.acres.value)}</h2></div>
-            <div class="info-card info-text"><h2>ADRESS:</h2> <h2>${checkValue(form.end.value)}</h2></div>
-            <div class="info-card info-text"><h2>ADRESS NEIGHBOOR 1:</h2> <h2>${checkValue(form.end1.value)}</h2></div>
-            <div class="info-card info-text"><h2>ADRESS NEIGHBOOR 2:</h2> <h2>${checkValue(form.end2.value)}</h2></div>
-            <div class="info-card info-text"><h2>ADRESS NEIGHBOOR 3:</h2> <h2>${checkValue(form.end3.value)}</h2></div>
-            <div class="info-card info-text"><h2>ADRESS NEIGHBOOR 4:</h2> <h2>${checkValue(form.end4.value)}</h2></div>
-            <div class="info-card info-text"><h2>RANK:</h2> <h2>${checkValue(form.rank.value)}</h2></div>
-            <div class="info-card info-text"><h2>OBS:</h2> <h2>${checkValue(form.obs.value)}</h2></div>
+            <div class="info-card info-text"><h2>TAX OWNED:</h2> <h2>${formatString(checkValue(form.taxowned.value))}</h2></div>
+            <div class="info-card info-text"><h2>LAND VALUE</h2> <h2>${formatString(checkValue(form.marketvalue.value))}</h2></div>
+            <div class="info-card info-text"><h2>LATITUDE:</h2> <h2>${formatString(checkValue(form.latitude.value))}</h2></div>
+            <div class="info-card info-text"><h2>LONGITUDE:</h2> <h2>${formatString(checkValue(form.longitude.value))}</h2></div>
+            <div class="info-card info-text"><h2>ACRES:</h2> <h2>${formatString(checkValue(form.acres.value))}</h2></div>
+            <div class="info-card info-text"><h2>ADRESS:</h2> <h2>${formatString(checkValue(form.end.value))}</h2></div>
+            <div class="info-card info-text"><h2>ADRESS NEIGHBOOR 1:</h2> <h2>${formatString(checkValue(form.end1.value))}</h2></div>
+            <div class="info-card info-text"><h2>ADRESS NEIGHBOOR 2:</h2> <h2>${formatString(checkValue(form.end2.value))}</h2></div>
+            <div class="info-card info-text"><h2>ADRESS NEIGHBOOR 3:</h2> <h2>${formatString(checkValue(form.end3.value))}</h2></div>
+            <div class="info-card info-text"><h2>ADRESS NEIGHBOOR 4:</h2> <h2>${formatString(checkValue(form.end4.value))}</h2></div>
+            <div class="info-card info-text"><h2>RANK:</h2> <h2>${formatString(checkValue(form.rank.value))}</h2></div>
+            <div class="info-card info-text"><h2>OBS:</h2> <h2>${formatString(checkValue(form.obs.value))}</h2></div>
         </div>
              
     </div>  

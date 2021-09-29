@@ -52,7 +52,7 @@ module.exports = app => {
         catch(error){console.log(error)}
     })
 
-	app.post('/app', isAuthPost, async(req, res) => {
+	app.post('/app', async(req, res) => {
         try{
             var searchResult = await pgProgram.searchByParcel(req.body.parcelid, res)
             if(searchResult == undefined){
@@ -60,7 +60,6 @@ module.exports = app => {
             }else{
                 editDB(req.session.user, req, res)
             }
-	        
         }
         catch(error){
 	        console.log(req.session.user, error)
@@ -152,9 +151,7 @@ module.exports = app => {
 
     app.post('/searchbyparcelapp', async(req,res)=>{
         var searchResult = await pgProgram.searchByParcel(req.body.parcelid, res)
-        console.log(req.body)
-
-        console.log(searchResult)
+        console.log(req.session.user, ' searched ', req.body)
         res.send(searchResult)
     })
 }

@@ -60,9 +60,9 @@ class pgProgram{
 
         dbClient.query(insertQuery, (err, result)=>{
             if(!err){
-                console.log(user, 'Insertion was successful')
+                console.log(terreno.userinfo[0].username, 'Insertion was successful. Parcel:', terreno.parcelid)
             }
-            else{ console.log(user, err.message) }
+            else{ console.log(terreno.userinfo[0].username, err.message, terreno.parcelid) }
         })
         dbClient.end;
     }
@@ -95,9 +95,9 @@ class pgProgram{
         `
         dbClient.query(editQuery, (err, result)=>{
             if(!err){
-                console.log(user, 'Edit was successful')
+                console.log(user, 'Edit was successful. Parcel:', newInfo.parcelid)
             }
-            else{ console.log(user, 'erro durante edit') }
+            else{ console.log(user, 'erro durante edit', newInfo.parcelid, err) }
         })
         dbClient.end
 

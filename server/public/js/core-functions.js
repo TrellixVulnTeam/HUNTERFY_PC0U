@@ -47,7 +47,7 @@ botaoLogs.addEventListener("click", ()=>{
 })
 
 function checkValueText(element){
-    if (element[0].innerHTML.length < 2) {
+    if (element[0].innerHTML.length < 1) {
         return element[1]
     }else{
         return `<label>${element[3]}</label><input value="${element[0].innerHTML}" name="${element[2]}" type="text">`
@@ -126,6 +126,27 @@ botaoGetLogs.addEventListener('click', async()=>{
         console.log(error)
     }    
 })
+
+function formatString(str){
+    var stringEdit = str.replace(/\\/g, '')
+    var stringEdit = stringEdit.replace(/ç/g, '')
+    var stringEdit = stringEdit.replace(/\$/g, '')
+    var stringEdit = stringEdit.replace(/</g, '')
+    var stringEdit = stringEdit.replace(/º/g, '')
+    var stringEdit = stringEdit.replace(/°/g, '')
+    var stringEdit = stringEdit.replace(/'/g, '')
+    var stringEdit = stringEdit.replace(/"/g, '')
+    var stringEdit = stringEdit.replace(/{/g, '')
+    var stringEdit = stringEdit.replace(/}/g, '')
+    var stringEdit = stringEdit.replace(/,/g, '')
+    var stringEdit = stringEdit.replace(/`/g, '')
+    var stringEdit = stringEdit.replace(/´/g, '')
+    var stringEdit = stringEdit.replace(/!/g, '')
+    var stringEdit = stringEdit.replace(/\?/g, '')
+    var stringEdit = stringEdit.replace(/;/g, '')
+    var stringEdit = stringEdit.replace(/:/g, '')
+    return stringEdit
+}
 
 
 

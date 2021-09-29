@@ -48,7 +48,7 @@ function renderResult(element){
 function parcelToJson(){
     var parcel = document.querySelector('#searchinputapp').value
     console.log(parcel)
-    var parcelStr = `{"parcelid":"${parcel}"}`
+    var parcelStr = `{"parcelid":"${formatString(parcel)}"}`
     const parcelJson = JSON.parse(parcelStr)
     
     return parcelJson

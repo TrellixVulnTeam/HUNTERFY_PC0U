@@ -16,7 +16,7 @@ function editarCard(card){
     var adressn2 = [cardInfo.children[15].children[1],`<label>ADRESS NEIGHBOOR 2:</label><input name="end2" type="text">`, `end2`, `NEIGHBOOR 2 ADRESS:`]
     var adressn3 = [cardInfo.children[16].children[1],`<label>ADRESS NEIGHBOOR 3:</label><input name="end3" type="text">`, `end3`, `NEIGHBOOR 3 ADRESS:`]
     var adressn4 = [cardInfo.children[17].children[1],`<label>ADRESS NEIGHBOOR 4:</label><input name="end4" type="text">`, `end4`, `NEIGHBOOR 4 ADRESS:`]
-    var rank = [cardInfo.children[18].children[1], `<label>RANK:</label><input name="rank" type="text">`, `rank`]
+    var rank = [cardInfo.children[18].children[1], `<label>RANK:</label><input name="rank" type="text">`, `rank`, 'RANK:']
     var obs = [cardInfo.children[19].children[1], `<label>OBS:</label><input name="obs" type="text">`, `obs`]
      //--array name     --input inside info              --label            --class             --cache id
     var sateliteimage = [cardInfo.children[1].children[1], `SATELITE IMAGE`, 'imagem-satelite', 'cachesateliteimg']
@@ -28,7 +28,7 @@ function editarCard(card){
     var editAreaHtml = `
         <div class="card-edit">
         <button class="fechar-card" onclick="fecharCardEdit()"><i class="fas fa-times-circle"></i></button>
-        <form action="" method="POST">
+        <form>
             <div class="campo1">
                 <div>${checkValueText(parcelid)}</div>
                 <div>${checkValueImg(sateliteimage)}</div>
