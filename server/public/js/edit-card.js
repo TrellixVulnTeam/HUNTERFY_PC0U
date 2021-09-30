@@ -7,7 +7,7 @@ function editarCard(card){
     var floodzonetext = [cardInfo.children[4].children[1], `<label>FLOODZONE:</label><input name="floodzone" type="text">`, `floodzone`, `FLOODZONE:`]
     var mapslink = [cardInfo.children[6].children[1], `<label>MAPS LINK:</label><input name="mapslink" type="text">`, `mapslink`, `MAPS LINK:` ]
     var taxowned = [cardInfo.children[8].children[1],`<label>TAX OWNED:</label><input name="taxowned" type="text">`, `taxowned`, `TAX OWNED:`]
-    var marketvalue = [cardInfo.children[9].children[1],`<label>LAND VALUE:</label><input name="marketvalue" type="text">`, `marketvalue`, `MARKET VALUE:`]
+    var marketvalue = [cardInfo.children[9].children[1],`<label>LAND VALUE:</label><input name="marketvalue" type="text">`, `marketvalue`, `LAND VALUE:`]
     var latitude = [cardInfo.children[10].children[1],`<label>LATITUDE:</label><input name="latitude" type="text">`, `latitude`, `LATITUDE:`]
     var longitude = [cardInfo.children[11].children[1],`<label>LONGITUDE:</label><input name="longitude" type="text">`, `longitude`, `LONGITUDE:`]
     var acres = [cardInfo.children[12].children[1], `<label>ACRES:</label><input name="acres" type="text">`, `acres`, `ACRES:`]

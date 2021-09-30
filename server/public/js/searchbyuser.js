@@ -26,6 +26,8 @@ async function runUser(){
             }
             const rawResponse = await fetch('/searchbyuser', options)
             const content = await rawResponse.json();
+            var itensContainer = document.querySelector('.itens-container')
+            itensContainer.innerHTML = ''
             for (var i = 0; i < content.length; i++) {
                 var contentIndex = content[i]
                 createItem(contentIndex)

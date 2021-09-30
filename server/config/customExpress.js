@@ -10,7 +10,7 @@ const isAuth = require('../models/is-auth');
 module.exports = () => {
     const app = express()
 
-    const oneDay = 1000 * 60 * 60 * 24;
+    const oneDay = 1000 * 60 * 60 * 9;
     app.use(session({
     secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
     saveUninitialized:true,
@@ -23,7 +23,7 @@ module.exports = () => {
     app.use
     //app.use(bodyParser.urlencoded({extended: true}))
     //app.use(bodyParser.json())
-    app.use(express.json({limit: '50mb'}));
+    app.use(express.json({limit: '15mb'}));
     app.use(express.urlencoded({limit: '50mb'}));
     app.set('../views', path.join(__dirname, 'views'))
     app.set('view engine', 'ejs')

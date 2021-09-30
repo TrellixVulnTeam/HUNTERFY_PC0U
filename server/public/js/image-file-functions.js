@@ -4,7 +4,7 @@
  * @param {Number} MAX_WIDTH - The width of the image in pixels
  * @param {Number} MAX_HEIGHT - The height of the image in pixels
  */
- async function reduce_image_file_size(base64Str, MAX_WIDTH = 800, MAX_HEIGHT = 600) {
+ async function reduce_image_file_size(base64Str, MAX_WIDTH = 600, MAX_HEIGHT = 400) {
     let resized_base64 = await new Promise((resolve) => {
         let img = new Image()
         img.src = base64Str
@@ -55,8 +55,6 @@ async function process_image(file, min_image_size = 300) {
         if (old_size > min_image_size) {
             const resized = await reduce_image_file_size(res);
             const new_size = calc_image_size(resized)
-            console.log('new_size=> ', new_size, 'KB');
-            console.log('old_size=> ', old_size, 'KB');
             return resized;
         } else {
             console.log('image already small enough')

@@ -11,7 +11,7 @@ module.exports = app => {
         res.render('index.ejs')
     })
 
-    app.get('/app', isAuth, async(req, res) => {
+    app.get('/app', async(req, res) => {
         res.render('app.ejs', {user : req.session.user})
     })
 
@@ -57,8 +57,12 @@ module.exports = app => {
             var searchResult = await pgProgram.searchByParcel(req.body.parcelid, res)
             if(searchResult == undefined){
                 pgProgram.addOnDatabase(req.session.user, req)
+                res.text = 'insert successful'
+                res.send()
             }else{
                 editDB(req.session.user, req, res)
+                res.body = 'edit successful'
+                res.send()
             }
         }
         catch(error){
