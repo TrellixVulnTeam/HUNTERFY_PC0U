@@ -72,6 +72,7 @@ async function getJson(card){
 }
 
 async function postJson(card) {
+    alert('Sending Data')
     try{
         var json = await getJson(card)
         const options = {
@@ -84,7 +85,7 @@ async function postJson(card) {
         const rawRes = await fetch('/app', options)
         if(rawRes){
             card.style.backgroundImage = "url('img/antique-texture-green.jpg')"
-            console.log('success')
+            alert('Sucess')
         }else{
             console.log('upload error')
             alert('upload error')
