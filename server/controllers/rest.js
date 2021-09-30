@@ -11,7 +11,7 @@ module.exports = app => {
         res.render('index.ejs')
     })
 
-    app.get('/app', async(req, res) => {
+    app.get('/app', isAuth, async(req, res) => {
         res.render('app.ejs', {user : req.session.user})
     })
 

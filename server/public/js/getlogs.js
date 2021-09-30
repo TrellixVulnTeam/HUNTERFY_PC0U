@@ -67,7 +67,7 @@ async function createItem(element){
     var day = dt.getDate()
     var mon = dt.getMonth()
     var year = dt.getUTCFullYear()
-    var hour = dt.getHours() + 3
+    var hour = dt.getHours() 
     var min = ('0'+dt.getMinutes()).slice(-2);
 
     var item = `
