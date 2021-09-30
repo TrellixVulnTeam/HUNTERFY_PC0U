@@ -146,6 +146,11 @@ function formatString(str){
     var stringEdit = stringEdit.replace(/;/g, '')
     var stringEdit = stringEdit.replace(/:/g, '')
     var stringEdit = stringEdit.replace(/\|/g, '')
+    var stringEdit = stringEdit.replace(/\t/g, '')
+    var stringEdit = stringEdit.replace(/\b/g, '')
+    var stringEdit = stringEdit.replace(/\f/g, '')
+    var stringEdit = stringEdit.replace(/\n/g, '')
+    var stringEdit = stringEdit.replace(/\r/g, '')
     return stringEdit
 }
 
