@@ -83,7 +83,8 @@ async function postJson(card) {
             body: json
         }
         const rawRes = await fetch('/app', options)
-        if(rawRes){
+        //card.style.backgroundImage = "url('img/antique-texture-green.jpg')"
+        if(rawRes.ok === true){
             card.style.backgroundImage = "url('img/antique-texture-green.jpg')"
             alert('Sucess')
         }else{
