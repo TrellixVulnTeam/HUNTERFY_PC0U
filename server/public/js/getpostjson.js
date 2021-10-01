@@ -86,7 +86,7 @@ async function postJson(card) {
         const content = await rawRes.json()
         if(rawRes.ok === true){
             if(content.message == "undefined"){
-                alert('user deslogado')
+                alert('please log in again')
                 location.reload()
             }else{
                 card.style.backgroundImage = "url('img/antique-texture-green.jpg')"
