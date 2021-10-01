@@ -73,7 +73,7 @@ function criarCard(){
             <button class="exclude" onclick="excluirCard(this.parentElement.parentElement)"><i class="fas fa-trash"></i></i></button>   
         </div>
         <div class="infos">
-            <div class="info-card info-text"><h2>PARCEL ID:</h2> <h2>${formatString(checkValue(form.parcelid.value))}</h2></div>
+            <div class="info-card info-text"><h2>PARCEL ID:</h2> <h2>${formatStringPlus(checkValue(form.parcelid.value))}</h2></div>
             <div class="info-card info-img"><h2>GIS IMAGE:</h2> <img src="${checkFile(sateliteImg)}"></img></div>
             <div class="info-card info-text"><h2>LINK GIS:</h2> <h2>${formatString(checkValue(form.linkgis.value))}</h2></div>
             <div class="info-card info-img"><h2>FLOODZONE IMAGE:</h2> <img src="${checkFile(floodzoneImg)}"></img></div>

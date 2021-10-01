@@ -129,8 +129,6 @@ botaoGetLogs.addEventListener('click', async()=>{
 
 function formatString(str){
     var stringEdit = str.replace(/\\/g, '')
-    var stringEdit = stringEdit.replace(/ç/g, '')
-    var stringEdit = stringEdit.replace(/\$/g, '')
     var stringEdit = stringEdit.replace(/</g, '')
     var stringEdit = stringEdit.replace(/º/g, '')
     var stringEdit = stringEdit.replace(/°/g, '')
@@ -150,7 +148,15 @@ function formatString(str){
     var stringEdit = stringEdit.replace(/\f/g, '')
     var stringEdit = stringEdit.replace(/\n/g, '')
     var stringEdit = stringEdit.replace(/\r/g, '')
+    var stringEdit = stringEdit.replace(/%/g, '')
     return stringEdit
+}
+
+function formatStringPlus(str){
+    var string = formatString(str);
+    var string = string.replace(/ /g, '')
+    return string
+
 }
 
 

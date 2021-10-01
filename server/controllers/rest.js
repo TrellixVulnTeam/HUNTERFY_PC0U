@@ -56,13 +56,9 @@ module.exports = app => {
         try{
             var searchResult = await pgProgram.searchByParcel(req.body.parcelid, res)
             if(searchResult == undefined){
-                pgProgram.addOnDatabase(req.session.user, req)
-                res.text = 'insert successful'
-                res.send()
+                pgProgram.addOnDatabase(req.session.user, req, res)
             }else{
-                editDB(req.session.user, req, res)
-                res.body = 'edit successful'
-                res.send()
+                pgProgram.editDB(req.session.user, req, res)
             }
         }
         catch(error){
@@ -73,8 +69,8 @@ module.exports = app => {
 	app.post('/searchbyuser', async(req,res) => {
         try{
             const userDate = await req.body
-            pgProgram.searchTableByUser(userDate.user, userDate.date, res)
             console.log(req.session.user, 'searched by user', userDate.user)
+            pgProgram.searchTableByUser(userDate.user, userDate.date, res)
         }
             catch(error){
             console.log(error)

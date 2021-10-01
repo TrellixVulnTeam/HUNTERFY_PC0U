@@ -31,7 +31,7 @@ async function getJson(card){
             "userinfo":[{
                 "username":"${username}"
             }],
-            "parcelid":"${formatString(parcelid)}",
+            "parcelid":"${formatStringPlus(parcelid)}",
             "gis":[{
                 "gisimg":"${sateliteimage}",
                 "gislink":"${formatString(linkgis)}"
@@ -83,23 +83,16 @@ async function postJson(card) {
             body: json
         }
         const rawRes = await fetch('/app', options)
+        const content = await rawRes.json()
         //card.style.backgroundImage = "url('img/antique-texture-green.jpg')"
         if(rawRes.ok === true){
             card.style.backgroundImage = "url('img/antique-texture-green.jpg')"
-            alert('Sucess')
+            alert(`SUCCESS: ${content.message}`)
         }else{
             console.log('upload error')
             alert('upload error')
 
         }
-        //const rawResContent = await rawRes.json()
-        //.then(
-        //        
-        //)
-        //var readResBody =  json.decode
-        
-        console.log(rawRes)
-          
     }
     catch(error){
         console.log(error)

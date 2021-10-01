@@ -1,7 +1,7 @@
 const dbClient = require('../database/connectionPG')
 
 class pgProgram{
-    addOnDatabase(user, req){
+    addOnDatabase(user, req, res){
         var terreno = req.body	    
         let insertQuery = 
         `
@@ -61,6 +61,7 @@ class pgProgram{
         dbClient.query(insertQuery, (err, result)=>{
             if(!err){
                 console.log(terreno.userinfo[0].username, 'Insertion was successful. Parcel:', terreno.parcelid)
+                res.send({"message":"insert"})
             }
             else{ console.log(terreno.userinfo[0].username, err.message, terreno.parcelid) }
         })
@@ -95,7 +96,8 @@ class pgProgram{
         `
         dbClient.query(editQuery, (err, result)=>{
             if(!err){
-                console.log(user, 'Edit was successful. Parcel:', newInfo.parcelid)
+                console.log(newInfo.userinfo[0].username, 'Edit was successful. Parcel:', newInfo.parcelid)
+                res.send({"message":"edit"})
             }
             else{ console.log(user, 'erro durante edit', newInfo.parcelid, err) }
         })
@@ -142,7 +144,7 @@ class pgProgram{
         const searchQuery = `
 		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, user, state, county
 	    FROM public."2021-data"
-		WHERE parcelid = '${parcel}';
+		WHERE "parcelid" = '${parcel}';
 	    `
         try {
             const result = await dbClient.query(searchQuery)
