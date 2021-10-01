@@ -54,12 +54,17 @@ module.exports = app => {
 
 	app.post('/app', async(req, res) => {
         try{
-            var searchResult = await pgProgram.searchByParcel(req.body.parcelid, res)
-            if(searchResult == undefined){
-                pgProgram.addOnDatabase(req.session.user, req, res)
+            if(req.session.user == undefined){
+                res.send({"message":"undefined"})
             }else{
+                var searchResult = await pgProgram.searchByParcel(req.body.parcelid, res)
+                if(searchResult == undefined){
+                pgProgram.addOnDatabase(req.session.user, req, res)
+                }else{
                 pgProgram.editDB(req.session.user, req, res)
             }
+            }
+            
         }
         catch(error){
 	        console.log(req.session.user, error)

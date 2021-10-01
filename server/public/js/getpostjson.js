@@ -84,10 +84,14 @@ async function postJson(card) {
         }
         const rawRes = await fetch('/app', options)
         const content = await rawRes.json()
-        //card.style.backgroundImage = "url('img/antique-texture-green.jpg')"
         if(rawRes.ok === true){
-            card.style.backgroundImage = "url('img/antique-texture-green.jpg')"
-            alert(`SUCCESS: ${content.message}`)
+            if(content.message == "undefined"){
+                alert('user deslogado')
+                location.reload()
+            }else{
+                card.style.backgroundImage = "url('img/antique-texture-green.jpg')"
+                alert(`SUCCESS: ${content.message}`)
+            }
         }else{
             console.log('upload error')
             alert('upload error')
