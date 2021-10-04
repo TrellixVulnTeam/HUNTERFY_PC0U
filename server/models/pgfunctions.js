@@ -159,11 +159,13 @@ class pgProgram{
         dbClient.end
     }
 
-    async searchByChecked(){
+    async searchByChecked(req, res){
         const searchQuery = `
 		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username
 	    FROM public."2021-data"
-		WHERE "buyopt" = 'true';
+		WHERE "buyopt" = 'true'
+        AND state = '${req.body.state}'
+        AND county = '${req.body.county}';
 	    `
         try{
             const result = await dbClient.query(searchQuery)

@@ -80,9 +80,9 @@ module.exports = app => {
         res.render('getchecked.ejs', {user : req.session.user})
     })
 
-    app.get('/getallchecked', async(req, res)=>{
+    app.post('/getallchecked', async(req, res)=>{
         try{
-            const result = await searchByChecked()
+            const result = await searchByChecked(req, res)
             res.send(result.rows)
         }
         catch(err){
