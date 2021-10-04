@@ -112,7 +112,7 @@ class pgProgram{
 
     async searchTableByUser(user, date, res){
         const searchQuery = `
-		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned
+		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username
 	    FROM public."2021-data"
 		WHERE "username" = '${user}' AND date = '${date}'
         OR "username2" = '${user}' AND date2 = '${date}';
@@ -128,7 +128,7 @@ class pgProgram{
 
     searchTableByRank(rank, date, ranktype, res){
         const searchQuery = `
-		SELECT parcelid, gisimg, gislink, floodzonetext, mapslink, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, username, state, county
+		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username
 	    FROM public."2021-data"
 		WHERE "${ranktype}" = '${rank}' AND date = '${date}';
 	    `
@@ -146,7 +146,7 @@ class pgProgram{
 
     async searchByCounty(county, res){
         const searchQuery = `
-		SELECT parcelid, gislink, floodzonetext, mapslink, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, username, state, county
+		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username
 	    FROM public."2021-data"
 		WHERE "county" = '${county}';
 	    `
@@ -154,6 +154,21 @@ class pgProgram{
             const result = await dbClient.query(searchQuery)
             dbClient.end;
             return result.rows
+        }
+        catch(err){console.log(err)}
+        dbClient.end
+    }
+
+    async searchByChecked(){
+        const searchQuery = `
+		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username
+	    FROM public."2021-data"
+		WHERE "buyopt" = 'true';
+	    `
+        try{
+            const result = await dbClient.query(searchQuery)
+            dbClient.end;
+            return result
         }
         catch(err){console.log(err)}
         dbClient.end
@@ -286,15 +301,16 @@ class pgProgram{
 
     editRank3(req, res){
         var rank3 = req.body
-        console.log(rank3)
+        console.log(rank3.buyopt)
         let insertQuery = `
             UPDATE public."2021-data"
-            SET rank3='${rank3.rank3}', userrank3='${rank3.userrank3}', obs3='${rank3.obs3}'
+            SET rank3='${rank3.rank3}', userrank3='${rank3.userrank3}', obs3='${rank3.obs3}', buyopt='${rank3.buyopt}'
             WHERE parcelid='${rank3.parcelid}';  
         `
         dbClient.query(insertQuery, (err, result)=>{
             if(!err){
             console.log("rank3 updated on DB")
+            res.send()
             }
             else{console.log(err.message)}
         })
@@ -351,7 +367,19 @@ class pgProgram{
         dbClient.end
     }
 
-    
+    async searchForMetrics(user){
+        const searchQuery = `
+        SELECT parcelid, rank1, rank2, rank3, dateandtime, username
+        FROM public."2021-data"
+        WHERE "username"= '${user}' OR "username2"='${user}';
+        `
+        try{
+            const result = await dbClient.query(searchQuery)
+            dbClient.end;
+            return result.rows
+        }
+        catch(err){console.log(err)}
+    }
 }
 
 module.exports = new pgProgram

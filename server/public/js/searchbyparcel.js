@@ -23,7 +23,6 @@ function getJson(){
             }
             const rawResponse = await fetch('/searchbyparcel', options)
             const responseJson = await rawResponse.json();
-            console.log(responseJson)
             createItem(responseJson)  
         }
         catch(error){
@@ -37,7 +36,7 @@ await postParcel(getJson())
 
 async function buildPage(json){
     var createItem = `
-           <div class="itens-container">  
+           <div class="itens-container" style="margin-top:15vh;">  
                
            </div>
     `
@@ -187,7 +186,12 @@ async function createItem(element){
                             <input type="text" name="obs3" id="obs3input">
                         </div>
                         <div><button class="sendrank3" onclick="editRank3(this.parentElement)">SEND</button></div>
-                <div>
+                    </div>
+                </div>
+                <div class="buyoption">
+                    <input type="checkbox" id="buy-input" name="buy-input">
+                    <label for="buy-input">Buy</label><br>
+                </div>
             </div>
         </div>
     
@@ -209,10 +213,8 @@ async function createItem(element){
     async function editRank2(item){
         var ulFirstRow = item.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[0].children[1]
         var itemParcelId = ulFirstRow.children[0].children[1].innerHTML
-        console.log(itemParcelId)
         var superusername = await document.querySelector('#username').innerHTML
         var rank2 = await item.parentElement.parentElement.children[1].children[0].children[1].value
-        console.log(rank2)
         var obs2 = await item.parentElement.parentElement.children[1].children[1].children[1].value
         
     
@@ -234,18 +236,24 @@ async function createItem(element){
     async function editRank3(item){
         var ulFirstRow = item.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[0].children[1]
         var itemParcelId = ulFirstRow.children[0].children[1].innerHTML
-        console.log(itemParcelId)
         var superusername = await document.querySelector('#username').innerHTML
         var rank3 = await item.parentElement.parentElement.children[1].children[0].children[1].value
         var obs3 = await item.parentElement.parentElement.children[1].children[1].children[1].value
-        
+        var buyInput = await item.parentElement.parentElement.parentElement.children[2].children[0]
+        var buyOpt = false
+        if(buyInput.checked){
+            buyOpt = true
+        }else{
+            buyOpt = false
+        }
     
         infoString = `
         {
             "parcelid":"${itemParcelId}",
             "userrank3":"${superusername}",
             "rank3":"${rank3}",
-            "obs3":"${obs3}"
+            "obs3":"${obs3}",
+            "buyopt":"${buyOpt}"
         }
         `
         var rank3Json = JSON.parse(infoString)

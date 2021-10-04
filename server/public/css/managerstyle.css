@@ -2,7 +2,7 @@
 85603F
 9E7540
 BD9354
-E3D18A
+E3D18
 */
 
 h1, h2, h3, li, label, button{
@@ -445,7 +445,10 @@ body::-webkit-scrollbar-track {
 
 .addrankcontainer{
     display: flex;
-    width: 80vw;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 60vw;
 }
 
 .titleslog{

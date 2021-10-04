@@ -1,5 +1,5 @@
 const session = require('express-session')
-const { searchTable, insertNewUser, getUsers, selectUser, editRank2, addOnDatabase, searchLogs, add2Log, editDB } = require('../models/pgfunctions')
+const { searchTable, insertNewUser, getUsers, selectUser, editRank2, addOnDatabase, searchLogs, add2Log, editDB, searchByChecked } = require('../models/pgfunctions')
 const isAuth = require('../models/is-auth')
 const isAuthManager = require('../models/is-auth-manager')
 const isAuthPost = require('../models/is-auth-post')
@@ -70,6 +70,20 @@ module.exports = app => {
             console.log(req.session.user, 'deslogado')
             req.session.destroy();
             res.redirect('/login')
+        }
+        catch(err){
+            console.log(err)
+        }
+    })
+
+    app.get('/getchecked', async(req, res)=>{
+        res.render('getchecked.ejs', {user : req.session.user})
+    })
+
+    app.get('/getallchecked', async(req, res)=>{
+        try{
+            const result = await searchByChecked()
+            res.send(result.rows)
         }
         catch(err){
             console.log(err)
@@ -198,7 +212,6 @@ module.exports = app => {
         const parcel = await pgProgram.searchByParcel(req.body.parcel, res)
         //console.log(parcel)
         res.send(parcel)
-        
     })
 
     app.post('/searchbycounty', async(req, res) => {

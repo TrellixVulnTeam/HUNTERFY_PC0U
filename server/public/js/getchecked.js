@@ -4,51 +4,32 @@ document.querySelector('.search-button').addEventListener("click", (event)=>{
 })
 
 async function runUser(){
-function getJson(){
-    var rank = document.querySelector('#rank').value
-    var date = document.querySelector('#date').value
-    var ranktype = document.querySelector('input[name="ranktype"]:checked').value
-
-    var jsonModelRank = `{"rank":"${rank}", "date":"${date}", "ranktype":"${ranktype}"}`
-    const userDatejson = JSON.parse(jsonModelRank)
-    
-    return userDatejson
-    }
-
-    async function postUserRank(json) {
-        try{
-            const options = {
-                method: 'POST',
-                headers:{
-                    'Content-Type':'application/json'
-                },
-                body: JSON.stringify(json)
-            }
-            const rawResponse = await fetch('/searchbyrank', options)
-            const content = await rawResponse.json();
-            for (var i = 0; i < content.length; i++) {
-                var contentIndex = content[i]
-                createItem(contentIndex)
-                var contagem = document.querySelector('.production-count')
-                contagem.innerHTML = `Total: ${i+1}`
-            }
-        }
-        catch(error){
-            console.log(error)
-        }
-    }
-await getJson()	
-buildPage(getJson());
-await postUserRank(getJson())
+buildPage();
+await getChecked()
 }
 
+async function getChecked(json) {
+    try{
+        const rawResponse = await fetch('/getallchecked')
+        const content = await rawResponse.json();
+        for (var i = 0; i < content.length; i++) {
+            var contentIndex = content[i]
+            console.log(contentIndex)
+            createItem(contentIndex)
+            var contagem = document.querySelector('.production-count')
+            contagem.innerHTML = `Total: ${i+1}`
+        }
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
+//<h2 class="username">Rank: ${json.county}</h2>
 async function buildPage(json){
     var createItem = `
-        <h2 class="username">Rank: ${json.rank}</h2>
-        <h2 class="date">${json.date}</h2>
-        <h2 class="production-count"></h2>
-           <div class="itens-container">
-               
+           <div class="itens-container" style="margin-top: 10vh">
+           <h2 class="production-count"></h2>
                
            </div>
     `
@@ -58,6 +39,7 @@ async function buildPage(json){
 
 
 async function createItem(element){
+    console.log('criando item')
     var itensContainer = document.querySelector('.itens-container')
     var div = document.createElement('div')
     var item = `
@@ -204,6 +186,7 @@ async function createItem(element){
                     <input type="checkbox" id="buy-input" name="buy-input" value="true">
                     <label for="vehicle1">Buy</label><br>
                 </div>
+            </div>
         </div>
     
     </ul><!--item-->
