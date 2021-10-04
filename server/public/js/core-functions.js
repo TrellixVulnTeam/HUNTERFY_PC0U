@@ -3,7 +3,7 @@ async function attContador(){
     //var contagem = document.querySelectorAll('.card')
     const contagem = await fetch('/getproduction')
     const contagemJson =await contagem.json()
-    console.log(contagemJson.rowCount)
+    console.log(contagemJson)
     contador.innerHTML = contagemJson.rowCount
 }
 

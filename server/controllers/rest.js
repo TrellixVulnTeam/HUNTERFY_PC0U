@@ -15,7 +15,7 @@ module.exports = app => {
         res.render('app.ejs', {user : req.session.user})
     })
 
-    app.get('/manager', isAuthManager, (req, res) => {
+    app.get('/manager', (req, res) => {
         res.render('manager.ejs', {user : req.session.user})
     })
     
@@ -35,20 +35,30 @@ module.exports = app => {
         res.render('getallusers.ejs', {user : req.session.user})
     })
 
-    app.get('/searchbyrankone', isAuthManager, (req, res) => {
-        res.render('searchbyrankone.ejs', {user : req.session.user})
+    app.get('/searchbyrank', (req, res) => {
+        res.render('searchbyrank.ejs', {user : req.session.user})
     })
 
     app.get('/login', (req, res) => {
         res.render('manager-login-page.ejs')
     })
 
-    app.get('/getproduction', (req, res) => {
-        const date = new Date()
-        var day = ("0" + date.getDate()).slice(-2)
-        var month = ("0" + (date.getMonth() + 1)).slice(-2)
-        var yyyymmdd = `${date.getFullYear()}-${month}-${day}`
-        pgProgram.searchTableByUser(req.session.user, yyyymmdd, res)
+    app.get('/searchbyparcel', (req, res) => {
+        res.render('searchbyparcel.ejs', {user : req.session.user})
+    })
+
+    app.get('/getproduction', async(req, res) => {
+        try{const date = new Date()
+            var day = ("0" + date.getDate()).slice(-2)
+            var month = ("0" + (date.getMonth() + 1)).slice(-2)
+            var yyyymmdd = `${date.getFullYear()}-${month}-${day}`
+            const result = await pgProgram.searchTableByUser(req.session.user, yyyymmdd, res)
+            const resultRowCount = `{"rowCount":"${result.rowCount}"}`
+            res.send(resultRowCount)
+        }
+        catch(error){
+            console.log(error)
+        }
     })
 
     //POSTS----------------------->
@@ -83,7 +93,8 @@ module.exports = app => {
         try{
             const userDate = await req.body
             console.log(req.session.user, 'searched by user', userDate.user)
-            pgProgram.searchTableByUser(userDate.user, userDate.date, res)
+            const result = await pgProgram.searchTableByUser(userDate.user, userDate.date, res)
+            res.send(result)
         }
             catch(error){
             console.log(error)
@@ -126,10 +137,10 @@ module.exports = app => {
         console.log(req.session.user, 'searched all users')
     })
 
-    app.post('/searchbyrankone', async(req, res) => {
+    app.post('/searchbyrank', async(req, res) => {
         try{
-            const rankDate = await req.body
-            pgProgram.searchTableByRankOne(rankDate.rank, rankDate.date, res)
+            const rankInfo = await req.body
+            pgProgram.searchTableByRank(rankInfo.rank, rankInfo.date, rankInfo.ranktype, res)
             console.log(req.session.user, 'searched data by rank one')
         }
             catch(error){
@@ -166,6 +177,13 @@ module.exports = app => {
         var searchResult = await pgProgram.searchByParcel(req.body.parcelid, res)
         console.log(req.session.user, ' searched ', req.body)
         res.send(searchResult)
+    })
+
+    app.post('/searchbyparcel', async(req, res) => {
+        const parcel = await pgProgram.searchByParcel(req.body.parcel, res)
+        //console.log(parcel)
+        res.send(parcel)
+        
     })
 }
 //
