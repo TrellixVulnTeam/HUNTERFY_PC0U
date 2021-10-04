@@ -11,11 +11,11 @@ module.exports = app => {
         res.render('index.ejs')
     })
 
-    app.get('/app', async(req, res) => {
+    app.get('/app', isAuth,async(req, res) => {
         res.render('app.ejs', {user : req.session.user})
     })
 
-    app.get('/manager', (req, res) => {
+    app.get('/manager', isAuthManager, (req, res) => {
         res.render('manager.ejs', {user : req.session.user})
     })
     
@@ -23,7 +23,7 @@ module.exports = app => {
         res.render('register.ejs', {user : req.session.user})
     })
 
-    app.get('/searchbyuser', (req, res) => {
+    app.get('/searchbyuser', isAuthManager, (req, res) => {
         res.render('searchbyuser.ejs', {user : req.session.user})
     })
 
@@ -35,7 +35,7 @@ module.exports = app => {
         res.render('getallusers.ejs', {user : req.session.user})
     })
 
-    app.get('/searchbyrank', (req, res) => {
+    app.get('/searchbyrank', isAuthManager, (req, res) => {
         res.render('searchbyrank.ejs', {user : req.session.user})
     })
 
@@ -43,11 +43,11 @@ module.exports = app => {
         res.render('manager-login-page.ejs')
     })
 
-    app.get('/searchbyparcel', (req, res) => {
+    app.get('/searchbyparcel', isAuthManager, (req, res) => {
         res.render('searchbyparcel.ejs', {user : req.session.user})
     })
 
-    app.get('/searchbycounty', (req, res) => {
+    app.get('/searchbycounty', isAuthManager, (req, res) => {
         res.render('searchbycounty.ejs', {user : req.session.user})
     })
 
