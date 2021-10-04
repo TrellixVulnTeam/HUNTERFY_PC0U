@@ -22,11 +22,12 @@ async function getJson(card){
         var floodzoneimage = cardInfo.children[3].children[1].src
         var mapsimage = cardInfo.children[5].children[1].src
         var streetviewimage = cardInfo.children[7].children[1].src
+
         var state = document.querySelector('#state').value
         var county = document.querySelector('#county').value
-
         var username = document.querySelector('#username').innerHTML
-    
+        //var usertype = document.querySelector('input[name="usertype"]:checked').value
+        //"usertype":"${usertype}"
         var cardString = `{
             "userinfo":[{
                 "username":"${username}"
@@ -91,6 +92,7 @@ async function postJson(card) {
             }else{
                 card.style.backgroundImage = "url('img/antique-texture-green.jpg')"
                 alert(`SUCCESS: ${content.message}`)
+                attContador()
             }
         }else{
             console.log('upload error')

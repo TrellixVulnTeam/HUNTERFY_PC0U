@@ -1,11 +1,10 @@
-function attContador(){
+async function attContador(){
     var contador = document.querySelector(".contador")
-    var contagem = document.querySelectorAll('.card')
-    if(contagem.length >0){
-        for (var i = 0; i < contagem.length; i++){
-            contador.innerHTML = contagem.length
-        }
-    }else{}
+    //var contagem = document.querySelectorAll('.card')
+    const contagem = await fetch('/getproduction')
+    const contagemJson =await contagem.json()
+    console.log(contagemJson.rowCount)
+    contador.innerHTML = contagemJson.rowCount
 }
 
 function checkValue(element){

@@ -199,13 +199,14 @@ header div{
 }
 
 .menu-info{
-    height: 25vh;
+    height: 30vh;
     background-color: #ffb429;
     border-radius: 3px;
     color: #000000;
     font-size: 18px;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     width: 60%;
     padding: 1vh 0.1vw;
 }
@@ -320,6 +321,16 @@ header div{
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
+    width: 6vw;
+}
+.usertype div h3{
+    width: 4vw;
+}
+
+input[type=radio]{
+    border: #000000;
+    display: block;
 }
 
 

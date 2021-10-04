@@ -72,7 +72,9 @@ class pgProgram{
         var newInfo = req.body	    
         var editQuery = `
             UPDATE public."2021-data"
-	        SET gisimg='${newInfo.gis[0].gisimg}',
+	        SET 
+            username2 = '${newInfo.userinfo[0].username}',
+            gisimg='${newInfo.gis[0].gisimg}',
             gislink='${newInfo.gis[0].gislink}', 
             floodzoneimg='${newInfo.floodzone[0].floodzoneimg}', 
             floodzonetext='${newInfo.floodzone[0].floodzonetext}', 
@@ -102,21 +104,21 @@ class pgProgram{
             else{ console.log(user, 'erro durante edit', newInfo.parcelid, err) }
         })
         dbClient.end
-
     }
 
     searchTableByUser(user, date, res){
         const searchQuery = `
 		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned
 	    FROM public."2021-data"
-		WHERE "username" = '${user}' AND date = '${date}';
+		WHERE "username" = '${user}' AND date = '${date}'
+        OR "username2" = '${user}' AND date = '${date}';
 	    `
         dbClient.query(searchQuery, (error, result) => {
             if(error){
                 console.log(error)
             }
             else{	   
-	            res.send(result.rows)  
+	            res.send(result)
             } 
         })
         dbClient.end

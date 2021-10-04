@@ -10,7 +10,6 @@ newCardButton.addEventListener("click", ()=>{
     event.preventDefault()
     criarCard()
     fecharCardEdit()
-    attContador()
     })
 })
 

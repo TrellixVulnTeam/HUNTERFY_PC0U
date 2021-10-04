@@ -11,7 +11,7 @@ module.exports = app => {
         res.render('index.ejs')
     })
 
-    app.get('/app', isAuth, async(req, res) => {
+    app.get('/app', async(req, res) => {
         res.render('app.ejs', {user : req.session.user})
     })
 
@@ -23,7 +23,7 @@ module.exports = app => {
         res.render('register.ejs', {user : req.session.user})
     })
 
-    app.get('/searchbyuser', isAuthManager, (req, res) => {
+    app.get('/searchbyuser', (req, res) => {
         res.render('searchbyuser.ejs', {user : req.session.user})
     })
 
@@ -41,6 +41,14 @@ module.exports = app => {
 
     app.get('/login', (req, res) => {
         res.render('manager-login-page.ejs')
+    })
+
+    app.get('/getproduction', (req, res) => {
+        const date = new Date()
+        var day = ("0" + date.getDate()).slice(-2)
+        var month = ("0" + (date.getMonth() + 1)).slice(-2)
+        var yyyymmdd = `${date.getFullYear()}-${month}-${day}`
+        pgProgram.searchTableByUser(req.session.user, yyyymmdd, res)
     })
 
     //POSTS----------------------->

@@ -26,10 +26,15 @@ async function runUser(){
             }
             const rawResponse = await fetch('/searchbyuser', options)
             const content = await rawResponse.json();
+            const rows = content.rows
+            console.log(rows)
             var itensContainer = document.querySelector('.itens-container')
             itensContainer.innerHTML = ''
-            for (var i = 0; i < content.length; i++) {
-                var contentIndex = content[i]
+            var loadingH2 = document.createElement('h2')
+            loadingH2.innerHTML = 'Loading...'
+            itensContainer.append(loadingH2)
+            for (var i = 0; i < rows.length; i++) {
+                var contentIndex = rows[i]
                 createItem(contentIndex)
                 var contagem = document.querySelector('.production-count')
                 contagem.innerHTML = `Total: ${i+1}`

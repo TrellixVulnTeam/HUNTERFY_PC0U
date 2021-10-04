@@ -70,6 +70,5 @@ function editarCard(card){
         criarCard()
         excluirCard(card)
         fecharCardEdit()
-        attContador()
     })
 }
