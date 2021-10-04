@@ -47,6 +47,10 @@ module.exports = app => {
         res.render('searchbyparcel.ejs', {user : req.session.user})
     })
 
+    app.get('/searchbycounty', (req, res) => {
+        res.render('searchbycounty.ejs', {user : req.session.user})
+    })
+
     app.get('/getproduction', async(req, res) => {
         try{const date = new Date()
             var day = ("0" + date.getDate()).slice(-2)
@@ -184,6 +188,12 @@ module.exports = app => {
         //console.log(parcel)
         res.send(parcel)
         
+    })
+
+    app.post('/searchbycounty', async(req, res) => {
+        const countyResult = await pgProgram.searchByCounty(req.body.county, res)
+        console.log(req.session.user, 'searched by county')
+        res.send(countyResult)
     })
 }
 //

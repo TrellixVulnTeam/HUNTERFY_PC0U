@@ -5,14 +5,15 @@ document.querySelector('.search-button').addEventListener("click", (event)=>{
 
 async function runUser(){
 function getJson(){
-    var parcel = document.querySelector('#parcelinput').value
+    var county = document.querySelector('#countyinput').value
 
-    var jsonModelParcel = `{"parcel":"${parcel}"}`
+    var jsonModelParcel = `{"county":"${county}"}`
     const parceljson = JSON.parse(jsonModelParcel)
+    
     return parceljson
     }
 
-    async function postParcel(json) {
+    async function postCounty(json) {
         try{
             const options = {
                 method: 'POST',
@@ -21,10 +22,16 @@ function getJson(){
                 },
                 body: JSON.stringify(json)
             }
-            const rawResponse = await fetch('/searchbyparcel', options)
-            const responseJson = await rawResponse.json();
-            console.log(responseJson)
-            createItem(responseJson)  
+            const rawResponse = await fetch('/searchbycounty', options)
+            const content = await rawResponse.json();
+            console.log(content)
+            for (var i = 0; i < content.length; i++) {
+                var contentIndex = content[i]
+                console.log(contentIndex)
+                createItem(contentIndex)
+                var contagem = document.querySelector('.production-count')
+                contagem.innerHTML = `Total: ${i+1}`
+            }
         }
         catch(error){
             console.log(error)
@@ -32,12 +39,14 @@ function getJson(){
     }
 await getJson()	
 buildPage(getJson());
-await postParcel(getJson())
+await postCounty(getJson())
 }
 
+//<h2 class="username">Rank: ${json.county}</h2>
 async function buildPage(json){
     var createItem = `
-           <div class="itens-container">  
+           <div class="itens-container" style="margin-top: 10vh">
+           <h2 class="production-count"></h2>
                
            </div>
     `
@@ -47,6 +56,7 @@ async function buildPage(json){
 
 
 async function createItem(element){
+    console.log('criando item')
     var itensContainer = document.querySelector('.itens-container')
     var div = document.createElement('div')
     var item = `
@@ -58,20 +68,20 @@ async function createItem(element){
             <ul class="columns">
                 <li>date</li>
                 <li>PARCELID</li>
-                <li>GIS IMAGE</li>
-                <li>FLOODZONE IMAGE</li>
-                <li>MAPS IMAGE</li>
-                <li>STREETVIEW</li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
             </ul>
         </li>
         <li class="values">
             <ul class="columns" id="firstcolumn">
                 <li>${element.dateandtime}</li>
                 <li>${element.parcelid}</li>
-                <li><img src="${element.gisimg}"></li>
-                <li><img src="${element.floodzoneimg}"></li>
-                <li><img src="${element.mapsimg}"></li>
-                <li><img src="${element.streetviewimg}"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
             </ul>
         </li>
         </button>
@@ -234,7 +244,6 @@ async function createItem(element){
     async function editRank3(item){
         var ulFirstRow = item.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[0].children[1]
         var itemParcelId = ulFirstRow.children[0].children[1].innerHTML
-        console.log(itemParcelId)
         var superusername = await document.querySelector('#username').innerHTML
         var rank3 = await item.parentElement.parentElement.children[1].children[0].children[1].value
         var obs3 = await item.parentElement.parentElement.children[1].children[1].children[1].value

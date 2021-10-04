@@ -144,21 +144,18 @@ class pgProgram{
         dbClient.end
     }
 
-    searchTableByCounty(rank, date, ranktype, res){
+    async searchByCounty(county, res){
         const searchQuery = `
-		SELECT parcelid, gisimg, gislink, floodzonetext, mapslink, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, username, state, county
+		SELECT parcelid, gislink, floodzonetext, mapslink, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, username, state, county
 	    FROM public."2021-data"
-		WHERE "${ranktype}" = '${rank}' AND date = '${date}';
+		WHERE "county" = '${county}';
 	    `
-        dbClient.query(searchQuery, (error, result) => {
-            if(error){
-                console.log(error)
-            }
-            else{		    
-	            res.send(result.rows)  
-            }
-            
-        })
+        try{
+            const result = await dbClient.query(searchQuery)
+            dbClient.end;
+            return result.rows
+        }
+        catch(err){console.log(err)}
         dbClient.end
     }
 
