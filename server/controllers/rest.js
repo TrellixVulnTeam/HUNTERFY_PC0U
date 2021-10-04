@@ -65,6 +65,17 @@ module.exports = app => {
         }
     })
 
+    app.get('/logoff', async(req, res) => {
+        try{
+            console.log(req.session.user, 'deslogado')
+            req.session.destroy();
+            res.redirect('/login')
+        }
+        catch(err){
+            console.log(err)
+        }
+    })
+
     //POSTS----------------------->
     app.post('/register', (req, res)=>{
         try{
