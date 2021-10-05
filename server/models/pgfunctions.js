@@ -369,19 +369,38 @@ class pgProgram{
         dbClient.end
     }
 
-    async searchForMetrics(user){
+    async dailySearch(user, date){
         const searchQuery = `
-        SELECT parcelid, rank1, rank2, rank3, dateandtime, username
+        SELECT parcelid, rank1, rank2, rank3, dateandtime, username, username2, date, date2
         FROM public."2021-data"
-        WHERE "username"= '${user}' OR "username2"='${user}';
+        WHERE "username" = '${user}' AND date = '${date}'
+        OR "username2" = '${user}' AND date2 = '${date}';
         `
         try{
             const result = await dbClient.query(searchQuery)
             dbClient.end;
-            return result.rows
+            //console.log(result)
+            return result
+        }
+        catch(err){console.log(err)}
+    };
+
+    async resumedSearch(user, month){
+        const searchQuery = `
+        SELECT parcelid, rank1, rank2, rank3, dateandtime, username, username2, date, date2
+        FROM public."2021-data"
+        WHERE EXTRACT(MONTH FROM date) = '${month}' AND username= '${user}';
+        `
+        try{
+            const result = await dbClient.query(searchQuery)
+            dbClient.end;
+            //console.log(result)
+            return result
         }
         catch(err){console.log(err)}
     }
+
+    
 }
 
 module.exports = new pgProgram

@@ -5,9 +5,9 @@ document.querySelector('.search-button').addEventListener("click", (event)=>{
 
 async function runUser(){
 function getJson(){
-    var county = document.querySelector('#countyinput').value
+    const county = document.querySelector('#countyinput').value
 
-    var jsonModelParcel = `{"county":"${county}"}`
+    const jsonModelParcel = `{"county":"${county}"}`
     const parceljson = JSON.parse(jsonModelParcel)
     
     return parceljson

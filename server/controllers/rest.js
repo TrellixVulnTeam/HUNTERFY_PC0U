@@ -1,5 +1,5 @@
 const session = require('express-session')
-const { searchTable, insertNewUser, getUsers, selectUser, editRank2, addOnDatabase, searchLogs, add2Log, editDB, searchByChecked } = require('../models/pgfunctions')
+const { searchTable, insertNewUser, getUsers, selectUser, editRank2, addOnDatabase, searchLogs, add2Log, editDB, searchByChecked, resumedSearch, dailySearch } = require('../models/pgfunctions')
 const isAuth = require('../models/is-auth')
 const isAuthManager = require('../models/is-auth-manager')
 const isAuthPost = require('../models/is-auth-post')
@@ -53,10 +53,11 @@ module.exports = app => {
 
     app.get('/getproduction', async(req, res) => {
         try{const date = new Date()
-            var day = ("0" + date.getDate()).slice(-2)
-            var month = ("0" + (date.getMonth() + 1)).slice(-2)
-            var yyyymmdd = `${date.getFullYear()}-${month}-${day}`
-            const result = await pgProgram.searchTableByUser(req.session.user, yyyymmdd, res)
+            const day = ("0" + date.getDate()).slice(-2)
+            const month = ("0" + (date.getMonth() + 1)).slice(-2)
+            const yyyymmdd = `${date.getFullYear()}-${month}-${day}`
+            console.log(yyyymmdd)
+            const result = await pgProgram.dailySearch(req.session.user, yyyymmdd)
             const resultRowCount = `{"rowCount":"${result.rowCount}"}`
             res.send(resultRowCount)
         }
@@ -76,10 +77,15 @@ module.exports = app => {
         }
     })
 
+    app.get('/metrics', (req, res)=>{
+        res.render('metrics.ejs', {user : req.session.user})
+    })
+
     app.get('/getchecked', async(req, res)=>{
         res.render('getchecked.ejs', {user : req.session.user})
     })
 
+    //POSTS----------------------->
     app.post('/getallchecked', async(req, res)=>{
         try{
             const result = await searchByChecked(req, res)
@@ -90,7 +96,6 @@ module.exports = app => {
         }
     })
 
-    //POSTS----------------------->
     app.post('/register', (req, res)=>{
         try{
             pgProgram.insertNewUser(req, res)
@@ -218,6 +223,35 @@ module.exports = app => {
         const countyResult = await pgProgram.searchByCounty(req.body.county, res)
         console.log(req.session.user, 'searched by county')
         res.send(countyResult)
+    })
+
+    app.post('/dailymetrics', async(req, res)=> {
+        try{
+            console.log('daily metrics fetch')
+            const date = new Date(req.body.date)
+            const day = ("0" + (date.getDate() + 1)).slice(-2)
+            const month = ("0" + (date.getMonth() + 1)).slice(-2)
+            const yyyymmdd = `${date.getFullYear()}-${month}-${day}`;
+            console.log(yyyymmdd)
+            const result = await pgProgram.dailySearch(req.body.user, yyyymmdd);
+            res.send(result.rows)
+        }
+        catch(err){
+            console.log(err)
+        }
+    })
+
+    app.post('/metrics', async(req, res)=> {
+        try{
+            //console.log('monthly metrics fetch')
+            const date = new Date(req.body.date)
+            const month = date.getMonth()+1
+            const result = await pgProgram.resumedSearch(req.body.user, month)//month
+            res.send(result.rows)
+        }
+        catch(err){
+            console.log(err)
+        }
     })
 }
 //

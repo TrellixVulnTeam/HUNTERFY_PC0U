@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/managerstyle.css">
+    <script src="https://kit.fontawesome.com/30836ed2bd.js" crossorigin="anonymous"></script>
+    <title>HUNTERFY MANAGER</title>
+</head>
+<body>
+    <header>
+        <div class="janela-header">
+            <div class="logo"><a href="./manager"><img src="./img/Hunterfy.png" alt="Hunterfy logo"></a><h1>MANAGER v1.0</h1></div>
+            <div class="user-container">
+                <h2>My user:</h2>
+                <h3 id="username"><%= user %></h3>
+            </div>
+        </div>
+    </header>
+    <section class="controller janela">
+             <form id="search-form">
+                 <h2>Metrics by:</h2>
+                <div><label for="user">User</label><input type="text" id="user" name=""></div>
+                <div><label>and by date:</label><input type="date" id="date" name=""></div>
+                <button class="search-button">Metrics</button>
+            </form>
+    </section>
+    <section class="program janela">
+        <div class="itens-container" style="margin-top: 11vh;">
+            <h1>Metrics by month production:</h1>
+            <div>
+                <h2>Production count per hour:</h2>
+                <canvas id="count-per-day"></canvas>
+            </div>
+            <div>
+                <h2>Rank count per day:</h2>
+                <canvas id="count-rank-per-day"></canvas>
+            </div>
+
+
+        </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/controllers/metricsControllers.js" async type="module"></script>
+</body>
+</html>
