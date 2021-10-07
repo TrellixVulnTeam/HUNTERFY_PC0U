@@ -161,7 +161,7 @@ export async function readCountHour(content){//separa os parcels por hora do dia
             var infodate = new Date(contentIndex.dateandtime)
             var n = infodate.getHours()
             if (infodate.getHours() == n){
-                hoursArr[n] = hoursArr[n]+1
+                hoursArr[n+3] = hoursArr[n+3]+1
             }
         }
         console.log('hours array:', hoursArr)

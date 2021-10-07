@@ -1,5 +1,5 @@
-import * as metricsProgram from '/js/programs/metrics.js'
-import * as chartsProgram from '/js/programs/charts.js'
+import * as metricsProgram from '/js/manager-programs/metrics.js'
+import * as chartsProgram from '/js/manager-programs/charts.js'
 document.querySelector('.search-button').addEventListener('click', async(event)=>{
     event.preventDefault()
     buildChartsPage()
