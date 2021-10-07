@@ -1,6 +1,3 @@
-var jsonModel = '{"empty":"empty"}'
-const emptyJson = JSON.parse(jsonModel)
-
 document.querySelector('.search-button').addEventListener("click", (event)=>{
     event.preventDefault()
     buildPage()
@@ -9,14 +6,7 @@ document.querySelector('.search-button').addEventListener("click", (event)=>{
 
 async function getUserData(json) {
     try{
-        const options = {
-            method: 'POST',
-            headers:{
-                'Content-Type':'application/json'
-            },
-            body: JSON.stringify(json)
-        }
-        const rawResponse = await fetch('/allusers', options)
+        const rawResponse = await fetch('/getallusers', options)
         const content = await rawResponse.json();
         for (var i = 0; i < content.length; i++) {
             var contentIndex = content[i]

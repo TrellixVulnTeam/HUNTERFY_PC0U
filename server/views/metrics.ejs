@@ -31,21 +31,39 @@
             </form>
     </section>
     <section class="program janela">
-        <div class="itens-container" style="margin-top: 11vh;">
-            <h1>Metrics by month production:</h1>
+        <div class="dailyranks-container">
+            
+            <h1>Metrics by daily production:</h1>
             <div>
                 <h2>Production count per hour:</h2>
                 <canvas id="count-per-day"></canvas>
             </div>
+
+            <h2>Rank count per day: rank1/rank2/rank3</h2>
+            <div class="pizzas">
+                <canvas id="count-rank1-per-day"></canvas>
+                <canvas id="count-rank2-per-day"></canvas>
+                <canvas id="count-rank3-per-day"></canvas>
+            </div>
+        </div>
+        <div class="monthlyranks-container">
+            <h1>Metrics by month production:</h1>
             <div>
-                <h2>Rank count per day:</h2>
-                <canvas id="count-rank-per-day"></canvas>
+                <h2>Production count per day:</h2>
+                <canvas id="count-per-month"></canvas>
             </div>
 
+            <h2>Rank count per month: rank1/rank2/rank3</h2>
+            <div class="pizzas">
+                <canvas id="count-rank1-per-month"></canvas>
+                <canvas id="count-rank2-per-month"></canvas>
+                <canvas id="count-rank3-per-month"></canvas>
+            </div>
 
         </div>
+    </section>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="/js/controllers/metricsControllers.js" async type="module"></script>
+    <script src="/js/manager-controllers/metricsControllers.js" async type="module"></script>
 </body>
 </html>

@@ -303,7 +303,6 @@ class pgProgram{
 
     editRank3(req, res){
         var rank3 = req.body
-        console.log(rank3.buyopt)
         let insertQuery = `
             UPDATE public."2021-data"
             SET rank3='${rank3.rank3}', userrank3='${rank3.userrank3}', obs3='${rank3.obs3}', buyopt='${rank3.buyopt}'

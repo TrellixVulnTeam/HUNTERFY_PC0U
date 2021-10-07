@@ -50,7 +50,7 @@ export async function postSearchDataByDay(json){//perday
 
 
 
-export async function readDataRank1(content){
+export async function readDataRank1(content){//separa os parcels por rank pelo rank1
     try{
         var rankACount = 0
         var rankBCount = 0
@@ -84,7 +84,7 @@ export async function readDataRank1(content){
     }
 }
 
-export async function readDataRank2(content){
+export async function readDataRank2(content){//separa os parcels por rank pelo rank2
     try{
         var rankACount = 0
         var rankBCount = 0
@@ -110,7 +110,8 @@ export async function readDataRank2(content){
                 rankBcasaCount = rankBcasaCount + 1
             }   
         }
-        const infoArr = [rankACount, rankBCount, rankCCount, rankUndefinedCount, rankBcasaCount, total]
+        const infoArr = [rankACount, rankBCount, rankCCount, rankUndefinedCount, rankBcasaCount]
+        console.log(infoArr)
         return infoArr
     }
     catch(error){
@@ -118,7 +119,7 @@ export async function readDataRank2(content){
     }
 }
 
-export async function readDataRank3(content){
+export async function readDataRank3(content){//separa os parcels por rank pelo rank3
     try{
         var rankACount = 0
         var rankBCount = 0
@@ -144,7 +145,7 @@ export async function readDataRank3(content){
                 rankBcasaCount = rankBcasaCount + 1
             }   
         }
-        const infoArr = [rankACount, rankBCount, rankCCount, rankUndefinedCount, rankBcasaCount, total]
+        const infoArr = [rankACount, rankBCount, rankCCount, rankUndefinedCount, rankBcasaCount]
         return infoArr
     }
     catch(error){
@@ -152,7 +153,7 @@ export async function readDataRank3(content){
     }
 }
 
-export async function readCountHour(content){
+export async function readCountHour(content){//separa os parcels por hora do dia
     try{
         var hoursArr = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]//starts 00H, ends on 23H 
         for (let i = 0; i < content.length; i++) {
@@ -171,7 +172,7 @@ export async function readCountHour(content){
     }
 }
 
-export async function readCountDay(content){
+export async function readCountDay(content){//separa os parcels por dia do mes
     try{
         var daysArr = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]//starts on day "zero" of every month, ends on 31
         for (let i = 0; i < content.length; i++) {

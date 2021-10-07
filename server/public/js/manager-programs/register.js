@@ -1,6 +1,6 @@
 var form = document.querySelector(".register")
-var button = document.querySelector(".submit-register")
-button.addEventListener("click", async (event)=> {
+var regButton = document.querySelector(".submit-register")
+regButton.addEventListener("click", async (event)=> {
     event.preventDefault()
     var userInput = document.querySelector("#newusername").value
     var passwordInput = document.querySelector("#newpassword").value

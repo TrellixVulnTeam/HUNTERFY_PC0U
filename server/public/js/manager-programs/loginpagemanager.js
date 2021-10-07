@@ -27,7 +27,6 @@ async function checkUserPass(json) {
         fetch('/login', options)
         
         const rawResponse = await fetch('/login', options)
-        //const content = await rawResponse.json()
         console.log(rawResponse.statusText)
         if(rawResponse.statusText == 'OK'){
             console.log('logado')
@@ -36,30 +35,14 @@ async function checkUserPass(json) {
         else{
             alert('incorrect info')
         }
-        //window.location.replace(rawResponse);
-        
-        /*if(json.pass == content.password){
-            console.log('senha correta!')
-            
-        }else{
-            alert('Incorrect data')
-        }*/
     }
     catch(error){
         console.log(error)
     }
 }
 
-
-
 document.querySelector(".login-button").addEventListener("click", (event) => {
     event.preventDefault()
     var userPassJson = getUserJson()
-    //if(userPassJson == undefined){
-    //    console.log("falta algo")
-    //}else{
-        //console.log(userPassJson)
         checkUserPass(userPassJson)
-        
-    //}
 })

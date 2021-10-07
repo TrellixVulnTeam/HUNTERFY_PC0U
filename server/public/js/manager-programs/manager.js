@@ -1,67 +1,94 @@
-document.querySelector('.search-button').addEventListener("click", (event)=>{
-    event.preventDefault()
-    runUser()
-})
-
-async function runUser(){
-    function getJson(){
-        var user = document.querySelector('#user').value
-        var date = document.querySelector('#date').value
-
-        var jsonModel = `{"user":"${user}", "date":"${date}"}`
-        const userDatejson = JSON.parse(jsonModel)
-        
-        return userDatejson
-        
+async function postJsonRank2(json){
+    try{
+    const options = {
+        method: 'POST',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify(json)
+        }
+    fetch('/editrank2', options)
     }
-
-    async function postUserDate(json) {
-        try{
-            const options = {
-                method: 'POST',
-                headers:{
-                    'Content-Type':'application/json'
-                },
-                body: JSON.stringify(json)
-            }
-            const rawResponse = await fetch('/searchbyuser', options)
-            const content = await rawResponse.json();
-            const rows = content.rows
-            console.log(rows)
-            var itensContainer = document.querySelector('.itens-container')
-            itensContainer.innerHTML = ''
-            var loadingH2 = document.createElement('h2')
-            loadingH2.innerHTML = 'Loading...'
-            itensContainer.append(loadingH2)
-            for (var i = 0; i < rows.length; i++) {
-                var contentIndex = rows[i]
-                createItem(contentIndex)
-                var contagem = document.querySelector('.production-count')
-                contagem.innerHTML = `Total: ${i+1}`
-            }
-        }
-        catch(error){
-            console.log(error)
-        }
+    catch(error){
+        console.log(error)
+    }
 }
-await getJson()	
-buildPage(getJson());
-await postUserDate(getJson())
+    
+async function postJsonRank3(json){
+    try{
+    const options = {
+        method: 'POST',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify(json)
+    }
+    fetch('/editrank3', options)
+    }
+    catch(error){
+        console.log(error)
+    }
 }
 
-async function buildPage(json){
-    var createItem = `
-    <h2 class="username">${json.user}</h2>
-    <h2 class="date">${json.date}</h2>
-    <h2 class="production-count"></h2>
-
-        <div class="itens-container">
-            
-            
-        </div>
+async function editRank2(item){
+    var ulFirstRow = item.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[0].children[1]
+    var itemParcelId = ulFirstRow.children[0].children[1].innerHTML
+    var superusername = await document.querySelector('#username').innerHTML
+    var rank2 = await item.parentElement.parentElement.children[1].children[0].children[1].value
+    var obs2 = await item.parentElement.parentElement.children[1].children[1].children[1].value
+        
+    infoString = `
+    {
+        "parcelid":"${itemParcelId}",
+        "userrank2":"${superusername}",
+        "rank2":"${rank2}",
+        "obs2":"${obs2}"
+    }
     `
-    var sectionPrograma = document.querySelector('.program')
-    sectionPrograma.innerHTML = createItem
+    var rank2Json = JSON.parse(infoString)
+    await postJsonRank2(rank2Json)
+    ulFirstRow.parentElement.parentElement.innerHTML = ''
+        
+    alert("Rank inserido com sucesso!")
+}
+    
+async function editRank3(item){
+    var ulFirstRow = item.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[0].children[1]
+    var itemParcelId = ulFirstRow.children[0].children[1].innerHTML
+    var superusername = await document.querySelector('#username').innerHTML
+    var rank3 = await item.parentElement.parentElement.children[1].children[0].children[1].value
+    var obs3 = await item.parentElement.parentElement.children[1].children[1].children[1].value
+    var buyInput = await item.parentElement.parentElement.parentElement.children[2].children[0]
+    var buyOpt = false
+    if(buyInput.checked){
+        buyOpt = true
+    }else{
+        buyOpt = false
+    }
+    
+    infoString = `
+    {
+        "parcelid":"${itemParcelId}",
+        "userrank3":"${superusername}",
+        "rank3":"${rank3}",
+        "obs3":"${obs3}",
+        "buyopt":"${buyOpt}"
+    }
+    `
+    var rank3Json = JSON.parse(infoString)
+    await postJsonRank3(rank3Json)
+    ulFirstRow.parentElement.parentElement.innerHTML = ''
+        
+    alert("Rank inserido com sucesso!")
+}
+
+function accordion(item){
+    var hide = item.children[1]    
+    if (hide.style.display === "block") {
+        hide.style.display = "none";
+    }else{
+        hide.style.display = "block";
+    }
 }
 
 async function createItem(element){
@@ -162,15 +189,21 @@ async function createItem(element){
             <ul class="columns">
                 <li>RL3 USER</li>
                 <li>RL3 OBS</li>
+                <li>STATE</li>
+                <li>COUNTY</li>
+                <li>USER 1</li>
             </ul>
         </li>
         <li class="values">
             <ul class="columns">
                 <li>${element.userrank3}</li>
                 <li>${element.obs3}</li>
+                <li>${element.state}</li>
+                <li>${element.county}</li>
+                <li>${element.username}</li>
             </ul>
         </li>
-
+    
         <div class="ranks-container">
             <div class="addrankcontainer">
                 <div>
@@ -199,102 +232,17 @@ async function createItem(element){
                             <input type="text" name="obs3" id="obs3input">
                         </div>
                         <div><button class="sendrank3" onclick="editRank3(this.parentElement)">SEND</button></div>
-                <div>
+                    </div>
+                </div>
+                <div class="buyoption">
+                    <input type="checkbox" id="buy-input" name="buy-input" value="true">
+                    <label for="">Buy</label><br>
+                </div>
             </div>
         </div>
-
+    
     </ul><!--item-->
     `
     div.innerHTML = item
     itensContainer.append(div)
-}
-
-function accordion(item){
-    var hide = item.children[1]    
-    if (hide.style.display === "block"){
-        hide.style.display = "none";
-    }else{
-        hide.style.display = "block";
-    }
-}
-
-async function editRank2(item){
-    var ulFirstRow = item.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[0].children[1]
-    var itemParcelId = ulFirstRow.children[0].children[1].innerHTML
-    console.log(itemParcelId)
-    var superusername = await document.querySelector('#username').innerHTML
-    var rank2 = await item.parentElement.parentElement.children[1].children[0].children[1].value
-    console.log(rank2)
-    var obs2 = await item.parentElement.parentElement.children[1].children[1].children[1].value
-    
-
-    infoString = `
-    {
-        "parcelid":"${itemParcelId}",
-        "userrank2":"${superusername}",
-        "rank2":"${rank2}",
-        "obs2":"${obs2}"
-    }
-    `
-    var rank2Json = JSON.parse(infoString)
-    await postJsonRank2(rank2Json)
-    ulFirstRow.parentElement.parentElement.innerHTML = ''
-    
-    alert("Rank inserido com sucesso!")
-}
-
-async function editRank3(item){
-    var ulFirstRow = item.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[0].children[1]
-    var itemParcelId = ulFirstRow.children[0].children[1].innerHTML
-    console.log(itemParcelId)
-    var superusername = await document.querySelector('#username').innerHTML
-    var rank3 = await item.parentElement.parentElement.children[1].children[0].children[1].value
-    var obs3 = await item.parentElement.parentElement.children[1].children[1].children[1].value
-    
-
-    infoString = `
-    {
-        "parcelid":"${itemParcelId}",
-        "userrank3":"${superusername}",
-        "rank3":"${rank3}",
-        "obs3":"${obs3}"
-    }
-    `
-    var rank3Json = JSON.parse(infoString)
-    await postJsonRank3(rank3Json)
-    ulFirstRow.parentElement.parentElement.innerHTML = ''
-    
-    alert("Rank inserido com sucesso!")
-}
-
-async function postJsonRank2(json) {
-    try{
-    const options = {
-        method: 'POST',
-        headers:{
-            'Content-Type':'application/json'
-        },
-        body: JSON.stringify(json)
-    }
-    fetch('/editrank2', options)
-    }
-    catch(error){
-        console.log(error)
-    }
-}
-
-async function postJsonRank3(json) {
-    try{
-    const options = {
-        method: 'POST',
-        headers:{
-            'Content-Type':'application/json'
-        },
-        body: JSON.stringify(json)
-    }
-    fetch('/editrank3', options)
-    }
-    catch(error){
-        console.log(error)
-    }
 }

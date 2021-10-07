@@ -35,6 +35,12 @@ module.exports = app => {
         res.render('getallusers.ejs', {user : req.session.user})
     })
 
+    app.get('/getallusers', (req, res) => {
+        pgProgram.allUsers(res)
+        console.log(req.session.user, 'searched all users')
+    })
+
+
     app.get('/searchbyrank', isAuthManager, (req, res) => {
         res.render('searchbyrank.ejs', {user : req.session.user})
     })
@@ -164,11 +170,6 @@ module.exports = app => {
     app.post('/userlogs', (req, res) => {
         pgProgram.searchLogs(req.body.user, req, res)
         console.log(req.session.user, 'searched logs')
-    })
-
-    app.post('/allusers', (req, res) => {
-        pgProgram.allUsers(res)
-        console.log(req.session.user, 'searched all users')
     })
 
     app.post('/searchbyrank', async(req, res) => {
