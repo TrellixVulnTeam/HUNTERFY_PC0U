@@ -45,9 +45,7 @@ async function getJson(card){
                 "mapsimg":"${mapsimage}",
                 "mapslink":"${formatString(mapslink)}"
             }],
-            "streetview":[{
-                "streetviewimg":"${streetviewimage}"
-            }],
+            "streetviewimg":"${streetviewimage}",
             "marketvalue":"${formatString(marketvalue)}",
             "latitude":"${formatString(latitude)}",
             "longitude":"${formatString(longitude)}",
@@ -65,6 +63,7 @@ async function getJson(card){
         }`
         var cardJson = JSON.parse(cardString)
         var cardJson = JSON.stringify(cardJson)
+        console.log(cardJson)
         return cardJson
     }
     catch(err){

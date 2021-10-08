@@ -98,9 +98,11 @@ body{
 
 .username{
     margin-top: 10vh;
+    font-size: 5vh;
+    margin-bottom: 3vh;
 }
 
-.columns{
+/*.columns{
     display: flex;
     width: 100%;
     height: 4vh;
@@ -114,11 +116,6 @@ body{
 .title{
     font-weight: 700;
     margin-bottom: 0.5vh;
-}
-
-.username{
-    font-size: 5vh;
-    margin-bottom: 3vh;
 }
 
 .item{
@@ -135,7 +132,198 @@ body{
 
 .values{
     margin-bottom: 1.5vh;
+}*/
+
+/*new manager item*/
+.manager-item{
+    width: 81vw;
+    background-color: #64635e;
+    padding: 2vh;
+    border-radius: 3px;
+    margin-bottom: 2vh;
+    transition: 1s;
 }
+
+.title{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title h1{
+    font-size: 3vh;
+    font-weight: 700;
+}
+
+.title h2{
+    font-size: 3vh;
+    font-weight: 600;
+}
+
+.images-row{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2vh;
+    height: 18vh;
+}
+
+.images-row div{
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: baseline;
+}
+
+.images-row .image-row{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.image-row h2{
+    font-size: 3vh;
+    font-weight: 500;
+    color: rgb(202, 202, 202);
+}
+
+.item-columns{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2vh;
+}
+
+.accordion{
+    height: 40vh;
+    border-radius: 4px;
+}
+
+.accordion:hover{
+    cursor: pointer;
+    background-color: #74726c;
+    transition: 0.5s;
+}
+
+.hide{
+    display: none;
+}
+
+.column div{
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: baseline;
+}
+
+.column div h2{
+    font-size: 3vh;
+    font-weight: 500;
+    color: rgb(202, 202, 202);
+}
+
+.column h3{
+    height: 10vh;
+    width: 18vw;
+    word-wrap:break-word;
+}
+
+.rank1 h1{
+    font-size: 3vh;
+    color: rgb(202, 202, 202);
+    font-weight: 600;
+}
+
+.rank1 h2{
+    font-size: 2vh;
+    font-weight: 500;
+    color: rgb(202, 202, 202);
+}
+
+.rank1 div h3{
+    font-size: 2vh;
+    font-weight: 300;
+    height: 6vh;
+    width: 18vw;
+    word-wrap:break-word;
+}
+
+.rank h1{
+    font-size: 3vh;
+    color: rgb(202, 202, 202);
+    font-weight: 600;
+}
+
+.image-row img{
+    max-width: 100%;
+    max-height: 80%;
+    border-radius: 3px;
+}
+
+.image-row img:hover{
+    transform: scale(4);
+    transition: 1s;
+    z-index: 1000;
+}
+
+.item-menu{
+    margin-top: 3vh;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.item-menu div{
+    width: 20vw;
+    border-radius: 3px;
+}
+
+.rank div{
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.rank input[type=text]{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px white solid;
+    color: white;
+}
+
+.rank .rank-button{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    margin-top: 1vh;
+}
+
+.rank .rank-button div{
+    width: 40%;
+}
+
+.rank-button button{
+    border: none;
+    background-color:#a14418;
+}
+
+.rank-button button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
+.rank div h2{
+    width: 7vw;
+}
+
+.rank .buyopt{
+    display: flex;
+    justify-content: flex-start;
+}
+/*new manager item*/
 
 form{
     margin-top: 3vh;
@@ -205,7 +393,7 @@ body::-webkit-scrollbar-track {
     transition: 0.5s;
 }
 
-.columns input{
+/*.columns input{
     border: none;
     border-bottom: 2px white solid;
     background-color: transparent;
@@ -216,7 +404,7 @@ body::-webkit-scrollbar-track {
   
 .values li{
     font-size: 2vh;
-}
+}*/
 
 .register-program{
     width: 100%;
@@ -283,7 +471,7 @@ body::-webkit-scrollbar-track {
     justify-content: space-between;
 }
 
-.manager-item{
+.manager-nav{
     width: 10vw;
     height: 10vw;
     border: white solid 2px;
@@ -295,34 +483,26 @@ body::-webkit-scrollbar-track {
     margin-bottom: 6vh;
 }
 
-.manager-item:hover{
+.manager-nav:hover{
     transform: scale(1.1);
     transition: 0.5s;
 }
 
-.manager-item button{
+.manager-nav button{
     font-size: 5vw;
     background-color: transparent;
     border: none;
 }
 
-.manager-item button:hover{
+.manager-nav button:hover{
     cursor: pointer;
     width: 100%;
     height: 100%;
 }
-
+/*
 .inv{
     border: none;
 }
-
-.accordion{
-    width: 100%;
-    background-color: transparent;
-    border: none;
-    height: 25vh;
-}
-
 #firstcolumn{
     height: 20vh;
 }
@@ -347,6 +527,14 @@ body::-webkit-scrollbar-track {
 
 .content .values .columns{
     height: 10vh;
+} 
+*/
+
+.accordion{
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    height: 25vh;
 }
 
 #superusername{

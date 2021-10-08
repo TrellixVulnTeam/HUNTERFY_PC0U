@@ -83,6 +83,7 @@ async function editRank3(item){
 }
 
 function accordion(item){
+    console.log(item)
     var hide = item.children[1]    
     if (hide.style.display === "block") {
         hide.style.display = "none";
@@ -95,153 +96,77 @@ async function createItem(element){
     var itensContainer = document.querySelector('.itens-container')
     var div = document.createElement('div')
     var item = `
-    <!--item-->
-    <ul class="item">
-        <!--campo1-->
-        <button class="accordion" onclick="accordion(this.parentElement)">
-        <li class="title">
-            <ul class="columns">
-                <li>date</li>
-                <li>PARCELID</li>
-                <li>GIS IMAGE</li>
-                <li>FLOODZONE IMAGE</li>
-                <li>MAPS IMAGE</li>
-                <li>STREETVIEW</li>
-            </ul>
-        </li>
-        <li class="values">
-            <ul class="columns" id="firstcolumn">
-                <li>${element.dateandtime}</li>
-                <li>${element.parcelid}</li>
-                <li><img src="${element.gisimg}"></li>
-                <li><img src="${element.floodzoneimg}"></li>
-                <li><img src="${element.mapsimg}"></li>
-                <li><img src="${element.streetviewimg}"></li>
-            </ul>
-        </li>
-        </button>
-        <div class="content" style="display: none;">
-            <!--campo2-->
-            <li class="title">
-                <ul class="columns">
-                    <li>FLOODZONE</li>
-                    <li>MAPS LINK</li>
-                    <li>TAX OWNED</li>
-                    <li>LAND VALUE</li>
-                    <li>ACRES</li>
-                    <li>ADRESS</li>
-                </ul>
-            </li>
-            <li class="values">
-                <ul class="columns">
-                    <li>${element.floodzonetext}</li>
-                    <li>${element.mapslink}</li>
-                    <li>${element.taxowned}</li>
-                    <li>${element.marketvalue}</li>
-                    <li>${element.acres}</li>
-                    <li>${element.adress}</li>
-                </ul>
-            </li>
-            <!--campo3-->
-            <li class="title">
-                <ul class="columns">
-                    <li>LATITUDE</li>
-                    <li>LONGITUDE</li>
-                    <li>N1 ADRESS</li>
-                    <li>N2 ADRESS</li>
-                    <li>N3 ADRESS</li>
-                    <li>N4 ADRESS</li>
-                </ul>
-            </li>
-            <li class="values">
-                <ul class="columns">
-                    <li>${element.latitude}</li>
-                    <li>${element.longitude}</li>
-                    <li>${element.n1adress}</li>
-                    <li>${element.n2adress}</li>
-                    <li>${element.n3adress}</li>
-                    <li>${element.n4adress}</li>
-                </ul>
-            </li>
-            <!--campo4-->
-            <li class="title">
-                <ul class="columns">
-                    <li>RANK LEVEL1</li>
-                    <li>OBS (LV1)</li>
-                    <li>RANK LEVEL 2</li>
-                    <li>RL2 USER</li>
-                    <li>RL2 OBS</li>
-                    <li>RANK LEVEL3</li>
-                    
-                </ul>
-            </li>
-            <li class="values">
-                <ul class="columns">
-                    <li>${element.rank1}</li>
-                    <li>${element.obs1}</li>
-                    <li>${element.rank2}</li>
-                    <li>${element.userrank2}</li>
-                    <li>${element.obs2}</li>
-                    <li>${element.rank3}</li>
-                </ul>
-            </li>
-            <li class="title">
-            <ul class="columns">
-                <li>RL3 USER</li>
-                <li>RL3 OBS</li>
-                <li>STATE</li>
-                <li>COUNTY</li>
-                <li>USER 1</li>
-            </ul>
-        </li>
-        <li class="values">
-            <ul class="columns">
-                <li>${element.userrank3}</li>
-                <li>${element.obs3}</li>
-                <li>${element.state}</li>
-                <li>${element.county}</li>
-                <li>${element.username}</li>
-            </ul>
-        </li>
-    
-        <div class="ranks-container">
-            <div class="addrankcontainer">
-                <div>
-                    <button class="addrank2" onclick="accordion(this.parentElement)">ADD RANK 2</button>
-                    <div class="rank2data" style="display: none;">
-                        <div>
-                            <label for="rank2">Rank 2</label>
-                            <input type="text" name="rank2" id="rank2input">
-                        </div>
-                        <div>
-                            <label for="obs2">OBS 2</label>
-                            <input type="text" name="obs2" id="obs2input">
-                        </div>
-                        <div><button class="sendrank2" onclick="editRank2(this.parentElement)">SEND</button></div>
+    <div class="manager-item"><!--item-->  
+                <div class="accordion" onclick="accordion(this.parentElement)">
+                    <div class="title"><h1>Parcel ID:&nbsp;</h1><h2>${element.parcelid}</h2></div>
+                    <div class="images-row">
+                        <div class="image-row"><h2>GIS image:</h2><img src="${element.gisimg}" alt=""></div>
+                        <div class="image-row"><h2>Google image:</h2><img src="${element.mapsimg}" alt=""></div>
+                        <div class="image-row"><h2>Street View:&nbsp;</h2><img src="${element.streetviewimg}" alt=""></div>
+                        <div class="image-row"><h2>Floodzone image:</h2><img src="${element.floodzoneimg}" alt=""></div>
                     </div>
                 </div>
-                <div>
-                    <button class="addrank3" onclick="accordion(this.parentElement)">ADD RANK 3</button>
-                    <div class="rank3data" style="display: none;">
-                        <div>
-                            <label for="rank3">Rank 3</label>
-                            <input type="text" name="rank3" id="rank3input">
+                <div class="hide">
+                    <div class="item-columns">   
+                        <div class="column">
+                            <div><h2>GIS link:&nbsp;</h2><h3 class="value">${element.gislink}</h3></div>
+                            <div><h2>Tax Value:&nbsp;</h2><h3 class="value">${element.marketvalue}</h3></div>
+                            <div><h2>Property value:&nbsp;</h2><h3 class="value"></h3></div>
+                            <div><h2>State:&nbsp;</h2><h3 class="value">${element.state}</h3></div>
+                            <div><h2>County:&nbsp;</h2><h3 class="value">${element.county}</h3></div>
+                        </div>
+                        <div class="column">
+                            <div><h2>Maps link:&nbsp;</h2><h3 class="value">${element.mapslink}</h3></div>
+                            <div><h2>Adress:&nbsp;</h2><h3 class="value">${element.adress}</h3></div>
+                            <div><h2>Latitude:&nbsp;</h2><h3 class="value">${element.latitude}</h3></div>
+                            <div><h2>Longitude:&nbsp;</h2><h3 class="value">${element.longitude}</h3></div>
+                            <div><h2>Acres:&nbsp;</h2><h3 class="value">${element.acres}</h3></div>
+                        </div>
+                        <div class="column">
+                            <div><h2>N1 adress:&nbsp;</h2><h3 class="value">${element.n1adress}</h3></div>
+                            <div><h2>N2 adress:&nbsp;</h2><h3 class="value">${element.n2adress}</h3></div>
+                            <div><h2>N3 adress:&nbsp;</h2><h3 class="value">${element.n3adress}</h3></div>
+                            <div><h2>N4 adress:&nbsp;</h2><h3 class="value">${element.n4adress}</h3></div>
+                        </div>
+                        <div class="column">
+                            <div><h2>Floodzone link:&nbsp;</h2><h3 class="value"></h3></div>
+                            <div><h2>Floodzone status:&nbsp;</h2><h3 class="value">${element.floodzonetext}</h3></div>
+                            <div><h2>Actual image:&nbsp;</h2><h3 class="value"></h3></div>
+                            <div><h2>Zestimate:&nbsp;</h2><h3 class="value"></h3></div>
+                            <div><h2>Zillow Link:&nbsp;</h2><h3 class="value"></h3></div>
+                        </div>
+                    </div>
+                    <div class="item-menu">
+                        <div class="rank1">
+                            <h1>Rank 1</h1>
+                            <div><h2>User:</h2><h3>${element.username}</h3></div>
+                            <div><h2>Rank:</h2><h3>${element.rank1}</h3></div>
+                            <div><h2>Obs:</h2><h3>${element.obs1}</h3></div>
+                            <div><h2>Date/Time:</h2><h3>${element.dateandtime}</h3></div>
+                            
+                        </div>
+                        <div class="rank">
+                            <h1>Rank 2</h1>
+                            <div><h2>User:</h2><h3></h3></div>
+                            <div><label for="">Rank:</label><input type="text"></div>
+                            <div><label for="">Obs:</label><input type="text"></div>
+                            <div class="rank-button"><button>Send rank</button></div>
+                        </div>
+                        <div class="rank">
+                            <h1>Rank 3</h1>
+                            <div><h2>User:</h2><h3></h3></div>
+                            <div><label for="">Rank:</label><input type="text"></div>
+                            <div><label for="">Obs:</label><input type="text"></div>
+                            <div class="buyopt"><h2>BUY?</h2><input type="checkbox"><label>yes/</label><input type="checkbox"><label>no</label></div>
+                            <div class="rank-button"><button>Send rank</button></div>
                         </div>
                         <div>
-                            <label for="obs3">OBS 3</label>
-                            <input type="text" name="obs3" id="obs3input">
+                            <h2>&nbsp;</h2>
+                            
                         </div>
-                        <div><button class="sendrank3" onclick="editRank3(this.parentElement)">SEND</button></div>
                     </div>
                 </div>
-                <div class="buyoption">
-                    <input type="checkbox" id="buy-input" name="buy-input" value="true">
-                    <label for="">Buy</label><br>
-                </div>
-            </div>
-        </div>
-    
-    </ul><!--item-->
+            </div><!--item-->
     `
     div.innerHTML = item
     itensContainer.append(div)

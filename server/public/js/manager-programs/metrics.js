@@ -111,7 +111,6 @@ export async function readDataRank2(content){//separa os parcels por rank pelo r
             }   
         }
         const infoArr = [rankACount, rankBCount, rankCCount, rankUndefinedCount, rankBcasaCount]
-        console.log(infoArr)
         return infoArr
     }
     catch(error){
