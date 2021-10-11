@@ -3,7 +3,7 @@ var areaCards = document.querySelector(".area-cards")
 var rootEditArea = document.querySelector(".root-edit")
 
 searchButton.addEventListener("click", async()=>{
-    console.log('searched')
+    //console.log('searched')
     var result = await postSearchParcel(parcelToJson())
     console.log(result)
     renderResult(result)
@@ -48,7 +48,7 @@ function renderResult(element){
 
 function parcelToJson(){
     var parcel = document.querySelector('#searchinputapp').value
-    console.log(parcel)
+    //console.log(parcel)
     var parcelStr = `{"parcelid":"${formatStringPlus(parcel)}"}`
     const parcelJson = JSON.parse(parcelStr)
     

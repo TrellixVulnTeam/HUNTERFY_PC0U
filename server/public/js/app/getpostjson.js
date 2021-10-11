@@ -29,7 +29,7 @@ async function getJson(card){
         var county = document.querySelector('#counties').value
         var username = document.querySelector('#username').innerHTML
 
-        console.log(state)
+        //console.log(state)
         //var usertype = document.querySelector('input[name="usertype"]:checked').value
         //"usertype":"${usertype}"
         var cardString = `{
@@ -68,7 +68,7 @@ async function getJson(card){
         }`
         var cardJson = JSON.parse(cardString)
         var cardJson = JSON.stringify(cardJson)
-        console.log(cardJson)
+        //console.log(cardJson)
         return cardJson
     }
     catch(err){

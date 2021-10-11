@@ -27,7 +27,7 @@ async function postState(json){
         }
         const rawResponse = await fetch('/getUsCounties', options)
         const responseJson = await rawResponse.json();
-        console.log(responseJson)
+        //console.log(responseJson)
         for (var i = 0; i < responseJson.data.length; i++) {
             var countyIndex = responseJson.data[i]
             newOption(countyIndex.name, countyIndex.name, 'counties')
