@@ -14,7 +14,7 @@ module.exports = app => {
         res.render('index.ejs')
     })
 
-    app.get('/app',async(req, res) => {
+    app.get('/app', isAuth, async(req, res) => {
         res.render('app.ejs', {user : req.session.user})
     })
 
@@ -86,11 +86,11 @@ module.exports = app => {
         }
     })
 
-    app.get('/metrics', (req, res)=>{
+    app.get('/metrics', isAuthManager,(req, res)=>{
         res.render('metrics.ejs', {user : req.session.user})
     })
 
-    app.get('/getchecked', async(req, res)=>{
+    app.get('/getchecked', isAuthManager, async(req, res)=>{
         res.render('getchecked.ejs', {user : req.session.user})
     })
 
