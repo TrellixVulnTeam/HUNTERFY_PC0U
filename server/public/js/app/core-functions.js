@@ -38,9 +38,13 @@ async function postState(json){
     }
 }
 
-function stateQueryValue(value){
-    const state = document.getElementById('states').value
-    const stateStr = `{"stateNumber":"${state}"}`
+function stateQueryValue(){
+    const stateNum = document.getElementById('states').value
+    const stateStr = `
+    {
+        "stateNumber":"${stateNum}"
+    }
+    `
     const stateJson = JSON.parse(stateStr)
     return stateJson
 }
@@ -52,7 +56,6 @@ function newOption(item, itemnumber, inputid){
     opt.value = itemnumber
     input.append(opt)
 }
-
 
 async function attContador(){
     var contador = document.querySelector(".contador")

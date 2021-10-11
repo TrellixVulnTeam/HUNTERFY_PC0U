@@ -17,15 +17,19 @@ async function getJson(card){
         var adressn4 = cardInfo.children[17].children[1].innerHTML
         var rank = cardInfo.children[18].children[1].innerHTML
         var obs = cardInfo.children[19].children[1].innerHTML
+        var floodzonelink = cardInfo.children[20].children[1].innerHTML
         //--array name     --input inside info              --label            --class             --cache id
         var sateliteimage = cardInfo.children[1].children[1].src
         var floodzoneimage = cardInfo.children[3].children[1].src
         var mapsimage = cardInfo.children[5].children[1].src
         var streetviewimage = cardInfo.children[7].children[1].src
 
-        var state = document.querySelector('#states').value
+        var state = document.querySelector('#states')
+        var state = state.options[state.selectedIndex].innerHTML
         var county = document.querySelector('#counties').value
         var username = document.querySelector('#username').innerHTML
+
+        console.log(state)
         //var usertype = document.querySelector('input[name="usertype"]:checked').value
         //"usertype":"${usertype}"
         var cardString = `{
@@ -39,7 +43,8 @@ async function getJson(card){
             }],
             "floodzone":[{
                 "floodzoneimg":"${floodzoneimage}",
-                "floodzonetext":"${formatString(floodzonetext)}"
+                "floodzonetext":"${formatString(floodzonetext)}",
+                "floodzonelink":"${formatString(floodzonelink)}"
             }],
             "maps":[{
                 "mapsimg":"${mapsimage}",

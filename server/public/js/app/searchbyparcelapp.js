@@ -39,6 +39,7 @@ function renderResult(element){
             <div class="info-card info-text"><h2>ADRESS NEIGHBOOR 4:</h2> <h2>${element.n4adress}</h2></div>
             <div class="info-card info-text"><h2>RANK:</h2> <h2>${element.rank1}</h2></div>
             <div class="info-card info-text"><h2>OBS:</h2> <h2>${element.obs1}</h2></div>
+            <div class="info-card info-text"><h2>FLOODZONE LINK:</h2> <h2>${element.floodzonelink}</h2></div>
         </div>
     </div>  
     `

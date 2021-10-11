@@ -128,7 +128,7 @@ async function createItem(element){
                             <div><h2>Buy Status:&nbsp;</h2><h3 class="value">${element.buyopt}</h3></div>
                         </div>
                         <div class="column">
-                            <div><h2>Floodzone link:&nbsp;</h2><h3 class="value"></h3></div>
+                            <div><h2>Floodzone link:&nbsp;</h2><h3 class="value">${element.floodzonelink}</h3></div>
                             <div><h2>Floodzone status:&nbsp;</h2><h3 class="value">${element.floodzonetext}</h3></div>
                             <div><h2>Actual image:&nbsp;</h2><h3 class="value"></h3></div>
                             <div><h2>Zestimate:&nbsp;</h2><h3 class="value"></h3></div>

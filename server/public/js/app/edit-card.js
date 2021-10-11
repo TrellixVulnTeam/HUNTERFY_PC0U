@@ -18,6 +18,7 @@ function editarCard(card){
     var adressn4 = [cardInfo.children[17].children[1],`<label>ADRESS NEIGHBOOR 4:</label><input name="end4" type="text">`, `end4`, `NEIGHBOOR 4 ADRESS:`]
     var rank = [cardInfo.children[18].children[1], `<label>RANK:</label><input name="rank" type="text">`, `rank`, 'RANK:']
     var obs = [cardInfo.children[19].children[1], `<label>OBS:</label><input name="obs" type="text">`, `obs`, `OBS:`]
+    var floodzonelink = [cardInfo.children[20].children[1], `<label>FLOODZONE LINK:</label><input name="floodzonelink" type="text">`, `floodzonelink`, `FLOODZONE LINK:`]
      //--array name     --input inside info              --label            --class             --cache id
     var sateliteimage = [cardInfo.children[1].children[1], `SATELITE IMAGE`, 'imagem-satelite', 'cachesateliteimg']
     var floodzoneimage = [cardInfo.children[3].children[1], `FLOODZONE IMAGE`, 'imagem-floodzone', 'cachefloodzoneimg']
@@ -49,13 +50,15 @@ function editarCard(card){
             <div class="campo3">
                 <div>${checkValueText(acres)}</div>
                 <div>${checkValueText(adress)}</div>
+                <div>${checkValueText(floodzonelink)}</div>
                 <div>${checkValueText(adressn1)}</div>
                 <div>${checkValueText(adressn2)}</div>
                 <div>${checkValueText(adressn3)}</div>
-                <div>${checkValueText(adressn4)}</div>
+                
             </div>
         
             <div class="campo4">
+                <div>${checkValueText(adressn4)}</div>
                 <div>${checkValueText(rank)}</div>
                 <div>${checkValueText(obs)}</div>
                 <div><button class="save-edit">SALVAR</button></div>

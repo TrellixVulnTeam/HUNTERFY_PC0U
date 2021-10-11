@@ -38,13 +38,14 @@ function criarPaginaEdit(){
                 <div class="campo3">
                     <div><label>ACRES:</label><input name="acres" type="text"></div>
                     <div><label>ADRESS:</label><input name="end" type="text"></div>
+                    <div><label>FLOODZONE LINK:</label><input name="floodzonelink" type="text"></div>
                     <div><label>ADRESS NEIGHBOOR 1:</label><input name="end1" type="text"></div>
                     <div><label>ADRESS NEIGHBOOR 2:</label><input name="end2" type="text"></div>
                     <div><label>ADRESS NEIGHBOOR 3:</label><input name="end3" type="text"></div>
-                    <div><label>ADRESS NEIGHBOOR 4:</label><input name="end4" type="text"></div>
                 </div>
             
                 <div class="campo4">
+                    <div><label>ADRESS NEIGHBOOR 4:</label><input name="end4" type="text"></div>
                     <div><label>RANK:</label><input name="rank" type="text"></div>
                     <div><label>OBS:</label><input name="obs" type="text"></div>
                     <div><button class="save-button">SALVAR</button></div>
@@ -92,6 +93,7 @@ function criarCard(){
             <div class="info-card info-text"><h2>ADRESS NEIGHBOOR 4:</h2> <h2>${formatString(checkValue(form.end4.value))}</h2></div>
             <div class="info-card info-text"><h2>RANK:</h2> <h2>${formatString(checkValue(form.rank.value))}</h2></div>
             <div class="info-card info-text"><h2>OBS:</h2> <h2>${formatString(checkValue(form.obs.value))}</h2></div>
+            <div class="info-card info-text"><h2>FLOODZONE LINK:</h2> <h2>${formatString(checkValue(form.floodzonelink.value))}</h2></div>
         </div>
              
     </div>  
