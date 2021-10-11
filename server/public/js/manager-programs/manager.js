@@ -31,53 +31,51 @@ async function postJsonRank3(json){
 }
 
 async function editRank2(item){
-    var ulFirstRow = item.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[0].children[1]
-    var itemParcelId = ulFirstRow.children[0].children[1].innerHTML
-    var superusername = await document.querySelector('#username').innerHTML
-    var rank2 = await item.parentElement.parentElement.children[1].children[0].children[1].value
-    var obs2 = await item.parentElement.parentElement.children[1].children[1].children[1].value
+    const superusername = await document.querySelector('#username').innerHTML
+    const thisCard = item.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement
+    const parcel = thisCard.children[0].children[0].children[0].children[1].innerHTML
+    const rank2Area = thisCard.children[0].children[1].children[1].children[1]
+    const rank2Value = rank2Area.children[2].children[1].value
+    const rank2Obs = rank2Area.children[3].children[1].value
         
     infoString = `
     {
-        "parcelid":"${itemParcelId}",
+        "parcelid":"${parcel}",
         "userrank2":"${superusername}",
-        "rank2":"${rank2}",
-        "obs2":"${obs2}"
+        "rank2":"${rank2Value}",
+        "obs2":"${rank2Obs}"
     }
     `
     var rank2Json = JSON.parse(infoString)
+    console.log(rank2Json)
     await postJsonRank2(rank2Json)
-    ulFirstRow.parentElement.parentElement.innerHTML = ''
+    thisCard.innerHTML = ''
         
     alert("Rank inserido com sucesso!")
 }
     
 async function editRank3(item){
-    var ulFirstRow = item.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[0].children[1]
-    var itemParcelId = ulFirstRow.children[0].children[1].innerHTML
-    var superusername = await document.querySelector('#username').innerHTML
-    var rank3 = await item.parentElement.parentElement.children[1].children[0].children[1].value
-    var obs3 = await item.parentElement.parentElement.children[1].children[1].children[1].value
-    var buyInput = await item.parentElement.parentElement.parentElement.children[2].children[0]
-    var buyOpt = false
-    if(buyInput.checked){
-        buyOpt = true
-    }else{
-        buyOpt = false
-    }
-    
+    const superusername = await document.querySelector('#username').innerHTML
+    const thisCard = item.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement
+    const parcel = thisCard.children[0].children[0].children[0].children[1].innerHTML
+    const rank3Area = thisCard.children[0].children[1].children[1].children[2]
+    const rank3Value = rank3Area.children[2].children[1].value
+    const rank3Obs = rank3Area.children[3].children[1].value
+    var buyOpt = document.querySelector('input[name="buyopt"]:checked').value
+     
     infoString = `
     {
-        "parcelid":"${itemParcelId}",
+        "parcelid":"${parcel}",
         "userrank3":"${superusername}",
-        "rank3":"${rank3}",
-        "obs3":"${obs3}",
+        "rank3":"${rank3Value}",
+        "obs3":"${rank3Obs}",
         "buyopt":"${buyOpt}"
     }
     `
     var rank3Json = JSON.parse(infoString)
+    console.log(rank3Json)
     await postJsonRank3(rank3Json)
-    ulFirstRow.parentElement.parentElement.innerHTML = ''
+    thisCard.innerHTML = ''
         
     alert("Rank inserido com sucesso!")
 }
@@ -127,6 +125,7 @@ async function createItem(element){
                             <div><h2>N2 adress:&nbsp;</h2><h3 class="value">${element.n2adress}</h3></div>
                             <div><h2>N3 adress:&nbsp;</h2><h3 class="value">${element.n3adress}</h3></div>
                             <div><h2>N4 adress:&nbsp;</h2><h3 class="value">${element.n4adress}</h3></div>
+                            <div><h2>Buy Status:&nbsp;</h2><h3 class="value">${element.buyopt}</h3></div>
                         </div>
                         <div class="column">
                             <div><h2>Floodzone link:&nbsp;</h2><h3 class="value"></h3></div>
@@ -147,18 +146,19 @@ async function createItem(element){
                         </div>
                         <div class="rank">
                             <h1>Rank 2</h1>
-                            <div><h2>User:</h2><h3></h3></div>
-                            <div><label for="">Rank:</label><input type="text"></div>
-                            <div><label for="">Obs:</label><input type="text"></div>
-                            <div class="rank-button"><button>Send rank</button></div>
+                            <div><h2>User:</h2><h3>${element.userrank2}</h3></div>
+                            <div><label for="">Rank:</label><input type="text" value="${element.rank2}"></div>
+                            <div><label for="">Obs:</label><input type="text" value="${element.obs2}"></div>
+                            <div>&nbsp;</div>
+                            <div class="rank-button"><button onclick="editRank2(this)">Send rank</button></div>
                         </div>
                         <div class="rank">
                             <h1>Rank 3</h1>
-                            <div><h2>User:</h2><h3></h3></div>
-                            <div><label for="">Rank:</label><input type="text"></div>
-                            <div><label for="">Obs:</label><input type="text"></div>
-                            <div class="buyopt"><h2>BUY?</h2><input type="checkbox"><label>yes/</label><input type="checkbox"><label>no</label></div>
-                            <div class="rank-button"><button>Send rank</button></div>
+                            <div><h2>User:</h2><h3>${element.userrank3}</h3></div>
+                            <div><label for="">Rank:</label><input type="text" value="${element.rank3}"></div>
+                            <div><label for="">Obs:</label><input type="text" value="${element.obs3}"></div>
+                            <div class="buyopt"><h2>BUY?</h2><input type="radio" name="buyopt" value="yes"><label>yes/</label><input type="radio" name="buyopt" value="no"><label>no/</label><input type="radio" name="buyopt" value="undefined"><label>undefined</label></div>
+                            <div class="rank-button"><button onclick="editRank3(this)">Send rank</button></div>
                         </div>
                         <div>
                             <h2>&nbsp;</h2>

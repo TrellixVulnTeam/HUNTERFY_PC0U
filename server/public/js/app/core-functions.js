@@ -1,3 +1,59 @@
+document.getElementById('states').addEventListener('click', async ()=>{
+    const states = await fetch('/getUsStates')
+    const statesJson = await states.json()
+    //console.log(statesJson)
+    for (var i = 0; i < statesJson.features.length; i++) {
+        var statesIndex = statesJson.features[i]
+        var stateName = statesIndex.properties.NAME
+        var stateNumber = statesIndex.properties.STATE
+        newOption(stateName, stateNumber, 'states')
+    }
+})
+
+document.getElementById('states').addEventListener('change', async()=>{
+    document.getElementById('counties').innerHTML = ''
+    var selected = stateQueryValue()
+    postState(selected)
+})
+
+async function postState(json){
+    try{
+        const options = {
+            method: 'POST',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(json)
+        }
+        const rawResponse = await fetch('/getUsCounties', options)
+        const responseJson = await rawResponse.json();
+        console.log(responseJson)
+        for (var i = 0; i < responseJson.data.length; i++) {
+            var countyIndex = responseJson.data[i]
+            newOption(countyIndex.name, countyIndex.name, 'counties')
+        }
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
+function stateQueryValue(value){
+    const state = document.getElementById('states').value
+    const stateStr = `{"stateNumber":"${state}"}`
+    const stateJson = JSON.parse(stateStr)
+    return stateJson
+}
+
+function newOption(item, itemnumber, inputid){
+    const input = document.getElementById(`${inputid}`)
+    var opt = document.createElement('option')
+    opt.innerHTML = item
+    opt.value = itemnumber
+    input.append(opt)
+}
+
+
 async function attContador(){
     var contador = document.querySelector(".contador")
     //var contagem = document.querySelectorAll('.card')
@@ -155,7 +211,6 @@ function formatStringPlus(str){
     var string = formatString(str);
     var string = string.replace(/ /g, '')
     return string
-
 }
 
 

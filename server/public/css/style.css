@@ -7,7 +7,7 @@ body{
     height: 97vh;
 }
 
-main, button, h2, h3, h4, label, li{
+main, button, h2, h3, h4, label, li, option, input{
     font-family: 'Montserrat', sans-serif;
 }
 /*general*/
@@ -238,6 +238,13 @@ header div{
     border: none;
     border-bottom: black 1px solid;
     width: 70%;
+}
+
+.janela-info select{
+    margin-top: 0.5vh;
+    width: 70%;
+    border: none;
+    border-radius: 3px;
 }
 
 .janela-logs{

@@ -3,6 +3,9 @@ const { searchTable, insertNewUser, getUsers, selectUser, editRank2, addOnDataba
 const isAuth = require('../models/is-auth')
 const isAuthManager = require('../models/is-auth-manager')
 const isAuthPost = require('../models/is-auth-post')
+const usStates = require('../database/geojson/us_states.json')
+const usCounties = require('../database/geojson/us_counties.json')
+const { json } = require('body-parser')
 pgProgram = require('../models/pgfunctions')
 
 module.exports = app => {
@@ -11,7 +14,7 @@ module.exports = app => {
         res.render('index.ejs')
     })
 
-    app.get('/app', isAuth,async(req, res) => {
+    app.get('/app',async(req, res) => {
         res.render('app.ejs', {user : req.session.user})
     })
 
@@ -89,6 +92,10 @@ module.exports = app => {
 
     app.get('/getchecked', async(req, res)=>{
         res.render('getchecked.ejs', {user : req.session.user})
+    })
+
+    app.get('/getUsStates', async(req, res)=>{
+        res.send(usStates)
     })
 
     //POSTS----------------------->
@@ -253,6 +260,21 @@ module.exports = app => {
         catch(err){
             console.log(err)
         }
+    })
+
+    app.post('/getUsCounties', async(req, res)=>{
+        var arr = []
+        for (var i = 0; i < usCounties.features.length; i++) {
+            var countiesIndex = usCounties.features[i]
+            var stateNumber = countiesIndex.properties.STATE
+            var countyName =  countiesIndex.properties.NAME
+            
+            if(stateNumber == req.body.stateNumber){
+                arr.push(`{"name":"${countyName}"}`)
+            }
+        }
+        const jsonStr = `{"data":[${arr}]}`
+        res.send(jsonStr)
     })
 }
 //

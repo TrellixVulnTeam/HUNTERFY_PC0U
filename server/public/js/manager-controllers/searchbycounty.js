@@ -43,7 +43,7 @@ async function postCounty(json) {
         console.log(content)
         for (var i = 0; i < content.length; i++) {
             var contentIndex = content[i]
-            managerProgram.createItem(contentIndex)
+            createItem(contentIndex)
             var contagem = document.querySelector('.production-count')
             contagem.innerHTML = `Total: ${i+1}`
         }

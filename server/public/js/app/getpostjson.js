@@ -23,8 +23,8 @@ async function getJson(card){
         var mapsimage = cardInfo.children[5].children[1].src
         var streetviewimage = cardInfo.children[7].children[1].src
 
-        var state = document.querySelector('#state').value
-        var county = document.querySelector('#county').value
+        var state = document.querySelector('#states').value
+        var county = document.querySelector('#counties').value
         var username = document.querySelector('#username').innerHTML
         //var usertype = document.querySelector('input[name="usertype"]:checked').value
         //"usertype":"${usertype}"
@@ -102,7 +102,6 @@ async function postJson(card) {
     catch(error){
         console.log(error)
         console.log('FETCH ERROR, CHECK CONNECTION!')
-        console.log('sla')
     }
 }
 
