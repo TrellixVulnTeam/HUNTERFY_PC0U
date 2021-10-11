@@ -102,6 +102,7 @@ async function postJson(card) {
     catch(error){
         console.log(error)
         console.log('FETCH ERROR, CHECK CONNECTION!')
+        console.log('sla')
     }
 }
 
