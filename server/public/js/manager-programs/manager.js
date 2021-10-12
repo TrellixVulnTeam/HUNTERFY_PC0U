@@ -98,39 +98,39 @@ async function createItem(element){
                 <div class="accordion" onclick="accordion(this.parentElement)">
                     <div class="title"><h1>Parcel ID:&nbsp;</h1><h2>${element.parcelid}</h2></div>
                     <div class="images-row">
-                        <div class="image-row"><h2>GIS image:</h2><img src="${element.gisimg}" alt=""></div>
-                        <div class="image-row"><h2>Google image:</h2><img src="${element.mapsimg}" alt=""></div>
+                        <div class="image-row"><h2>GIS Image:</h2><img src="${element.gisimg}" alt=""></div>
+                        <div class="image-row"><h2>Google Image:</h2><img src="${element.mapsimg}" alt=""></div>
                         <div class="image-row"><h2>Street View:&nbsp;</h2><img src="${element.streetviewimg}" alt=""></div>
-                        <div class="image-row"><h2>Floodzone image:</h2><img src="${element.floodzoneimg}" alt=""></div>
+                        <div class="image-row"><h2>Floodzone Image:</h2><img src="${element.floodzoneimg}" alt=""></div>
                     </div>
                 </div>
                 <div class="hide">
                     <div class="item-columns">   
-                        <div class="column">
-                            <div><h2>GIS link:&nbsp;</h2><h3 class="value">${element.gislink}</h3></div>
+                        <div class="column contrast">
+                            <div><h2>GIS Link:&nbsp;</h2><h3 class="value">${element.gislink}</h3></div>
                             <div><h2>Tax Value:&nbsp;</h2><h3 class="value">${element.marketvalue}</h3></div>
-                            <div><h2>Property value:&nbsp;</h2><h3 class="value"></h3></div>
+                            <div><h2>Property Value:&nbsp;</h2><h3 class="value"></h3></div>
                             <div><h2>State:&nbsp;</h2><h3 class="value">${element.state}</h3></div>
                             <div><h2>County:&nbsp;</h2><h3 class="value">${element.county}</h3></div>
                         </div>
                         <div class="column">
-                            <div><h2>Maps link:&nbsp;</h2><h3 class="value">${element.mapslink}</h3></div>
+                            <div><h2>Maps Link:&nbsp;</h2><h3 class="value">${element.mapslink}</h3></div>
                             <div><h2>Adress:&nbsp;</h2><h3 class="value">${element.adress}</h3></div>
                             <div><h2>Latitude:&nbsp;</h2><h3 class="value">${element.latitude}</h3></div>
                             <div><h2>Longitude:&nbsp;</h2><h3 class="value">${element.longitude}</h3></div>
                             <div><h2>Acres:&nbsp;</h2><h3 class="value">${element.acres}</h3></div>
                         </div>
-                        <div class="column">
-                            <div><h2>N1 adress:&nbsp;</h2><h3 class="value">${element.n1adress}</h3></div>
-                            <div><h2>N2 adress:&nbsp;</h2><h3 class="value">${element.n2adress}</h3></div>
-                            <div><h2>N3 adress:&nbsp;</h2><h3 class="value">${element.n3adress}</h3></div>
-                            <div><h2>N4 adress:&nbsp;</h2><h3 class="value">${element.n4adress}</h3></div>
+                        <div class="column contrast">
+                            <div><h2>N1 Adress:&nbsp;</h2><h3 class="value">${element.n1adress}</h3></div>
+                            <div><h2>N2 Adress:&nbsp;</h2><h3 class="value">${element.n2adress}</h3></div>
+                            <div><h2>N3 Adress:&nbsp;</h2><h3 class="value">${element.n3adress}</h3></div>
+                            <div><h2>N4 Adress:&nbsp;</h2><h3 class="value">${element.n4adress}</h3></div>
                             <div><h2>Buy Status:&nbsp;</h2><h3 class="value">${element.buyopt}</h3></div>
                         </div>
                         <div class="column">
-                            <div><h2>Floodzone link:&nbsp;</h2><h3 class="value">${element.floodzonelink}</h3></div>
-                            <div><h2>Floodzone status:&nbsp;</h2><h3 class="value">${element.floodzonetext}</h3></div>
-                            <div><h2>Actual image:&nbsp;</h2><h3 class="value"></h3></div>
+                            <div><h2>Floodzone Link:&nbsp;</h2><h3 class="value">${element.floodzonelink}</h3></div>
+                            <div><h2>Floodzone Status:&nbsp;</h2><h3 class="value">${element.floodzonetext}</h3></div>
+                            <div><h2>Actual Image:&nbsp;</h2><h3 class="value"></h3></div>
                             <div><h2>Zestimate:&nbsp;</h2><h3 class="value"></h3></div>
                             <div><h2>Zillow Link:&nbsp;</h2><h3 class="value"></h3></div>
                         </div>

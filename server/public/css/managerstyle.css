@@ -227,6 +227,7 @@ body{
     height: 10vh;
     width: 18vw;
     word-wrap:break-word;
+    color: rgb(29, 29, 29);
 }
 
 .rank1 h1{
@@ -239,6 +240,7 @@ body{
     font-size: 2vh;
     font-weight: 500;
     color: rgb(202, 202, 202);
+    
 }
 
 .rank1 div h3{
@@ -247,6 +249,11 @@ body{
     height: 6vh;
     width: 18vw;
     word-wrap:break-word;
+    color: rgb(29, 29, 29);
+}
+
+.rank div{
+    margin-top: 1vh;
 }
 
 .rank h1{
@@ -322,6 +329,13 @@ body{
 .rank .buyopt{
     display: flex;
     justify-content: flex-start;
+}
+
+.contrast{
+    background-color: #808080;
+    padding: 0 0.5vh;
+    margin: 0 0.5vh;
+    border-radius: 3px;
 }
 /*new manager item*/
 
