@@ -676,6 +676,10 @@ body::-webkit-scrollbar-track {
     margin-bottom: 1vh;    
 }
 
+.log li{
+    width: 20%;
+}
+
 /* login page */
 .login{
     display: flex;

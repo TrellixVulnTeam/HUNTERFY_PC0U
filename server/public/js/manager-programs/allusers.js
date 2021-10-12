@@ -1,12 +1,12 @@
 document.querySelector('.search-button').addEventListener("click", (event)=>{
     event.preventDefault()
     buildPage()
-    getUserData(emptyJson)
+    getUserData()
 })
 
-async function getUserData(json) {
+async function getUserData() {
     try{
-        const rawResponse = await fetch('/getallusers', options)
+        const rawResponse = await fetch('/getallusers')
         const content = await rawResponse.json();
         for (var i = 0; i < content.length; i++) {
             var contentIndex = content[i]
