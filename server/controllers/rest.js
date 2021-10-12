@@ -240,8 +240,8 @@ module.exports = app => {
             const day = ("0" + (date.getDate() + 1)).slice(-2)
             const month = ("0" + (date.getMonth() + 1)).slice(-2)
             const yyyymmdd = `${date.getFullYear()}-${month}-${day}`;
-            console.log(yyyymmdd)
             const result = await pgProgram.dailySearch(req.body.user, yyyymmdd);
+            console.log(result.rows)
             res.send(result.rows)
         }
         catch(err){
