@@ -52,7 +52,7 @@ module.exports = app => {
         res.render('manager-login-page.ejs')
     })
 
-    app.get('/searchbyparcel', (req, res) => {
+    app.get('/searchbyparcel',isAuthManager, (req, res) => {
         res.render('searchbyparcel.ejs', {user : req.session.user})
     })
 
