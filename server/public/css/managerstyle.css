@@ -331,11 +331,14 @@ body{
     justify-content: flex-start;
 }
 
-.contrast{
+.contrast:hover{
     background-color: #74726c;
-    padding: 0 0.5vh;
-    margin: 0 0.5vh;
     border-radius: 3px;
+    transition: 1s;
+}
+
+.contrast{
+    padding: 0.5vh;
 }
 /*new manager item*/
 
@@ -361,6 +364,15 @@ form{
     border: none;
     height: 4vh;
     font-size: 1.8vh;
+    border-radius: 0.5vh;
+    padding: 0 1vh;
+}
+
+#search-form input[type=number]{
+    width: 90%;
+    border: none;
+    height: 4vh;
+    font-size: 2vh;
     border-radius: 0.5vh;
     padding: 0 1vh;
 }

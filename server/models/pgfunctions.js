@@ -115,12 +115,15 @@ class pgProgram{
         dbClient.end
     }
 
-    async searchTableByUser(user, date, res){
+    async searchTableByUser(user, date, page){
+        const offset = page - 1
         const searchQuery = `
 		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink
 	    FROM public."2021-data"
 		WHERE "username" = '${user}' AND date = '${date}'
-        OR "username2" = '${user}' AND date2 = '${date}';
+        OR "username2" = '${user}' AND date2 = '${date}'
+        ORDER BY item_id DESC
+        LIMIT 10 OFFSET (10 * ${offset});
 	    `
         try {
             const result = await dbClient.query(searchQuery)
@@ -131,11 +134,30 @@ class pgProgram{
         }
     }
 
-    searchTableByRank(rank, date, ranktype, res){
+    async dailyCount(user, date){
+        const searchQuery = `
+        SELECT parcelid
+        FROM public."2021-data"
+        WHERE "username" = '${user}' AND date = '${date}'
+        OR "username2" = '${user}' AND date2 = '${date}';
+        `
+        try{
+            const result = await dbClient.query(searchQuery)
+            dbClient.end;
+            //console.log(result)
+            return result.rows.length
+        }
+        catch(err){console.log(err)}
+    }
+
+    searchTableByRank(rank, date, ranktype, page, res){
+        const offset = page - 1
         const searchQuery = `
 		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink
 	    FROM public."2021-data"
-		WHERE "${ranktype}" = '${rank}' AND date = '${date}';
+		WHERE "${ranktype}" = '${rank}' AND date = '${date}'
+        ORDER BY item_id DESC
+        LIMIT 10 OFFSET (10 * ${offset});
 	    `
         dbClient.query(searchQuery, (error, result) => {
             if(error){
@@ -149,11 +171,30 @@ class pgProgram{
         dbClient.end
     }
 
-    async searchByCounty(county, res){
+    async rankCount(rank, date, ranktype){
+        const searchQuery = `
+		SELECT parcelid
+	    FROM public."2021-data"
+		WHERE "${ranktype}" = '${rank}' AND date = '${date}'
+	    `
+        try{
+            const result = await dbClient.query(searchQuery)
+            dbClient.end;
+            //console.log(result)
+            return result.rows.length
+        }
+        catch(err){console.log(err)}
+        dbClient.end
+    }
+
+    async searchByCounty(county, page){
+        const offset = page - 1
         const searchQuery = `
 		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink
 	    FROM public."2021-data"
-		WHERE "county" = '${county}';
+		WHERE "county" = '${county}'
+        ORDER BY item_id DESC
+        LIMIT 10 OFFSET (10 * ${offset});
 	    `
         try{
             const result = await dbClient.query(searchQuery)
@@ -164,13 +205,29 @@ class pgProgram{
         dbClient.end
     }
 
-    async searchByChecked(req, res){
+    async countyCount(county){
+        const searchQuery = `
+		SELECT parcelid
+	    FROM public."2021-data"
+		WHERE "county" = '${county}'
+	    `
+        try{
+            const result = await dbClient.query(searchQuery)
+            dbClient.end;
+            //console.log(result)
+            return result.rows.length
+        }
+        catch(err){console.log(err)}
+    }
+
+    async searchByChecked(req){
+        const offset = req.body.page - 1
         const searchQuery = `
 		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink
 	    FROM public."2021-data"
-		WHERE "buyopt" = 'true'
-        AND state = '${req.body.state}'
-        AND county = '${req.body.county}';
+		WHERE "buyopt" = 'yes' AND state = '${req.body.state}' AND county = '${req.body.county}'
+        ORDER BY item_id DESC
+        LIMIT 10 OFFSET (10 * ${offset});
 	    `
         try{
             const result = await dbClient.query(searchQuery)
@@ -178,7 +235,20 @@ class pgProgram{
             return result
         }
         catch(err){console.log(err)}
-        dbClient.end
+    }
+
+    async checkedCount(req){
+        const searchQuery = `
+		SELECT parcelid
+	    FROM public."2021-data"
+		WHERE "buyopt" = 'yes' AND state = '${req.body.state}' AND county = '${req.body.county}'
+	    `
+        try{
+            const result = await dbClient.query(searchQuery)
+            dbClient.end;
+            return result.rows.length
+        }
+        catch(err){console.log(err)}
     }
 
     async searchByParcel(parcel, res){

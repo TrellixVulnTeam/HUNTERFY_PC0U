@@ -97,7 +97,7 @@ async function createItem(element){
     <div class="manager-item"><!--item-->  
                 <div class="accordion" onclick="accordion(this.parentElement)">
                     <div class="title"><h1>Parcel ID:&nbsp;</h1><h2>${element.parcelid}</h2></div>
-                    <div class="images-row">
+                    <div class="images-row contrast">
                         <div class="image-row"><h2>GIS Image:</h2><img src="${element.gisimg}" alt=""></div>
                         <div class="image-row"><h2>Google Image:</h2><img src="${element.mapsimg}" alt=""></div>
                         <div class="image-row"><h2>Street View:&nbsp;</h2><img src="${element.streetviewimg}" alt=""></div>
@@ -113,7 +113,7 @@ async function createItem(element){
                             <div><h2>State:&nbsp;</h2><h3 class="value">${element.state}</h3></div>
                             <div><h2>County:&nbsp;</h2><h3 class="value">${element.county}</h3></div>
                         </div>
-                        <div class="column">
+                        <div class="column contrast">
                             <div><h2>Maps Link:&nbsp;</h2><h3 class="value">${element.mapslink}</h3></div>
                             <div><h2>Adress:&nbsp;</h2><h3 class="value">${element.adress}</h3></div>
                             <div><h2>Latitude:&nbsp;</h2><h3 class="value">${element.latitude}</h3></div>
@@ -127,7 +127,7 @@ async function createItem(element){
                             <div><h2>N4 Adress:&nbsp;</h2><h3 class="value">${element.n4adress}</h3></div>
                             <div><h2>Buy Status:&nbsp;</h2><h3 class="value">${element.buyopt}</h3></div>
                         </div>
-                        <div class="column">
+                        <div class="column contrast">
                             <div><h2>Floodzone Link:&nbsp;</h2><h3 class="value">${element.floodzonelink}</h3></div>
                             <div><h2>Floodzone Status:&nbsp;</h2><h3 class="value">${element.floodzonetext}</h3></div>
                             <div><h2>Actual Image:&nbsp;</h2><h3 class="value"></h3></div>
@@ -136,7 +136,7 @@ async function createItem(element){
                         </div>
                     </div>
                     <div class="item-menu">
-                        <div class="rank1">
+                        <div class="rank1 contrast">
                             <h1>Rank 1</h1>
                             <div><h2>User:</h2><h3>${element.username}</h3></div>
                             <div><h2>Rank:</h2><h3>${element.rank1}</h3></div>
@@ -144,7 +144,7 @@ async function createItem(element){
                             <div><h2>Date/Time:</h2><h3>${element.dateandtime}</h3></div>
                             
                         </div>
-                        <div class="rank">
+                        <div class="rank contrast">
                             <h1>Rank 2</h1>
                             <div><h2>User:</h2><h3>${element.userrank2}</h3></div>
                             <div><label for="">Rank:</label><input type="text" value="${element.rank2}"></div>
@@ -152,7 +152,7 @@ async function createItem(element){
                             <div>&nbsp;</div>
                             <div class="rank-button"><button onclick="editRank2(this)">Send rank</button></div>
                         </div>
-                        <div class="rank">
+                        <div class="rank contrast">
                             <h1>Rank 3</h1>
                             <div><h2>User:</h2><h3>${element.userrank3}</h3></div>
                             <div><label for="">Rank:</label><input type="text" value="${element.rank3}"></div>

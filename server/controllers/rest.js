@@ -43,7 +43,6 @@ module.exports = app => {
         console.log(req.session.user, 'searched all users')
     })
 
-
     app.get('/searchbyrank', isAuthManager, (req, res) => {
         res.render('searchbyrank.ejs', {user : req.session.user})
     })
@@ -140,7 +139,7 @@ module.exports = app => {
         try{
             const userDate = await req.body
             console.log(req.session.user, 'searched by user', userDate.user)
-            const result = await pgProgram.searchTableByUser(userDate.user, userDate.date, res)
+            const result = await pgProgram.searchTableByUser(userDate.user, userDate.date, userDate.page, res)
             res.send(result)
         }
             catch(error){
@@ -182,7 +181,7 @@ module.exports = app => {
     app.post('/searchbyrank', async(req, res) => {
         try{
             const rankInfo = await req.body
-            pgProgram.searchTableByRank(rankInfo.rank, rankInfo.date, rankInfo.ranktype, res)
+            pgProgram.searchTableByRank(rankInfo.rank, rankInfo.date, rankInfo.ranktype, rankInfo.page, res)
             console.log(req.session.user, 'searched data by rank one')
         }
             catch(error){
@@ -228,7 +227,7 @@ module.exports = app => {
     })
 
     app.post('/searchbycounty', async(req, res) => {
-        const countyResult = await pgProgram.searchByCounty(req.body.county, res)
+        const countyResult = await pgProgram.searchByCounty(req.body.county, req.body.page)
         console.log(req.session.user, 'searched by county')
         res.send(countyResult)
     })
@@ -275,6 +274,38 @@ module.exports = app => {
         }
         const jsonStr = `{"data":[${arr}]}`
         res.send(jsonStr)
+    })
+
+    app.post('/dailyUserCount', async(req, res)=>{
+        const info = await req.body
+        const count = await pgProgram.dailyCount(info.user, info.date)
+        const countStr = `${count}`
+        console.log(countStr)
+        res.send(countStr)
+    })
+
+    app.post('/dailyRankCount', async(req, res)=>{
+        const info = await req.body
+        const count = await pgProgram.rankCount(info.rank, info.date ,info.ranktype)
+        const countStr = `${count}`
+        console.log(countStr)
+        res.send(countStr)
+    })
+
+    app.post('/dailyCountyCount', async(req, res)=>{
+        const info = await req.body
+        const count = await pgProgram.countyCount(info.county)
+        const countStr = `${count}`
+        console.log(countStr)
+        res.send(countStr)
+    })
+
+    app.post('/dailyCheckedCount', async(req, res)=>{
+        const info = await req.body
+        const count = await pgProgram.checkedCount(info.county)
+        const countStr = `${count}`
+        console.log(countStr)
+        res.send(countStr)
     })
 }
 //
