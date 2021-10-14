@@ -120,6 +120,25 @@ function checkValueImg(element){
     }
 }
 
+function checkRank(element){
+    var rank4check = element.innerHTML
+    var rankHTML =  `<div><label>RANK:</label><select name="rank"><option value="">--</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="HOUSE">HOUSE(B CASA)</option></select></div>`
+    if(rank4check == 'A'){
+        rankHTML = `<div><label>RANK:</label><select name="rank"><option value="">--</option><option selected value="A">A</option><option value="B">B</option><option value="C">C</option><option value="HOUSE">HOUSE(B CASA)</option></select></div>`
+    }
+    if(rank4check == 'B'){
+        rankHTML = `<div><label>RANK:</label><select name="rank"><option value="">--</option><option value="A">A</option><option selected value="B">B</option><option value="C">C</option><option value="HOUSE">HOUSE(B CASA)</option></select></div>`
+    }
+    if(rank4check == 'C'){
+        rankHTML = `<div><label>RANK:</label><select name="rank"><option value="">--</option><option value="A">A</option><option value="B">B</option><option selected value="C">C</option><option value="HOUSE">HOUSE(B CASA)</option></select></div>`
+    }
+    if(rank4check == 'HOUSE'){
+        rankHTML = `<div><label>RANK:</label><select name="rank"><option value="">--</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option selected value="HOUSE">HOUSE(B CASA)</option></select></div>`
+    }
+    else{}
+    return rankHTML
+}
+
 function excluirCard(card){
     if (card.parentNode) {
         card.parentNode.removeChild(card);

@@ -495,6 +495,15 @@ label{
     padding-top: 1vh;
 }
 
+.card-edit select{
+    width: 17vw;
+    border: none;
+    border-bottom: 1px solid #000000;
+    background-color: transparent;
+    font-size: 24px;
+    padding-top: 1vh;
+}
+
 .card-edit input[type="file"]{
     display: none;
 }

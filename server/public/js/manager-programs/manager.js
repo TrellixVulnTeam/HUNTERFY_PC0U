@@ -108,8 +108,8 @@ async function createItem(element){
                     <div class="item-columns">   
                         <div class="column contrast">
                             <div><h2>GIS Link:&nbsp;</h2><h3 class="value">${element.gislink}</h3></div>
-                            <div><h2>Tax Value:&nbsp;</h2><h3 class="value">${element.marketvalue}</h3></div>
-                            <div><h2>Property Value:&nbsp;</h2><h3 class="value"></h3></div>
+                            <div><h2>Tax Value:&nbsp;</h2><h3 class="value">${element.taxowned}</h3></div>
+                            <div><h2>Property Value:&nbsp;</h2><h3 class="value">${element.marketvalue}</h3></div>
                             <div><h2>State:&nbsp;</h2><h3 class="value">${element.state}</h3></div>
                             <div><h2>County:&nbsp;</h2><h3 class="value">${element.county}</h3></div>
                         </div>
@@ -131,8 +131,8 @@ async function createItem(element){
                             <div><h2>Floodzone Link:&nbsp;</h2><h3 class="value">${element.floodzonelink}</h3></div>
                             <div><h2>Floodzone Status:&nbsp;</h2><h3 class="value">${element.floodzonetext}</h3></div>
                             <div><h2>Actual Image:&nbsp;</h2><h3 class="value"></h3></div>
-                            <div><h2>Zestimate:&nbsp;</h2><h3 class="value"></h3></div>
-                            <div><h2>Zillow Link:&nbsp;</h2><h3 class="value"></h3></div>
+                            <div><h2>Zestimate:&nbsp;</h2><h3 class="value">${element.zestimate}</h3></div>
+                            <div><h2>Zillow Link:&nbsp;</h2><h3 class="value">${element.zillowlink}</h3></div>
                         </div>
                     </div>
                     <div class="item-menu">

@@ -25,10 +25,10 @@ function criarPaginaEdit(){
                     <div><img src='' id="cachefloodzoneimg" style='display:none;'><label>FLOODZONE IMAGE:</label><label class="up-icon" for="imagem-floodzone"><i class="fas fa-arrow-circle-up"></i></label><input onchange="preview_image('imagem-floodzone')" id="imagem-floodzone" type="file" accept=".jpg, .png, .pdf, .jpeg, .bmp"></div>
                     <div><img src='' id="cachemapsimg" style='display:none;'><label>MAPS IMAGE:</label><label class="up-icon" for="imagem-maps"><i class="fas fa-arrow-circle-up"></i></label><input onchange="preview_image('imagem-maps')" id="imagem-maps" type="file" accept=".jpg, .png, .pdf, .jpeg, .bmp"></div>
                     <div><img src='' id="cachestreetviewimg" style='display:none;'><label>STREETVIEW IMAGE:</label><label class="up-icon" for="imagem-streetview"><i class="fas fa-arrow-circle-up"></i></label><input onchange="preview_image('imagem-streetview')" id="imagem-streetview" type="file" accept=".jpg, .png, .pdf, .jpeg, .bmp"></div>
-                    <div><label>TAX OWNED:</label><input name="taxowned" type="text"></div>
+                    <div><label>TAX VALUE:</label><input name="taxowned" type="text"></div>
                 </div>
                 <div class="campo2">
-                    <div><label>LAND VALUE:</label><input name="marketvalue" type="text"></div>
+                    <div><label>PROPERTY VALUE:</label><input name="marketvalue" type="text"></div>
                     <div><label>GIS LINK:</label><input name="linkgis" type="text"></div>
                     <div><label>FLOODZONE:</label><input name="floodzone" type="text"></div>
                     <div><label>MAPS LINK:</label><input name="mapslink" type="text"></div>
@@ -46,13 +46,16 @@ function criarPaginaEdit(){
             
                 <div class="campo4">
                     <div><label>ADRESS NEIGHBOOR 4:</label><input name="end4" type="text"></div>
-                    <div><label>RANK:</label><input name="rank" type="text"></div>
+                    <div><label>RANK:</label><select name="rank"><option value="">--</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="HOUSE">HOUSE(B CASA)</option></select></div>
                     <div><label>OBS:</label><input name="obs" type="text"></div>
+                    <div><label>ZESTIMATE:</label><input name="zestimate" type="text"></div>
+                    <div><label>ZILLOW LINK:</label><input name="zillow" type="text"></div>
                     <div><button class="save-button">SALVAR</button></div>
                 </div>
             </form>
         </div>
-    `
+    ` 
+    //<div><label>RANK:</label><input name="rank" type="text"></div>
     pageEdit.innerHTML = editConteudo
     rootEditArea.append(pageEdit)
 }
@@ -81,8 +84,8 @@ function criarCard(){
             <div class="info-card info-img"><h2>MAPS IMAGE:</h2> <img src="${checkFile(mapsImg)}"></div>
             <div class="info-card info-text"><h2>MAPS LINK:</h2> <h2>${formatString(checkValue(form.mapslink.value))}</h2></div>
             <div class="info-card info-img"><h2>STREETVIEW IMAGE</h2> <img src="${checkFile(streetviewImg)}"></div>
-            <div class="info-card info-text"><h2>TAX OWNED:</h2> <h2>${formatString(checkValue(form.taxowned.value))}</h2></div>
-            <div class="info-card info-text"><h2>LAND VALUE</h2> <h2>${formatString(checkValue(form.marketvalue.value))}</h2></div>
+            <div class="info-card info-text"><h2>TAX VALUE:</h2> <h2>${formatString(checkValue(form.taxowned.value))}</h2></div>
+            <div class="info-card info-text"><h2>PROPERTY VALUE</h2> <h2>${formatString(checkValue(form.marketvalue.value))}</h2></div>
             <div class="info-card info-text"><h2>LATITUDE:</h2> <h2>${formatString(checkValue(form.latitude.value))}</h2></div>
             <div class="info-card info-text"><h2>LONGITUDE:</h2> <h2>${formatString(checkValue(form.longitude.value))}</h2></div>
             <div class="info-card info-text"><h2>ACRES:</h2> <h2>${formatString(checkValue(form.acres.value))}</h2></div>
@@ -94,6 +97,8 @@ function criarCard(){
             <div class="info-card info-text"><h2>RANK:</h2> <h2>${formatString(checkValue(form.rank.value))}</h2></div>
             <div class="info-card info-text"><h2>OBS:</h2> <h2>${formatString(checkValue(form.obs.value))}</h2></div>
             <div class="info-card info-text"><h2>FLOODZONE LINK:</h2> <h2>${formatString(checkValue(form.floodzonelink.value))}</h2></div>
+            <div class="info-card info-text"><h2>ZESTIMATE:</h2> <h2>${formatString(checkValue(form.zestimate.value))}</h2></div>
+            <div class="info-card info-text"><h2>ZILLOW LINK:</h2> <h2>${formatString(checkValue(form.zillow.value))}</h2></div>
         </div>
              
     </div>  
