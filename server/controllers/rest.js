@@ -235,12 +235,7 @@ module.exports = app => {
     app.post('/dailymetrics', async(req, res)=> {
         try{
             console.log('daily metrics fetch')
-            const date = new Date(req.body.date)
-            const day = ("0" + (date.getDate() + 1)).slice(-2)
-            const month = ("0" + (date.getMonth() + 1)).slice(-2)
-            const yyyymmdd = `${date.getFullYear()}-${month}-${day}`;
-            const result = await pgProgram.dailySearch(req.body.user, yyyymmdd);
-            console.log(result.rows)
+            const result = await pgProgram.dailySearch(req.body.user, req.body.date);
             res.send(result.rows)
         }
         catch(err){
