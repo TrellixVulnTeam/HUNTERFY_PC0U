@@ -383,9 +383,25 @@ form{
     width: 100%;
     height: 5ch;
     background-color: #a14418;
+    margin-top: 1vh;
 }
 
 .search-button:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+
+.copy-button{
+    border: none;
+    border-radius: 0.5vh;
+    width: 100%;
+    height: 5ch;
+    background-color: #a14418;
+    margin-top: 1vh;
+}
+
+.copy-button:hover{
     cursor: pointer;
     transform: scale(1.05);
     transition: 0.5s;

@@ -96,7 +96,7 @@ async function createItem(element){
     var item = `
     <div class="manager-item"><!--item-->  
                 <div class="accordion" onclick="accordion(this.parentElement)">
-                    <div class="title"><h1>Parcel ID:&nbsp;</h1><h2>${element.parcelid}</h2></div>
+                    <div class="title"><h1>Parcel ID:&nbsp;</h1><h2 class="parcelid">${element.parcelid}</h2></div>
                     <div class="images-row contrast">
                         <div class="image-row"><h2>GIS Image:</h2><img src="${element.gisimg}" alt=""></div>
                         <div class="image-row"><h2>Google Image:</h2><img src="${element.mapsimg}" alt=""></div>
@@ -152,7 +152,7 @@ async function createItem(element){
                             <div>&nbsp;</div>
                             <div class="rank-button"><button onclick="editRank2(this)">Send rank</button></div>
                         </div>
-                        <div class="rank contrast">
+                         <div class="rank contrast">
                             <h1>Rank 3</h1>
                             <div><h2>User:</h2><h3>${element.userrank3}</h3></div>
                             <div><label for="">Rank:</label><input type="text" value="${element.rank3}"></div>

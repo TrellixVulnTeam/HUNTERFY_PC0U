@@ -10,6 +10,7 @@ pgProgram = require('../models/pgfunctions')
 
 module.exports = app => {
      //GETS----------------------->
+        //GET VIEWS
     app.get('/', (req, res) => {
         res.render('index.ejs')
     })
@@ -38,11 +39,6 @@ module.exports = app => {
         res.render('getallusers.ejs', {user : req.session.user})
     })
 
-    app.get('/getallusers', (req, res) => {
-        pgProgram.allUsers(res)
-        console.log(req.session.user, 'searched all users')
-    })
-
     app.get('/searchbyrank', isAuthManager, (req, res) => {
         res.render('searchbyrank.ejs', {user : req.session.user})
     })
@@ -57,6 +53,24 @@ module.exports = app => {
 
     app.get('/searchbycounty', isAuthManager, (req, res) => {
         res.render('searchbycounty.ejs', {user : req.session.user})
+    })
+
+    app.get('/metrics', isAuthManager,(req, res)=>{
+        res.render('metrics.ejs', {user : req.session.user})
+    })
+
+    app.get('/getchecked', isAuthManager, async(req, res)=>{
+        res.render('getchecked.ejs', {user : req.session.user})
+    })
+
+    app.get('/searchbyrankresumed', isAuthManager, async(req, res) => {
+        res.render('searchbyrankresumed', {user : req.session.user})
+    })
+
+        //GET FUNCTIONS
+    app.get('/getallusers', (req, res) => {
+        pgProgram.allUsers(res)
+        console.log(req.session.user, 'searched all users')
     })
 
     app.get('/getproduction', async(req, res) => {
@@ -83,14 +97,6 @@ module.exports = app => {
         catch(err){
             console.log(err)
         }
-    })
-
-    app.get('/metrics', isAuthManager,(req, res)=>{
-        res.render('metrics.ejs', {user : req.session.user})
-    })
-
-    app.get('/getchecked', isAuthManager, async(req, res)=>{
-        res.render('getchecked.ejs', {user : req.session.user})
     })
 
     app.get('/getUsStates', async(req, res)=>{
@@ -301,6 +307,10 @@ module.exports = app => {
         const countStr = `${count}`
         console.log(countStr)
         res.send(countStr)
+    })
+
+    app.post('/searchbyrankresumed', async(req, res) => {
+        pgProgram.searchTableByRankResumed(req.body.rank, req.body.date, req.body.ranktype, req.body.page, res)
     })
 }
 //
