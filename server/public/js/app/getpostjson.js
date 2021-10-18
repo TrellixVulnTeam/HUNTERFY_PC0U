@@ -20,6 +20,10 @@ async function getJson(card){
         var floodzonelink = cardInfo.children[20].children[1].innerHTML
         var zestimate = cardInfo.children[21].children[1].innerHTML
         var zillow = cardInfo.children[22].children[1].innerHTML
+        var hoa = cardInfo.children[23].children[1].innerHTML
+        var watersupply = cardInfo.children[24].children[1].innerHTML
+        var elecsupply = cardInfo.children[25].children[1].innerHTML
+        var sewerage = cardInfo.children[26].children[1].innerHTML
         //--array name     --input inside info              --label            --class             --cache id
         var sateliteimage = cardInfo.children[1].children[1].src
         var floodzoneimage = cardInfo.children[3].children[1].src
@@ -68,7 +72,11 @@ async function getJson(card){
             "state":"${formatString(state)}",
             "county":"${formatString(county)}",
             "zillow":"${formatString(zillow)}",
-            "zestimate":"${formatString(zestimate)}"
+            "zestimate":"${formatString(zestimate)}",
+            "hoa":"${formatString(hoa)}",
+            "watersupply":"${watersupply}",
+            "elecsupply":"${elecsupply}",
+            "sewerage":"${sewerage}"
         }`
         var cardJson = JSON.parse(cardString)
         var cardJson = JSON.stringify(cardJson)

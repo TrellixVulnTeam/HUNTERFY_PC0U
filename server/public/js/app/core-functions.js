@@ -139,6 +139,18 @@ function checkRank(element){
     return rankHTML
 }
 
+function checkOpt(element){
+    const element4check = element[0].innerHTML
+    var optHtml = `<div><label>${element[1]}</label><select name="${element[2]}"><option value="">--</option><option value="YES">YES</option><option value="NO">NO</option><option value="undefined">UNDEFINED</option></select></div>`
+    if(element4check == 'YES'){
+        optHtml = `<div><label>${element[1]}</label><select name="${element[2]}"><option value="">--</option><option selected value="YES">YES</option><option value="NO">NO</option><option value="undefined">UNDEFINED</option></select></div>`
+    }
+    if(element4check == 'NO'){
+        optHtml = `<div><label>${element[1]}</label><select name="${element[2]}"><option value="">--</option><option value="YES">YES</option><option selected value="NO">NO</option><option value="undefined">UNDEFINED</option></select></div>`
+    }
+    return optHtml
+}
+
 function excluirCard(card){
     if (card.parentNode) {
         card.parentNode.removeChild(card);
@@ -207,8 +219,6 @@ botaoGetLogs.addEventListener('click', async()=>{
 function formatString(str){
     var stringEdit = str.replace(/\\/g, '')
     var stringEdit = stringEdit.replace(/</g, '')
-    var stringEdit = stringEdit.replace(/º/g, '')
-    var stringEdit = stringEdit.replace(/°/g, '')
     var stringEdit = stringEdit.replace(/'/g, '')
     var stringEdit = stringEdit.replace(/"/g, '')
     var stringEdit = stringEdit.replace(/{/g, '')

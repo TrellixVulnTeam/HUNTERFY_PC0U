@@ -31,7 +31,11 @@ class pgProgram{
             county,
             floodzonelink,
             zillowlink,
-            zestimate
+            zestimate,
+            hoa,
+            watersupply,
+            electricitysupply,
+            sewerage
             )
 
             VALUES (
@@ -60,7 +64,11 @@ class pgProgram{
             '${terreno.county}',
             '${terreno.floodzone[0].floodzonelink}',
             '${terreno.zillow}',
-            '${terreno.zestimate}'
+            '${terreno.zestimate}',
+            '${terreno.hoa}',
+            '${terreno.watersupply}',
+            '${terreno.elecsupply}',
+            '${terreno.sewerage}'
             );
         `
 
@@ -107,7 +115,11 @@ class pgProgram{
             state='${newInfo.state}',
             county='${newInfo.county}',
             zestimate='${newInfo.zestimate}',
-            zillowlink='${newInfo.zillow}'
+            zillowlink='${newInfo.zillow}',
+            hoa = '${newInfo.hoa}',
+            watersupply = '${newInfo.watersupply}',
+            electricitysupply = '${newInfo.elecsupply}',
+            sewerage = '${newInfo.sewerage}'
     
 	        WHERE parcelid = '${newInfo.parcelid}';
         `
@@ -124,7 +136,7 @@ class pgProgram{
     async searchTableByUser(user, date, page){
         const offset = page - 1
         const searchQuery = `
-		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate
+		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage
 	    FROM public."2021-data"
 		WHERE "username" = '${user}' AND date = '${date}'
         OR "username2" = '${user}' AND date2 = '${date}'
@@ -159,7 +171,7 @@ class pgProgram{
     searchTableByRank(rank, date, ranktype, page, res){
         const offset = page - 1
         const searchQuery = `
-		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate
+		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage
 	    FROM public."2021-data"
 		WHERE "${ranktype}" = '${rank}' AND date = '${date}'
         ORDER BY item_id DESC
@@ -180,7 +192,7 @@ class pgProgram{
     searchTableByRankResumed(rank, date, ranktype, page, res){
         const offset = page - 1
         const searchQuery = `
-		SELECT parcelid, gislink, floodzonetext, mapslink, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate
+		SELECT parcelid, gislink, floodzonetext, mapslink, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage
 	    FROM public."2021-data"
 		WHERE "${ranktype}" = '${rank}' AND date = '${date}'
         ORDER BY item_id DESC
@@ -217,7 +229,7 @@ class pgProgram{
     async searchByCounty(county, page){
         const offset = page - 1
         const searchQuery = `
-		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate
+		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage
 	    FROM public."2021-data"
 		WHERE "county" = '${county}'
         ORDER BY item_id DESC
@@ -250,7 +262,7 @@ class pgProgram{
     async searchByChecked(req){
         const offset = req.body.page - 1
         const searchQuery = `
-		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate
+		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage
 	    FROM public."2021-data"
 		WHERE "buyopt" = 'yes' AND state = '${req.body.state}' AND county = '${req.body.county}'
         ORDER BY item_id DESC
@@ -315,7 +327,11 @@ class pgProgram{
         buyopt,
         floodzonelink,
         zillowlink,
-        zestimate
+        zestimate,
+        hoa,
+        watersupply,
+        electricitysupply,
+        sewerage
 	    FROM public."2021-data"
 		WHERE "parcelid" = '${parcel}';
 	    `
@@ -495,6 +511,21 @@ class pgProgram{
         SELECT parcelid, rank1, rank2, rank3, dateandtime, username, username2, date, date2
         FROM public."2021-data"
         WHERE EXTRACT(MONTH FROM date) = '${month}' AND username= '${user}';
+        `
+        try{
+            const result = await dbClient.query(searchQuery)
+            dbClient.end;
+            //console.log(result)
+            return result
+        }
+        catch(err){console.log(err)}
+    }
+
+    async getCalendar(month, year){
+        const searchQuery =`
+        SELECT parcelid, state, county, date
+        FROM public."${year}-data"
+        WHERE EXTRACT(MONTH FROM date) = '${month}'; 
         `
         try{
             const result = await dbClient.query(searchQuery)

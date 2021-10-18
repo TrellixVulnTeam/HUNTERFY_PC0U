@@ -72,17 +72,19 @@ async function postUserDate(json) {
 
 async function buildPage(json){
     var createItem = `
-    <h2 class="username">${json.user}</h2>
-    <h2 class="date">${json.date}</h2>
-    <h2 class="production-count"></h2>
-    <h2>Displaying 10 itens</h2>
-    <h2 class="page-count"></h2>
-    <h2 class="loading-text">Loading...</h2>
-        <div class="itens-container">
+    <div class="manager-window">
+        <h2 class="username">${json.user}</h2>
+        <h2 class="date">${json.date}</h2>
+        <h2 class="production-count"></h2>
+        <h2>Displaying 10 itens</h2>
+        <h2 class="page-count"></h2>
+        <h2 class="loading-text">Loading...</h2>
+            <div class="itens-container">
 
             
             
-        </div>
+            </div>
+    </div>
     `
     var sectionPrograma = document.querySelector('.program')
     sectionPrograma.innerHTML = createItem

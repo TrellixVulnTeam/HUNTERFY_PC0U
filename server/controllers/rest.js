@@ -64,7 +64,11 @@ module.exports = app => {
     })
 
     app.get('/searchbyrankresumed', isAuthManager, async(req, res) => {
-        res.render('searchbyrankresumed', {user : req.session.user})
+        res.render('searchbyrankresumed.ejs', {user : req.session.user})
+    })
+
+    app.get('/countycalendar', isAuthManager, async(req, res)=> {
+        res.render('countycalendar.ejs', {user : req.session.user})
     })
 
         //GET FUNCTIONS
@@ -311,6 +315,13 @@ module.exports = app => {
 
     app.post('/searchbyrankresumed', async(req, res) => {
         pgProgram.searchTableByRankResumed(req.body.rank, req.body.date, req.body.ranktype, req.body.page, res)
+    })
+
+    app.post('/postcalendar', async(req, res)=>{
+        const calendarInfo = await pgProgram.getCalendar(req.body.month, req.body.year)
+        console.log('fetch')
+        console.log(calendarInfo)
+        res.send(calendarInfo)
     })
 }
 //

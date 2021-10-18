@@ -73,7 +73,6 @@ async function editRank3(item){
     }
     `
     var rank3Json = JSON.parse(infoString)
-    console.log(rank3Json)
     await postJsonRank3(rank3Json)
     thisCard.innerHTML = ''
         
@@ -112,6 +111,7 @@ async function createItem(element){
                             <div><h2>Property Value:&nbsp;</h2><h3 class="value">${element.marketvalue}</h3></div>
                             <div><h2>State:&nbsp;</h2><h3 class="value">${element.state}</h3></div>
                             <div><h2>County:&nbsp;</h2><h3 class="value">${element.county}</h3></div>
+                            <div><h2>HOA:&nbsp;</h2><h3 class="value">${element.hoa}</h3></div>
                         </div>
                         <div class="column contrast">
                             <div><h2>Maps Link:&nbsp;</h2><h3 class="value">${element.mapslink}</h3></div>
@@ -119,6 +119,7 @@ async function createItem(element){
                             <div><h2>Latitude:&nbsp;</h2><h3 class="value">${element.latitude}</h3></div>
                             <div><h2>Longitude:&nbsp;</h2><h3 class="value">${element.longitude}</h3></div>
                             <div><h2>Acres:&nbsp;</h2><h3 class="value">${element.acres}</h3></div>
+                            <div><h2>Water Supply:&nbsp;</h2><h3 class="value">${element.watersupply}</h3></div>
                         </div>
                         <div class="column contrast">
                             <div><h2>N1 Adress:&nbsp;</h2><h3 class="value">${element.n1adress}</h3></div>
@@ -126,6 +127,7 @@ async function createItem(element){
                             <div><h2>N3 Adress:&nbsp;</h2><h3 class="value">${element.n3adress}</h3></div>
                             <div><h2>N4 Adress:&nbsp;</h2><h3 class="value">${element.n4adress}</h3></div>
                             <div><h2>Buy Status:&nbsp;</h2><h3 class="value">${element.buyopt}</h3></div>
+                            <div><h2>Electricity Supply:&nbsp;</h2><h3 class="value">${element.electricitysupply}</h3></div>
                         </div>
                         <div class="column contrast">
                             <div><h2>Floodzone Link:&nbsp;</h2><h3 class="value">${element.floodzonelink}</h3></div>
@@ -133,6 +135,7 @@ async function createItem(element){
                             <div><h2>Actual Image:&nbsp;</h2><h3 class="value"></h3></div>
                             <div><h2>Zestimate:&nbsp;</h2><h3 class="value">${element.zestimate}</h3></div>
                             <div><h2>Zillow Link:&nbsp;</h2><h3 class="value">${element.zillowlink}</h3></div>
+                            <div><h2>Sewerage:&nbsp;</h2><h3 class="value">${element.sewerage}</h3></div>
                         </div>
                     </div>
                     <div class="item-menu">

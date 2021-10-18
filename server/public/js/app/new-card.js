@@ -26,30 +26,34 @@ function criarPaginaEdit(){
                     <div><img src='' id="cachemapsimg" style='display:none;'><label>MAPS IMAGE:</label><label class="up-icon" for="imagem-maps"><i class="fas fa-arrow-circle-up"></i></label><input onchange="preview_image('imagem-maps')" id="imagem-maps" type="file" accept=".jpg, .png, .pdf, .jpeg, .bmp"></div>
                     <div><img src='' id="cachestreetviewimg" style='display:none;'><label>STREETVIEW IMAGE:</label><label class="up-icon" for="imagem-streetview"><i class="fas fa-arrow-circle-up"></i></label><input onchange="preview_image('imagem-streetview')" id="imagem-streetview" type="file" accept=".jpg, .png, .pdf, .jpeg, .bmp"></div>
                     <div><label>TAX VALUE:</label><input name="taxowned" type="text"></div>
+                    <div><label>PROPERTY VALUE:</label><input name="marketvalue" type="text"></div>
                 </div>
                 <div class="campo2">
-                    <div><label>PROPERTY VALUE:</label><input name="marketvalue" type="text"></div>
+                    <div><label>ACRES:</label><input name="acres" type="text"></div>
                     <div><label>GIS LINK:</label><input name="linkgis" type="text"></div>
                     <div><label>FLOODZONE:</label><input name="floodzone" type="text"></div>
                     <div><label>MAPS LINK:</label><input name="mapslink" type="text"></div>
                     <div><label>LATITUDE:</label><input name="latitude" type="text"></div>
                     <div><label>LONGITUDE:</label><input name="longitude" type="text"></div>
+                    <div><label>ADRESS:</label><input name="end" type="text"></div>
                 </div>
                 <div class="campo3">
-                    <div><label>ACRES:</label><input name="acres" type="text"></div>
-                    <div><label>ADRESS:</label><input name="end" type="text"></div>
+                    <div><label>ZESTIMATE:</label><input name="zestimate" type="text"></div>
+                    <div><label>ZILLOW LINK:</label><input name="zillow" type="text"></div>
                     <div><label>FLOODZONE LINK:</label><input name="floodzonelink" type="text"></div>
                     <div><label>ADRESS NEIGHBOOR 1:</label><input name="end1" type="text"></div>
                     <div><label>ADRESS NEIGHBOOR 2:</label><input name="end2" type="text"></div>
                     <div><label>ADRESS NEIGHBOOR 3:</label><input name="end3" type="text"></div>
+                    <div><label>ADRESS NEIGHBOOR 4:</label><input name="end4" type="text"></div>
                 </div>
             
                 <div class="campo4">
-                    <div><label>ADRESS NEIGHBOOR 4:</label><input name="end4" type="text"></div>
+                    <div><label>HOA:</label><input name="hoa" type="text"></div>
+                    <div><label>WATER SUPPLY:</label><select name="watersupply"><option value="">--</option><option value="YES">YES</option><option value="NO">NO</option><option value="undefined">UNDEFINED</option></select></div>
+                    <div><label>ELECTRICITY SUPPLY:</label><select name="elecsupply"><option value="">--</option><option value="YES">YES</option><option value="NO">NO</option><option value="undefined">UNDEFINED</option></select></div>
+                    <div><label>SEWERAGE:</label><select name="sewerage"><option value="">--</option><option value="YES">YES</option><option value="NO">NO</option><option value="undefined">UNDEFINED</option></select></div>
                     <div><label>RANK:</label><select name="rank"><option value="">--</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="HOUSE">HOUSE(B CASA)</option></select></div>
                     <div><label>OBS:</label><input name="obs" type="text"></div>
-                    <div><label>ZESTIMATE:</label><input name="zestimate" type="text"></div>
-                    <div><label>ZILLOW LINK:</label><input name="zillow" type="text"></div>
                     <div><button class="save-button">SALVAR</button></div>
                 </div>
             </form>
@@ -99,6 +103,10 @@ function criarCard(){
             <div class="info-card info-text"><h2>FLOODZONE LINK:</h2> <h2>${formatString(checkValue(form.floodzonelink.value))}</h2></div>
             <div class="info-card info-text"><h2>ZESTIMATE:</h2> <h2>${formatString(checkValue(form.zestimate.value))}</h2></div>
             <div class="info-card info-text"><h2>ZILLOW LINK:</h2> <h2>${formatString(checkValue(form.zillow.value))}</h2></div>
+            <div class="info-card info-text"><h2>HOA:</h2> <h2>${formatString(checkValue(form.hoa.value))}</h2></div>
+            <div class="info-card info-text"><h2>WATER SUPPLY:</h2> <h2>${formatString(checkValue(form.watersupply.value))}</h2></div>
+            <div class="info-card info-text"><h2>ELECTRICITY SUPPLY:</h2> <h2>${formatString(checkValue(form.elecsupply.value))}</h2></div>
+            <div class="info-card info-text"><h2>ZILLOW LINK:</h2> <h2>${formatString(checkValue(form.sewerage.value))}</h2></div>
         </div>
              
     </div>  

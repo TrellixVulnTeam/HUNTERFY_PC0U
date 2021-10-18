@@ -11,7 +11,7 @@ document.querySelector('.copy-button').addEventListener('click', (event)=>{
     for (var i = 0; i < allParcels.length; i++){
         parcelindex = allParcels[i]
         arr.push(parcelindex.innerHTML)
-        str = str + `\n${parcelindex.innerHTML}  `
+        str = str + `\n${parcelindex.innerHTML} `
     }
     console.log(str)
     //arr.select();
@@ -86,6 +86,7 @@ function getJson(){
 
 async function buildPage(json){
     var createItem = `
+    <div class="manager-window">
         <h2 class="username">Rank: ${json.rank}</h2>
         <h2 class="date">${json.date}</h2>
         <h2 class="production-count"></h2>
@@ -96,6 +97,7 @@ async function buildPage(json){
                
                
            </div>
+    </div>
     `
     var sectionPrograma = document.querySelector('.program')
     sectionPrograma.innerHTML = createItem

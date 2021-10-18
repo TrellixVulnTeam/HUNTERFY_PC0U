@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/managerstyle.css">
+    <script src="https://kit.fontawesome.com/30836ed2bd.js" crossorigin="anonymous"></script>
+    <title>HUNTERFY MANAGER</title>
+</head>
+<body>
+    <header>
+        <div class="janela-header">
+            <div class="logo"><a href="./manager"><img src="./img/Hunterfy.png" alt="Hunterfy logo"></a><h1>MANAGER v1.0</h1></div>
+            <div class="user-container">
+                <h2>My user:</h2>
+                <h3 id="username"><%= user %></h3>
+            </div>
+        </div>
+    </header>
+    <section class="controller janela">
+             <form id="search-form">
+                <div>
+                    <label for="month">Select a month:</label>
+                    <select name="month" id="month">
+                        <option name="month" value="1">01</option>
+                        <option name="month" value="2">02</option>
+                        <option name="month" value="3">03</option>
+                        <option name="month" value="4">04</option>
+                        <option name="month" value="5">05</option>
+                        <option name="month" value="6">06</option>
+                        <option name="month" value="7">07</option>
+                        <option name="month" value="8">08</option>
+                        <option name="month" value="9">09</option>
+                        <option name="month" value="10">10</option>
+                        <option name="month" value="11">11</option>
+                        <option name="month" value="12">12</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="year">And a year:</label>
+                    <select name="year" id="year">
+                        <option name="year" value="2021" selected>2021</option>
+                    </select>
+                </div>
+                
+                <button class="search-button">SEARCH</button>
+            </form>
+    </section>
+    <section class="program janela">
+        <h2 class="month"></h2>
+        <div class="itens-container">
+        </div>
+    
+    <script src="js/manager-programs/manager.js"></script>
+    <script src="js/manager-controllers/countycalendar.js" async></script>
+</body>
+</html>

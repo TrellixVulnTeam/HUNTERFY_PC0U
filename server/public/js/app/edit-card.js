@@ -20,6 +20,10 @@ function editarCard(card){
     var floodzonelink = [cardInfo.children[20].children[1], `<label>FLOODZONE LINK:</label><input name="floodzonelink" type="text">`, `floodzonelink`, `FLOODZONE LINK:`]
     var zestimate = [cardInfo.children[21].children[1], `<label>ZESTIMATE:</label><input name="zestimate" type="text">`, `zestimate`, `ZESTIMATE:`]
     var zillow = [cardInfo.children[22].children[1], `<label>ZILLOW LINK:</label><input name="zillow" type="text">`, `zillow`, `ZILLOW LINK:`]
+    var hoa = [cardInfo.children[23].children[1], `<label>HOA:</label><input name="hoa" type="text">`, `hoa`, `HOA:`]
+    var watersupply = [cardInfo.children[24].children[1], 'WATER SUPPLY:', 'watersupply']
+    var elecsupply = [cardInfo.children[25].children[1], 'ELECTRICITY SUPPLY:', 'elecsupply']
+    var sewerage = [cardInfo.children[26].children[1], 'SEWERAGE:', 'sewerage']
      //--array name     --input inside info              --label            --class             --cache id
     var sateliteimage = [cardInfo.children[1].children[1], `SATELITE IMAGE`, 'imagem-satelite', 'cachesateliteimg']
     var floodzoneimage = [cardInfo.children[3].children[1], `FLOODZONE IMAGE`, 'imagem-floodzone', 'cachefloodzoneimg']
@@ -38,31 +42,34 @@ function editarCard(card){
                 <div>${checkValueImg(mapsimage)}</div>
                 <div>${checkValueImg(streetviewimage)}</div>
                 <div>${checkValueText(taxowned)}</div>
+                <div>${checkValueText(marketvalue)}</div>
             </div>
             <div class="campo2">
-                <div>${checkValueText(marketvalue)}</div>
+                <div>${checkValueText(acres)}</div>
                 <div>${checkValueText(linkgis)}</div>
                 <div>${checkValueText(floodzonetext)}</div>
                 <div>${checkValueText(mapslink)}</div>
                 <div>${checkValueText(latitude)}</div>
                 <div>${checkValueText(longitude)}</div>
-                
+                <div>${checkValueText(adress)}</div>
             </div>
             <div class="campo3">
-                <div>${checkValueText(acres)}</div>
-                <div>${checkValueText(adress)}</div>
+                <div>${checkValueText(zestimate)}</div>
+                <div>${checkValueText(zillow)}</div>
                 <div>${checkValueText(floodzonelink)}</div>
                 <div>${checkValueText(adressn1)}</div>
                 <div>${checkValueText(adressn2)}</div>
                 <div>${checkValueText(adressn3)}</div>
+                <div>${checkValueText(adressn4)}</div>
                 
             </div>
             <div class="campo4">
-                <div>${checkValueText(adressn4)}</div>
+                <div>${checkValueText(hoa)}</div>
+                <div>${checkOpt(watersupply)}</div>
+                <div>${checkOpt(elecsupply)}</div>
+                <div>${checkOpt(sewerage)}</div>
                 <div>${checkRank(rank)}</div>
                 <div>${checkValueText(obs)}</div>
-                <div>${checkValueText(zestimate)}</div>
-                <div>${checkValueText(zillow)}</div>
                 <div><button class="save-edit">SALVAR</button></div>
             </div>
         </form>

@@ -40,6 +40,12 @@ function renderResult(element){
             <div class="info-card info-text"><h2>RANK:</h2> <h2>${element.rank1}</h2></div>
             <div class="info-card info-text"><h2>OBS:</h2> <h2>${element.obs1}</h2></div>
             <div class="info-card info-text"><h2>FLOODZONE LINK:</h2> <h2>${element.floodzonelink}</h2></div>
+            <div class="info-card info-text"><h2>ZESTIMATE:</h2> <h2>${element.zestimate}</h2></div>
+            <div class="info-card info-text"><h2>ZILLOW LINK:</h2> <h2>${element.zillowlink}</h2></div>
+            <div class="info-card info-text"><h2>HOA:</h2> <h2>${element.hoa}</h2></div>
+            <div class="info-card info-text"><h2>WATER SUPPLY:</h2> <h2>${element.watersupply}</h2></div>
+            <div class="info-card info-text"><h2>ELECTRICITY SUPPLY:</h2> <h2>${element.electricitysupply}</h2></div>
+            <div class="info-card info-text"><h2>SEWERAGE:</h2> <h2>${element.sewerage}</h2></div>
         </div>
     </div>  
     `
