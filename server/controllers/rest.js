@@ -71,6 +71,10 @@ module.exports = app => {
         res.render('countycalendar.ejs', {user : req.session.user})
     })
 
+    app.get('/resumedsearchbycounty', isAuthManager, async(req, res)=>{
+        res.render('resumedsearchbycounty.ejs', {user : req.session.user})
+    })
+
         //GET FUNCTIONS
     app.get('/getallusers', (req, res) => {
         pgProgram.allUsers(res)
@@ -315,6 +319,11 @@ module.exports = app => {
 
     app.post('/searchbyrankresumed', async(req, res) => {
         pgProgram.searchTableByRankResumed(req.body.rank, req.body.date, req.body.ranktype, req.body.page, res)
+    })
+
+    app.post('/searchbycountyresumed', async(req, res) => {
+        const result = await pgProgram.searchByCountyResumed(req.body.county, req.body.page)
+        res.send(result)
     })
 
     app.post('/postcalendar', async(req, res)=>{
