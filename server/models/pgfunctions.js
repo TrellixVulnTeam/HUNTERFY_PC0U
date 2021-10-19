@@ -521,11 +521,12 @@ class pgProgram{
         catch(err){console.log(err)}
     }
 
-    async getCalendar(month, year){
+    async getCalendar(date){
         const searchQuery =`
         SELECT parcelid, state, county, date
-        FROM public."${year}-data"
-        WHERE EXTRACT(MONTH FROM date) = '${month}'; 
+        FROM public."2021-data"
+        WHERE date = '${date}'
+        ORDER BY date ASC;
         `
         try{
             const result = await dbClient.query(searchQuery)

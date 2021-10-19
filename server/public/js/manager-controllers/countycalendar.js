@@ -20,70 +20,52 @@ async function postCalendar(json) {
         }
         const rawResponse = await fetch('/postcalendar', options)
         const content = await rawResponse.json();
-        console.log(content)
-        var arr = []
-        for (var i = 0; i < content.rows.length; i++) {
-            var contentIndex = content.rows[i]
-            var date = new Date(contentIndex.date)
-            var day = date.getDate()
+        const arr = resumirArr(content)
+        const resultContainer = document.querySelector('.results')
+        for (var i = 0; i < arr.length; i++) {
+            arrIndex = arr[i]
+            var li = document.createElement('li')
+            li.innerHTML = arrIndex
+            resultContainer.append(li)
         }
-        var novaArr = arr.filter(function(este, i) {
-            return arr.indexOf(este) === i;
-        });
-        console.log(novaArr)
     }
     catch(error){
         console.log(error)
     }
 }
 
-function getJson(){
-    var month = document.querySelector('#month').value
-    var year = document.querySelector('#year').value
-    console.log(month, year)
+function resumirArr(content){
+    var arr = []
     
-    const jsonModel = `{"month":"${month}", "year":"${year}"}`
+    for (var i = 0; i < content.rows.length; i++) {
+        contentIndex = content.rows[i]
+        arr.push(`${contentIndex.state}/${contentIndex.county}`)
+    }
+    var arr = arr.filter(function(este, i) {
+        return arr.indexOf(este) === i;
+    });
+    
+    return arr
+    
+}
+
+function getJson(){
+    var date = document.querySelector('#date').value
+    const jsonModel = `{"date":"${date}"}`
     const datejson = JSON.parse(jsonModel)
     return datejson
 }
 
 async function buildPage(json){
     var createItem = `
-        <h2 class="date">${json.date}</h2>
-        <h2>Counties per day</h2>
-           <div class="itens-container">
-               <h2 id="1"></h2>
-               <h2 id="2"></h2>
-               <h2 id="3"></h2>
-               <h2 id="4"></h2>
-               <h2 id="5"></h2>
-               <h2 id="6"></h2>
-               <h2 id="7"></h2>
-               <h2 id="8"></h2>
-               <h2 id="9"></h2>
-               <h2 id="10"></h2>
-               <h2 id="11"></h2>
-               <h2 id="12"></h2>
-               <h2 id="13"></h2>
-               <h2 id="14"></h2>
-               <h2 id="15"></h2>
-               <h2 id="16"></h2>
-               <h2 id="17"></h2>
-               <h2 id="18"></h2>
-               <h2 id="19"></h2>
-               <h2 id="20"></h2>
-               <h2 id="21"></h2>
-               <h2 id="22"></h2>
-               <h2 id="23"></h2>
-               <h2 id="24"></h2>
-               <h2 id="25"></h2>
-               <h2 id="26"></h2>
-               <h2 id="27"></h2>
-               <h2 id="28"></h2>
-               <h2 id="29"></h2>
-               <h2 id="30"></h2>
-               <h2 id="31"></h2>
-           </div>
+    <div style="margin-top:11vh">
+        <h2>State/County insertion on date: ${json.date}</h2>
+        <div class="itens-container">
+            <h2>Results:</h2>    
+            <ul class="results"></ul>
+                
+        </div>
+    </div>       
     `
     var sectionPrograma = document.querySelector('.program')
     sectionPrograma.innerHTML = createItem

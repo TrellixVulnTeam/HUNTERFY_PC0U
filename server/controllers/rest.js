@@ -318,9 +318,8 @@ module.exports = app => {
     })
 
     app.post('/postcalendar', async(req, res)=>{
-        const calendarInfo = await pgProgram.getCalendar(req.body.month, req.body.year)
+        const calendarInfo = await pgProgram.getCalendar(req.body.date)
         console.log('fetch')
-        console.log(calendarInfo)
         res.send(calendarInfo)
     })
 }

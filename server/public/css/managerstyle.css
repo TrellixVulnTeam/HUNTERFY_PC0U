@@ -176,7 +176,7 @@ body{
 }
 
 .images-row div{
-    width: 20vw;
+    width: 19vw;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -216,7 +216,7 @@ body{
 }
 
 .column div{
-    width: 20vw;
+    width: 19vw;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -256,6 +256,16 @@ body{
     width: 18vw;
     word-wrap:break-word;
     color: rgb(255, 255, 255);
+}
+
+.rank1{
+    padding: 0.5vh;
+    width: 19vh; 
+}
+
+.rank{
+    padding: 0.5vh;
+    width: 19vh;
 }
 
 .rank div{
@@ -347,6 +357,10 @@ body{
     background-color: #74726c;
     border-radius: 3px;
     transition: 1s;
+}
+
+.contrast div{
+    padding: 0 1vh;
 }
 /*new manager item*/
 
