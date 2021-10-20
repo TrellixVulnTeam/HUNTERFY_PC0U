@@ -65,7 +65,7 @@ async function postRank(json) {
         document.querySelector('.loading-text').style.display = 'none'
         for (var i = 0; i < content.length; i++) {
             var contentIndex = content[i]
-            createItem(contentIndex)
+            createResumedItem(contentIndex)
         }
     }
     catch(error){

@@ -27,8 +27,19 @@ header{
 }
 
 body{
-    background-color: #363333;
-    
+    background-color: #363333; 
+}
+
+::-webkit-scrollbar {
+    width: 1vw;
+  }
+
+::-webkit-scrollbar-thumb {
+    background-color: #a14418;
+}
+
+body::-webkit-scrollbar-track {
+    background: #272525;        /* color of the tracking area */
 }
 
 .janela-header{
@@ -76,10 +87,17 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: start;
+    margin-top: 1vh;
+    
 }
 
 .rankinput label{
     font-size: 2vh;
+}
+
+#search-form .rankinput div{
+    min-height: 3vh;
+    height: 3vh;
 }
 
 .valist-container{
@@ -97,7 +115,7 @@ body{
 }
 
 .username{
-    margin-top: 10vh;
+    margin-top: 15vh;
     font-size: 5vh;
     margin-bottom: 3vh;
 }
@@ -144,6 +162,10 @@ body{
     margin-bottom: 2vh;
     transition: 1s;
     min-height: 30vh;
+}
+
+.resumed-manager-item{
+    min-height: 10vh;
 }
 
 .program h2{
@@ -199,11 +221,6 @@ body{
     display: flex;
     justify-content: space-evenly;
     margin-top: 2vh;
-}
-
-.accordion{
-    height: 60vh;
-    border-radius: 4px;
 }
 
 .hide{
@@ -362,7 +379,8 @@ body{
 .contrast div{
     padding: 0 1vh;
 }
-/*new manager item*/
+
+
 
 .manager-window{
     margin-top: 10vh;
@@ -372,8 +390,15 @@ form{
     margin-top: 3vh;
 }
 
+#search-form h2{
+    margin-bottom: 1vh;
+}
+
 #search-form div{
-    margin-bottom: 0.5vh;
+    min-height: 9vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 #search-form input[type=text]{
@@ -401,6 +426,13 @@ form{
     font-size: 2vh;
     border-radius: 0.5vh;
     padding: 0 1vh;
+}
+
+#search-form .rankinput div{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
 }
 
 .search-button{
@@ -433,17 +465,9 @@ form{
     transition: 0.5s;
 }
 
-::-webkit-scrollbar-thumb {
-    background-color: #a14418;
-}
 
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
+/*new manager item*/
 
-body::-webkit-scrollbar-track {
-    background: orange;        /* color of the tracking area */
-}
 
 .submitrank{
     border: none;
@@ -475,7 +499,7 @@ body::-webkit-scrollbar-track {
 }*/
 
 .register-program{
-    width: 100%;
+    width: 95%;
     display: flex;
     justify-content: center;
 }
@@ -606,6 +630,14 @@ body::-webkit-scrollbar-track {
     margin-bottom:2vh;
 }
 
+.resumed-accordion{
+    height: 5vh;
+}
+
+.accordion:hover{
+    cursor: pointer;
+}
+
 #superusername{
     border: none;
     border-bottom: 1px white solid;
@@ -715,6 +747,7 @@ body::-webkit-scrollbar-track {
     width: 100%;
     height: 3vh;
     margin-bottom: 2vh;
+    margin-top: 12vh;
 }
 
 .titleslog li{
@@ -764,6 +797,7 @@ body::-webkit-scrollbar-track {
     justify-content: space-between;
     margin-bottom: 1vh;
     align-items: center;
+    width: 100%;
 }
 
 .login-form input{
@@ -772,6 +806,11 @@ body::-webkit-scrollbar-track {
     border-bottom: white 1px solid;
     color: white;
     font-size: 2vh;
+    width: 50%;
+}
+
+.login-form label{
+    width: 49%;
 }
 
 .login-button{

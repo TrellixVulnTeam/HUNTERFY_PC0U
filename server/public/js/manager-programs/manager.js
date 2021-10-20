@@ -80,7 +80,6 @@ async function editRank3(item){
 }
 
 function accordion(item){
-    console.log(item)
     var hide = item.children[1]    
     if (hide.style.display === "block") {
         hide.style.display = "none";
@@ -179,8 +178,8 @@ async function createResumedItem(element){
     var itensContainer = document.querySelector('.itens-container')
     var div = document.createElement('div')
     var item = `
-    <div class="manager-item"><!--item-->  
-                <div class="accordion" onclick="accordion(this.parentElement)">
+    <div class="manager-item resumed-manager-item"><!--item-->  
+                <div class="accordion resumed-accordion" onclick="accordion(this.parentElement)">
                     <div class="title"><h1>Parcel ID:&nbsp;</h1><h2 class="parcelid">${element.parcelid}</h2></div>
                     
                 </div>

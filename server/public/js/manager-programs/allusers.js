@@ -20,7 +20,6 @@ async function getUserData() {
 
 async function buildPage(json){
     var createItem = `
-        <h2 class="username">All users:</h2>
         <ul class="titleslog">
             <li>USERNAME</li>
             <li>PASSWORD</li>

@@ -85,8 +85,7 @@ function getJson(){
 async function buildPage(json){
     var createItem = `
     <div class="manager-window">
-        <h2 class="username">Rank: ${json.rank}</h2>
-        <h2 class="date">${json.date}</h2>
+        <h2 class="username">County: ${json.county}</h2>
         <h2 class="production-count"></h2>
         <h2>Displaying 100 itens</h2>
         <h2 class="page-count"></h2>
