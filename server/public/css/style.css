@@ -410,6 +410,24 @@ input[type=radio]{
     margin-bottom: 3vh;
 }
 
+.house-button{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1vh;
+}
+
+.house-button i{
+    font-size: 5vh;
+    color: #502e25;
+}
+
+.house-button i:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+    transition: 0.5s;
+}
+
 .info-card h2:nth-child(1){
     font-weight: 800;
     font-size: 2.7vh;
