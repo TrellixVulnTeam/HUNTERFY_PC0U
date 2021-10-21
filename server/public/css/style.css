@@ -385,19 +385,7 @@ input[type=radio]{
     padding: 0;
 }
 
-.edit:hover{
-    transform: scale(1.2);
-    transition: 0.5s;
-    cursor: pointer;
-}
-
-.exclude:hover{
-    transform: scale(1.2);
-    transition: 0.5s;
-    cursor: pointer;
-}
-
-.send:hover{
+.options button:hover{
     transform: scale(1.2);
     transition: 0.5s;
     cursor: pointer;
