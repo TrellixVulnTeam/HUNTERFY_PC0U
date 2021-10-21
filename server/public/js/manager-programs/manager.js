@@ -295,6 +295,42 @@ async function createResumedItem(element){
                             
                         </div>
                     </div>
+                    <div>
+                        <div onclick="flexAccordion(this.parentElement)"><i class="fas fa-home"></i></div>
+                        <div class="item-columns" style="display: none;">
+                            <div class="column contrast">
+                                <div><h2>Owner Name</h2><h3 class="value">${element.ownername}</h3></div>
+                                <div><h2>Propstream Market Value</h2><h3 class="value">${element.propstream}</h3></div>
+                                <div><h2>Estimated ARV</h2><h3 class="value">${element.estimatedarv}</h3></div>
+                                <div><h2>Google Maps Date</h2><h3 class="value">${element.gmapdate}</h3></div>
+                                <div><h2>Google Earth Link</h2><h3 class="value">${element.gearthlink}</h3></div>
+                            </div>
+
+                            <div class="column contrast">
+                                
+                                <div><h2>Showing Building</h2><h3 class="value">${element.showingbuilding}</h3></div>
+                                <div><h2>Building Size</h2><h3 class="value">${element.buildingsize}</h3></div>
+                                <div><h2>Year Built</h2><h3 class="value">${element.yearbuilt}</h3></div>
+                                <div><h2>Structure Type</h2><h3 class="value">${element.structuretype}</h3></div>
+                                <div><h2>Number Of Bedrooms</h2><h3 class="value">${element.bedrooms}</h3></div>
+                                
+                                
+                            </div>
+
+                            <div class="column contrast">
+                                
+                                <div><h2>Number Of Bathrooms</h2><h3 class="value">${element.bathrooms}</h3></div>
+                                <div><h2>Garage Size</h2><h3 class="value">${element.garage}</h3></div>
+                                <div><h2>Taxes Per Year</h2><h3 class="value">${element.taxesperyear}</h3></div>
+                                <div><h2>Cad Land Value</h2><h3 class="value">${element.cadlandvalue}</h3></div>
+                                <div><h2>Cad Building Value</h2><h3 class="value">${element.cadbuildingvalue}</h3></div>
+                            </div>
+                            <div class="column contrast">  
+                                <div><h2>Cad Total Value</h2><h3 class="value">${element.cadtotalvalue}</h3></div>
+                                <div><h2>Need To Confirm</h2><h3 class="value">${element.needtoconfirm}</h3></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div><!--item-->
     `
