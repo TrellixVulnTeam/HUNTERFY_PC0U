@@ -75,12 +75,137 @@ function editarCard(card){
         </form>
     </div>`
     rootEditArea.innerHTML = editAreaHtml
-    //destrói card atual para reconstruir atualizado
+    
+    
     var saveButton = document.querySelector(".save-edit")
     saveButton.addEventListener("click", (event)=>{
         event.preventDefault()
-        criarCard()
-        excluirCard(card)
+        const housesForm = document.querySelector('form')
+        parcelid[0].innerHTML = housesForm.parcelid.value
+        linkgis[0].innerHTML = housesForm.linkgis.value
+        floodzonetext[0].innerHTML = housesForm.floodzone.value
+        mapslink[0].innerHTML = housesForm.mapslink.value
+        taxowned[0].innerHTML = housesForm.taxowned.value
+        marketvalue[0].innerHTML = housesForm.marketvalue.value
+        latitude[0].innerHTML = housesForm.latitude.value
+        longitude[0].innerHTML = housesForm.longitude.value
+        acres[0].innerHTML = housesForm.acres.value
+        adress[0].innerHTML = housesForm.end.value
+        adressn1[0].innerHTML = housesForm.end1.value
+        adressn2[0].innerHTML = housesForm.end2.value
+        adressn3[0].innerHTML = housesForm.end3.value
+        adressn4[0].innerHTML = housesForm.end4.value
+        rank.innerHTML = housesForm.rank.value
+        obs[0].innerHTML = housesForm.obs.value
+        floodzonelink[0].innerHTML = housesForm.floodzonelink.value
+        zestimate[0].innerHTML = housesForm.zestimate.value
+        zillow[0].innerHTML = housesForm.zillow.value
+        hoa[0].innerHTML = housesForm.hoa.value
+        watersupply[0].innerHTML = housesForm.watersupply.value
+        elecsupply[0].innerHTML = housesForm.elecsupply.value
+        sewerage[0].innerHTML = housesForm.sewerage.value
+
+        var floodzoneImg = document.querySelectorAll("#imagem-floodzone")[0]
+        var mapsImg = document.querySelectorAll("#imagem-maps")[0]
+        var streetviewImg = document.querySelectorAll("#imagem-streetview")[0]
+        var sateliteImg = document.querySelectorAll("#imagem-satelite")[0]
+
+        sateliteimage[0].src = checkFile(sateliteImg) 
+        floodzoneimage[0].src = checkFile(floodzoneImg)
+        mapsimage[0].src = checkFile(mapsImg)
+        streetviewimage[0].src = checkFile(streetviewImg)
+        fecharCardEdit()
+    })
+}
+
+function editarHouse(card){
+    var houseInfo = card.children[2].children[1]
+    //--array name   --input inside info              --input empty info                                         --input html name"   --label title
+    var ownerName = [houseInfo.children[0].children[1], `<label>OWNER NAME:</label><input name="ownername" type="text">`, "ownername", `OWNER NAME:`]
+    var propsStream = [houseInfo.children[1].children[1], `<label>PROPSTREAM MARKET VALUE:</label><input name="propstream" type="text">`, "propstream", `PROPSTREAM MARKET VALUE:`]
+    var estimatedArv = [houseInfo.children[2].children[1], `<label>ESTIMATED ARV:</label><input name="estimatedarv" type="text">`, "estimatedarv", `ESTIMATED ARV:`]
+    var gMapsDate = [houseInfo.children[3].children[1], `<label>GOOGLE MAPS DATE:</label><input name="gmapsdate" type="text">`, "gmapsdate", `GOOGLE MAPS DATE:`]
+    var gEarthLink = [houseInfo.children[4].children[1], `<label>GOOGLE EARTH LINK:</label><input name="gearthlink" type="text">`, "gearthlink", `GOOGLE EARTH LINK:`]
+    var showingBuilding = [houseInfo.children[5].children[1], `<label>SHOWING BUILDING:</label><input name="showingbuilding" type="text">`, "showingbuilding", `SHOWING BUILDING:`]
+    var buildingSize = [houseInfo.children[6].children[1], `<label>BUILDING SIZE:</label><input name="buildingsize" type="text">`, "buildingsize", `BUILDING SIZE:`]
+    var builtYear = [houseInfo.children[7].children[1], `<label>YEAR BUILT:</label><input name="yearbuilt" type="text">`, "yearbuilt", `YEAR BUILT:`]
+    var structureType = [houseInfo.children[8].children[1], `<label>STRUCTURE TYPE:</label><input name="structuretype" type="text">`, "structuretype", `STRUCTURE TYPE:`]
+    var bedroomsNumber = [houseInfo.children[9].children[1], `<label>NUMBER OF BEDROOMS:</label><input name="numberofbedrooms" type="text">`, "numberofbedrooms", `NUMBER OF BEDROOMS:`]
+    var bathroomsNumber = [houseInfo.children[10].children[1], `<label>NUMBER OF BATHROOMS:</label><input name="numberofbathrooms" type="text">`, "numberofbathrooms", `NUMBER OF BATHROOMS:`]
+    var garageSize = [houseInfo.children[11].children[1], `<label>GARAGE SIZE:</label><input name="garagesize" type="text">`, "garagesize", `GARAGE SIZE:`]
+    var taxesPerYear = [houseInfo.children[12].children[1], `<label>TAXES PER YEAR:</label><input name="taxesperyear" type="text">`, "taxesperyear", `TAXES PER YEAR:`]
+    var cadLandValue = [houseInfo.children[13].children[1], `<label>CAD LAND VALUE:</label><input name="cadlandvalue" type="text">`, "cadlandvalue", `CAD LAND VALUE:`]
+    var cadBuildingValue = [houseInfo.children[14].children[1], `<label>CAD BUILDING VALUE:</label><input name="cadbuildingvalue" type="text">`, "cadbuildingvalue", `CAD BUILDING VALUE:`]
+    var cadTotalValue = [houseInfo.children[15].children[1], `<label>CAD TOTAL VALUE:</label><input name="cadtotalvalue" type="text">`, "cadtotalvalue", `CAD TOTAL VALUE:`]
+    var needToConfirm = [houseInfo.children[16].children[1], `<label>NEED TO CONFIRM CONDITION:</label><input name="needtoconfirm" type="text">`, "needtoconfirm", `NEED TO CONFIRM CONDITION:`]
+
+    //--array name     --input inside info              --label            --class             --cache id
+    var cadImage = [houseInfo.children[17].children[1], `CAD IMAGE:`, 'cad-image', 'cachecadimg']
+
+    var houseEditAreaHtml = `
+        <div class="card-edit">
+        <button class="fechar-card" onclick="fecharCardEdit()"><i class="fas fa-times-circle"></i></button>
+        <form>
+            <div class="campo1">
+                <div>${checkValueText(ownerName)}</div>
+                <div>${checkValueText(propsStream)}</div>
+                <div>${checkValueText(estimatedArv)}</div>
+                <div>${checkValueText(gMapsDate)}</div>
+                <div>${checkValueText(gEarthLink)}</div>
+                <div>${checkValueText(showingBuilding)}</div>
+                <div>${checkValueText(buildingSize)}</div>
+            </div>
+            <div class="campo2">
+                <div>${checkValueText(builtYear)}</div>
+                <div>${checkValueText(structureType)}</div>
+                <div>${checkValueText(bedroomsNumber)}</div>
+                <div>${checkValueText(bathroomsNumber)}</div>
+                <div>${checkValueText(garageSize)}</div>
+                <div>${checkValueText(taxesPerYear)}</div>
+                <div>${checkValueText(cadLandValue)}</div>
+            </div>
+            <div class="campo3">
+                <div>${checkValueText(cadBuildingValue)}</div>
+                <div>${checkValueText(cadTotalValue)}</div>
+                <div>${checkValueText(needToConfirm)}</div>
+                <div>${checkValueImg(cadImage)}</div>
+                <div><button class="save-house-edit">SALVAR</button></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="campo4">
+            </div>
+        </form>
+    </div>`
+    rootEditArea.innerHTML = houseEditAreaHtml
+    var saveHouseButton = document.querySelector(".save-house-edit")
+    saveHouseButton.addEventListener("click", (event)=>{
+        event.preventDefault()
+
+        const housesForm = document.querySelector('form')
+        
+        console.log(ownerName[0])
+        ownerName[0].innerHTML = housesForm.ownername.value
+        propsStream[0].innerHTML = housesForm.propstream.value
+        estimatedArv[0].innerHTML = housesForm.estimatedarv.value
+        gMapsDate[0].innerHTML = housesForm.gmapsdate.value
+        gEarthLink[0].innerHTML = housesForm.gearthlink.value
+        showingBuilding[0].innerHTML = housesForm.showingbuilding.value
+        buildingSize[0].innerHTML = housesForm.buildingsize.value
+        builtYear[0].innerHTML = housesForm.yearbuilt.value
+        structureType[0].innerHTML = housesForm.structuretype.value
+        bedroomsNumber[0].innerHTML = housesForm.numberofbedrooms.value
+        bathroomsNumber[0].innerHTML = housesForm.numberofbathrooms.value
+        garageSize[0].innerHTML = housesForm.garagesize.value
+        taxesPerYear[0].innerHTML = housesForm.taxesperyear.value
+        cadLandValue[0].innerHTML = housesForm.cadlandvalue.value
+        cadBuildingValue[0].innerHTML = housesForm.cadbuildingvalue.value
+        cadTotalValue[0].innerHTML = housesForm.cadtotalvalue.value
+        needToConfirm[0].innerHTML = housesForm.needtoconfirm.value
+        
+        var cadImg = document.querySelectorAll("#cad-image")[0]
+        cadImage[0].src = checkFile(cadImg) 
+
         fecharCardEdit()
     })
 }

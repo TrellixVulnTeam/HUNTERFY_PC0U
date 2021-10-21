@@ -245,6 +245,14 @@ function formatStringPlus(str){
     return string
 }
 
+function accordion(item){
+    var hide = item.children[1]    
+    if (hide.style.display === "block") {
+        hide.style.display = "none";
+    }else{
+        hide.style.display = "block";
+    }
+}
 
 
 

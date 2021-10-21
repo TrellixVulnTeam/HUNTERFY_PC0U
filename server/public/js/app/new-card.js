@@ -22,7 +22,7 @@ function criarPaginaEdit(){
                 <div class="campo1">
                     <div><label>PARCEL ID:</label><input name="parcelid" type="text"></div>
                     <div><img src='' id="cachesateliteimg" style='display:none;'><label>GIS IMAGE</label><label class="up-icon" for="imagem-satelite"><i class="fas fa-arrow-circle-up"></i></label><input onchange="preview_image('imagem-satelite')" id="imagem-satelite" type="file" accept=".jpg, .png, .pdf, .jpeg, .bmp"></div>
-                    <div><img src='' id="cachefloodzoneimg" style='display:none;'><label>FLOODZONE IMAGE:</label><label class="up-icon" for="imagem-floodzone"><i class="fas fa-arrow-circle-up"></i></label><input onchange="preview_image('imagem-floodzone')" id="imagem-floodzone" type="file" accept=".jpg, .png, .pdf, .jpeg, .bmp"></div>
+                    <div><img src='' id="cachefloodzoneimg" style='display:none;'><label>FLOODZONE IMAGE:</label><label class="up-icon" for="imagem-floodzone"><i class="fas fa-arrow-circle-up"></i></label><input id="imagem-floodzone" type="file" accept=".jpg, .png, .pdf, .jpeg, .bmp"></div>
                     <div><img src='' id="cachemapsimg" style='display:none;'><label>MAPS IMAGE:</label><label class="up-icon" for="imagem-maps"><i class="fas fa-arrow-circle-up"></i></label><input onchange="preview_image('imagem-maps')" id="imagem-maps" type="file" accept=".jpg, .png, .pdf, .jpeg, .bmp"></div>
                     <div><img src='' id="cachestreetviewimg" style='display:none;'><label>STREETVIEW IMAGE:</label><label class="up-icon" for="imagem-streetview"><i class="fas fa-arrow-circle-up"></i></label><input onchange="preview_image('imagem-streetview')" id="imagem-streetview" type="file" accept=".jpg, .png, .pdf, .jpeg, .bmp"></div>
                     <div><label>TAX VALUE:</label><input name="taxowned" type="text"></div>
@@ -77,7 +77,8 @@ function criarCard(){
         <div class="options">
             <button class="send" onclick="postJson(this.parentElement.parentElement)"><i class="fas fa-share"></i></button>   
             <button class="edit" onclick="editarCard(this.parentElement.parentElement)"><i class="fas fa-pen-square"></i></button>
-            <button class="exclude" onclick="excluirCard(this.parentElement.parentElement)"><i class="fas fa-trash"></i></i></button>   
+            <button class="exclude" onclick="excluirCard(this.parentElement.parentElement)"><i class="fas fa-trash"></i></i></button>
+            <button class="house-edit" onclick="editarHouse(this.parentElement.parentElement)"><i class="fas fa-home"></i></button>   
         </div>
         <div class="infos">
             <div class="info-card info-text"><h2>PARCEL ID:</h2> <h2>${formatStringPlus(checkValue(form.parcelid.value))}</h2></div>
@@ -108,7 +109,30 @@ function criarCard(){
             <div class="info-card info-text"><h2>ELECTRICITY SUPPLY:</h2> <h2>${formatString(checkValue(form.elecsupply.value))}</h2></div>
             <div class="info-card info-text"><h2>ZILLOW LINK:</h2> <h2>${formatString(checkValue(form.sewerage.value))}</h2></div>
         </div>
-             
+
+        <div class="infos">
+            <div onclick="accordion(this.parentElement)"><i class="fas fa-home"></i></div>
+            <div style="display: none;">
+                <div class="info-card info-text"><h2>OWNER NAME:</h2> <h2></h2></div>
+                <div class="info-card info-text"><h2>PROPSTREAM MARKET VALUE:</h2> <h2></h2></div>
+                <div class="info-card info-text"><h2>ESTIMATED ARV:</h2> <h2></h2></div>
+                <div class="info-card info-text"><h2>GOOGLE MAPS DATE:</h2> <h2></h2></div>
+                <div class="info-card info-text"><h2>GOOGLE EARTH LINK:</h2> <h2></h2></div>
+                <div class="info-card info-text"><h2>SHOWING BUILDING?:</h2> <h2></h2></div>
+                <div class="info-card info-text"><h2>BUILDING SIZE:</h2> <h2></h2></div>
+                <div class="info-card info-text"><h2>YEAR BUILT:</h2> <h2></h2></div>
+                <div class="info-card info-text"><h2>STRUCTURE TYPE:</h2> <h2></h2></div>
+                <div class="info-card info-text"><h2>NUMBER OF BEDROOMS:</h2> <h2></h2></div>
+                <div class="info-card info-text"><h2>NUMBER OF BATHROOMS:</h2> <h2></h2></div>
+                <div class="info-card info-text"><h2>GARAGE SIZE:</h2> <h2></h2></div>
+                <div class="info-card info-text"><h2>TAXES PER YEAR:</h2> <h2></h2></div>
+                <div class="info-card info-text"><h2>CAD LAND VALUE:</h2> <h2></h2></div>
+                <div class="info-card info-text"><h2>CAD BUILDING VALUE:</h2> <h2></h2></div>
+                <div class="info-card info-text"><h2>CAD TOTAL VALUE:</h2> <h2></h2></div>
+                <div class="info-card info-text"><h2>NEED TO CONFIRM CONDITION:</h2> <h2></h2></div>
+                <div class="info-card info-text"><h2>CAD INFO FROM GIS:</h2> <img src=""></img></div>
+            </div>
+        <div>
     </div>  
     `
     areaCards.append(novoCard)
