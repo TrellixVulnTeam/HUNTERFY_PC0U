@@ -160,7 +160,7 @@ async function createItem(element){
                             <div><h2>User:</h2><h3>${element.userrank2}</h3></div>
                             <div><label for="">Rank:</label><input type="text" value="${element.rank2}"></div>
                             <div><label for="">Obs:</label><input type="text" value="${element.obs2}"></div>
-                            <div>&nbsp;</div>
+                            <div class="buyopt"><h2>&nbsp;</h2><h2>&nbsp;</h2></div>
                             <div class="rank-button"><button onclick="editRank2(this)">Send rank</button></div>
                         </div>
                          <div class="rank contrast">
@@ -180,33 +180,37 @@ async function createItem(element){
                         <div onclick="flexAccordion(this.parentElement)"><i class="fas fa-home"></i></div>
                         <div class="item-columns" style="display: none;">
                             <div class="column contrast">
-                                <div><h2>Owner name</h2><h3 class="value">${element.ownername}</h3></div>
-                                <div><h2>Propstream market value</h2><h3 class="value">${element.propstream}</h3></div>
-                                <div><h2>Estimated arv</h2><h3 class="value">${element.estimatedarv}</h3></div>
-                                <div><h2>Google maps date</h2><h3 class="value">${element.gmapdate}</h3></div>
-                                <div><h2>Google earth link</h2><h3 class="value">${element.gearthlink}</h3></div>
-                                <div><h2>Showing building</h2><h3 class="value">${element.showingbuilding}</h3></div>
+                                <div><h2>Owner Name</h2><h3 class="value">${element.ownername}</h3></div>
+                                <div><h2>Propstream Market Value</h2><h3 class="value">${element.propstream}</h3></div>
+                                <div><h2>Estimated ARV</h2><h3 class="value">${element.estimatedarv}</h3></div>
+                                <div><h2>Google Maps Date</h2><h3 class="value">${element.gmapdate}</h3></div>
+                                <div><h2>Google Earth Link</h2><h3 class="value">${element.gearthlink}</h3></div>
                             </div>
 
                             <div class="column contrast">
-                                <div><h2>Building size</h2><h3 class="value">${element.buildingsize}</h3></div>
-                                <div><h2>Year built</h2><h3 class="value">${element.yearbuilt}</h3></div>
-                                <div><h2>Structure type</h2><h3 class="value">${element.structuretype}</h3></div>
-                                <div><h2>Number of bedrooms</h2><h3 class="value">${element.bedrooms}</h3></div>
-                                <div><h2>Number of bathrooms</h2><h3 class="value">${element.bathrooms}</h3></div>
-                                <div><h2>Garage size</h2><h3 class="value">${element.garage}</h3></div>
+                                
+                                <div><h2>Showing Building</h2><h3 class="value">${element.showingbuilding}</h3></div>
+                                <div><h2>Building Size</h2><h3 class="value">${element.buildingsize}</h3></div>
+                                <div><h2>Year Built</h2><h3 class="value">${element.yearbuilt}</h3></div>
+                                <div><h2>Structure Type</h2><h3 class="value">${element.structuretype}</h3></div>
+                                <div><h2>Number Of Bedrooms</h2><h3 class="value">${element.bedrooms}</h3></div>
+                                
+                                
                             </div>
 
                             <div class="column contrast">
-                                <div><h2>Taxes per year</h2><h3 class="value">${element.taxesperyear}</h3></div>
-                                <div><h2>Cad land value</h2><h3 class="value">${element.cadlandvalue}</h3></div>
-                                <div><h2>Cad building value</h2><h3 class="value">${element.cadbuildingvalue}</h3></div>
-                                <div><h2>Cad total value</h2><h3 class="value">${element.cadtotalvalue}</h3></div>
-                                <div><h2>Need to confirm condition</h2><h3 class="value">${element.needtoconfirm}</h3></div>
-                                <div><h2></h2><h3 class="value"></h3></div>
+                                
+                                <div><h2>Number Of Bathrooms</h2><h3 class="value">${element.bathrooms}</h3></div>
+                                <div><h2>Garage Size</h2><h3 class="value">${element.garage}</h3></div>
+                                <div><h2>Taxes Per Year</h2><h3 class="value">${element.taxesperyear}</h3></div>
+                                <div><h2>Cad Land Value</h2><h3 class="value">${element.cadlandvalue}</h3></div>
+                                <div><h2>Cad Building Value</h2><h3 class="value">${element.cadbuildingvalue}</h3></div>
                             </div>
                             <div class="column contrast">
-                                <div><h2>&nbsp;</h2><h3 class="value">&nbsp;</h3></div>
+                                
+                                <div><h2>Cad Total Value</h2><h3 class="value">${element.cadtotalvalue}</h3></div>
+                                <div><h2>Need To Confirm</h2><h3 class="value">${element.needtoconfirm}</h3></div>
+                                <div class="image-row"><h2>Cad Info From GIS</h2><img src="${element.cadimage}" alt=""></div>
                             
                             </div>
                         </div>
@@ -276,7 +280,6 @@ async function createResumedItem(element){
                             <div><h2>User:</h2><h3>${element.userrank2}</h3></div>
                             <div><label for="">Rank:</label><input type="text" value="${element.rank2}"></div>
                             <div><label for="">Obs:</label><input type="text" value="${element.obs2}"></div>
-                            <div>&nbsp;</div>
                             <div class="rank-button"><button onclick="editRank2(this)">Send rank</button></div>
                         </div>
                          <div class="rank contrast">
