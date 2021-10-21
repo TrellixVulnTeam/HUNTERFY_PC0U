@@ -76,7 +76,6 @@ function editarCard(card){
     </div>`
     rootEditArea.innerHTML = editAreaHtml
     
-    
     var saveButton = document.querySelector(".save-edit")
     saveButton.addEventListener("click", (event)=>{
         event.preventDefault()
@@ -178,13 +177,13 @@ function editarHouse(card){
         </form>
     </div>`
     rootEditArea.innerHTML = houseEditAreaHtml
+
+
     var saveHouseButton = document.querySelector(".save-house-edit")
     saveHouseButton.addEventListener("click", (event)=>{
         event.preventDefault()
 
         const housesForm = document.querySelector('form')
-        
-        console.log(ownerName[0])
         ownerName[0].innerHTML = housesForm.ownername.value
         propsStream[0].innerHTML = housesForm.propstream.value
         estimatedArv[0].innerHTML = housesForm.estimatedarv.value

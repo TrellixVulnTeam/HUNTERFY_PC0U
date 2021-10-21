@@ -5,7 +5,6 @@ var rootEditArea = document.querySelector(".root-edit")
 searchButton.addEventListener("click", async()=>{
     //console.log('searched')
     var result = await postSearchParcel(parcelToJson())
-    console.log(result)
     renderResult(result)
 })
 
@@ -16,7 +15,8 @@ function renderResult(element){
         <div class="options">
             <button class="send" onclick="postJson(this.parentElement.parentElement)"><i class="fas fa-share"></i></button>   
             <button class="edit" onclick="editarCard(this.parentElement.parentElement)"><i class="fas fa-pen-square"></i></button>
-            <button class="exclude" onclick="excluirCard(this.parentElement.parentElement)"><i class="fas fa-trash"></i></i></button>   
+            <button class="exclude" onclick="excluirCard(this.parentElement.parentElement)"><i class="fas fa-trash"></i></i></button> 
+            <button class="house-edit" onclick="editarHouse(this.parentElement.parentElement)"><i class="fas fa-home"></i></button>  
         </div>
         <div class="infos">
             <div class="info-card info-text"><h2>PARCEL ID:</h2> <h2>${element.parcelid}</h2></div>
@@ -47,6 +47,29 @@ function renderResult(element){
             <div class="info-card info-text"><h2>ELECTRICITY SUPPLY:</h2> <h2>${element.electricitysupply}</h2></div>
             <div class="info-card info-text"><h2>SEWERAGE:</h2> <h2>${element.sewerage}</h2></div>
         </div>
+        <div class="infos">
+            <div onclick="accordion(this.parentElement)"><i class="fas fa-home"></i></div>
+            <div style="display: none;">
+                <div class="info-card info-text"><h2>OWNER NAME:</h2> <h2>${element.ownername}</h2></div>
+                <div class="info-card info-text"><h2>PROPSTREAM MARKET VALUE:</h2> <h2>${element.propstream}</h2></div>
+                <div class="info-card info-text"><h2>ESTIMATED ARV:</h2> <h2>${element.estimatedarv}</h2></div>
+                <div class="info-card info-text"><h2>GOOGLE MAPS DATE:</h2> <h2>${element.gmapdate}</h2></div>
+                <div class="info-card info-text"><h2>GOOGLE EARTH LINK:</h2> <h2>${element.gearthlink}</h2></div>
+                <div class="info-card info-text"><h2>SHOWING BUILDING?:</h2> <h2>${element.showingbuilding}</h2></div>
+                <div class="info-card info-text"><h2>BUILDING SIZE:</h2> <h2>${element.buildingsize}</h2></div>
+                <div class="info-card info-text"><h2>YEAR BUILT:</h2> <h2>${element.yearbuilt}</h2></div>
+                <div class="info-card info-text"><h2>STRUCTURE TYPE:</h2> <h2>${element.structuretype}</h2></div>
+                <div class="info-card info-text"><h2>NUMBER OF BEDROOMS:</h2> <h2>${element.bedrooms}</h2></div>
+                <div class="info-card info-text"><h2>NUMBER OF BATHROOMS:</h2> <h2>${element.bathrooms}</h2></div>
+                <div class="info-card info-text"><h2>GARAGE SIZE:</h2> <h2>${element.garage}</h2></div>
+                <div class="info-card info-text"><h2>TAXES PER YEAR:</h2> <h2>${element.taxesperyear}</h2></div>
+                <div class="info-card info-text"><h2>CAD LAND VALUE:</h2> <h2>${element.cadlandvalue}</h2></div>
+                <div class="info-card info-text"><h2>CAD BUILDING VALUE:</h2> <h2>${element.cadbuildingvalue}</h2></div>
+                <div class="info-card info-text"><h2>CAD TOTAL VALUE:</h2> <h2></h2>${element.cadtotalvalue}</div>
+                <div class="info-card info-text"><h2>NEED TO CONFIRM CONDITION:</h2> <h2>${element.needtoconfirm}</h2></div>
+                <div class="info-card info-text"><h2>CAD INFO FROM GIS:</h2> <img src="${element.cadimage}"></img></div>
+            </div>
+        <div>
     </div>  
     `
     areaCards.append(searchedCard)

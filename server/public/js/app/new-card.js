@@ -107,7 +107,8 @@ function criarCard(){
             <div class="info-card info-text"><h2>HOA:</h2> <h2>${formatString(checkValue(form.hoa.value))}</h2></div>
             <div class="info-card info-text"><h2>WATER SUPPLY:</h2> <h2>${formatString(checkValue(form.watersupply.value))}</h2></div>
             <div class="info-card info-text"><h2>ELECTRICITY SUPPLY:</h2> <h2>${formatString(checkValue(form.elecsupply.value))}</h2></div>
-            <div class="info-card info-text"><h2>ZILLOW LINK:</h2> <h2>${formatString(checkValue(form.sewerage.value))}</h2></div>
+            <div class="info-card info-text"><h2>SEWERAGE:</h2> <h2>${formatString(checkValue(form.sewerage.value))}</h2></div>
+            
         </div>
 
         <div class="infos">

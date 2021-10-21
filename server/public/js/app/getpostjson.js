@@ -24,11 +24,33 @@ async function getJson(card){
         var watersupply = cardInfo.children[24].children[1].innerHTML
         var elecsupply = cardInfo.children[25].children[1].innerHTML
         var sewerage = cardInfo.children[26].children[1].innerHTML
+
+        var houseInfo = card.children[2].children[1]
+        var ownerName = houseInfo.children[0].children[1].innerHTML
+        var propsStream = houseInfo.children[1].children[1].innerHTML
+        var estimatedArv = houseInfo.children[2].children[1].innerHTML
+        var gMapsDate = houseInfo.children[3].children[1].innerHTML
+        var gEarthLink = houseInfo.children[4].children[1].innerHTML
+        var showingBuilding = houseInfo.children[5].children[1].innerHTML
+        var buildingSize = houseInfo.children[6].children[1].innerHTML
+        var builtYear = houseInfo.children[7].children[1].innerHTML
+        var structureType = houseInfo.children[8].children[1].innerHTML
+        var bedroomsNumber = houseInfo.children[9].children[1].innerHTML
+        var bathroomsNumber = houseInfo.children[10].children[1].innerHTML
+        var garageSize = houseInfo.children[11].children[1].innerHTML
+        var taxesPerYear = houseInfo.children[12].children[1].innerHTML
+        var cadLandValue = houseInfo.children[13].children[1].innerHTML
+        var cadBuildingValue = houseInfo.children[14].children[1].innerHTML
+        var cadTotalValue = houseInfo.children[15].children[1].innerHTML
+        var needToConfirm = houseInfo.children[16].children[1].innerHTML
+
         //--array name     --input inside info              --label            --class             --cache id
         var sateliteimage = cardInfo.children[1].children[1].src
         var floodzoneimage = cardInfo.children[3].children[1].src
         var mapsimage = cardInfo.children[5].children[1].src
         var streetviewimage = cardInfo.children[7].children[1].src
+
+        var cadImage = houseInfo.children[17].children[1].src
 
         var state = document.querySelector('#states')
         var state = state.options[state.selectedIndex].innerHTML
@@ -76,11 +98,28 @@ async function getJson(card){
             "hoa":"${formatString(hoa)}",
             "watersupply":"${watersupply}",
             "elecsupply":"${elecsupply}",
-            "sewerage":"${sewerage}"
+            "sewerage":"${sewerage}",
+            "ownername":"${formatString(ownerName)}",
+            "propsstream":"${formatString(propsStream)}",
+            "estimatedarv":"${formatString(estimatedArv)}",
+            "gmapsdate":"${formatString(gMapsDate)}",
+            "gearthlink":"${formatString(gEarthLink)}",
+            "showingbuilding":"${formatString(showingBuilding)}",
+            "buildingsize":"${formatString(buildingSize)}",
+            "builtyear":"${formatString(builtYear)}",
+            "structuretype":"${formatString(structureType)}",
+            "bedroomsnumber":"${formatString(bedroomsNumber)}",
+            "bathroomsnumber":"${formatString(bathroomsNumber)}",
+            "garagesize":"${formatString(garageSize)}",
+            "taxesperyear":"${formatString(taxesPerYear)}",
+            "cadlandvalue":"${formatString(cadLandValue)}",
+            "cadbuildingvalue":"${formatString(cadBuildingValue)}",
+            "cadtotalvalue":"${formatString(cadTotalValue)}",
+            "needtoconfirm":"${formatString(needToConfirm)}",
+            "cadimage":"${cadImage}"
         }`
         var cardJson = JSON.parse(cardString)
         var cardJson = JSON.stringify(cardJson)
-        //console.log(cardJson)
         return cardJson
     }
     catch(err){

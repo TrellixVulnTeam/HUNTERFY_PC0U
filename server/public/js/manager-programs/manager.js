@@ -88,6 +88,15 @@ function accordion(item){
     }
 }
 
+function flexAccordion(item){
+    var hide = item.children[1]    
+    if (hide.style.display === "flex") {
+        hide.style.display = "none";
+    }else{
+        hide.style.display = "flex";
+    }
+}
+
 async function createItem(element){
     var itensContainer = document.querySelector('.itens-container')
     var div = document.createElement('div')
@@ -165,6 +174,41 @@ async function createItem(element){
                         <div>
                             <h2>&nbsp;</h2>
                             
+                        </div>
+                    </div>
+                    <div>
+                        <div onclick="flexAccordion(this.parentElement)"><i class="fas fa-home"></i></div>
+                        <div class="item-columns" style="display: none;">
+                            <div class="column contrast">
+                                <div><h2>Owner name</h2><h3 class="value">${element.ownername}</h3></div>
+                                <div><h2>Propstream market value</h2><h3 class="value">${element.propstream}</h3></div>
+                                <div><h2>Estimated arv</h2><h3 class="value">${element.estimatedarv}</h3></div>
+                                <div><h2>Google maps date</h2><h3 class="value">${element.gmapdate}</h3></div>
+                                <div><h2>Google earth link</h2><h3 class="value">${element.gearthlink}</h3></div>
+                                <div><h2>Showing building</h2><h3 class="value">${element.showingbuilding}</h3></div>
+                            </div>
+
+                            <div class="column contrast">
+                                <div><h2>Building size</h2><h3 class="value">${element.buildingsize}</h3></div>
+                                <div><h2>Year built</h2><h3 class="value">${element.yearbuilt}</h3></div>
+                                <div><h2>Structure type</h2><h3 class="value">${element.structuretype}</h3></div>
+                                <div><h2>Number of bedrooms</h2><h3 class="value">${element.bedrooms}</h3></div>
+                                <div><h2>Number of bathrooms</h2><h3 class="value">${element.bathrooms}</h3></div>
+                                <div><h2>Garage size</h2><h3 class="value">${element.garage}</h3></div>
+                            </div>
+
+                            <div class="column contrast">
+                                <div><h2>Taxes per year</h2><h3 class="value">${element.taxesperyear}</h3></div>
+                                <div><h2>Cad land value</h2><h3 class="value">${element.cadlandvalue}</h3></div>
+                                <div><h2>Cad building value</h2><h3 class="value">${element.cadbuildingvalue}</h3></div>
+                                <div><h2>Cad total value</h2><h3 class="value">${element.cadtotalvalue}</h3></div>
+                                <div><h2>Need to confirm condition</h2><h3 class="value">${element.needtoconfirm}</h3></div>
+                                <div><h2></h2><h3 class="value"></h3></div>
+                            </div>
+                            <div class="column contrast">
+                                <div><h2>&nbsp;</h2><h3 class="value">&nbsp;</h3></div>
+                            
+                            </div>
                         </div>
                     </div>
                 </div>
