@@ -25,7 +25,10 @@
     <section class="controller janela">
              <form id="search-form">
                 <h2>Search</h2>
-                <div><label for="user">By User:</label><input type="text" id="user" name=""></div>
+                <div><label for="user">By Type:</label><select name="" id="list-type">
+                    <option value="auction">Auction</option>
+                    <option value="struck-off">Struck-Off</option>
+                </select></div>
                 <div><label>And By Date:</label><input type="date" id="date" name=""></div>
                 <div><label>Page:</label><input value="1" type="number" id="page" name=""></div>
                 <button class="search-button">SEARCH</button>
@@ -37,6 +40,6 @@
         </div>
     
     <script src="js/manager-programs/manager.js"></script>
-    <script src="js/manager-controllers/searchbyuser.js" async></script>
+    <script src="js/manager-controllers/searchbytype.js" async></script>
 </body>
 </html>

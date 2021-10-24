@@ -6,11 +6,9 @@ document.querySelector('.search-button').addEventListener("click", (event)=>{
 document.querySelector('.copy-button').addEventListener('click', (event)=>{
     event.preventDefault()
     const allParcels = document.querySelectorAll('.parcelid')
-    var arr = []
     var str = ''
     for (var i = 0; i < allParcels.length; i++){
         parcelindex = allParcels[i]
-        arr.push(parcelindex.innerHTML)
         str = str + `\n${parcelindex.innerHTML} `
     }
     console.log(str)

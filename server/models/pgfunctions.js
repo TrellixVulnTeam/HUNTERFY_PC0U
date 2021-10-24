@@ -35,7 +35,7 @@ class pgProgram{
             hoa,
             watersupply,
             electricitysupply,
-            sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage
+            sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage, listtype
             )
 
             VALUES (
@@ -86,7 +86,8 @@ class pgProgram{
             '${terreno.cadbuildingvalue}', 
             '${terreno.cadtotalvalue}', 
             '${terreno.needtoconfirm}', 
-            '${terreno.cadimage}'
+            '${terreno.cadimage}',
+            '${terreno.listtype}'
             );
         `
 
@@ -155,7 +156,8 @@ class pgProgram{
             cadbuildingvalue = '${newInfo.cadbuildingvalue}', 
             cadtotalvalue = '${newInfo.cadtotalvalue}', 
             needtoconfirm = '${newInfo.needtoconfirm}', 
-            cadimage = '${newInfo.cadimage}'
+            cadimage = '${newInfo.cadimage}',
+            listtype = '${newInfo.listtype}'
     
 	        WHERE parcelid = '${newInfo.parcelid}';
         `
@@ -172,7 +174,7 @@ class pgProgram{
     async searchTableByUser(user, date, page){
         const offset = page - 1
         const searchQuery = `
-		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage
+		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage, listtype
 	    FROM public."2021-data"
 		WHERE "username" = '${user}' AND date = '${date}'
         OR "username2" = '${user}' AND date2 = '${date}'
@@ -207,7 +209,7 @@ class pgProgram{
     searchTableByRank(rank, date, ranktype, page, res){
         const offset = page - 1
         const searchQuery = `
-		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage
+		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage, listtype
 	    FROM public."2021-data"
 		WHERE "${ranktype}" = '${rank}' AND date = '${date}'
         ORDER BY item_id DESC
@@ -228,7 +230,7 @@ class pgProgram{
     searchTableByRankResumed(rank, date, ranktype, page, res){
         const offset = page - 1
         const searchQuery = `
-		SELECT parcelid, gislink, floodzonetext, mapslink, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm
+		SELECT parcelid, gislink, floodzonetext, mapslink, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, listtype
 	    FROM public."2021-data"
 		WHERE "${ranktype}" = '${rank}' AND date = '${date}'
         ORDER BY item_id DESC
@@ -265,7 +267,7 @@ class pgProgram{
     async searchByCounty(county, page){
         const offset = page - 1
         const searchQuery = `
-		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage
+		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage, listtype
 	    FROM public."2021-data"
 		WHERE "county" = '${county}'
         ORDER BY item_id DESC
@@ -283,7 +285,7 @@ class pgProgram{
     async searchByCountyResumed(county, page){
         const offset = page - 1
         const searchQuery = `
-		SELECT parcelid, gislink, floodzonetext, mapslink, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm
+		SELECT parcelid, gislink, floodzonetext, mapslink, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, listtype
 	    FROM public."2021-data"
 		WHERE "county" = '${county}'
         ORDER BY item_id DESC
@@ -316,7 +318,7 @@ class pgProgram{
     async searchByChecked(req){
         const offset = req.body.page - 1
         const searchQuery = `
-		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage
+		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage, listtype
 	    FROM public."2021-data"
 		WHERE "buyopt" = 'yes' AND state = '${req.body.state}' AND county = '${req.body.county}'
         ORDER BY item_id DESC
@@ -340,6 +342,38 @@ class pgProgram{
             const result = await dbClient.query(searchQuery)
             dbClient.end;
             return result.rows.length
+        }
+        catch(err){console.log(err)}
+    }
+
+    async searchByType(listtype, date, page){
+        const offset = page - 1
+        const searchQuery = `
+		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage, listtype
+	    FROM public."2021-data"
+		WHERE "listtype" = '${listtype}' AND date = '${date}'
+        ORDER BY item_id DESC
+        LIMIT 10 OFFSET (10 * ${offset});
+	    `
+        try {
+            const result = await dbClient.query(searchQuery)
+            dbClient.end;
+            return result
+        }
+        catch(err){console.log(err)}
+    }
+
+    async typeCount(listtype, date){
+        const searchQuery = `
+		SELECT parcelid
+	    FROM public."2021-data"
+		WHERE "listtype" = '${listtype}' AND date = '${date}'
+        ORDER BY item_id DESC
+	    `
+        try {
+            const result = await dbClient.query(searchQuery)
+            dbClient.end;
+            return result
         }
         catch(err){console.log(err)}
     }
@@ -385,7 +419,7 @@ class pgProgram{
         hoa,
         watersupply,
         electricitysupply,
-        sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage
+        sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage, listtype
 	    FROM public."2021-data"
 		WHERE "parcelid" = '${parcel}';
 	    `

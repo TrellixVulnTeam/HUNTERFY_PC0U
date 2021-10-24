@@ -56,6 +56,7 @@ async function getJson(card){
         var state = state.options[state.selectedIndex].innerHTML
         var county = document.querySelector('#counties').value
         var username = document.querySelector('#username').innerHTML
+        var listType = document.querySelector('#list-type').value
 
         //console.log(state)
         //var usertype = document.querySelector('input[name="usertype"]:checked').value
@@ -116,7 +117,8 @@ async function getJson(card){
             "cadbuildingvalue":"${formatString(cadBuildingValue)}",
             "cadtotalvalue":"${formatString(cadTotalValue)}",
             "needtoconfirm":"${formatString(needToConfirm)}",
-            "cadimage":"${cadImage}"
+            "cadimage":"${cadImage}",
+            "listtype":"${listType}"
         }`
         var cardJson = JSON.parse(cardString)
         var cardJson = JSON.stringify(cardJson)

@@ -114,6 +114,7 @@ function criarCard(){
         <div class="infos">
             <div class="house-button" onclick="accordion(this.parentElement)"><i class="fas fa-home"></i></div>
             <div style="display: none;">
+                <div class="info-card info-text"><h2>IDK:</h2> <h2></h2></div>
                 <div class="info-card info-text"><h2>OWNER NAME:</h2> <h2></h2></div>
                 <div class="info-card info-text"><h2>PROPSTREAM MARKET VALUE:</h2> <h2></h2></div>
                 <div class="info-card info-text"><h2>ESTIMATED ARV:</h2> <h2></h2></div>

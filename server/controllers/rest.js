@@ -75,6 +75,10 @@ module.exports = app => {
         res.render('resumedsearchbycounty.ejs', {user : req.session.user})
     })
 
+    app.get('/searchbylisttype', async(req, res)=>{
+        res.render('searchbytype.ejs', {user : req.session.user})
+    })
+
         //GET FUNCTIONS
     app.get('/getallusers', (req, res) => {
         pgProgram.allUsers(res)
@@ -110,6 +114,8 @@ module.exports = app => {
     app.get('/getUsStates', async(req, res)=>{
         res.send(usStates)
     })
+
+   
 
     //POSTS----------------------->
     app.post('/getallchecked', async(req, res)=>{
@@ -328,8 +334,20 @@ module.exports = app => {
 
     app.post('/postcalendar', async(req, res)=>{
         const calendarInfo = await pgProgram.getCalendar(req.body.date)
-        console.log('fetch')
         res.send(calendarInfo)
+    })
+
+    app.post('/searchbylisttype', async(req, res)=>{
+        const result = await pgProgram.searchByType(req.body.listtype, req.body.date, req.body.page)
+        res.send(result)
+    })
+
+    app.post('/searchbylisttypecount', async(req, res)=>{
+        const info = await req.body
+        const count = await pgProgram.typeCount(info.listtype, info.date)
+        const countStr = `${count}`
+        console.log(countStr)
+        res.send(countStr)
     })
 }
 //
