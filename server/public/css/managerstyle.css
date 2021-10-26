@@ -419,6 +419,15 @@ form{
     padding: 0 1vh;
 }
 
+#search-form select{
+    width: 100%;
+    border: none;
+    height: 4vh;
+    font-size: 1.8vh;
+    border-radius: 0.5vh;
+    padding: 0 1vh;
+}
+
 #search-form input[type=number]{
     width: 90%;
     border: none;
@@ -766,6 +775,23 @@ form{
 
 .log li{
     width: 20%;
+}
+
+.casinha{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    font-size: 3vh;
+}
+
+.casinha i {
+    color: black;
+}
+
+.casinha i:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.5s;
 }
 
 /* login page */

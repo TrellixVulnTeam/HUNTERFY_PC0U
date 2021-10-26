@@ -31,7 +31,7 @@ function renderResult(element){
             <div class="info-card info-text"><h2>LAND VALUE</h2> <h2>${element.marketvalue}</h2></div>
             <div class="info-card info-text"><h2>LATITUDE:</h2> <h2>${element.latitude}</h2></div>
             <div class="info-card info-text"><h2>LONGITUDE:</h2> <h2>${element.longitude}</h2></div>
-            <div class="info-card info-text"><h2>ACRES:</h2> <h2>${element.acres}</h2></div>
+            <div class="info-card info-text"><h2>LOT SIZE:</h2> <h2>${element.acres}</h2></div>
             <div class="info-card info-text"><h2>ADRESS:</h2> <h2>${element.adress}</h2></div>
             <div class="info-card info-text"><h2>ADRESS NEIGHBOOR 1:</h2> <h2>${element.n1adress}</h2></div>
             <div class="info-card info-text"><h2>ADRESS NEIGHBOOR 2:</h2> <h2>${element.n2adress}</h2></div>

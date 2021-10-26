@@ -116,7 +116,7 @@ async function createItem(element){
                         <div class="column contrast">
                             <div><h2>GIS Link:&nbsp;</h2><h3 class="value">${element.gislink}</h3></div>
                             <div><h2>Tax Value:&nbsp;</h2><h3 class="value">${element.taxowned}</h3></div>
-                            <div><h2>Property Value:&nbsp;</h2><h3 class="value">${element.marketvalue}</h3></div>
+                            <div><h2>Lot Size:&nbsp;</h2><h3 class="value">${element.marketvalue}</h3></div>
                             <div><h2>State:&nbsp;</h2><h3 class="value">${element.state}</h3></div>
                             <div><h2>County:&nbsp;</h2><h3 class="value">${element.county}</h3></div>
                             <div><h2>List Type:&nbsp;</h2><h3 class="value">${element.listtype}</h3></div>
@@ -126,7 +126,7 @@ async function createItem(element){
                             <div><h2>Adress:&nbsp;</h2><h3 class="value">${element.adress}</h3></div>
                             <div><h2>Latitude:&nbsp;</h2><h3 class="value">${element.latitude}</h3></div>
                             <div><h2>Longitude:&nbsp;</h2><h3 class="value">${element.longitude}</h3></div>
-                            <div><h2>Acres:&nbsp;</h2><h3 class="value">${element.acres}</h3></div>
+                            <div><h2>Lot Size:&nbsp;</h2><h3 class="value">${element.acres}</h3></div>
                             <div><h2>Water Supply:&nbsp;</h2><h3 class="value">${element.watersupply}</h3></div>
                         </div>
                         <div class="column contrast">
@@ -177,7 +177,7 @@ async function createItem(element){
                         </div>
                     </div>
                     <div>
-                        <div onclick="flexAccordion(this.parentElement)"><i class="fas fa-home"></i></div>
+                        <div class="casinha" onclick="flexAccordion(this.parentElement)"><i class="fas fa-home"></i></div>
                         <div class="item-columns" style="display: none;">
                             <div class="column contrast">
                                 <div><h2>Owner Name</h2><h3 class="value">${element.ownername}</h3></div>
@@ -236,7 +236,7 @@ async function createResumedItem(element){
                         <div class="column contrast">
                             <div><h2>GIS Link:&nbsp;</h2><h3 class="value">${element.gislink}</h3></div>
                             <div><h2>Tax Value:&nbsp;</h2><h3 class="value">${element.taxowned}</h3></div>
-                            <div><h2>Property Value:&nbsp;</h2><h3 class="value">${element.marketvalue}</h3></div>
+                            <div><h2>Land Value:&nbsp;</h2><h3 class="value">${element.marketvalue}</h3></div>
                             <div><h2>State:&nbsp;</h2><h3 class="value">${element.state}</h3></div>
                             <div><h2>County:&nbsp;</h2><h3 class="value">${element.county}</h3></div>
                             <div><h2>HOA:&nbsp;</h2><h3 class="value">${element.hoa}</h3></div>
@@ -246,7 +246,7 @@ async function createResumedItem(element){
                             <div><h2>Adress:&nbsp;</h2><h3 class="value">${element.adress}</h3></div>
                             <div><h2>Latitude:&nbsp;</h2><h3 class="value">${element.latitude}</h3></div>
                             <div><h2>Longitude:&nbsp;</h2><h3 class="value">${element.longitude}</h3></div>
-                            <div><h2>Acres:&nbsp;</h2><h3 class="value">${element.acres}</h3></div>
+                            <div><h2>Lot Size:&nbsp;</h2><h3 class="value">${element.acres}</h3></div>
                             <div><h2>Water Supply:&nbsp;</h2><h3 class="value">${element.watersupply}</h3></div>
                         </div>
                         <div class="column contrast">
