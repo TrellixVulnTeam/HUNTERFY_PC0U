@@ -6,6 +6,7 @@ const dbClient = require('../database/connectionPG');
 const session = require('express-session');
 const cookieParser = require("cookie-parser");
 const isAuth = require('../models/is-auth');
+const docx = require("docx");
 
 module.exports = () => {
     const app = express()

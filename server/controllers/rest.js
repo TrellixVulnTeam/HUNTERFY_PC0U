@@ -15,7 +15,7 @@ module.exports = app => {
         res.render('index.ejs')
     })
 
-    app.get('/app', async(req, res) => {
+    app.get('/app', isAuth, async(req, res) => {
         res.render('app.ejs', {user : req.session.user})
     })
 
@@ -47,7 +47,7 @@ module.exports = app => {
         res.render('manager-login-page.ejs')
     })
 
-    app.get('/searchbyparcel',isAuthManager, (req, res) => {
+    app.get('/searchbyparcel', (req, res) => {
         res.render('searchbyparcel.ejs', {user : req.session.user})
     })
 
@@ -75,7 +75,7 @@ module.exports = app => {
         res.render('resumedsearchbycounty.ejs', {user : req.session.user})
     })
 
-    app.get('/searchbylisttype', async(req, res)=>{
+    app.get('/searchbylisttype', isAuthManager, async(req, res)=>{
         res.render('searchbytype.ejs', {user : req.session.user})
     })
 
@@ -348,6 +348,10 @@ module.exports = app => {
         const countStr = `${count}`
         console.log(countStr)
         res.send(countStr)
+    })
+
+    app.post('/downloadDocument', async(req, res)=>{
+
     })
 }
 //

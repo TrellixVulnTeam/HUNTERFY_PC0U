@@ -103,7 +103,7 @@ async function createItem(element){
     var item = `
     <div class="manager-item"><!--item-->  
                 <div class="accordion" onclick="accordion(this.parentElement)">
-                    <div class="title"><h1>Parcel ID:&nbsp;</h1><h2 class="parcelid">${element.parcelid}</h2></div>
+                    <div class="title"><h1>Parcel ID:&nbsp;</h1><h2 class="parcelid" name='parcelidvalue'>${element.parcelid}</h2></div>
                     <div class="images-row contrast">
                         <div class="image-row"><h2>GIS Image:</h2><img src="${element.gisimg}" alt=""></div>
                         <div class="image-row"><h2>Google Image:</h2><img src="${element.mapsimg}" alt=""></div>
@@ -172,8 +172,7 @@ async function createItem(element){
                             <div class="rank-button"><button onclick="editRank3(this)">Send rank</button></div>
                         </div>
                         <div>
-                            <h2>&nbsp;</h2>
-                            
+                            <h2><button class="download-pdf" onclick='runDocx(this.parentElement.parentElement.parentElement.parentElement.parentElement)'><i class="fas fa-download"></button></i></h2>
                         </div>
                     </div>
                     <div>
