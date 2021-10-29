@@ -7,6 +7,7 @@ async function runDocx(element){
     var n2 =  element.children[1].children[0].children[2].children[1].children[1].innerHTML
     var n3 =  element.children[1].children[0].children[2].children[2].children[1].innerHTML
     var n4 =  element.children[1].children[0].children[2].children[3].children[1].innerHTML
+    var taxValue = element.children[1]
     var b64GISImage = element.children[0].children[1].children[0].children[1].src
     var gisNewFile = dataURLtoFile(b64GISImage, "a.png")
     console.log(gisNewFile)

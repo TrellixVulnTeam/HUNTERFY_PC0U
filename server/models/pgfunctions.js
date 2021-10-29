@@ -110,7 +110,7 @@ class pgProgram{
 	        SET 
             username2 = '${newInfo.userinfo[0].username}',
             dateandtime2 = '${date}',
-            date2 = ${yyyymmdd},
+            date2 = '${yyyymmdd}',
             gisimg='${newInfo.gis[0].gisimg}',
             gislink='${newInfo.gis[0].gislink}', 
             floodzoneimg='${newInfo.floodzone[0].floodzoneimg}', 
@@ -598,7 +598,8 @@ class pgProgram{
         const searchQuery = `
         SELECT parcelid, rank1, rank2, rank3, dateandtime, username, username2, date, date2
         FROM public."2021-data"
-        WHERE EXTRACT(MONTH FROM date) = '${month}' AND username= '${user}';
+        WHERE EXTRACT(MONTH FROM date) = '${month}' AND username= '${user}'
+        OR EXTRACT(MONTH FROM date) = '${month}' AND username2= '${user}';
         `
         try{
             const result = await dbClient.query(searchQuery)
