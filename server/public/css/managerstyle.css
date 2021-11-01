@@ -912,3 +912,18 @@ form{
 .monthlyranks-container div{
     margin-bottom: 1vh;
 }
+
+.download-pdf{
+    background-color: transparent;
+    border: none;
+    font-size: 7vh;
+    text-align: left;
+    color: #a14418;
+}
+
+.download-pdf:hover{
+    transform: scale(1.1);
+    transition: 0.5s;
+    cursor: pointer;
+
+}

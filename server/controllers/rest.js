@@ -350,8 +350,6 @@ module.exports = app => {
         res.send(countStr)
     })
 
-    app.post('/downloadDocument', async(req, res)=>{
-
-    })
+    
 }
 //

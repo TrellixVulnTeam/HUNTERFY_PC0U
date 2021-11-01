@@ -172,7 +172,7 @@ async function createItem(element){
                             <div class="rank-button"><button onclick="editRank3(this)">Send rank</button></div>
                         </div>
                         <div>
-                            <h2><button class="download-pdf" onclick='runDocx(this.parentElement.parentElement.parentElement.parentElement.parentElement)'><i class="fas fa-download"></button></i></h2>
+                            <button class="download-pdf" onclick='runDocx(this.parentElement.parentElement.parentElement.parentElement)'><i class="fas fa-envelope"></i></button>
                         </div>
                     </div>
                     <div>
