@@ -171,7 +171,11 @@ async function createItem(element){
                             <div class="buyopt"><h2>BUY?</h2><input type="radio" name="buyopt" value="yes"><label>yes/</label><input type="radio" name="buyopt" value="no"><label>no/</label><input type="radio" name="buyopt" value="undefined"><label>undefined</label></div>
                             <div class="rank-button"><button onclick="editRank3(this)">Send rank</button></div>
                         </div>
-                        <div>
+                        <div class="letters">
+                            <select class="template-option">
+                                <option value="1">Template 1</option>
+                                <option value="2">Template 2</option>
+                            </select>
                             <button class="download-pdf" onclick='runDocx(this.parentElement.parentElement.parentElement.parentElement)'><i class="fas fa-envelope"></i></button>
                         </div>
                     </div>

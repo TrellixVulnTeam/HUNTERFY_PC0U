@@ -927,3 +927,17 @@ form{
     cursor: pointer;
 
 }
+
+.letters{
+    display: flex;
+    flex-direction:column;
+}
+
+.letters select{
+    width: 90%;
+    border: none;
+    height: 4vh;
+    font-size: 2vh;
+    border-radius: 0.5vh;
+    padding: 0 1vh;
+}

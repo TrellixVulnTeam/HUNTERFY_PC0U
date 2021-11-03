@@ -225,8 +225,6 @@ function formatString(str){
     var stringEdit = stringEdit.replace(/}/g, '')
     var stringEdit = stringEdit.replace(/`/g, '')
     var stringEdit = stringEdit.replace(/´/g, '')
-    var stringEdit = stringEdit.replace(/!/g, '')
-    var stringEdit = stringEdit.replace(/\?/g, '')
     var stringEdit = stringEdit.replace(/;/g, '')
     var stringEdit = stringEdit.replace(/:/g, '')
     var stringEdit = stringEdit.replace(/\|/g, '')
@@ -235,7 +233,7 @@ function formatString(str){
     var stringEdit = stringEdit.replace(/\f/g, '')
     var stringEdit = stringEdit.replace(/\n/g, '')
     var stringEdit = stringEdit.replace(/\r/g, '')
-    var stringEdit = stringEdit.replace(/%/g, '')
+    
     return stringEdit
 }
 
