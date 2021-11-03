@@ -5,7 +5,7 @@ BD9354
 E3D18
 */
 
-h1, h2, h3, li, label, button{
+h1, h2, h3, li, label, button, select{
     font-family: 'Montserrat', sans-serif;
     color: #F6E9E9;
 }
@@ -919,6 +919,7 @@ form{
     font-size: 7vh;
     text-align: left;
     color: #a14418;
+    text-align: center;
 }
 
 .download-pdf:hover{
@@ -931,13 +932,17 @@ form{
 .letters{
     display: flex;
     flex-direction:column;
+    text-align: center;
+    width: 80%;
 }
 
 .letters select{
-    width: 90%;
+    width: 80%;
     border: none;
     height: 4vh;
     font-size: 2vh;
     border-radius: 0.5vh;
     padding: 0 1vh;
+    color: black;
+    margin: 0 auto;
 }
