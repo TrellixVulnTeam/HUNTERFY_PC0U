@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/managerstyle.css">
+    <script src="https://kit.fontawesome.com/30836ed2bd.js" crossorigin="anonymous"></script>
+    <title>HUNTERFY MANAGER</title>
+</head>
+<body>
+    <header>
+        <div class="janela-header">
+            <div class="logo"><a href="./manager"><img src="./img/Hunterfy.png" alt="Hunterfy logo"></a><h1>MANAGER v1.0</h1></div>
+            <div class="user-container">
+                <h2>My user:</h2>
+                <h3 id="username"><%= user %></h3>
+            </div>
+        </div>
+    </header>
+    <section class="controller janela">
+             <form id="search-form">
+                <h2>Add A Template</h2>
+                <div><label for="user">Template Name:</label><input type="text" id="template-name" name="template-name"></div>
+                
+                <div><label>Template:</label><textarea name="new-template" id="new-template" cols="30" rows="10"></textarea></div>
+                <div>
+                    <h2>Parameters:  </h2>
+                    <h3>PARAM-PARCELID</h3>
+                    <h3>PARAM-TAXVALUE</h3>
+                </div>
+                
+                <button class="add-button">ADD</button>
+                <button class="manage-button">MANAGE</button>
+            </form>
+            
+    </section>
+    <section class="program janela">
+        <h2 class="username"></h2>
+        <div class="itens-container">
+        </div>
+    </section>
+    <script src="js/manager-programs/templates.js" async></script>
+    
+</body>
+</html>

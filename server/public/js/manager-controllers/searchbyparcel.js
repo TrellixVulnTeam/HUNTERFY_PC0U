@@ -4,9 +4,10 @@ document.querySelector('.search-button').addEventListener("click", (event)=>{
 })
 
 async function runUser(){
-await getJson()	
-buildPage(getJson());
-await postParcel(getJson())
+    await getJson()	
+    buildPage(getJson());
+    await postParcel(getJson())
+
 }
 
 function getJson(){

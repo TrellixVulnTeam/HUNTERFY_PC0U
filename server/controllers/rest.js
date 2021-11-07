@@ -1,5 +1,5 @@
 const session = require('express-session')
-const { searchTable, insertNewUser, getUsers, selectUser, editRank2, addOnDatabase, searchLogs, add2Log, editDB, searchByChecked, resumedSearch, dailySearch } = require('../models/pgfunctions')
+const { searchTable, insertNewUser, getUsers, selectUser, editRank2, addOnDatabase, searchLogs, add2Log, editDB, searchByChecked, resumedSearch, dailySearch, addTemplate } = require('../models/pgfunctions')
 const isAuth = require('../models/is-auth')
 const isAuthManager = require('../models/is-auth-manager')
 const isAuthPost = require('../models/is-auth-post')
@@ -79,6 +79,10 @@ module.exports = app => {
         res.render('searchbytype.ejs', {user : req.session.user})
     })
 
+    app.get('/templates', async(req, res)=>{
+        res.render('templates.ejs', {user : req.session.user})
+    })
+
         //GET FUNCTIONS
     app.get('/getallusers', (req, res) => {
         pgProgram.allUsers(res)
@@ -113,6 +117,12 @@ module.exports = app => {
 
     app.get('/getUsStates', async(req, res)=>{
         res.send(usStates)
+    })
+
+    app.get('/gettemplates', async(req, res)=>{
+        const result = await pgProgram.getTemplates()
+        //console.log(result)
+        res.send(result)
     })
 
    
@@ -349,6 +359,19 @@ module.exports = app => {
         console.log(countStr)
         res.send(countStr)
     })
+
+    app.post('/savetemplate', async(req, res)=>{
+        console.log(req.body)
+        pgProgram.addTemplate(req.body.templatename, req.body.template)
+    })
+
+    app.post('/deletetemplate', async(req, res)=> {
+        //console.log(req.body)
+        pgProgram.deleteTemplate(req.body.templatename)
+        console.log('template deleted')
+    })
+
+    
 
     
 }

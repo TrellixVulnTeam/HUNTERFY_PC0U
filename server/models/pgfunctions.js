@@ -626,6 +626,51 @@ class pgProgram{
         catch(err){console.log(err)}
     }
 
+    async addTemplate(templateName, template){
+        const insertQuery = `
+        INSERT INTO public.templates(
+            templatename, template)
+            VALUES ('${templateName}', '${template}');
+        `
+        try{
+            await dbClient.query(insertQuery)
+            dbClient.end;
+            console.log('successful template insertion')
+        }
+        catch(err){
+            console.log(error)
+        }
+    }
+
+    async getTemplates(){
+        const searchQuery =`
+            SELECT * FROM public.templates
+            ORDER BY id ASC 
+        `
+        try{
+            const result = await dbClient.query(searchQuery)
+            dbClient.end;
+            //console.log(result)
+            return result
+        }
+        catch(err){console.log(err)}
+    }
+
+    async deleteTemplate(templateName){
+        const insertQuery = `
+        DELETE FROM public.templates
+        WHERE templatename = '${templateName}';
+        `
+        try{
+            await dbClient.query(insertQuery)
+            dbClient.end;
+            console.log('successful template delete')
+        }
+        catch(err){
+            console.log(error)
+        }
+    }
+
     
 }
 

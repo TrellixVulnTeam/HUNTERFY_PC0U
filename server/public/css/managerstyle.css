@@ -391,6 +391,7 @@ form{
 }
 
 #search-form h2{
+    margin-top: 2vh;
     margin-bottom: 1vh;
 }
 
@@ -408,6 +409,16 @@ form{
     font-size: 2vh;
     border-radius: 0.5vh;
     padding: 0 1vh;
+}
+
+#search-form textarea{
+    width: 90%;
+    border: none;
+    height: 20vh;
+    font-size: 2vh;
+    border-radius: 0.5vh;
+    padding: 0 1vh;
+    margin: 1vh 0;
 }
 
 #search-form input[type=date]{
@@ -444,7 +455,7 @@ form{
     align-items: center;
 }
 
-.search-button{
+#search-form button{
     border: none;
     border-radius: 0.5vh;
     width: 100%;
@@ -453,7 +464,7 @@ form{
     margin-top: 1vh;
 }
 
-.search-button:hover{
+#search-form button:hover{
     cursor: pointer;
     transform: scale(1.05);
     transition: 0.5s;
@@ -945,4 +956,45 @@ form{
     padding: 0 1vh;
     color: black;
     margin: 0 auto;
+}
+
+.template-item{
+    background-color: #64635e;
+    min-height: 20vh;
+    max-height: fit-content;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    
+    margin: 2vh 0;
+    border-radius: 0.5vh;
+    padding: 2vh;
+
+}
+
+.template-item h2{
+    margin: 0;
+    width: 15vw;
+}
+
+.template-item h3{
+    margin: 0;
+    width: 60vw;
+}
+
+.template-item button{
+    height: 7vh;
+    width: 7vh;
+    font-size: 5vh;
+    background-color: transparent;
+    border: none;
+    
+}
+
+.template-item button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.5s;
+    
 }

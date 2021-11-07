@@ -172,9 +172,8 @@ async function createItem(element){
                             <div class="rank-button"><button onclick="editRank3(this)">Send rank</button></div>
                         </div>
                         <div class="letters">
-                            <select class="template-option">
-                                <option value="1">Template 1</option>
-                                <option value="2">Template 2</option>
+                            <select class="template-options" onfocus="loadTemplates(this)">
+                                <option>--</option>
                             </select>
                             <button class="download-pdf" onclick='runDocx(this.parentElement.parentElement.parentElement.parentElement)'><i class="fas fa-envelope"></i></button>
                         </div>
@@ -336,4 +335,21 @@ async function createResumedItem(element){
     `
     div.innerHTML = item
     itensContainer.append(div)
+}
+
+async function loadTemplates(element){
+    try{
+        const templates = await fetch('/gettemplates')
+        const content = await templates.json();
+        element.innerHTML = ''
+        for(var i = 0; i < content.rows.length; i++) {
+            var contentIndex = content.rows[i]
+            var option = document.createElement('option')
+            option.innerHTML = contentIndex.templatename
+            option.value = contentIndex.templatename
+            //console.log(select)
+            element.append(option)
+        }
+    }   
+    catch(err){console.log(err)}
 }
