@@ -535,9 +535,7 @@ class pgProgram{
                 console.log(err)
             }
     }
-
-    
-    
+   
     async selectUser(req, res){
         var user = req.body	    
         let insertQuery = `

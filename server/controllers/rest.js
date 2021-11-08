@@ -167,7 +167,7 @@ module.exports = app => {
 
     app.post('/registermanager', (req, res)=>{
         try{
-            pgProgram.insertNewMANAGER(req.body.user, req.body.password)
+            pgProgram.insertNewManager(req.body.user, req.body.password)
             console.log('registerManager', req.body)
         }
         catch(err){

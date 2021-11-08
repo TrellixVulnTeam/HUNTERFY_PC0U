@@ -20,6 +20,7 @@ document.querySelector('.manage-button').addEventListener('click', async(event)=
         var vaJsonIndex =  vaJson[i]
         showUser(vaJsonIndex)
     }
+    
     const managerResults = await fetch('/getallmanagers')
     const managerJson = await managerResults.json()
     for(var i = 0; i < managerJson.length; i++) {
