@@ -116,24 +116,24 @@ async function createItem(element){
                         <div class="column contrast">
                             <div><h2>GIS Link:&nbsp;</h2><h3 class="value">${element.gislink}</h3></div>
                             <div><h2>Tax Value:&nbsp;</h2><h3 class="value">${element.taxowned}</h3></div>
-                            <div><h2>Lot Size:&nbsp;</h2><h3 class="value">${element.marketvalue}</h3></div>
+                            <div><h2>Land Value:&nbsp;</h2><h3 class="value">${element.marketvalue}</h3></div>
                             <div><h2>State:&nbsp;</h2><h3 class="value">${element.state}</h3></div>
                             <div><h2>County:&nbsp;</h2><h3 class="value">${element.county}</h3></div>
                             <div><h2>List Type:&nbsp;</h2><h3 class="value">${element.listtype}</h3></div>
                         </div>
                         <div class="column contrast">
                             <div><h2>Maps Link:&nbsp;</h2><h3 class="value">${element.mapslink}</h3></div>
-                            <div><h2>Adress:&nbsp;</h2><h3 class="value">${element.adress}</h3></div>
+                            <div><h2>Address:&nbsp;</h2><h3 class="value">${element.adress}</h3></div>
                             <div><h2>Latitude:&nbsp;</h2><h3 class="value">${element.latitude}</h3></div>
                             <div><h2>Longitude:&nbsp;</h2><h3 class="value">${element.longitude}</h3></div>
                             <div><h2>Lot Size:&nbsp;</h2><h3 class="value">${element.acres}</h3></div>
                             <div><h2>Water Supply:&nbsp;</h2><h3 class="value">${element.watersupply}</h3></div>
                         </div>
                         <div class="column contrast">
-                            <div><h2>N1 Adress:&nbsp;</h2><h3 class="value">${element.n1adress}</h3></div>
-                            <div><h2>N2 Adress:&nbsp;</h2><h3 class="value">${element.n2adress}</h3></div>
-                            <div><h2>N3 Adress:&nbsp;</h2><h3 class="value">${element.n3adress}</h3></div>
-                            <div><h2>N4 Adress:&nbsp;</h2><h3 class="value">${element.n4adress}</h3></div>
+                            <div><h2>N1 Address:&nbsp;</h2><h3 class="value">${element.n1adress}</h3></div>
+                            <div><h2>N2 Address:&nbsp;</h2><h3 class="value">${element.n2adress}</h3></div>
+                            <div><h2>N3 Address:&nbsp;</h2><h3 class="value">${element.n3adress}</h3></div>
+                            <div><h2>N4 Address:&nbsp;</h2><h3 class="value">${element.n4adress}</h3></div>
                             <div><h2>Buy Status:&nbsp;</h2><h3 class="value">${element.buyopt}</h3></div>
                             <div><h2>Electricity Supply:&nbsp;</h2><h3 class="value">${element.electricitysupply}</h3></div>
                         </div>
@@ -246,17 +246,17 @@ async function createResumedItem(element){
                         </div>
                         <div class="column contrast">
                             <div><h2>Maps Link:&nbsp;</h2><h3 class="value">${element.mapslink}</h3></div>
-                            <div><h2>Adress:&nbsp;</h2><h3 class="value">${element.adress}</h3></div>
+                            <div><h2>Address:&nbsp;</h2><h3 class="value">${element.adress}</h3></div>
                             <div><h2>Latitude:&nbsp;</h2><h3 class="value">${element.latitude}</h3></div>
                             <div><h2>Longitude:&nbsp;</h2><h3 class="value">${element.longitude}</h3></div>
                             <div><h2>Lot Size:&nbsp;</h2><h3 class="value">${element.acres}</h3></div>
                             <div><h2>Water Supply:&nbsp;</h2><h3 class="value">${element.watersupply}</h3></div>
                         </div>
                         <div class="column contrast">
-                            <div><h2>N1 Adress:&nbsp;</h2><h3 class="value">${element.n1adress}</h3></div>
-                            <div><h2>N2 Adress:&nbsp;</h2><h3 class="value">${element.n2adress}</h3></div>
-                            <div><h2>N3 Adress:&nbsp;</h2><h3 class="value">${element.n3adress}</h3></div>
-                            <div><h2>N4 Adress:&nbsp;</h2><h3 class="value">${element.n4adress}</h3></div>
+                            <div><h2>N1 Address:&nbsp;</h2><h3 class="value">${element.n1adress}</h3></div>
+                            <div><h2>N2 Address:&nbsp;</h2><h3 class="value">${element.n2adress}</h3></div>
+                            <div><h2>N3 Address:&nbsp;</h2><h3 class="value">${element.n3adress}</h3></div>
+                            <div><h2>N4 Address:&nbsp;</h2><h3 class="value">${element.n4adress}</h3></div>
                             <div><h2>Buy Status:&nbsp;</h2><h3 class="value">${element.buyopt}</h3></div>
                             <div><h2>Electricity Supply:&nbsp;</h2><h3 class="value">${element.electricitysupply}</h3></div>
                         </div>

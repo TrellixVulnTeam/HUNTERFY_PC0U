@@ -35,16 +35,16 @@ function criarPaginaEdit(){
                     <div><label>MAPS LINK:</label><input name="mapslink" type="text"></div>
                     <div><label>LATITUDE:</label><input name="latitude" type="text"></div>
                     <div><label>LONGITUDE:</label><input name="longitude" type="text"></div>
-                    <div><label>ADRESS:</label><input name="end" type="text"></div>
+                    <div><label>ADDRESS:</label><input name="end" type="text"></div>
                 </div>
                 <div class="campo3">
                     <div><label>ZESTIMATE:</label><input name="zestimate" type="text"></div>
                     <div><label>ZILLOW LINK:</label><input name="zillow" type="text"></div>
                     <div><label>FLOODZONE LINK:</label><input name="floodzonelink" type="text"></div>
-                    <div><label>ADRESS NEIGHBOOR 1:</label><input name="end1" type="text"></div>
-                    <div><label>ADRESS NEIGHBOOR 2:</label><input name="end2" type="text"></div>
-                    <div><label>ADRESS NEIGHBOOR 3:</label><input name="end3" type="text"></div>
-                    <div><label>ADRESS NEIGHBOOR 4:</label><input name="end4" type="text"></div>
+                    <div><label>ADDRESS NEIGHBOOR 1:</label><input name="end1" type="text"></div>
+                    <div><label>ADDRESS NEIGHBOOR 2:</label><input name="end2" type="text"></div>
+                    <div><label>ADDRESS NEIGHBOOR 3:</label><input name="end3" type="text"></div>
+                    <div><label>ADDRESS NEIGHBOOR 4:</label><input name="end4" type="text"></div>
                 </div>
             
                 <div class="campo4">
@@ -94,11 +94,11 @@ function criarCard(){
             <div class="info-card info-text"><h2>LATITUDE:</h2> <h2>${formatString(checkValue(form.latitude.value))}</h2></div>
             <div class="info-card info-text"><h2>LONGITUDE:</h2> <h2>${formatString(checkValue(form.longitude.value))}</h2></div>
             <div class="info-card info-text"><h2>LOT SIZE:</h2> <h2>${formatString(checkValue(form.acres.value))}</h2></div>
-            <div class="info-card info-text"><h2>ADRESS:</h2> <h2>${formatString(checkValue(form.end.value))}</h2></div>
-            <div class="info-card info-text"><h2>ADRESS NEIGHBOOR 1:</h2> <h2>${formatString(checkValue(form.end1.value))}</h2></div>
-            <div class="info-card info-text"><h2>ADRESS NEIGHBOOR 2:</h2> <h2>${formatString(checkValue(form.end2.value))}</h2></div>
-            <div class="info-card info-text"><h2>ADRESS NEIGHBOOR 3:</h2> <h2>${formatString(checkValue(form.end3.value))}</h2></div>
-            <div class="info-card info-text"><h2>ADRESS NEIGHBOOR 4:</h2> <h2>${formatString(checkValue(form.end4.value))}</h2></div>
+            <div class="info-card info-text"><h2>ADDRESS:</h2> <h2>${formatString(checkValue(form.end.value))}</h2></div>
+            <div class="info-card info-text"><h2>ADDRESS NEIGHBOOR 1:</h2> <h2>${formatString(checkValue(form.end1.value))}</h2></div>
+            <div class="info-card info-text"><h2>ADDRESS NEIGHBOOR 2:</h2> <h2>${formatString(checkValue(form.end2.value))}</h2></div>
+            <div class="info-card info-text"><h2>ADDRESS NEIGHBOOR 3:</h2> <h2>${formatString(checkValue(form.end3.value))}</h2></div>
+            <div class="info-card info-text"><h2>ADDRESS NEIGHBOOR 4:</h2> <h2>${formatString(checkValue(form.end4.value))}</h2></div>
             <div class="info-card info-text"><h2>RANK:</h2> <h2>${formatString(checkValue(form.rank.value))}</h2></div>
             <div class="info-card info-text"><h2>OBS:</h2> <h2>${formatString(checkValue(form.obs.value))}</h2></div>
             <div class="info-card info-text"><h2>FLOODZONE LINK:</h2> <h2>${formatString(checkValue(form.floodzonelink.value))}</h2></div>

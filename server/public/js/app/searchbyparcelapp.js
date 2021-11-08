@@ -32,11 +32,11 @@ function renderResult(element){
             <div class="info-card info-text"><h2>LATITUDE:</h2> <h2>${element.latitude}</h2></div>
             <div class="info-card info-text"><h2>LONGITUDE:</h2> <h2>${element.longitude}</h2></div>
             <div class="info-card info-text"><h2>LOT SIZE:</h2> <h2>${element.acres}</h2></div>
-            <div class="info-card info-text"><h2>ADRESS:</h2> <h2>${element.adress}</h2></div>
-            <div class="info-card info-text"><h2>ADRESS NEIGHBOOR 1:</h2> <h2>${element.n1adress}</h2></div>
-            <div class="info-card info-text"><h2>ADRESS NEIGHBOOR 2:</h2> <h2>${element.n2adress}</h2></div>
-            <div class="info-card info-text"><h2>ADRESS NEIGHBOOR 3:</h2> <h2>${element.n3adress}</h2></div>
-            <div class="info-card info-text"><h2>ADRESS NEIGHBOOR 4:</h2> <h2>${element.n4adress}</h2></div>
+            <div class="info-card info-text"><h2>ADDRESS:</h2> <h2>${element.adress}</h2></div>
+            <div class="info-card info-text"><h2>ADDRESS NEIGHBOOR 1:</h2> <h2>${element.n1adress}</h2></div>
+            <div class="info-card info-text"><h2>ADDRESS NEIGHBOOR 2:</h2> <h2>${element.n2adress}</h2></div>
+            <div class="info-card info-text"><h2>ADDRESS NEIGHBOOR 3:</h2> <h2>${element.n3adress}</h2></div>
+            <div class="info-card info-text"><h2>ADDRESS NEIGHBOOR 4:</h2> <h2>${element.n4adress}</h2></div>
             <div class="info-card info-text"><h2>RANK:</h2> <h2>${element.rank1}</h2></div>
             <div class="info-card info-text"><h2>OBS:</h2> <h2>${element.obs1}</h2></div>
             <div class="info-card info-text"><h2>FLOODZONE LINK:</h2> <h2>${element.floodzonelink}</h2></div>

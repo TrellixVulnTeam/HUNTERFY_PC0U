@@ -230,6 +230,7 @@ body::-webkit-scrollbar-track {
 
 .column{
     margin-top: 2vh;
+    
 }
 
 .column div{
@@ -247,7 +248,8 @@ body::-webkit-scrollbar-track {
 }
 
 .column h3{
-    height: 10vh;
+    min-height: 10vh;
+    max-height: fit-content;
     width: 18vw;
     word-wrap:break-word;
     color: rgb(255, 255, 255);
