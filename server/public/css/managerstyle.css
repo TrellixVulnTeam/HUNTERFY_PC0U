@@ -380,8 +380,6 @@ body::-webkit-scrollbar-track {
     padding: 0 1vh;
 }
 
-
-
 .manager-window{
     margin-top: 10vh;
 }
@@ -400,6 +398,8 @@ form{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    margin-top: 0.5vh;
+    margin-bottom: 1vh;
 }
 
 #search-form input[type=text]{
@@ -414,7 +414,7 @@ form{
 #search-form textarea{
     width: 90%;
     border: none;
-    height: 20vh;
+    height: 10vh;
     font-size: 2vh;
     border-radius: 0.5vh;
     padding: 0 1vh;
@@ -996,5 +996,47 @@ form{
     cursor: pointer;
     transform: scale(1.1);
     transition: 0.5s;
-    
 }
+
+.manage-users input{
+    margin-bottom: 1.5vh;
+    margin-top: 0.5vh;
+}
+
+.manage-users select{
+    margin-bottom: 1.5vh;
+    margin-top: 0.5vh;
+    color: black;
+}
+
+.user-item{
+    width: 100%;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    background-color: #64635e;
+    margin: 2vh 0;
+    padding: 2vh;
+    border-radius: 0.5vh;
+}
+
+.user-item h2{
+    width: 24%;
+}
+
+.user-item h3{
+    width: 24%;
+}
+
+.user-item button{
+    background-color: transparent;
+    font-size: 3vh;
+    border: none;
+}
+
+.user-item button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+

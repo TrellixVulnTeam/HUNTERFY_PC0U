@@ -83,10 +83,19 @@ module.exports = app => {
         res.render('templates.ejs', {user : req.session.user})
     })
 
+    app.get('/manageusers', async(req, res)=>{
+        res.render('manageusers.ejs', {user : req.session.user})
+    })
+
         //GET FUNCTIONS
     app.get('/getallusers', (req, res) => {
-        pgProgram.allUsers(res)
+        pgProgram.getUsers(req, res)
         console.log(req.session.user, 'searched all users')
+    })
+
+    app.get('/getallmanagers', (req, res) => {
+        pgProgram.getUsersManager(req, res)
+        console.log(req.session.user, 'searched all managers')
     })
 
     app.get('/getproduction', async(req, res) => {
@@ -144,6 +153,26 @@ module.exports = app => {
             
         }
         catch(error){console.log(error)}
+    })
+
+    app.post('/registerva', (req, res)=>{
+        try{
+            pgProgram.insertNewVA(req.body.user, req.body.password, req.body.supervisor)
+            console.log('registerVA', req.body)
+        }
+        catch(err){
+            console.log(err)
+        }
+    })
+
+    app.post('/registermanager', (req, res)=>{
+        try{
+            pgProgram.insertNewMANAGER(req.body.user, req.body.password)
+            console.log('registerManager', req.body)
+        }
+        catch(err){
+            console.log(err)
+        }
     })
 
 	app.post('/app', async(req, res) => {
@@ -361,14 +390,21 @@ module.exports = app => {
     })
 
     app.post('/savetemplate', async(req, res)=>{
-        console.log(req.body)
-        pgProgram.addTemplate(req.body.templatename, req.body.template)
+        pgProgram.addTemplate(req.body.templatename, req.body.template, req.body.envelopeinfo)
     })
 
     app.post('/deletetemplate', async(req, res)=> {
         //console.log(req.body)
         pgProgram.deleteTemplate(req.body.templatename)
         console.log('template deleted')
+    })
+
+    app.post('/deleteva', async(req,res)=>{
+        pgProgram.deleteVa(req.body.user)
+    })
+
+    app.post('/deletemanager', async(req,res)=>{
+        pgProgram.deleteManager(req.body.user)
     })
 
     

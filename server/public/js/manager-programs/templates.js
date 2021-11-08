@@ -2,7 +2,8 @@ document.querySelector(".add-button").addEventListener('click', async(event)=>{
     event.preventDefault()
     const templateName = document.querySelector("#template-name").value
     const template = formatString(document.querySelector("#new-template").value)
-    const templateJson = await getJson(templateName, template)
+    const envelopeInfo = formatString(document.querySelector("#envelope-info").value)
+    const templateJson = await getJson(templateName, template, envelopeInfo)
     postTemplate(templateJson, '/savetemplate')
     alert('Success')
     
@@ -17,8 +18,8 @@ document.querySelector('.manage-button').addEventListener('click', async(event)=
     showTemplates(content)
 })
 
-async function getJson(templateName, template){
-    var jsonModelParcel = `{"templatename":"${templateName}", "template":"${template}"}`
+async function getJson(templateName, template, envelopeInfo){
+    var jsonModelParcel = `{"templatename":"${templateName}", "template":"${template}", "envelopeinfo":"${envelopeInfo}"}`
     const parceljson = JSON.parse(jsonModelParcel)
     return parceljson
 }

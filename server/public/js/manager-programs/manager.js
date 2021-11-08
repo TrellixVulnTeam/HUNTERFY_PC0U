@@ -172,6 +172,7 @@ async function createItem(element){
                             <div class="rank-button"><button onclick="editRank3(this)">Send rank</button></div>
                         </div>
                         <div class="letters">
+                            <h2>Generate Letters</h2>
                             <select class="template-options" onfocus="loadTemplates(this)">
                                 <option>--</option>
                             </select>

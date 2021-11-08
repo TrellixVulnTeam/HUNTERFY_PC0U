@@ -452,18 +452,91 @@ class pgProgram{
         dbClient.end;
     }
 
-    getUsers(req, res){
+    async insertNewVA(user, password, supervisor){
+        const insertQuery = `
+            INSERT INTO public.userinfo(
+                username, password, supervisor)
+                VALUES ('${user}', '${password}', '${supervisor}');
+        `
+        try{
+            await dbClient.query(insertQuery)
+            console.log('Insertion was successful')
+        }
+        catch(err){
+            console.log(err)
+        }
+    }
+
+    async insertNewManager(user, password){
+        const insertQuery = `
+            INSERT INTO public.managerinfo(
+            username, password)
+            VALUES ('${user}', '${password}');
+        `
+        try{
+            await dbClient.query(insertQuery)
+            console.log('Insertion was successful')
+        }
+        catch(err){
+            console.log(err)
+        }
+    }
+
+    async getUsers(req, res){
         const sql = 'select * from public.userinfo'
-        dbClient.query(sql, (error, result) => {
-            if(error){
-                console.log(error)
-            }
-            else{
+            try{
+                const result = await dbClient.query(sql)
+                console.log('Insertion was successful')
+                dbClient.end;
                 res.send(result.rows)
             }
-        })   
-        dbClient.end;
+            catch(err){
+                console.log(err)
+            }  
     }
+
+    async getUsersManager(req, res){
+        const sql = 'select * from public.managerinfo'
+        try{
+            const result = await dbClient.query(sql)
+            console.log('Insertion was successful')
+            dbClient.end;
+            res.send(result.rows)
+        }
+        catch(err){
+            console.log(err)
+        }
+    }
+    
+    async deleteVa(user){
+        const deleteQuery = `
+            DELETE FROM public.userinfo
+            WHERE username = '${user}';`
+            try{
+                await dbClient.query(deleteQuery)
+                console.log('Va was deleted successfuly')
+                dbClient.end;
+            }
+            catch(err){
+                console.log(err)
+            }
+    }
+
+    async deleteManager(user){
+        const deleteQuery = `
+            DELETE FROM public.managerinfo
+            WHERE username = '${user}';`
+            try{
+                await dbClient.query(deleteQuery)
+                console.log('Manager was deleted successfuly')
+                dbClient.end;
+            }
+            catch(err){
+                console.log(err)
+            }
+    }
+
+    
     
     async selectUser(req, res){
         var user = req.body	    
@@ -626,11 +699,11 @@ class pgProgram{
         catch(err){console.log(err)}
     }
 
-    async addTemplate(templateName, template){
+    async addTemplate(templateName, template, envelopeInfo){
         const insertQuery = `
         INSERT INTO public.templates(
-            templatename, template)
-            VALUES ('${templateName}', '${template}');
+            templatename, template, envelopeinfo)
+            VALUES ('${templateName}', '${template}', '${envelopeInfo}');
         `
         try{
             await dbClient.query(insertQuery)

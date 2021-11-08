@@ -23,20 +23,27 @@
         </div>
     </header>
     <section class="controller janela">
-             <form id="search-form">
-                <h2>Add Template</h2>
-                <div><label for="user">Template Name:</label><input type="text" id="template-name" name="template-name"></div>
-                
-                <div><label>Template:</label><textarea name="new-template" id="new-template" cols="30" rows="10"></textarea></div>
-                <div><label>Envelope info:</label><textarea name="envelope-info" id="envelope-info" cols="30" rows="10"></textarea></div>
+            <form id="search-form" class="manage-users">
                 <div>
-                    <h2>Parameters:  </h2>
-                    <h3>PARAM-PARCELID</h3>
-                    <h3>PARAM-TAXVALUE</h3>
+                    <h2>Add User</h2>
+                    <label for="user">User:</label><input type="text" id="user" name="template-name">
+                    <label>Password:</label><input type="text" id="password" name="template-name">
+                    <label>Supervisor:</label><input type="text" id="supervisor" name="template-name">
+
+                    <label for="">User type:</label>
+                    <select name="" id="user-type">
+                        <option value="va">V.A USER</option>
+                        <option value="manager">MANAGER USER</option>
+                    </select>
+                    <button class="add-button">ADD USER</button>
                 </div>
+
+               
                 
-                <button class="add-button">ADD</button>
                 <button class="manage-button">MANAGE</button>
+                
+                
+                
             </form>
             
     </section>
@@ -45,7 +52,7 @@
         <div class="itens-container">
         </div>
     </section>
-    <script src="js/manager-programs/templates.js" async></script>
+    <script src="js/manager-programs/register.js" async></script>
     
 </body>
 </html>

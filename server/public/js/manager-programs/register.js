@@ -1,38 +1,65 @@
-var form = document.querySelector(".register")
-var regButton = document.querySelector(".submit-register")
-regButton.addEventListener("click", async (event)=> {
+document.querySelector('.add-button').addEventListener("click", async(event)=>{
     event.preventDefault()
-    var userInput = document.querySelector("#newusername").value
-    var passwordInput = document.querySelector("#newpassword").value
-    var confInput = document.querySelector("#confpassword").value
-    var supervisor = document.querySelector('#supervisor').value
+    const json = await getJson()
+    const userType = document.querySelector('#user-type').value
 
-    infologin = `
-        {
-            "newusername":"${userInput}",
-            "newpassword":"${passwordInput}",
-            "supervisor":"${supervisor}"
-        }
-    `
-    var infoJson = JSON.parse(infologin)
-
-    if(passwordInput !== confInput){
-        alert('senhas distintas!')
-    }else{
-        if(userInput.length !== 8){
-            alert ('usuario tem que ter 8 digitos')
-        }else{
-            if(passwordInput.length !== 8){
-                alert ('senha deve conter 8 digitos')
-            }else{
-                await sendNewUserToServer(infoJson)
-            }
-        }
+    if(userType == 'va'){
+        postData(json, '/registerva')   
     }
-      
+    if(userType == 'manager'){
+        postData(json, '/registermanager')
+    }
+})  
+
+document.querySelector('.manage-button').addEventListener('click', async(event)=>{
+    event.preventDefault()
+    buildPage()
+    const vaResults = await fetch('/getallusers')
+    const vaJson = await vaResults.json()
+    for(var i = 0; i < vaJson.length; i++) {
+        var vaJsonIndex =  vaJson[i]
+        showUser(vaJsonIndex)
+    }
+    const managerResults = await fetch('/getallmanagers')
+    const managerJson = await managerResults.json()
+    for(var i = 0; i < managerJson.length; i++) {
+        var managerJsonIndex =  managerJson[i]
+        showManager(managerJsonIndex)
+    }
 })
 
-async function sendNewUserToServer(json){
+function getJson(){
+    const user = document.querySelector('#user').value
+    const pass = document.querySelector('#password').value
+    const supervisor = document.querySelector('#supervisor').value
+
+    const jsonModel = `{"user":"${user}", "password":"${pass}", "supervisor":"${supervisor}"}`
+    const json = JSON.parse(jsonModel)
+
+   return json
+}
+
+async function deleteUser(element){
+    const card = element.parentElement
+    const user = card.children[0].innerHTML
+    const jsonModel = `{"user":"${user}"}`
+    const json = JSON.parse(jsonModel)
+    await postData(json, '/deleteva').then(
+        card.style.backgroundColor = "rgb(151, 30, 0)"
+    )  
+}
+
+async function deleteManager(element){
+    const card = element.parentElement
+    const user = card.children[0].innerHTML
+    const jsonModel = `{"user":"${user}"}`
+    const json = JSON.parse(jsonModel)
+    await postData(json, '/deletemanager').then(
+        card.style.backgroundColor = "rgb(151, 30, 0)"
+    )  
+}
+
+async function postData(json, path) {
     try{
         const options = {
             method: 'POST',
@@ -41,11 +68,55 @@ async function sendNewUserToServer(json){
             },
             body: JSON.stringify(json)
         }
-        fetch('/register', options)
-        alert('Done!')
-
+        await fetch(path, options)  
     }
     catch(error){
-            console.log(error)
+        console.log(error)
     }
+}
+
+async function buildPage(){
+    var createItem = `
+    <div class="manager-window">
+        <div class="va-users">
+            <h2>VA USERS</h2>
+        </div>
+        <div class="manager-users" style="margin-top:5vh;">
+            <h2>MANAGER USERS</h2>
+        </div>
+
+    </div>
+    `
+    var sectionPrograma = document.querySelector('.program')
+    sectionPrograma.innerHTML = createItem
+}
+
+function showUser(json){
+    const itensContainer = document.querySelector('.va-users')
+    const div = document.createElement('div')
+    const item = `
+        <div class="user-item">
+            <h2>${json.username}</h2>
+            <h3>${json.password}</h3>
+            <h3>${json.supervisor}</h3>
+            <h3>${json.creationdate}</h3>
+            <button onclick="deleteUser(this)"><i class="fas fa-trash"></i></button>
+        </div>
+    `
+    div.innerHTML = item
+    itensContainer.append(div)
+}
+
+function showManager(json){
+    const itensContainer = document.querySelector('.manager-users')
+    const div = document.createElement('div')
+    const item = `
+        <div class="user-item">
+            <h2>${json.username}</h2>
+            
+            <button onclick="deleteManager(this)"><i class="fas fa-trash"></i></button>
+        </div>
+    `
+    div.innerHTML = item
+    itensContainer.append(div)
 }
