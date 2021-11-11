@@ -742,6 +742,22 @@ class pgProgram{
         }
     }
 
+    async getStateCalendar(state){
+        const searchQuery =`
+        SELECT parcelid, state, county, date
+        FROM public."2021-data"
+        WHERE state = '${state}'
+        ORDER BY date ASC;
+        `
+        try{
+            const result = await dbClient.query(searchQuery)
+            dbClient.end;
+            //console.log(result)
+            return result
+        }
+        catch(err){console.log(err)}
+    }
+
     
 }
 

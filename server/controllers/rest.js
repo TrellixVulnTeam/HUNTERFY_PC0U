@@ -87,6 +87,10 @@ module.exports = app => {
         res.render('manageusers.ejs', {user : req.session.user})
     })
 
+    app.get('/countycalendarbystate', async(req, res)=> {
+        res.render('countycalendarbystate.ejs', {user : req.session.user})
+    })
+
         //GET FUNCTIONS
     app.get('/getallusers', (req, res) => {
         pgProgram.getUsers(req, res)
@@ -405,6 +409,12 @@ module.exports = app => {
 
     app.post('/deletemanager', async(req,res)=>{
         pgProgram.deleteManager(req.body.user)
+    })
+
+    app.post('/getstateinfo', async(req, res)=>{
+        
+        const info = await pgProgram.getStateCalendar(req.body.state)
+        res.send(info.rows)
     })
 
     
