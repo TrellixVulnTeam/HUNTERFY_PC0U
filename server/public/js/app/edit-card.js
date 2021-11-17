@@ -24,11 +24,13 @@ function editarCard(card){
     var watersupply = [cardInfo.children[24].children[1], 'WATER SUPPLY:', 'watersupply']
     var elecsupply = [cardInfo.children[25].children[1], 'ELECTRICITY SUPPLY:', 'elecsupply']
     var sewerage = [cardInfo.children[26].children[1], 'SEWERAGE:', 'sewerage']
+    var minimal = [cardInfo.children[27].children[1], `<label>MINIMAL BID:</label><input name="minimalbid" type="text">`, "minimalbid", `MINIMAL BID:`]
      //--array name     --input inside info              --label            --class             --cache id
     var sateliteimage = [cardInfo.children[1].children[1], `SATELITE IMAGE`, 'imagem-satelite', 'cachesateliteimg']
     var floodzoneimage = [cardInfo.children[3].children[1], `FLOODZONE IMAGE`, 'imagem-floodzone', 'cachefloodzoneimg']
     var mapsimage = [cardInfo.children[5].children[1], `MAPS IMAGE`, 'imagem-maps', 'cachemapsimg']
     var streetviewimage = [cardInfo.children[7].children[1], `STREETVIEW IMAGE`, 'imagem-streetview', 'cachestreetviewimg']
+    
 
     //cria uma area de edição preenchida
     var editAreaHtml = `
@@ -70,6 +72,7 @@ function editarCard(card){
                 <div>${checkOpt(sewerage)}</div>
                 <div>${checkRank(rank)}</div>
                 <div>${checkValueText(obs)}</div>
+                <div>${checkValueText(minimal)}</div>
                 <div><button class="save-edit">SALVAR</button></div>
             </div>
         </form>
@@ -103,6 +106,7 @@ function editarCard(card){
         watersupply[0].innerHTML = housesForm.watersupply.value
         elecsupply[0].innerHTML = housesForm.elecsupply.value
         sewerage[0].innerHTML = housesForm.sewerage.value
+        minimal[0].innerHTML = housesForm.minimalbid.value
 
         var floodzoneImg = document.querySelectorAll("#imagem-floodzone")[0]
         var mapsImg = document.querySelectorAll("#imagem-maps")[0]

@@ -1,5 +1,6 @@
 const express = require('express');
 const consign = require('consign');
+require('dotenv/config');
 //const bodyParser = require('body-parser');
 const path = require('path');
 const dbClient = require('../database/connectionPG');
@@ -13,7 +14,7 @@ module.exports = () => {
 
     const oneDay = 1000 * 60 * 60 * 9;
     app.use(session({
-    secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
+    secret: process.env.SECRET,
     saveUninitialized:true,
     cookie: { maxAge: oneDay },
     resave: false 

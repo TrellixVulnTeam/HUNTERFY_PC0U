@@ -120,6 +120,7 @@ async function createItem(element){
                             <div><h2>State:&nbsp;</h2><h3 class="value">${element.state}</h3></div>
                             <div><h2>County:&nbsp;</h2><h3 class="value">${element.county}</h3></div>
                             <div><h2>List Type:&nbsp;</h2><h3 class="value">${element.listtype}</h3></div>
+                            <div><h2>Minimal Bid:&nbsp;</h2><h3 class="value">${element.minimalbid}</h3></div>
                         </div>
                         <div class="column contrast">
                             <div><h2>Maps Link:&nbsp;</h2><h3 class="value">${element.mapslink}</h3></div>

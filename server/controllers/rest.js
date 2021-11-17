@@ -184,12 +184,13 @@ module.exports = app => {
             if(req.session.user == undefined){
                 res.send({"message":"undefined"})
             }else{
-                var searchResult = await pgProgram.searchByParcel(req.body.parcelid, res)
-                if(searchResult == undefined){
-                pgProgram.addOnDatabase(req.session.user, req, res)
-                }else{
-                pgProgram.editDB(req.session.user, req, res)
-            }
+                const searchResult = await pgProgram.checkIfExists(req.body.parcelid, req.body.state, req.body.county)
+                if(searchResult.length < 1){
+                    pgProgram.addOnDatabase(req.session.user, req, res)
+                }
+                else{
+                    pgProgram.editDB(req.session.user, req, res)
+                }
             }
             
         }
@@ -290,7 +291,7 @@ module.exports = app => {
     })
 
     app.post('/searchbycounty', async(req, res) => {
-        const countyResult = await pgProgram.searchByCounty(req.body.county, req.body.page)
+        const countyResult = await pgProgram.searchByCounty(req.body.county, req.body.state, req.body.page)
         console.log(req.session.user, 'searched by county')
         res.send(countyResult)
     })

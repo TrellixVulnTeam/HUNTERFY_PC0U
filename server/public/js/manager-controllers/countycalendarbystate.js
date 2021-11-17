@@ -2,12 +2,14 @@ document.querySelector('.search-button').addEventListener('click', async(event)=
     event.preventDefault()
     const json = getJson()
     const results = await postData(json)
-    const arr = await separarArray(results)
+    const arr = await resumeArray(results)
     buildPage()
     for (var i = 0; i < arr.length; i++) {
         var arrIndex = arr[i]
         showResults(arrIndex)
     }
+    agruparCondados(arr)
+
     
     
     
@@ -41,7 +43,7 @@ async function postData(json) {
     }
 }
 
-async function separarArray(json){
+async function resumeArray(json){
     var obj = {
         arr:[]
     }
@@ -56,8 +58,35 @@ async function separarArray(json){
     var filtered = array.filter(function (a) {
         return !this[JSON.stringify(a)] && (this[JSON.stringify(a)] = true);
     }, Object.create(null))
+    console.log(filtered)
     return filtered
+
     
+}
+
+function agruparCondados(arr){
+    
+    var newArr = []
+    for (var i = 0; i < arr.length; i++) {
+        var newObj = {
+            county: '',
+            date: ''
+        } 
+        var arrIndex = arr[i]
+        newObj.county = arrIndex[1]
+        newObj.date = arrIndex[2]
+        newArr.push(newObj)
+    }
+
+    
+        
+        
+    
+    
+    
+    
+
+
 }
 
 async function buildPage(){
@@ -70,7 +99,7 @@ async function buildPage(){
 }
 
 function showResults(element){
-    console.log(element)
+    
     const itensContainer = document.querySelector('.manager-window')
     const div = document.createElement('div')
     const item = `

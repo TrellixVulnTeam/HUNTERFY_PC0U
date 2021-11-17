@@ -11,11 +11,11 @@ async function runUser(){
 }
 
 function getJson(){
+    const state = document.querySelector('#stateinput').value
     const county = document.querySelector('#countyinput').value
     const page = document.querySelector('#page').value
-    const jsonModelParcel = `{"county":"${county}", "page":"${page}"}`
+    const jsonModelParcel = `{"county":"${county}", "page":"${page}", "state":"${state}"}`
     const parceljson = JSON.parse(jsonModelParcel)
-    
     return parceljson
 }
 

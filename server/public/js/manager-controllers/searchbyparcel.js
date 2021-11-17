@@ -1,14 +1,15 @@
-document.querySelector('.search-button').addEventListener("click", (event)=>{
+document.querySelector('.search-button').addEventListener("click", async(event)=>{
     event.preventDefault()
-    runUser()
+    const json = await getJson()	
+    buildPage(json);
+    const results = await postParcel(json)
+    console.log(results)
+    for (let i = 0; i < results.length; i++) {
+        resultIndex = results[i];
+        createItem(resultIndex)
+    }
+    
 })
-
-async function runUser(){
-    await getJson()	
-    buildPage(getJson());
-    await postParcel(getJson())
-
-}
 
 function getJson(){
     var parcel = document.querySelector('#parcelinput').value
@@ -28,7 +29,7 @@ async function postParcel(json) {
         }
         const rawResponse = await fetch('/searchbyparcel', options)
         const responseJson = await rawResponse.json();
-        createItem(responseJson)  
+        return responseJson 
     }
     catch(error){
         console.log(error)

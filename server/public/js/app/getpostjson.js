@@ -24,6 +24,7 @@ async function getJson(card){
         var watersupply = cardInfo.children[24].children[1].innerHTML
         var elecsupply = cardInfo.children[25].children[1].innerHTML
         var sewerage = cardInfo.children[26].children[1].innerHTML
+        var minimal = cardInfo.children[27].children[1].innerHTML
 
         var houseInfo = card.children[2].children[1]
         var ownerName = houseInfo.children[0].children[1].innerHTML
@@ -100,6 +101,7 @@ async function getJson(card){
             "watersupply":"${watersupply}",
             "elecsupply":"${elecsupply}",
             "sewerage":"${sewerage}",
+            "minimalbid":"${formatString(minimal)}",
             "ownername":"${formatString(ownerName)}",
             "propsstream":"${formatString(propsStream)}",
             "estimatedarv":"${formatString(estimatedArv)}",

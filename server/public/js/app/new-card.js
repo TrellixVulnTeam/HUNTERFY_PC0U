@@ -18,7 +18,7 @@ function criarPaginaEdit(){
     var editConteudo = 
         `<div class="card-edit">
             <button class="fechar-card" onclick="fecharCardEdit()"><i class="fas fa-times-circle"></i></button>
-            <form action="" method="POST">
+            <form>
                 <div class="campo1">
                     <div><label>PARCEL ID:</label><input name="parcelid" type="text"></div>
                     <div><img src='' id="cachesateliteimg" style='display:none;'><label>GIS IMAGE</label><label class="up-icon" for="imagem-satelite"><i class="fas fa-arrow-circle-up"></i></label><input onchange="preview_image('imagem-satelite')" id="imagem-satelite" type="file" accept=".jpg, .png, .pdf, .jpeg, .bmp"></div>
@@ -54,6 +54,7 @@ function criarPaginaEdit(){
                     <div><label>SEWERAGE:</label><select name="sewerage"><option value="">--</option><option value="YES">YES</option><option value="NO">NO</option><option value="undefined">UNDEFINED</option></select></div>
                     <div><label>RANK:</label><select name="rank"><option value="">--</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="HOUSE">HOUSE(B CASA)</option></select></div>
                     <div><label>OBS:</label><input name="obs" type="text"></div>
+                    <div><label>MINIMAL BID:</label><input name="minimalbid" type="text"></div>
                     <div><button class="save-button">SALVAR</button></div>
                 </div>
             </form>
@@ -108,6 +109,8 @@ function criarCard(){
             <div class="info-card info-text"><h2>WATER SUPPLY:</h2> <h2>${formatString(checkValue(form.watersupply.value))}</h2></div>
             <div class="info-card info-text"><h2>ELECTRICITY SUPPLY:</h2> <h2>${formatString(checkValue(form.elecsupply.value))}</h2></div>
             <div class="info-card info-text"><h2>SEWERAGE:</h2> <h2>${formatString(checkValue(form.sewerage.value))}</h2></div>
+            <div class="info-card info-text"><h2>MINIMAL BID:</h2> <h2>${formatString(checkValue(form.minimalbid.value))}</h2></div>
+
             
         </div>
 

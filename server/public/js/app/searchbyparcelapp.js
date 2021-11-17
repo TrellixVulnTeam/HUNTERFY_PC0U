@@ -4,8 +4,11 @@ var rootEditArea = document.querySelector(".root-edit")
 
 searchButton.addEventListener("click", async()=>{
     //console.log('searched')
-    var result = await postSearchParcel(parcelToJson())
-    renderResult(result)
+    const result = await postSearchParcel(parcelToJson())
+    for (let i = 0; i < result.length; i++) {
+        var resultIndex = result[i]
+        renderResult(resultIndex)
+    } 
 })
 
 function renderResult(element){

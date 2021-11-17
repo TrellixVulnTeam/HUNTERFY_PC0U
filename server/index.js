@@ -13,6 +13,6 @@ dbClient.connect(error => {
         tables.init(dbClient)
     }
 })
-app.listen(3000, ()=> console.log('servidor rodando na porta 3000'))////////////
+app.listen(process.env.PORT, ()=> console.log(`servidor rodando na porta ${process.env.PORT}`))////////////
 
 
