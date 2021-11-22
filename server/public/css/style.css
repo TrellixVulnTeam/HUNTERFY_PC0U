@@ -493,7 +493,7 @@ label{
 }
 
 .card-edit input[type="text"]{
-    width: 17vw;
+    width: 13vw;
     border: none;
     border-bottom: 1px solid #000000;
     background-color: transparent;
@@ -502,7 +502,7 @@ label{
 }
 
 .card-edit select{
-    width: 17vw;
+    width: 13vw;
     border: none;
     border-bottom: 1px solid #000000;
     background-color: transparent;
@@ -520,8 +520,8 @@ label{
 
 .card-edit form div{
     margin-bottom: 4vh;
-    width: 20vw;
-    height: 7vh;
+    width: 15vw;
+    height: 9vh;
 }
 
 form {
@@ -541,7 +541,7 @@ form {
 }
 
 form button{
-    width: 17.5vw;
+    width: 13vw;
     height: 9vh;
     background-color:#ffb429;
     border:none;
@@ -562,7 +562,7 @@ form button:hover{
     height: 5vh;
     background-color: #ffb429;
     border-radius: 3px;
-    width: 17.5vw;
+    width: 13vw;
     display: flex;
     justify-content: center;
     align-items: center;

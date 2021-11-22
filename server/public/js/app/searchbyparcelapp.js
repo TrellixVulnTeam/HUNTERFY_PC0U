@@ -49,6 +49,11 @@ function renderResult(element){
             <div class="info-card info-text"><h2>WATER SUPPLY:</h2> <h2>${element.watersupply}</h2></div>
             <div class="info-card info-text"><h2>ELECTRICITY SUPPLY:</h2> <h2>${element.electricitysupply}</h2></div>
             <div class="info-card info-text"><h2>SEWERAGE:</h2> <h2>${element.sewerage}</h2></div>
+            <div class="info-card info-text"><h2>MINIMAL BID:</h2> <h2>${element.minimalbid}</h2></div>
+            <div class="info-card info-text"><h2>NEIGHBOOR 1 NAME:</h2> <h2>${element.n1name}</h2></div>
+            <div class="info-card info-text"><h2>NEIGHBOOR 2 NAME:</h2> <h2>${element.n2name}</h2></div>
+            <div class="info-card info-text"><h2>NEIGHBOOR 3 NAME:</h2> <h2>${element.n3name}</h2></div>
+            <div class="info-card info-text"><h2>NEIGHBOOR 4 NAME:</h2> <h2>${element.n4name}</h2></div>
         </div>
         <div class="infos">
             <div onclick="accordion(this.parentElement)"><i class="fas fa-home"></i></div>

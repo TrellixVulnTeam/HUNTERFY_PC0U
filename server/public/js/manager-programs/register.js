@@ -4,10 +4,12 @@ document.querySelector('.add-button').addEventListener("click", async(event)=>{
     const userType = document.querySelector('#user-type').value
 
     if(userType == 'va'){
-        postData(json, '/registerva')   
+        postData(json, '/registerva')
+        alert('success')   
     }
     if(userType == 'manager'){
         postData(json, '/registermanager')
+        alert('success')  
     }
 })  
 
@@ -47,7 +49,7 @@ async function deleteUser(element){
     const json = JSON.parse(jsonModel)
     await postData(json, '/deleteva').then(
         card.style.backgroundColor = "rgb(151, 30, 0)"
-    )  
+    ).then(alert('deleted'))
 }
 
 async function deleteManager(element){
@@ -57,7 +59,7 @@ async function deleteManager(element){
     const json = JSON.parse(jsonModel)
     await postData(json, '/deletemanager').then(
         card.style.backgroundColor = "rgb(151, 30, 0)"
-    )  
+    ).then(alert('deleted'))
 }
 
 async function postData(json, path) {

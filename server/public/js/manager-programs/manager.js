@@ -61,7 +61,7 @@ async function editRank3(item){
     const rank3Area = thisCard.children[0].children[1].children[1].children[2]
     const rank3Value = rank3Area.children[2].children[1].value
     const rank3Obs = rank3Area.children[3].children[1].value
-    var buyOpt = document.querySelector('input[name="buyopt"]:checked').value
+    const buyOpt = rank3Area.children[4].children[1].value
      
     infoString = `
     {
@@ -75,8 +75,9 @@ async function editRank3(item){
     var rank3Json = JSON.parse(infoString)
     await postJsonRank3(rank3Json)
     thisCard.innerHTML = ''
+    console.log(rank3Json)
         
-    alert("Rank inserido com sucesso!")
+    alert("Success!")
 }
 
 function accordion(item){
@@ -114,7 +115,7 @@ async function createItem(element){
                 <div class="hide">
                     <div class="item-columns">   
                         <div class="column contrast">
-                            <div><h2>GIS Link:&nbsp;</h2><h3 class="value">${element.gislink}</h3></div>
+                            <div><h2>GIS Link:&nbsp;</h2><h3 class="value"><a href="${element.gislink}">${element.gislink}</a></h3></div>
                             <div><h2>Tax Value:&nbsp;</h2><h3 class="value">${element.taxowned}</h3></div>
                             <div><h2>Land Value:&nbsp;</h2><h3 class="value">${element.marketvalue}</h3></div>
                             <div><h2>State:&nbsp;</h2><h3 class="value">${element.state}</h3></div>
@@ -123,7 +124,7 @@ async function createItem(element){
                             <div><h2>Minimal Bid:&nbsp;</h2><h3 class="value">${element.minimalbid}</h3></div>
                         </div>
                         <div class="column contrast">
-                            <div><h2>Maps Link:&nbsp;</h2><h3 class="value">${element.mapslink}</h3></div>
+                            <div><h2>Maps Link:&nbsp;</h2><h3 class="value"><a href="${element.mapslink}">${element.mapslink}</a></h3></div>
                             <div><h2>Address:&nbsp;</h2><h3 class="value">${element.adress}</h3></div>
                             <div><h2>Latitude:&nbsp;</h2><h3 class="value">${element.latitude}</h3></div>
                             <div><h2>Longitude:&nbsp;</h2><h3 class="value">${element.longitude}</h3></div>
@@ -131,19 +132,19 @@ async function createItem(element){
                             <div><h2>Water Supply:&nbsp;</h2><h3 class="value">${element.watersupply}</h3></div>
                         </div>
                         <div class="column contrast">
-                            <div><h2>N1 Address:&nbsp;</h2><h3 class="value">${element.n1adress}</h3></div>
-                            <div><h2>N2 Address:&nbsp;</h2><h3 class="value">${element.n2adress}</h3></div>
-                            <div><h2>N3 Address:&nbsp;</h2><h3 class="value">${element.n3adress}</h3></div>
-                            <div><h2>N4 Address:&nbsp;</h2><h3 class="value">${element.n4adress}</h3></div>
+                            <div><h2>Neighboor 1:&nbsp;</h2><h3 class="value">${element.n1name}</h3><h3 class="value">${element.n1adress}</h3></div>
+                            <div><h2>Neighboor 2:&nbsp;</h2><h3 class="value">${element.n2name}</h3><h3 class="value">${element.n2adress}</h3></div>
+                            <div><h2>Neighboor 3:&nbsp;</h2><h3 class="value">${element.n3name}</h3><h3 class="value">${element.n3adress}</h3></div>
+                            <div><h2>Neighboor 4:&nbsp;</h2><h3 class="value">${element.n4name}</h3><h3 class="value">${element.n4adress}</h3></div>
                             <div><h2>Buy Status:&nbsp;</h2><h3 class="value">${element.buyopt}</h3></div>
                             <div><h2>Electricity Supply:&nbsp;</h2><h3 class="value">${element.electricitysupply}</h3></div>
                         </div>
                         <div class="column contrast">
-                            <div><h2>Floodzone Link:&nbsp;</h2><h3 class="value">${element.floodzonelink}</h3></div>
+                            <div><h2>Floodzone Link:&nbsp;</h2><h3 class="value"><a href="${element.floodzonelink}">${element.floodzonelink}</a></h3></div>
                             <div><h2>Floodzone Status:&nbsp;</h2><h3 class="value">${element.floodzonetext}</h3></div>
                             <div><h2>HOA:&nbsp;</h2><h3 class="value">${element.hoa}</h3></div>
                             <div><h2>Zestimate:&nbsp;</h2><h3 class="value">${element.zestimate}</h3></div>
-                            <div><h2>Zillow Link:&nbsp;</h2><h3 class="value">${element.zillowlink}</h3></div>
+                            <div><h2>Zillow Link:&nbsp;</h2><h3 class="value"><a href="${element.zillowlink}">${element.zillowlink}</a></h3></div>
                             <div><h2>Sewerage:&nbsp;</h2><h3 class="value">${element.sewerage}</h3></div>
                         </div>
                     </div>
@@ -169,15 +170,29 @@ async function createItem(element){
                             <div><h2>User:</h2><h3>${element.userrank3}</h3></div>
                             <div><label for="">Rank:</label><input type="text" value="${element.rank3}"></div>
                             <div><label for="">Obs:</label><input type="text" value="${element.obs3}"></div>
-                            <div class="buyopt"><h2>BUY?</h2><input type="radio" name="buyopt" value="yes"><label>yes/</label><input type="radio" name="buyopt" value="no"><label>no/</label><input type="radio" name="buyopt" value="undefined"><label>undefined</label></div>
+                            <div class="buyopt"><h2>BUY?</h2> <select class="buyopt"><option value="undefined">UNDEFINED</option><option value="yes">Yes</option><option value="no">No</option></select></div>
                             <div class="rank-button"><button onclick="editRank3(this)">Send rank</button></div>
                         </div>
                         <div class="letters">
-                            <h2>Generate Letters</h2>
-                            <select class="template-options" onfocus="loadTemplates(this)">
-                                <option>--</option>
-                            </select>
-                            <button class="download-pdf" onclick='runDocx(this.parentElement.parentElement.parentElement.parentElement)'><i class="fas fa-envelope"></i></button>
+                            <h1>Letters</h1>
+                            <div>
+                                <h2>Status:</h2>
+                                <select class="status">
+                                    <option>--</option>
+                                    <option value="completed">Completed search</option>
+                                    <option value="sent">Letter has been sent</option>
+                                    <option value="interested">Customer is interested</option>
+                                    <option value="notinterested">Customer isn't interested</option>
+                                </select>
+
+                            </div>
+                            <div>
+                                <h2>Generate Letters</h2>
+                                <select class="template-options" onfocus="loadTemplates(this)">
+                                    <option>--</option>
+                                </select>
+                                <button class="download-pdf" onclick='runDocx(this.parentElement.parentElement.parentElement.parentElement.parentElement)'><i class="fas fa-envelope"></i></button>
+                            </div>
                         </div>
                     </div>
                     <div>

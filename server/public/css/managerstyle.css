@@ -239,6 +239,8 @@ body::-webkit-scrollbar-track {
     flex-direction: column;
     justify-content: start;
     align-items: baseline;
+    min-height: 20vh;
+    max-height: fit-content;
 }
 
 .column div h2{
@@ -248,7 +250,7 @@ body::-webkit-scrollbar-track {
 }
 
 .column h3{
-    min-height: 10vh;
+    min-height: 3vh;
     max-height: fit-content;
     width: 18vw;
     word-wrap:break-word;
@@ -334,10 +336,22 @@ body::-webkit-scrollbar-track {
 }
 
 .rank input[type=text]{
-    background-color: transparent;
+    width: 10vw;
     border: none;
-    border-bottom: 1px rgb(255, 255, 255) solid;
-    color: white;
+    height: 4vh;
+    font-size: 2vh;
+    border-radius: 0.5vh;
+    padding: 0 1vh;
+}
+
+.rank select{
+    width: 10vw;
+    border: none;
+    height: 4vh;
+    font-size: 2vh;
+    border-radius: 0.5vh;
+    padding: 0 1vh;
+    color: black;
 }
 
 .rank .rank-button{
@@ -365,11 +379,6 @@ body::-webkit-scrollbar-track {
 .rank div h2{
     width: 7vw;
     color: black;
-}
-
-.rank .buyopt{
-    display: flex;
-    justify-content: flex-start;
 }
 
 .contrast:hover{

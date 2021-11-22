@@ -25,6 +25,10 @@ function editarCard(card){
     var elecsupply = [cardInfo.children[25].children[1], 'ELECTRICITY SUPPLY:', 'elecsupply']
     var sewerage = [cardInfo.children[26].children[1], 'SEWERAGE:', 'sewerage']
     var minimal = [cardInfo.children[27].children[1], `<label>MINIMAL BID:</label><input name="minimalbid" type="text">`, "minimalbid", `MINIMAL BID:`]
+    var n1name = [cardInfo.children[28].children[1], `<label>NEIGHBOOR 1 NAME:</label><input name="n1name" type="text">`, "n1name", `NEIGHBOOR 1 NAME:`]
+    var n2name = [cardInfo.children[29].children[1], `<label>NEIGHBOOR 2 NAME:</label><input name="n2name" type="text">`, "n2name", `NEIGHBOOR 2 NAME:`]
+    var n3name = [cardInfo.children[30].children[1], `<label>NEIGHBOOR 3 NAME:</label><input name="n3name" type="text">`, "n3name", `NEIGHBOOR 3 NAME:`]
+    var n4name = [cardInfo.children[31].children[1], `<label>NEIGHBOOR 4 NAME:</label><input name="n4name" type="text">`, "n4name", `NEIGHBOOR 4 NAME:`]
      //--array name     --input inside info              --label            --class             --cache id
     var sateliteimage = [cardInfo.children[1].children[1], `SATELITE IMAGE`, 'imagem-satelite', 'cachesateliteimg']
     var floodzoneimage = [cardInfo.children[3].children[1], `FLOODZONE IMAGE`, 'imagem-floodzone', 'cachefloodzoneimg']
@@ -59,17 +63,24 @@ function editarCard(card){
                 <div>${checkValueText(zestimate)}</div>
                 <div>${checkValueText(zillow)}</div>
                 <div>${checkValueText(floodzonelink)}</div>
+                <div>${checkValueText(n1name)}</div>
+                <div>${checkValueText(n2name)}</div>
+                <div>${checkValueText(n3name)}</div>
+                <div>${checkValueText(n4name)}</div>
+                
+            </div>
+            <div class="campo4">
+                <div>${checkOpt(watersupply)}</div>
+                <div>${checkOpt(elecsupply)}</div>
+                <div>${checkOpt(sewerage)}</div>
                 <div>${checkValueText(adressn1)}</div>
                 <div>${checkValueText(adressn2)}</div>
                 <div>${checkValueText(adressn3)}</div>
                 <div>${checkValueText(adressn4)}</div>
                 
             </div>
-            <div class="campo4">
+            <div class="campo5">
                 <div>${checkValueText(hoa)}</div>
-                <div>${checkOpt(watersupply)}</div>
-                <div>${checkOpt(elecsupply)}</div>
-                <div>${checkOpt(sewerage)}</div>
                 <div>${checkRank(rank)}</div>
                 <div>${checkValueText(obs)}</div>
                 <div>${checkValueText(minimal)}</div>
@@ -82,31 +93,35 @@ function editarCard(card){
     var saveButton = document.querySelector(".save-edit")
     saveButton.addEventListener("click", (event)=>{
         event.preventDefault()
-        const housesForm = document.querySelector('form')
-        parcelid[0].innerHTML = housesForm.parcelid.value
-        linkgis[0].innerHTML = housesForm.linkgis.value
-        floodzonetext[0].innerHTML = housesForm.floodzone.value
-        mapslink[0].innerHTML = housesForm.mapslink.value
-        taxowned[0].innerHTML = housesForm.taxowned.value
-        marketvalue[0].innerHTML = housesForm.marketvalue.value
-        latitude[0].innerHTML = housesForm.latitude.value
-        longitude[0].innerHTML = housesForm.longitude.value
-        acres[0].innerHTML = housesForm.acres.value
-        adress[0].innerHTML = housesForm.end.value
-        adressn1[0].innerHTML = housesForm.end1.value
-        adressn2[0].innerHTML = housesForm.end2.value
-        adressn3[0].innerHTML = housesForm.end3.value
-        adressn4[0].innerHTML = housesForm.end4.value
-        rank.innerHTML = housesForm.rank.value
-        obs[0].innerHTML = housesForm.obs.value
-        floodzonelink[0].innerHTML = housesForm.floodzonelink.value
-        zestimate[0].innerHTML = housesForm.zestimate.value
-        zillow[0].innerHTML = housesForm.zillow.value
-        hoa[0].innerHTML = housesForm.hoa.value
-        watersupply[0].innerHTML = housesForm.watersupply.value
-        elecsupply[0].innerHTML = housesForm.elecsupply.value
-        sewerage[0].innerHTML = housesForm.sewerage.value
-        minimal[0].innerHTML = housesForm.minimalbid.value
+        const form = document.querySelector('form')
+        parcelid[0].innerHTML = form.parcelid.value
+        linkgis[0].innerHTML = form.linkgis.value
+        floodzonetext[0].innerHTML = form.floodzone.value
+        mapslink[0].innerHTML = form.mapslink.value
+        taxowned[0].innerHTML = form.taxowned.value
+        marketvalue[0].innerHTML = form.marketvalue.value
+        latitude[0].innerHTML = form.latitude.value
+        longitude[0].innerHTML = form.longitude.value
+        acres[0].innerHTML = form.acres.value
+        adress[0].innerHTML = form.end.value
+        adressn1[0].innerHTML = form.end1.value
+        adressn2[0].innerHTML = form.end2.value
+        adressn3[0].innerHTML = form.end3.value
+        adressn4[0].innerHTML = form.end4.value
+        rank.innerHTML = form.rank.value
+        obs[0].innerHTML = form.obs.value
+        floodzonelink[0].innerHTML = form.floodzonelink.value
+        zestimate[0].innerHTML = form.zestimate.value
+        zillow[0].innerHTML = form.zillow.value
+        hoa[0].innerHTML = form.hoa.value
+        watersupply[0].innerHTML = form.watersupply.value
+        elecsupply[0].innerHTML = form.elecsupply.value
+        sewerage[0].innerHTML = form.sewerage.value
+        minimal[0].innerHTML = form.minimalbid.value
+        n1name[0].innerHTML = form.n1name.value
+        n2name[0].innerHTML = form.n2name.value
+        n3name[0].innerHTML = form.n3name.value
+        n4name[0].innerHTML = form.n4name.value
 
         var floodzoneImg = document.querySelectorAll("#imagem-floodzone")[0]
         var mapsImg = document.querySelectorAll("#imagem-maps")[0]

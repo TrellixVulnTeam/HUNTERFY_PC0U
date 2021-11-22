@@ -25,6 +25,10 @@ async function getJson(card){
         var elecsupply = cardInfo.children[25].children[1].innerHTML
         var sewerage = cardInfo.children[26].children[1].innerHTML
         var minimal = cardInfo.children[27].children[1].innerHTML
+        var n1name = cardInfo.children[28].children[1].innerHTML
+        var n2name = cardInfo.children[29].children[1].innerHTML
+        var n3name = cardInfo.children[30].children[1].innerHTML
+        var n4name = cardInfo.children[31].children[1].innerHTML
 
         var houseInfo = card.children[2].children[1]
         var ownerName = houseInfo.children[0].children[1].innerHTML
@@ -120,7 +124,11 @@ async function getJson(card){
             "cadtotalvalue":"${formatString(cadTotalValue)}",
             "needtoconfirm":"${formatString(needToConfirm)}",
             "cadimage":"${cadImage}",
-            "listtype":"${listType}"
+            "listtype":"${listType}",
+            "n1name":"${formatString(n1name)}",
+            "n2name":"${formatString(n2name)}",
+            "n3name":"${formatString(n3name)}",
+            "n4name":"${formatString(n4name)}"
         }`
         var cardJson = JSON.parse(cardString)
         var cardJson = JSON.stringify(cardJson)

@@ -41,20 +41,31 @@ function criarPaginaEdit(){
                     <div><label>ZESTIMATE:</label><input name="zestimate" type="text"></div>
                     <div><label>ZILLOW LINK:</label><input name="zillow" type="text"></div>
                     <div><label>FLOODZONE LINK:</label><input name="floodzonelink" type="text"></div>
-                    <div><label>ADDRESS NEIGHBOOR 1:</label><input name="end1" type="text"></div>
-                    <div><label>ADDRESS NEIGHBOOR 2:</label><input name="end2" type="text"></div>
-                    <div><label>ADDRESS NEIGHBOOR 3:</label><input name="end3" type="text"></div>
-                    <div><label>ADDRESS NEIGHBOOR 4:</label><input name="end4" type="text"></div>
+                    <div><label>NEIGHBOOR 1 NAME:</label><input name="n1name" type="text"></div>
+                    <div><label>NEIGHBOOR 2 NAME:</label><input name="n2name" type="text"></div>
+                    <div><label>NEIGHBOOR 3 NAME:</label><input name="n3name" type="text"></div>
+                    <div><label>NEIGHBOOR 4 NAME:</label><input name="n4name" type="text"></div>
                 </div>
             
                 <div class="campo4">
-                    <div><label>HOA:</label><input name="hoa" type="text"></div>
+                    
                     <div><label>WATER SUPPLY:</label><select name="watersupply"><option value="">--</option><option value="YES">YES</option><option value="NO">NO</option><option value="undefined">UNDEFINED</option></select></div>
                     <div><label>ELECTRICITY SUPPLY:</label><select name="elecsupply"><option value="">--</option><option value="YES">YES</option><option value="NO">NO</option><option value="undefined">UNDEFINED</option></select></div>
                     <div><label>SEWERAGE:</label><select name="sewerage"><option value="">--</option><option value="YES">YES</option><option value="NO">NO</option><option value="undefined">UNDEFINED</option></select></div>
+                    <div><label>NEIGHBOOR 1 ADDRESS:</label><input name="end1" type="text"></div>
+                    <div><label>NEIGHBOOR 2 ADDRESS:</label><input name="end2" type="text"></div>
+                    <div><label>NEIGHBOOR 3 ADDRESS:</label><input name="end3" type="text"></div>
+                    <div><label>NEIGHBOOR 4 ADDRESS:</label><input name="end4" type="text"></div>
+                    
+                    
+                </div>
+
+                <div class="campo5">
+                    <div><label>HOA:</label><input name="hoa" type="text"></div>  
                     <div><label>RANK:</label><select name="rank"><option value="">--</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="HOUSE">HOUSE(B CASA)</option></select></div>
                     <div><label>OBS:</label><input name="obs" type="text"></div>
                     <div><label>MINIMAL BID:</label><input name="minimalbid" type="text"></div>
+                    
                     <div><button class="save-button">SALVAR</button></div>
                 </div>
             </form>
@@ -96,10 +107,10 @@ function criarCard(){
             <div class="info-card info-text"><h2>LONGITUDE:</h2> <h2>${formatString(checkValue(form.longitude.value))}</h2></div>
             <div class="info-card info-text"><h2>LOT SIZE:</h2> <h2>${formatString(checkValue(form.acres.value))}</h2></div>
             <div class="info-card info-text"><h2>ADDRESS:</h2> <h2>${formatString(checkValue(form.end.value))}</h2></div>
-            <div class="info-card info-text"><h2>ADDRESS NEIGHBOOR 1:</h2> <h2>${formatString(checkValue(form.end1.value))}</h2></div>
-            <div class="info-card info-text"><h2>ADDRESS NEIGHBOOR 2:</h2> <h2>${formatString(checkValue(form.end2.value))}</h2></div>
-            <div class="info-card info-text"><h2>ADDRESS NEIGHBOOR 3:</h2> <h2>${formatString(checkValue(form.end3.value))}</h2></div>
-            <div class="info-card info-text"><h2>ADDRESS NEIGHBOOR 4:</h2> <h2>${formatString(checkValue(form.end4.value))}</h2></div>
+            <div class="info-card info-text"><h2>NEIGHBOOR 1 ADRESS:</h2> <h2>${formatString(checkValue(form.end1.value))}</h2></div>
+            <div class="info-card info-text"><h2>NEIGHBOOR 2 ADRESS:</h2> <h2>${formatString(checkValue(form.end2.value))}</h2></div>
+            <div class="info-card info-text"><h2>NEIGHBOOR 3 ADRESS:</h2> <h2>${formatString(checkValue(form.end3.value))}</h2></div>
+            <div class="info-card info-text"><h2>NEIGHBOOR 4 ADRESS:</h2> <h2>${formatString(checkValue(form.end4.value))}</h2></div>
             <div class="info-card info-text"><h2>RANK:</h2> <h2>${formatString(checkValue(form.rank.value))}</h2></div>
             <div class="info-card info-text"><h2>OBS:</h2> <h2>${formatString(checkValue(form.obs.value))}</h2></div>
             <div class="info-card info-text"><h2>FLOODZONE LINK:</h2> <h2>${formatString(checkValue(form.floodzonelink.value))}</h2></div>
@@ -110,6 +121,10 @@ function criarCard(){
             <div class="info-card info-text"><h2>ELECTRICITY SUPPLY:</h2> <h2>${formatString(checkValue(form.elecsupply.value))}</h2></div>
             <div class="info-card info-text"><h2>SEWERAGE:</h2> <h2>${formatString(checkValue(form.sewerage.value))}</h2></div>
             <div class="info-card info-text"><h2>MINIMAL BID:</h2> <h2>${formatString(checkValue(form.minimalbid.value))}</h2></div>
+            <div class="info-card info-text"><h2>NEIGHBOOR 1 NAME:</h2> <h2>${formatString(checkValue(form.n1name.value))}</h2></div>
+            <div class="info-card info-text"><h2>NEIGHBOOR 2 NAME:</h2> <h2>${formatString(checkValue(form.n2name.value))}</h2></div>
+            <div class="info-card info-text"><h2>NEIGHBOOR 3 NAME:</h2> <h2>${formatString(checkValue(form.n3name.value))}</h2></div>
+            <div class="info-card info-text"><h2>NEIGHBOOR 4 NAME:</h2> <h2>${formatString(checkValue(form.n4name.value))}</h2></div>
 
             
         </div>

@@ -51,7 +51,7 @@ module.exports = app => {
         res.render('searchbyparcel.ejs', {user : req.session.user})
     })
 
-    app.get('/searchbycounty', isAuthManager, (req, res) => {
+    app.get('/searchbycounty', (req, res) => {
         res.render('searchbycounty.ejs', {user : req.session.user})
     })
 
