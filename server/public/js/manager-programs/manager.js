@@ -1,29 +1,16 @@
-async function postJsonRank2(json){
+
+async function postDataManager(json, path){
     try{
-    const options = {
-        method: 'POST',
-        headers:{
-            'Content-Type':'application/json'
-        },
-        body: JSON.stringify(json)
+        const options = {
+            method: 'POST',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(json)
         }
-    fetch('/editrank2', options)
-    }
-    catch(error){
-        console.log(error)
-    }
-}
-    
-async function postJsonRank3(json){
-    try{
-    const options = {
-        method: 'POST',
-        headers:{
-            'Content-Type':'application/json'
-        },
-        body: JSON.stringify(json)
-    }
-    fetch('/editrank3', options)
+        const rawResponse = await fetch(path, options)
+        const responseJson = await rawResponse.json();
+        return responseJson
     }
     catch(error){
         console.log(error)
@@ -48,7 +35,7 @@ async function editRank2(item){
     `
     var rank2Json = JSON.parse(infoString)
     console.log(rank2Json)
-    await postJsonRank2(rank2Json)
+    await postDataManager(rank2Json, '/editrank2')
     thisCard.innerHTML = ''
         
     alert("Rank inserido com sucesso!")
@@ -73,11 +60,28 @@ async function editRank3(item){
     }
     `
     var rank3Json = JSON.parse(infoString)
-    await postJsonRank3(rank3Json)
+    await postDataManager(rank3Json, '/editrank3')
     thisCard.innerHTML = ''
     console.log(rank3Json)
         
     alert("Success!")
+}
+
+async function editStatus(item){
+    const thisCard = item.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement
+    const parcel = thisCard.children[0].children[0].children[0].children[1].innerHTML
+    const statusArea = thisCard.children[0].children[1].children[1].children[3]
+    const status = statusArea.children[1].children[1].value
+     
+    infoString = `
+    {
+        "status":"${status}",
+        "parcelid":"${parcel}"
+    }
+    `
+    const json = JSON.parse(infoString)
+    await postDataManager(json, '/editstatus').then(alert("Success!"))
+    
 }
 
 function accordion(item){
@@ -146,6 +150,7 @@ async function createItem(element){
                             <div><h2>Zestimate:&nbsp;</h2><h3 class="value">${element.zestimate}</h3></div>
                             <div><h2>Zillow Link:&nbsp;</h2><h3 class="value"><a href="${element.zillowlink}">${element.zillowlink}</a></h3></div>
                             <div><h2>Sewerage:&nbsp;</h2><h3 class="value">${element.sewerage}</h3></div>
+                            <div><h2>Status:&nbsp;</h2><h3 class="value">${element.status}</h3></div>
                         </div>
                     </div>
                     <div class="item-menu">
@@ -179,19 +184,27 @@ async function createItem(element){
                                 <h2>Status:</h2>
                                 <select class="status">
                                     <option>--</option>
-                                    <option value="completed">Completed search</option>
-                                    <option value="sent">Letter has been sent</option>
-                                    <option value="interested">Customer is interested</option>
-                                    <option value="notinterested">Customer isn't interested</option>
+                                    <option value="Completed search">Completed search</option>
+                                    <option value="Letter has been sent">Letter has been sent</option>
+                                    <option value="Customer is interested">Customer is interested</option>
+                                    <option value="Customer isnt interested">Customer isn't interested</option>
                                 </select>
+                                <button onclick="editStatus(this)"><i class="fas fa-share"></i></button>
 
                             </div>
                             <div>
-                                <h2>Generate Letters</h2>
+                                <h2>Generate Letters:</h2>
                                 <select class="template-options" onfocus="loadTemplates(this)">
                                     <option>--</option>
                                 </select>
                                 <button class="download-pdf" onclick='runDocx(this.parentElement.parentElement.parentElement.parentElement.parentElement)'><i class="fas fa-envelope"></i></button>
+                            </div>
+                            <div class="letterlogs">
+                                <h2>Letter Logs:</h2>
+                                <div class="letterlogscontainer">
+                                
+                                </div>
+                                <button onclick='getLetterLogs(this)'><i class="fas fa-clock"></i></button>
                             </div>
                         </div>
                     </div>
@@ -369,4 +382,36 @@ async function loadTemplates(element){
         }
     }   
     catch(err){console.log(err)}
+}
+
+async function getLetterLogs(item){
+    const thisCard = item.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement
+    const parcel = thisCard.children[0].children[0].children[0].children[1].innerHTML
+    const lettersArea = thisCard.children[0].children[1].children[1].children[3]
+    const logsContainer = lettersArea.children[3].children[1]
+    console.log(logsContainer)
+    infoString = `
+    {
+        "parcelid":"${parcel}"
+    }
+    `
+    const json = JSON.parse(infoString)
+    const result = await postDataManager(json, '/letterlogs')
+    console.log(result.rows)
+    for(var i = 0; i < result.rows.length; i++) {
+        var index = result.rows[i]
+        console.log(index)
+        showLetterLog(index, logsContainer)
+        
+    }
+}
+function showLetterLog(element, container){
+        var div = document.createElement('div')
+        div.classList.add('letterlogitem')
+        var item = `
+            <h3>${element.template}</h3>
+            <h3>${element.date}</h3>
+        `
+        div.innerHTML = item
+        container.append(div)
 }

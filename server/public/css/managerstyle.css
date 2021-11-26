@@ -299,9 +299,10 @@ body::-webkit-scrollbar-track {
 }
 
 .rank h1{
-    font-size: 3vh;
-    color: rgb(0, 0, 0);
+    color: black;
+    margin-right: 0.2vh;
     font-weight: 600;
+    font-size: 3vh;
 }
 
 .image-row img{
@@ -448,6 +449,7 @@ form{
     font-size: 1.8vh;
     border-radius: 0.5vh;
     padding: 0 1vh;
+    color: black;
 }
 
 #search-form input[type=number]{
@@ -1050,4 +1052,82 @@ form{
     transform: scale(1.1);
     transition: 0.5s;
 }
+
+.manager-item div .letters{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.letters div .letterlogscontainer{
+    width: 10vw;
+    height: 10vh;
+    margin: 1vh auto;
+    background-color: rgb(255, 255, 255);
+
+}
+
+.letters div{
+    display: flex;
+    width: 20vw;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.letters select{
+    width: 10vw;
+}
+
+.letters h1{
+    color: black;
+    margin-right: 0.2vh;
+    font-weight: 600;
+    font-size: 3vh;
+    align-self: flex-start;
+}
+
+.letters h2{
+    color: black;
+    margin-right: 0.2vh;
+    font-weight: 400;
+    width: 7vh;
+}
+
+.letters button{
+    background-color: transparent;
+    border: none;
+    font-size: 5vh;
+    text-align: left;
+    color: #a14418;
+    text-align: center;
+}
+
+.letters button:hover{
+    transform: scale(1.1);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.letterlogscontainer{
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    
+}
+
+.letterlogscontainer div{
+    width: 90%;
+    font-size: 1.5vh;
+}
+
+.letterlogscontainer div h3{
+    color: black;
+}
+
+.statusselect{
+    margin: 1vh 0;
+}
+
 

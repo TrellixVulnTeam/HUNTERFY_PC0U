@@ -79,6 +79,10 @@ module.exports = app => {
         res.render('searchbytype.ejs', {user : req.session.user})
     })
 
+    app.get('/searchbystatus', async(req, res)=>{
+        res.render('searchbystatus.ejs', {user : req.session.user})
+    })
+
     app.get('/templates', async(req, res)=>{
         res.render('templates.ejs', {user : req.session.user})
     })
@@ -137,8 +141,6 @@ module.exports = app => {
         //console.log(result)
         res.send(result)
     })
-
-   
 
     //POSTS----------------------->
     app.post('/getallchecked', async(req, res)=>{
@@ -204,6 +206,17 @@ module.exports = app => {
             const userDate = await req.body
             console.log(req.session.user, 'searched by user', userDate.user)
             const result = await pgProgram.searchTableByUser(userDate.user, userDate.date, userDate.page, res)
+            res.send(result)
+        }
+            catch(error){
+            console.log(error)
+	    }
+    })
+
+    app.post('/searchbystatus', async(req,res) => {
+        try{
+            console.log(req.session.user, 'searched by status', req.body.status, req.body.county)
+            const result = await pgProgram.searchByStatus(req.body.status, req.body.state, req.body.county, req.body.page)
             res.send(result)
         }
             catch(error){
@@ -413,13 +426,22 @@ module.exports = app => {
     })
 
     app.post('/getstateinfo', async(req, res)=>{
-        
         const info = await pgProgram.getStateCalendar(req.body.state)
         res.send(info.rows)
     })
 
-    
+    app.post('/editstatus', async(req, res)=>{
+        await pgProgram.insertStatus(req.body.status, req.body.parcelid)
+    })
 
-    
+    app.post('/saveletterlog', async(req, res)=>{
+        await pgProgram.insertLetterLog(req.body.parcelid, req.body.template)
+    })    
+
+    app.post('/letterlogs', async(req, res)=>{
+        //console.log(req.body)
+        const result = await pgProgram.getLetterLogs(req.body.parcelid)
+        res.send(result)
+    })
 }
 //
