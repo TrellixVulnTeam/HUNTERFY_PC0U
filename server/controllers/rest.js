@@ -443,5 +443,14 @@ module.exports = app => {
         const result = await pgProgram.getLetterLogs(req.body.parcelid)
         res.send(result)
     })
+
+    app.post('/postacqdata', async(req, res)=>{
+        pgProgram.postAcqData(req.body.parcelid, req.body.state, req.body.county, req.body.offervalue, req.body.offerdate, req.body.counteroffervalue, req.body.counterofferdate, req.body.pdf, req.body.deeddate)
+    })
+
+    app.post('/downloadpdf', async(req, res)=>{
+        const result = await pgProgram.getPdf(req.body.parcelid, req.body.state, req.body.county)
+        res.send(result)
+    })
 }
 //

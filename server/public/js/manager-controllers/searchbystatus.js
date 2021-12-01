@@ -11,6 +11,18 @@ document.querySelector('.search-button').addEventListener("click", async(event)=
     
 })
 
+document.querySelector('.generate-letter').addEventListener("click", async(event)=>{
+    event.preventDefault()
+    console.log('oi')
+    const itens = document.querySelectorAll('.manager-item')
+    for (let i = 0; i < itens.length; i++) {
+        var itemIndex = itens[i]
+        runDocxAll(itemIndex)
+    }
+
+})
+
+
 function getJson(){
     const status = document.querySelector('.statusselect').value
     const state = document.querySelector('#stateinput').value

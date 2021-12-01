@@ -3,6 +3,18 @@ document.querySelector('.search-button').addEventListener("click", (event)=>{
     runUser()
 })
 
+document.querySelector('.generate-letter').addEventListener("click", async(event)=>{
+    event.preventDefault()
+    console.log('oi')
+    const itens = document.querySelectorAll('.manager-item')
+    for (let i = 0; i < itens.length; i++) {
+        var itemIndex = itens[i]
+        runDocxAll(itemIndex)
+    }
+
+})
+
+
 document.querySelector('.copy-button').addEventListener('click', (event)=>{
     event.preventDefault()
     const allParcels = document.querySelectorAll('.parcelid')

@@ -208,46 +208,79 @@ async function createItem(element){
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <div class="casinha" onclick="flexAccordion(this.parentElement)"><i class="fas fa-home"></i></div>
-                        <div class="item-columns" style="display: none;">
-                            <div class="column contrast">
-                                <div><h2>Owner Name</h2><h3 class="value">${element.ownername}</h3></div>
-                                <div><h2>Propstream Market Value</h2><h3 class="value">${element.propstream}</h3></div>
-                                <div><h2>Estimated ARV</h2><h3 class="value">${element.estimatedarv}</h3></div>
-                                <div><h2>Google Maps Date</h2><h3 class="value">${element.gmapdate}</h3></div>
-                                <div><h2>Google Earth Link</h2><h3 class="value">${element.gearthlink}</h3></div>
-                            </div>
+                    <div class="accordions-menu">
+                        <div>
+                            <div class="accordionbutton" onclick="flexAccordion(this.parentElement)"><i class="fas fa-home"></i></div>
+                            <div class="item-columns" style="display: none;">
+                                <div class="column contrast">
+                                    <div><h2>Owner Name</h2><h3 class="value">${element.ownername}</h3></div>
+                                    <div><h2>Propstream Market Value</h2><h3 class="value">${element.propstream}</h3></div>
+                                    <div><h2>Estimated ARV</h2><h3 class="value">${element.estimatedarv}</h3></div>
+                                    <div><h2>Google Maps Date</h2><h3 class="value">${element.gmapdate}</h3></div>
+                                    <div><h2>Google Earth Link</h2><h3 class="value">${element.gearthlink}</h3></div>
+                                </div>
 
-                            <div class="column contrast">
-                                
-                                <div><h2>Showing Building</h2><h3 class="value">${element.showingbuilding}</h3></div>
-                                <div><h2>Building Size</h2><h3 class="value">${element.buildingsize}</h3></div>
-                                <div><h2>Year Built</h2><h3 class="value">${element.yearbuilt}</h3></div>
-                                <div><h2>Structure Type</h2><h3 class="value">${element.structuretype}</h3></div>
-                                <div><h2>Number Of Bedrooms</h2><h3 class="value">${element.bedrooms}</h3></div>
-                                
-                                
-                            </div>
+                                <div class="column contrast">
+                                    
+                                    <div><h2>Showing Building</h2><h3 class="value">${element.showingbuilding}</h3></div>
+                                    <div><h2>Building Size</h2><h3 class="value">${element.buildingsize}</h3></div>
+                                    <div><h2>Year Built</h2><h3 class="value">${element.yearbuilt}</h3></div>
+                                    <div><h2>Structure Type</h2><h3 class="value">${element.structuretype}</h3></div>
+                                    <div><h2>Number Of Bedrooms</h2><h3 class="value">${element.bedrooms}</h3></div>
+                                    
+                                    
+                                </div>
 
-                            <div class="column contrast">
+                                <div class="column contrast">
+                                    
+                                    <div><h2>Number Of Bathrooms</h2><h3 class="value">${element.bathrooms}</h3></div>
+                                    <div><h2>Garage Size</h2><h3 class="value">${element.garage}</h3></div>
+                                    <div><h2>Taxes Per Year</h2><h3 class="value">${element.taxesperyear}</h3></div>
+                                    <div><h2>Cad Land Value</h2><h3 class="value">${element.cadlandvalue}</h3></div>
+                                    <div><h2>Cad Building Value</h2><h3 class="value">${element.cadbuildingvalue}</h3></div>
+                                </div>
+                                <div class="column contrast">
+                                    
+                                    <div><h2>Cad Total Value</h2><h3 class="value">${element.cadtotalvalue}</h3></div>
+                                    <div><h2>Need To Confirm</h2><h3 class="value">${element.needtoconfirm}</h3></div>
+                                    <div class="image-row"><h2>Cad Info From GIS</h2><img src="${element.cadimage}" alt=""></div>
                                 
-                                <div><h2>Number Of Bathrooms</h2><h3 class="value">${element.bathrooms}</h3></div>
-                                <div><h2>Garage Size</h2><h3 class="value">${element.garage}</h3></div>
-                                <div><h2>Taxes Per Year</h2><h3 class="value">${element.taxesperyear}</h3></div>
-                                <div><h2>Cad Land Value</h2><h3 class="value">${element.cadlandvalue}</h3></div>
-                                <div><h2>Cad Building Value</h2><h3 class="value">${element.cadbuildingvalue}</h3></div>
+                                </div>
                             </div>
-                            <div class="column contrast">
+                        </div>
+                        <div>
+                            <div class="accordionbutton" onclick="flexAccordion(this.parentElement)"><i class="fas fa-shopping-cart"></i></div>
+                            <div class="acq" style="display: none;">
                                 
-                                <div><h2>Cad Total Value</h2><h3 class="value">${element.cadtotalvalue}</h3></div>
-                                <div><h2>Need To Confirm</h2><h3 class="value">${element.needtoconfirm}</h3></div>
-                                <div class="image-row"><h2>Cad Info From GIS</h2><img src="${element.cadimage}" alt=""></div>
-                            
+                                <div class="contrast">
+                                    <h1>Acquisition</h1>
+                                    <div><label for="">Offer Value:</label><input type="text" value="${element.offervalue}"></div>
+                                    <div><label for="">Offer Date:</label><input type="text" value="${element.offerdate}"></div>
+                                    <div><label for="">Counter Offer Value:</label><input type="text" value="${element.counteroffervalue}"></div>
+                                    <div><label for="">Counter Offer Date:</label><input type="text" value="${element.counterofferdate}"></div>
+                                    <div><label for="">Deed Date:</label><input type="text" value="${element.deeddate}"></div>
+                                    <div><label for="">Send PDF:</label><label for="pdf" class="pdf-up"><i class="fas fa-upload"></i></label><input style="display:none;" type="file" onchange="convertToBase64(this);" name="pdf" id="pdf"></div>
+                                    <button onclick="getPDF(this)">Download PDF</button>
+                                    <button onclick="sendAcqData(this)">Send Data</button>
+                                </div>
+                                <div class="contrast">
+                                    <div>&nbsp;</div>
+                                </div>
+                                <div class="contrast">
+                                    <div>&nbsp;</div>
+
+                                </div>
+                                <div class="contrast">
+                                    <div>&nbsp;</div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
+                    
                 </div>
+
+                
             </div><!--item-->
     `
     div.innerHTML = item
@@ -414,4 +447,80 @@ function showLetterLog(element, container){
         `
         div.innerHTML = item
         container.append(div)
+}
+
+function convertToBase64(element) {
+    console.log(element)
+    //Read File
+    var selectedFile = element.files;
+    //Check File is not Empty
+    if (selectedFile.length > 0) {
+        // Select the very first file from list
+        var fileToLoad = selectedFile[0];
+        // FileReader function for read the file.
+        var fileReader = new FileReader();
+        var base64;
+        // Onload of file read the file content
+        fileReader.onload = function(fileLoadedEvent) {
+            base64 = fileLoadedEvent.target.result;
+            // Print data in console
+            element.src = `${base64}`
+        };
+        // Convert data to base64
+        fileReader.readAsDataURL(fileToLoad);
+    }
+}
+
+async function sendAcqData(element){
+    const parcelid = element.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[0].children[0].children[1].innerHTML
+    const county = element.parentElement.parentElement.parentElement.parentElement.parentElement.children[0].children[0].children[4].children[1].innerHTML
+    const state = element.parentElement.parentElement.parentElement.parentElement.parentElement.children[0].children[0].children[3].children[1].innerHTML
+    const offerValue = element.parentElement.children[1].children[1].value
+    const offerDate = element.parentElement.children[2].children[1].value
+    const counterOfferValue = element.parentElement.children[3].children[1].value
+    const counterOfferDate = element.parentElement.children[4].children[1].value
+    const deedDate = element.parentElement.children[5].children[1].value
+    const pdf = element.parentElement.children[6].children[1].src
+    
+    const str = `
+        {
+            "parcelid":"${parcelid}",
+            "state":"${state}",
+            "county":"${county}",
+            "offervalue":"${offerValue}",
+            "offerdate":"${offerDate}",
+            "counteroffervalue":"${counterOfferValue}",
+            "counterofferdate":"${counterOfferDate}",
+            "pdf":"${pdf}",
+            "deeddate":"${deedDate}"
+        }
+    `
+    const json= JSON.parse(str)
+    postDataManager(json, '/postacqdata').then(alert('success'))
+}
+
+async function getPDF(element){
+    const parcelid = element.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[0].children[0].children[1].innerHTML
+    const county = element.parentElement.parentElement.parentElement.parentElement.parentElement.children[0].children[0].children[4].children[1].innerHTML
+    const state = element.parentElement.parentElement.parentElement.parentElement.parentElement.children[0].children[0].children[3].children[1].innerHTML
+    const str = `
+        {
+            "parcelid":"${parcelid}",
+            "state":"${state}",
+            "county":"${county}"
+        }
+    `
+    const json= JSON.parse(str)
+    const result = await postDataManager(json, '/downloadpdf')
+    const b64Pdf = result.rows[0].deedpdf
+    downloadPDF(b64Pdf, parcelid)
+}
+
+function downloadPDF(pdf, parcelid) {
+    const linkSource = `${pdf}`;
+    const downloadLink = document.createElement("a");
+    const fileName =`${parcelid}-deed.pdf`;
+    downloadLink.href = linkSource;
+    downloadLink.download = fileName;
+    downloadLink.click();
 }

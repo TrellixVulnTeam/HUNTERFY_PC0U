@@ -3,6 +3,17 @@ document.querySelector('.search-button').addEventListener("click", (event)=>{
     runUser()
 })
 
+document.querySelector('.generate-letter').addEventListener("click", async(event)=>{
+    event.preventDefault()
+    console.log('oi')
+    const itens = document.querySelectorAll('.manager-item')
+    for (let i = 0; i < itens.length; i++) {
+        var itemIndex = itens[i]
+        runDocxAll(itemIndex)
+    }
+})
+
+
 async function runUser(){
     const json = await getJson()	
     buildPage(getJson());
