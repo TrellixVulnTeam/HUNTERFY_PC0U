@@ -1,14 +1,10 @@
-document.querySelector('.search-button').addEventListener("click", (event)=>{
+document.querySelector('.search-button').addEventListener("click", async(event)=>{
     event.preventDefault()
-    runUser()
-})
-
-async function runUser(){
     const json = await getJson()	
     buildPage(getJson());
     await getTotal(json)
     await getChecked(json)
-}
+})
 
 function getJson(){
     var state = document.querySelector('#stateinput').value
@@ -23,9 +19,9 @@ function getJson(){
         "page":"${page}"
     }`
 
-    const parceljson = JSON.parse(jsonModelParcel)
-    
-    return parceljson
+    const json = JSON.parse(jsonModelParcel)
+    console.log(json)
+    return json
 }
 
 async function getTotal(json){

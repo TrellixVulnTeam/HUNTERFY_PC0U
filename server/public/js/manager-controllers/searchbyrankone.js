@@ -1,6 +1,9 @@
-document.querySelector('.search-button').addEventListener("click", (event)=>{
+document.querySelector('.search-button').addEventListener("click", async(event)=>{
     event.preventDefault()
-    runUser()
+    const json = await getJson()	
+    buildPage(getJson());
+    await getTotal(json)
+    await postRank(json)
 })
 
 document.querySelector('.generate-letter').addEventListener("click", async(event)=>{
@@ -12,14 +15,6 @@ document.querySelector('.generate-letter').addEventListener("click", async(event
         runDocxAll(itemIndex)
     }
 })
-
-
-async function runUser(){
-    const json = await getJson()	
-    buildPage(getJson());
-    await getTotal(json)
-    await postRank(json)
-}
 
 async function getTotal(json){
     try{

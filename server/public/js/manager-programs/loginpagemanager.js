@@ -1,18 +1,9 @@
 function getUserJson(){
     var user = document.querySelector('#user').value
     var pass = document.querySelector('#pass').value
-
-    if(user.length !== 8){
-        alert("usuario deve conter 8 digitos")
-    }else{
-        if(pass.length !== 8){
-            alert('senha deve conter 8 digitos')
-        }else{
-            var jsonModel = `{"user":"${user}", "pass":"${pass}"}`
-            const UserPassJson = JSON.parse(jsonModel)
-            return UserPassJson
-        }
-    }
+    var jsonModel = `{"user":"${user}", "pass":"${pass}"}`
+    const UserPassJson = JSON.parse(jsonModel)
+    return UserPassJson
 }
 
 async function checkUserPass(json) {

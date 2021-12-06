@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/managerstyle.css">
     <script src="https://kit.fontawesome.com/30836ed2bd.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/docx@7.1.0/build/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
     <title>HUNTERFY MANAGER</title>
 </head>
 <body>
@@ -24,17 +26,29 @@
     </header>
     <section class="controller janela">
              <form id="search-form">
-                 <h2>Metrics by:</h2>
-                <div><label for="user">User</label><input type="text" id="user" name=""></div>
-                <div><label>And by date:</label><input type="date" id="date" name=""></div>
-                <button class="search-button">Metrics</button>
+                <h2>Parcel List</h2>
+                <div><label for="user">By User:</label><input type="text" id="user" name=""></div>
+                <button class="search-button">GET INFO</button>
             </form>
     </section>
     <section class="program janela">
-        
-    </section>
+        <h2 class="username"></h2>
+        <div class="itens-container">
+            <div>
+                <h2>Insert New Parcels</h2>
+                <textarea name="" id="parcelsList" cols="30" rows="10"></textarea>
+                <div><label>County</label><input type="text"></div>
+                <div><label>State</label><input type="text"></div>
+                <button id="insert-parcels">Insert</button>
+            </div>
+
+            <h2>Parcel List For </h2>
+            <div></div>
+
+        </div>
     
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="/js/manager-controllers/metricsControllers.js" async type="module"></script>
+    <script src="js/manager-programs/manager.js"></script>
+    <script src="js/manager-controllers/parcellist.js" async></script>
+    <script src="js/manager-programs/docx.js" async></script>
 </body>
 </html>

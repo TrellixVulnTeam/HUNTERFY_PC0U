@@ -59,7 +59,7 @@ module.exports = app => {
         res.render('metrics.ejs', {user : req.session.user})
     })
 
-    app.get('/getchecked', isAuthManager, async(req, res)=>{
+    app.get('/getchecked', async(req, res)=>{
         res.render('getchecked.ejs', {user : req.session.user})
     })
 
@@ -79,8 +79,12 @@ module.exports = app => {
         res.render('searchbytype.ejs', {user : req.session.user})
     })
 
-    app.get('/searchbystatus', async(req, res)=>{
+    app.get('/searchbystatus', isAuthManager, async(req, res)=>{
         res.render('searchbystatus.ejs', {user : req.session.user})
+    })
+
+    app.get('/searchbyflow', async(req, res)=>{
+        res.render('searchbyflow.ejs', {user : req.session.user})
     })
 
     app.get('/templates', async(req, res)=>{
@@ -93,6 +97,10 @@ module.exports = app => {
 
     app.get('/countycalendarbystate', async(req, res)=> {
         res.render('countycalendarbystate.ejs', {user : req.session.user})
+    })
+
+    app.get('/parcellist', async(req, res)=>{
+        res.render('parcellist.ejs', {user : req.session.user})
     })
 
         //GET FUNCTIONS
@@ -145,6 +153,7 @@ module.exports = app => {
     //POSTS----------------------->
     app.post('/getallchecked', async(req, res)=>{
         try{
+            console.log(req.body)
             const result = await searchByChecked(req, res)
             res.send(result.rows)
         }
@@ -373,8 +382,7 @@ module.exports = app => {
     })
 
     app.post('/dailyCheckedCount', async(req, res)=>{
-        const info = await req.body
-        const count = await pgProgram.checkedCount(info.county)
+        const count = await pgProgram.checkedCount(req)
         const countStr = `${count}`
         console.log(countStr)
         res.send(countStr)
@@ -451,6 +459,31 @@ module.exports = app => {
     app.post('/downloadpdf', async(req, res)=>{
         const result = await pgProgram.getPdf(req.body.parcelid, req.body.state, req.body.county)
         res.send(result)
+    })
+
+    app.post('/searchbyflow', async(req, res)=>{
+        const result = await pgProgram.searchByFlow(req.body.flow, req.body.page)
+        res.send(result)
+    })
+
+    app.post('/searchbyflowcount', async(req, res)=>{
+        const count = await pgProgram.flowCount(req.body.flow)
+        const countStr = `${count}`
+        res.send(countStr)
+    })
+
+    app.post('/newlist', async(req, res)=>{
+        for (let i = 0; i < req.body.length; i++) {
+            var index = req.body[i]
+            await pgProgram.insertParcelList(index.parcel, index.user)
+            
+        }
+
+    })
+
+    app.post('/getlist', async(req, res)=>{
+        const result = await pgProgram.getList(user, date)
+
     })
 }
 //

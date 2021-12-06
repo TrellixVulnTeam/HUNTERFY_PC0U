@@ -182,7 +182,7 @@ class pgProgram{
     async searchTableByUser(user, date, page){
         const offset = page - 1
         const searchQuery = `
-		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage, listtype, minimalbid, n1name, n2name, n3name, n4name, status, offervalue, offerdate, counteroffervalue, counterofferdate, deeddate
+		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage, listtype, minimalbid, n1name, n2name, n3name, n4name, status, offervalue, offerdate, counteroffervalue, counterofferdate, deeddate, flow
 	    FROM public."2021-data"
 		WHERE "username" = '${user}' AND date = '${date}'
         OR "username2" = '${user}' AND date2 = '${date}'
@@ -217,7 +217,7 @@ class pgProgram{
     searchTableByRank(rank, date, ranktype, page, res){
         const offset = page - 1
         const searchQuery = `
-		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage, listtype, minimalbid, n1name, n2name, n3name, n4name, status, offervalue, offerdate, counteroffervalue, counterofferdate, deeddate
+		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage, listtype, minimalbid, n1name, n2name, n3name, n4name, status, offervalue, offerdate, counteroffervalue, counterofferdate, deeddate, flow
 	    FROM public."2021-data"
 		WHERE "${ranktype}" = '${rank}'
         ORDER BY item_id DESC
@@ -238,7 +238,7 @@ class pgProgram{
     searchTableByRankResumed(rank, date, ranktype, page, res){
         const offset = page - 1
         const searchQuery = `
-		SELECT parcelid, gislink, floodzonetext, mapslink, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, listtype, minimalbid, n1name, n2name, n3name, n4name, status, offervalue, offerdate, counteroffervalue, counterofferdate, deeddate
+		SELECT parcelid, gislink, floodzonetext, mapslink, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, listtype, minimalbid, n1name, n2name, n3name, n4name, status, offervalue, offerdate, counteroffervalue, counterofferdate, deeddate, flow
 	    FROM public."2021-data"
 		WHERE "${ranktype}" = '${rank}'
         ORDER BY item_id DESC
@@ -275,7 +275,7 @@ class pgProgram{
     async searchByCounty(county, state, page){
         const offset = page - 1
         const searchQuery = `
-		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage, listtype, minimalbid, n1name, n2name, n3name, n4name, status, offervalue, offerdate, counteroffervalue, counterofferdate, deeddate
+		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage, listtype, minimalbid, n1name, n2name, n3name, n4name, status, offervalue, offerdate, counteroffervalue, counterofferdate, deeddate, flow
 	    FROM public."2021-data"
 		WHERE "county" = '${county}' AND state = '${state}'
         ORDER BY item_id DESC
@@ -293,7 +293,7 @@ class pgProgram{
     async searchByCountyResumed(county, page){
         const offset = page - 1
         const searchQuery = `
-		SELECT parcelid, gislink, floodzonetext, mapslink, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, listtype, minimalbid, n1name, n2name, n3name, n4name, status, offervalue, offerdate, counteroffervalue, counterofferdate, deeddate
+		SELECT parcelid, gislink, floodzonetext, mapslink, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, listtype, minimalbid, n1name, n2name, n3name, n4name, status, offervalue, offerdate, counteroffervalue, counterofferdate, deeddate, flow
 	    FROM public."2021-data"
 		WHERE "county" = '${county}'
         ORDER BY item_id DESC
@@ -323,10 +323,43 @@ class pgProgram{
         catch(err){console.log(err)}
     }
 
+    async searchByFlow(flow, page){
+        const offset = page - 1
+        const searchQuery = `
+		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage, listtype, minimalbid, n1name, n2name, n3name, n4name, status, offervalue, offerdate, counteroffervalue, counterofferdate, deeddate, flow
+	    FROM public."2021-data"
+		WHERE "flow" = '${flow}'
+        ORDER BY item_id DESC
+        LIMIT 10 OFFSET (10 * ${offset});
+	    `
+        try{
+            const result = await dbClient.query(searchQuery)
+            dbClient.end;
+            return result.rows
+        }
+        catch(err){console.log(err)}
+        dbClient.end
+    }
+
+    async flowCount(flow){
+        const searchQuery = `
+		SELECT parcelid
+	    FROM public."2021-data"
+		WHERE "flow" = '${flow}'
+	    `
+        try{
+            const result = await dbClient.query(searchQuery)
+            dbClient.end;
+            //console.log(result)
+            return result.rows.length
+        }
+        catch(err){console.log(err)}
+    }
+
     async searchByStatus(status, state, county, page){
         const offset = page - 1
         const searchQuery = `
-		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage, listtype, minimalbid, n1name, n2name, n3name, n4name, status, offervalue, offerdate, counteroffervalue, counterofferdate, deeddate
+		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage, listtype, minimalbid, n1name, n2name, n3name, n4name, status, offervalue, offerdate, counteroffervalue, counterofferdate, deeddate, flow
 	    FROM public."2021-data"
 		WHERE status = '${status}' AND "county" = '${county}' AND state = '${state}'
         ORDER BY item_id DESC
@@ -344,9 +377,9 @@ class pgProgram{
     async searchByChecked(req){
         const offset = req.body.page - 1
         const searchQuery = `
-		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage, listtype, minimalbid, n1name, n2name, n3name, n4name, status, offervalue, offerdate, counteroffervalue, counterofferdate, deeddate
+		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage, listtype, minimalbid, n1name, n2name, n3name, n4name, status, offervalue, offerdate, counteroffervalue, counterofferdate, deeddate, flow
 	    FROM public."2021-data"
-		WHERE "buyopt" = 'yes' AND state = '${req.body.state}' AND county = '${req.body.county}'
+		WHERE "buyopt" = 'yes' AND "state" = '${req.body.state}' AND "county" = '${req.body.county}'
         ORDER BY item_id DESC
         LIMIT 10 OFFSET (10 * ${offset});
 	    `
@@ -375,7 +408,7 @@ class pgProgram{
     async searchByType(listtype, date, page){
         const offset = page - 1
         const searchQuery = `
-		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage, listtype, minimalbid, n1name, n2name, n3name, n4name, status, offervalue, offerdate, counteroffervalue, counterofferdate, deeddate
+		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage, listtype, minimalbid, n1name, n2name, n3name, n4name, status, offervalue, offerdate, counteroffervalue, counterofferdate, deeddate, flow
 	    FROM public."2021-data"
 		WHERE "listtype" = '${listtype}' AND date = '${date}'
         ORDER BY item_id DESC
@@ -445,7 +478,7 @@ class pgProgram{
         hoa,
         watersupply,
         electricitysupply,
-        sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage, listtype, minimalbid, n1name, n2name, n3name, n4name, status, offervalue, offerdate, counteroffervalue, counterofferdate, deeddate
+        sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage, listtype, minimalbid, n1name, n2name, n3name, n4name, status, offervalue, offerdate, counteroffervalue, counterofferdate, deeddate, flow
 	    FROM public."2021-data"
 		WHERE "parcelid" = '${parcel}';
 	    `
@@ -614,7 +647,7 @@ class pgProgram{
         var rank2 = req.body
         let insertQuery = `
             UPDATE public."2021-data"
-            SET rank2='${rank2.rank2}', userrank2='${rank2.userrank2}', obs2='${rank2.obs2}'
+            SET rank2='${rank2.rank2}', userrank2='${rank2.userrank2}', obs2='${rank2.obs2}', flow='${rank2.flow}'
             WHERE parcelid='${rank2.parcelid}';  
         `
         dbClient.query(insertQuery, (err, result)=>{
@@ -629,7 +662,7 @@ class pgProgram{
         var rank3 = req.body
         let insertQuery = `
             UPDATE public."2021-data"
-            SET rank3='${rank3.rank3}', userrank3='${rank3.userrank3}', obs3='${rank3.obs3}', buyopt='${rank3.buyopt}'
+            SET rank3='${rank3.rank3}', userrank3='${rank3.userrank3}', obs3='${rank3.obs3}', buyopt='${rank3.buyopt}', flow='${rank2.flow}'
             WHERE parcelid='${rank3.parcelid}';  
         `
         dbClient.query(insertQuery, (err, result)=>{
@@ -882,6 +915,21 @@ class pgProgram{
             const result = await dbClient.query(searchQuery)
             dbClient.end;
             return result
+        }
+        catch(err){
+            console.log(error)
+        }
+    }
+
+    async insertParcelList(parcel, user){
+        const insertQuery = `
+        INSERT INTO public.list(
+            parcel, "user")
+            VALUES ('${parcel}', '${user}');
+        `
+        try{
+            dbClient.query(insertQuery)
+            dbClient.end;
         }
         catch(err){
             console.log(error)

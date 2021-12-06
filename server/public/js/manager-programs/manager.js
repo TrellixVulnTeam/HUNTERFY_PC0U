@@ -24,21 +24,23 @@ async function editRank2(item){
     const rank2Area = thisCard.children[0].children[1].children[1].children[1]
     const rank2Value = rank2Area.children[2].children[1].value
     const rank2Obs = rank2Area.children[3].children[1].value
+    const flow = rank2Area.children[4].children[1].value
         
     infoString = `
     {
         "parcelid":"${parcel}",
         "userrank2":"${superusername}",
         "rank2":"${rank2Value}",
-        "obs2":"${rank2Obs}"
+        "obs2":"${rank2Obs}",
+        "flow":"${flow}"
     }
     `
-    var rank2Json = JSON.parse(infoString)
-    console.log(rank2Json)
-    await postDataManager(rank2Json, '/editrank2')
-    thisCard.innerHTML = ''
+    const json = JSON.parse(infoString)
+    console.log(json)
+    await postDataManager(json, '/editrank2').then(alert("success"))
+    thisCard.style.backgroundColor = 'green'
         
-    alert("Rank inserido com sucesso!")
+    
 }
     
 async function editRank3(item){
@@ -49,6 +51,7 @@ async function editRank3(item){
     const rank3Value = rank3Area.children[2].children[1].value
     const rank3Obs = rank3Area.children[3].children[1].value
     const buyOpt = rank3Area.children[4].children[1].value
+    const flow = rank3Area.children[5].children[1].value
      
     infoString = `
     {
@@ -56,15 +59,16 @@ async function editRank3(item){
         "userrank3":"${superusername}",
         "rank3":"${rank3Value}",
         "obs3":"${rank3Obs}",
-        "buyopt":"${buyOpt}"
+        "buyopt":"${buyOpt}",
+        "flow":"${flow}"
     }
     `
     var rank3Json = JSON.parse(infoString)
-    await postDataManager(rank3Json, '/editrank3')
+    await postDataManager(rank3Json, '/editrank3').then(alert("Success!"))
     thisCard.innerHTML = ''
     console.log(rank3Json)
         
-    alert("Success!")
+    
 }
 
 async function editStatus(item){
@@ -108,7 +112,7 @@ async function createItem(element){
     var item = `
     <div class="manager-item"><!--item-->  
                 <div class="accordion" onclick="accordion(this.parentElement)">
-                    <div class="title"><h1>Parcel ID:&nbsp;</h1><h2 class="parcelid" name='parcelidvalue'>${element.parcelid}</h2></div>
+                    <div class="title"><h1>Parcel ID:&nbsp;</h1><h2 class="parcelid" name='parcelidvalue'>${element.parcelid}</h2><h2>&nbsp; on &nbsp;${element.flow}</h2></div>
                     <div class="images-row contrast">
                         <div class="image-row"><h2>GIS Image:</h2><img src="${element.gisimg}" alt=""></div>
                         <div class="image-row"><h2>Google Image:</h2><img src="${element.mapsimg}" alt=""></div>
@@ -167,7 +171,17 @@ async function createItem(element){
                             <div><h2>User:</h2><h3>${element.userrank2}</h3></div>
                             <div><label for="">Rank:</label><input type="text" value="${element.rank2}"></div>
                             <div><label for="">Obs:</label><input type="text" value="${element.obs2}"></div>
-                            <div class="buyopt"><h2>&nbsp;</h2><h2>&nbsp;</h2></div>
+                            <div>
+                                <label for="">Flow status:</label>
+                                <select>
+                                    <option value="Stage 1">Stage 1</option>
+                                    <option value="Stage 2">Stage 2</option>
+                                    <option value="Stage 3">Stage 3</option>
+                                    <option value="Purchased">Purchased property</option>
+                                    <option value="Sold">Property sold</option>
+                                </select>
+                            </div>
+
                             <div class="rank-button"><button onclick="editRank2(this)">Send rank</button></div>
                         </div>
                          <div class="rank contrast">
@@ -176,6 +190,16 @@ async function createItem(element){
                             <div><label for="">Rank:</label><input type="text" value="${element.rank3}"></div>
                             <div><label for="">Obs:</label><input type="text" value="${element.obs3}"></div>
                             <div class="buyopt"><h2>BUY?</h2> <select class="buyopt"><option value="undefined">UNDEFINED</option><option value="yes">Yes</option><option value="no">No</option></select></div>
+                            <div>
+                                <label for="">Flow status:</label>
+                                <select>
+                                    <option value="Stage 1">Stage 1</option>
+                                    <option value="Stage 2">Stage 2</option>
+                                    <option value="Stage 3">Stage 3</option>
+                                    <option value="Purchased">Purchased property</option>
+                                    <option value="Sold">Property sold</option>
+                                </select>
+                            </div>
                             <div class="rank-button"><button onclick="editRank3(this)">Send rank</button></div>
                         </div>
                         <div class="letters">
@@ -211,7 +235,7 @@ async function createItem(element){
                     <div class="accordions-menu">
                         <div>
                             <div class="accordionbutton" onclick="flexAccordion(this.parentElement)"><i class="fas fa-home"></i></div>
-                            <div class="item-columns" style="display: none;">
+                            <div class="item-columns plusDiv" style="display: none;">
                                 <div class="column contrast">
                                     <div><h2>Owner Name</h2><h3 class="value">${element.ownername}</h3></div>
                                     <div><h2>Propstream Market Value</h2><h3 class="value">${element.propstream}</h3></div>
@@ -250,7 +274,7 @@ async function createItem(element){
                         </div>
                         <div>
                             <div class="accordionbutton" onclick="flexAccordion(this.parentElement)"><i class="fas fa-shopping-cart"></i></div>
-                            <div class="acq" style="display: none;">
+                            <div class="acq plusDiv" style="display: none;">
                                 
                                 <div class="contrast">
                                     <h1>Acquisition</h1>

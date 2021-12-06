@@ -12,3 +12,19 @@ botaoLogoff.addEventListener('click', async()=>{
         console.log(error)
     }
 })
+
+document.querySelector('#managerSearchButton').addEventListener('click', ()=>{
+    const listContainer = document.querySelector('.searchOptions')
+
+    if(listContainer.style.display = 'none'){
+        listContainer.style.display = 'block'
+    }
+})
+
+document.querySelector('#closeOptions').addEventListener('click', ()=>{
+    const listContainer = document.querySelector('.searchOptions')
+
+    if(listContainer.style.display = 'block'){
+        listContainer.style.display = 'none'
+    }
+})

@@ -26,22 +26,25 @@
     
     <section class="manager janela">
         <div class="manager-line">
-            <div class="manager-nav"><a href="./manageusers"><button><i class="fas fa-user"></i></button></a><h2>Manage users</h2></div>
-            <div class="manager-nav"><a href="./allusers"><button><i class="fas fa-id-card"></i></button></a><h2>List all users</h2></div>
-            <div class="manager-nav"><a href="./userlogs"><button><i class="fas fa-users"></i></button></a><h2>User logs</h2></div>
-            <div class="manager-nav"><a href="./searchbyparcel"><button><i class="fas fa-search"></i></button></a><h2>Search By Parcel</h2></div>
-            <div class="manager-nav"><a href="./searchbyuser"><button><i class="fas fa-search"></i></button></a><h2>Search By User</h2></div>
-            <div class="manager-nav"><a href="./searchbyrank"><button><i class="fas fa-search"></i></button></a><h2>Search By Rank</h2></div>
+            <div class="manager-nav"><a href="./manageusers"><button><i class="fas fa-user"></i></button></a><h2>Manage Users</h2></div>
+            <div class="manager-nav"><a href="./allusers"><button><i class="fas fa-id-card"></i></button></a><h2>List All Users</h2></div>
+            <div class="manager-nav"><a href="./userlogs"><button><i class="fas fa-users"></i></button></a><h2>User Logs</h2></div>
+            <!--<div class="manager-nav"><a href="./searchbyparcel"><button><i class="fas fa-search"></i></button></a><h2>Search By Parcel</h2></div>
+            <div class="manager-nav"><a href="./searchbyuser"><button><i class="fas fa-search"></i></button></a><h2>Search By User</h2></div>-->
+            <div class="manager-nav"><a href="./parcellist"><button><i class="fas fa-list-ul"></i></button></a><h2>Parcel List</h2></div>
+            <div class="manager-nav"><a href="./metrics"><button><i class="fas fa-chart-pie"></i></button></a><h2>Metrics By User</h2></div>
+
+            <div class="manager-nav"><button id="managerSearchButton"><i class="fas fa-search"></i></button><h2>Search</h2></div>
             
             
         </div>
         <div class="manager-line">
-            <div class="manager-nav"><a href="./searchbycounty"><button><i class="fas fa-search"></i></button></a><h2>Search By County</h2></div>
+            <!--<div class="manager-nav"><a href="./searchbycounty"><button><i class="fas fa-search"></i></button></a><h2>Search By County</h2></div>
             <div class="manager-nav"><a href="./searchbystatus"><button><i class="fas fa-search"></i></button></a><h2>Search By Status</h2></div>
             <div class="manager-nav"><a href="./searchbylisttype"><button><i class="fas fa-search"></i></button></a><h2>Search By Type</h2></div>
             <div class="manager-nav"><a href="./searchbyrankresumed"><button><i class="fas fa-search"></i></button></a><h2>Search By Rank</h2><h2>(Without Images)</h2></div>
-            <div class="manager-nav"><a href="./resumedsearchbycounty"><button><i class="fas fa-search"></i></button></a><h2>Search By County</h2><h2>(Without Images)</h2></div>
-            <div class="manager-nav"><a href="./metrics"><button><i class="fas fa-chart-pie"></i></button></a><h2>Metrics By User</h2></div>
+            <div class="manager-nav"><a href="./resumedsearchbycounty"><button><i class="fas fa-search"></i></button></a><h2>Search By County</h2><h2>(Without Images)</h2></div>-->
+            
             
                                    
         </div>
@@ -51,10 +54,27 @@
             <div class="manager-nav"><a href="./countycalendar"><button id="county-calendar"><i class="far fa-calendar-alt"></i></button></a><h2>County Calendar</h2><h2>(By Date)</h2></div>
             <div class="manager-nav"><a href="./countycalendarbystate"><button id="county-calendar-by-state"><i class="far fa-calendar-alt"></i></button></a><h2>County Calendar</h2><h2>(By State)</h2></div>
             <div class="manager-nav"><a href="./templates"><button><i class="fas fa-envelope-open-text"></i></button></a><h2>Templates</h2></div>
-            <div class="manager-nav">	&nbsp;</div>
-            
+            <div class="manager-nav"><a><button class="add-user" id="logoff"></button></a><h2>&nbsp;</h2></div>
             <div class="manager-nav"><a><button class="add-user" id="logoff"><i class="fas fa-power-off"></i></button></a><h2>Logoff</h2></div>
             
+        </div>
+
+        <div class="searchOptions">
+            <div id="closeButtonDiv">
+                <button id="closeOptions"><i class="far fa-times-circle"></i></button>
+            </div>
+            <ul>
+                <a href="./searchbyparcel"><li>Search By Parcel</li></a>
+                <a href="./searchbyuser"><li>Search By User</li></a>
+                <a href="./searchbyrank"><li>Search By Rank</li></a>
+                <a href="./searchbyflow"><li>Search By Flow</li></a>
+                <a href="./searchbycounty"><li>Search By County</li></a>
+                <a href="./searchbystatus"><li>Search By Letter Status</li></a>
+                <a href="./searchbylisttype"><li>Search By List Type</li></a>
+                <a href="./searchbyrankresumed"><li>Search By Rank (100 itens)</li></a>
+                <a href="./resumedsearchbycounty"><li>Search By County (100 itens)</li></a>
+            </ul>
+
         </div>
 
     </section>

@@ -2,6 +2,7 @@ import * as metricsProgram from '/js/manager-programs/metrics.js'
 import * as chartsProgram from '/js/manager-programs/charts.js'
 document.querySelector('.search-button').addEventListener('click', async(event)=>{
     event.preventDefault()
+    resetPage()
     buildChartsPage()
 })
 
@@ -31,4 +32,41 @@ async function buildChartsPage(){
     chartsProgram.buildPizzaPerDay(perMonthRank1, 'count-rank1-per-month')//grafico pizza do rank mensal
     chartsProgram.buildPizzaPerDay(perMonthRank2, 'count-rank2-per-month')
     chartsProgram.buildPizzaPerDay(perMonthRank3, 'count-rank3-per-month')
+}
+
+function resetPage(){
+    const container = document.querySelector('.program')
+    const page = document.createElement('div')
+    page.innerHTML = `
+    <div class="dailyranks-container">      
+        <h1>Metrics by daily production:</h1>
+        <div>
+            <h2>Production count per hour:</h2>
+            <canvas id="count-per-day"></canvas>
+        </div>
+        <h2>Rank count per day: rank1/rank2/rank3</h2>
+        <div class="pizzas">
+            <canvas id="count-rank1-per-day"></canvas>
+            <canvas id="count-rank2-per-day"></canvas>
+            <canvas id="count-rank3-per-day"></canvas>
+        </div>
+    </div>
+    <div class="monthlyranks-container">
+        <h1>Metrics by month production:</h1>
+        <div>
+            <h2>Production count per day:</h2>
+            <canvas id="count-per-month"></canvas>
+        </div>
+        <h2>Rank count per month: rank1/rank2/rank3</h2>
+        <div class="pizzas">
+            <canvas id="count-rank1-per-month"></canvas>
+            <canvas id="count-rank2-per-month"></canvas>
+            <canvas id="count-rank3-per-month"></canvas>
+        </div>
+    </div>  
+    `
+
+    container.innerHTML = ''
+    container.append(page)
+
 }
