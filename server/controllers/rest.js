@@ -115,7 +115,8 @@ module.exports = app => {
     })
 
     app.get('/getproduction', async(req, res) => {
-        try{const date = new Date()
+        try{
+            const date = new Date()
             const day = ("0" + date.getDate()).slice(-2)
             const month = ("0" + (date.getMonth() + 1)).slice(-2)
             const yyyymmdd = `${date.getFullYear()}-${month}-${day}`
@@ -475,14 +476,30 @@ module.exports = app => {
     app.post('/newlist', async(req, res)=>{
         for (let i = 0; i < req.body.length; i++) {
             var index = req.body[i]
-            await pgProgram.insertParcelList(index.parcel, index.user)
+            await pgProgram.insertParcelList(index.parcel, index.user, index.state, index.county)
             
         }
 
     })
 
-    app.post('/getlist', async(req, res)=>{
-        const result = await pgProgram.getList(user, date)
+    app.post('/getlistinfo', async(req, res)=>{
+        const date = new Date()
+        const day = ("0" + date.getDate()).slice(-2)
+        const month = ("0" + (date.getMonth() + 1)).slice(-2)
+        const yyyymmdd = `${date.getFullYear()}-${month}-${day}`
+        
+        const result = await pgProgram.getList(req.body.user, yyyymmdd)
+        res.send(result)
+
+    })
+
+    app.post('/clearlist', async(req, res)=>{
+        const date = new Date()
+        const day = ("0" + date.getDate()).slice(-2)
+        const month = ("0" + (date.getMonth() + 1)).slice(-2)
+        const yyyymmdd = `${date.getFullYear()}-${month}-${day}`
+
+        await pgProgram.clearList(req.body.user, yyyymmdd)
 
     })
 }

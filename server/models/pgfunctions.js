@@ -662,7 +662,7 @@ class pgProgram{
         var rank3 = req.body
         let insertQuery = `
             UPDATE public."2021-data"
-            SET rank3='${rank3.rank3}', userrank3='${rank3.userrank3}', obs3='${rank3.obs3}', buyopt='${rank3.buyopt}', flow='${rank2.flow}'
+            SET rank3='${rank3.rank3}', userrank3='${rank3.userrank3}', obs3='${rank3.obs3}', buyopt='${rank3.buyopt}', flow='${rank3.flow}'
             WHERE parcelid='${rank3.parcelid}';  
         `
         dbClient.query(insertQuery, (err, result)=>{
@@ -921,15 +921,46 @@ class pgProgram{
         }
     }
 
-    async insertParcelList(parcel, user){
+    async insertParcelList(parcel, user, state, county){
         const insertQuery = `
-        INSERT INTO public.list(
-            parcel, "user")
-            VALUES ('${parcel}', '${user}');
+            INSERT INTO public.list(
+                parcel, "user", state, county)
+                VALUES ('${parcel}', '${user}', '${state}', '${county}');
         `
         try{
             dbClient.query(insertQuery)
             dbClient.end;
+        }
+        catch(err){
+            console.log(error)
+        }
+    }
+
+    async getList(user, date){
+        const searchQuery = `
+		    SELECT *           
+	        FROM public.list
+            WHERE "user" = '${user}' AND "date" = '${date}';
+        `
+        try{
+            const result = await dbClient.query(searchQuery)
+            dbClient.end;
+            return result
+        }
+        catch(err){
+            console.log(error)
+        }
+    }
+
+    async clearList(user, date){
+        const deleteQuery = `
+		    DELETE FROM public.list
+            WHERE "user" = '${user}' AND "date" = '${date}';
+        `
+        try{
+            const result = await dbClient.query(deleteQuery)
+            dbClient.end;
+            return result
         }
         catch(err){
             console.log(error)

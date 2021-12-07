@@ -1,28 +1,137 @@
-document.querySelector('#insert-parcels').addEventListener('click', async(event)=>{
+document.querySelector('.search-button').addEventListener('click', async(event)=>{
     event.preventDefault()
+    const user = document.querySelector('#selectuser-parcellist').value
+    console.log(user)
+    const json = getUserJson(user)
+    buildPage(json)
+    const ul = document.querySelector('#ul-parcel-list')
+    const result = await postDataManager(json, '/getlistinfo') 
+    for (let i = 0; i < result.rows.length; i++) {
+        var resultIndex = result.rows[i]
+        createLi(resultIndex, ul)
+    }
+})
+
+const selectUser = document.querySelector('#selectuser-parcellist')
+selectUser.addEventListener('focus', async()=>{
+    const result = await fetch('/getallusers')
+    const json = await result.json()
+    selectUser.innerHTML = ""
+    for (let i = 0; i < json.length; i++) {
+        var usersIndex = json[i]
+        createOption(usersIndex, selectUser)
+    }
+})
+
+async function postParcels(){ 
     const textAreaCont = document.querySelector('#parcelsList')
     const str = textAreaCont.value
+    const user = document.querySelector('#list-title').innerHTML
+    const state = document.querySelector('#state').value
+    const county = document.querySelector('#county').value
     const arr = str.split('\n')
     var lista = []
     for (let i = 0; i < arr.length; i++) {
         var index = arr[i]
-        var item = getList(index, 'gvmolin')
+        var item = getList(index, user, state, county)
         lista.push(item)
     }
     
     
     console.log(lista)
     postDataManager(lista, '/newlist').then(alert('Success'))
-})
+}
 
-function getList(parcel, user){
+async function clearList(){
+    const user = document.querySelector('#list-title').innerHTML
+    const json = getUserJson(user)
+    const ul = document.querySelector('#ul-parcel-list')
+    ul.innerHTML = ''
+    await postDataManager(json, '/clearlist').then(alert('success'))
+    
+    
+
+}
+
+function createLi(element, path){
+    const li = document.createElement('li')
+    const thisDate = yyyymmdd()
+    const content = `
+        <div>${element.parcel}</div>
+        <div>${element.county}</div>
+        <div>${element.state}</div>
+        <div>${thisDate}</div>
+    `
+    li.innerHTML = content
+    path.append(li)
+}
+
+function getList(parcel, user, state, county){
     const str = `
         {
             "parcel":"${parcel}",
-            "user":"${user}"
+            "user":"${user}",
+            "state":"${state}",
+            "county":"${county}"
         }
     `
     const json = JSON.parse(str)
     //console.log(json)
     return json
+}
+
+function buildPage(json){
+    const root = document.querySelector('.parcellist')
+    root.innerHTML = ''
+    const container = document.createElement('div')
+    container.classList.add('itens-container')
+    const content = `
+            <h1 id="list-title">${json.user}</h1>
+            <div class="list-container">
+                <h2>Parcel List Of ${json.user}</h2>
+                <div id="get-parcel-list">
+                    <ul id="ul-parcel-list">
+                        <li>
+                            <div>Parcel</div>
+                            <div>County</div>
+                            <div>State</div>
+                            <div>Date</div>
+                        
+                        </li>
+
+                    </ul>
+                </div>
+                <button onclick="clearList()">CLEAR LIST</button>
+            </div>
+            <div class="list-container">
+                <h2>Insert New Parcels For ${json.user}</h2>
+                <textarea name="" id="parcelsList" cols="30" rows="10"></textarea>
+                <div><label>County</label><input type="text" id="county"></div>
+                <div><label>State</label><input type="text" id="state"></div>
+                <button id="insert-parcels" onclick="postParcels()">INSERT</button>
+            </div>
+    `
+    container.innerHTML = content
+    root.append(container)
+}
+
+function getUserJson(user){
+    
+    const str = `
+        {
+            "user":"${user}"
+        }
+    ` 
+    const json = JSON.parse(str)
+    return json
+}
+
+function createOption(element, path){
+    const opt = document.createElement('option')
+    opt.value = element.username
+    opt.innerHTML = element.username
+
+    path.append(opt)
+    
+
 }
