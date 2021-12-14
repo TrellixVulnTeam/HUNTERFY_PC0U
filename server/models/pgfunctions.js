@@ -35,7 +35,7 @@ class pgProgram{
             hoa,
             watersupply,
             electricitysupply,
-            sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage, listtype, minimalbid, n1name, n2name, n3name, n4name
+            sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage, listtype, minimalbid, n1name, n2name, n3name, n4name, flow
             )
 
             VALUES (
@@ -92,7 +92,8 @@ class pgProgram{
             '${terreno.n1name}',
             '${terreno.n2name}',
             '${terreno.n3name}',
-            '${terreno.n4name}'
+            '${terreno.n4name}',
+            'Stage 1'
             );
         `
 
@@ -617,7 +618,7 @@ class pgProgram{
         let insertQuery = `
 		SELECT username, password
 	    FROM public.userinfo
-	    WHERE username = '${user.user}';
+	    WHERE username = '${user.user}' AND "password" = '${user.pass}';
         `
         try {
             const result = await dbClient.query(insertQuery)
@@ -644,11 +645,12 @@ class pgProgram{
     }
 
     editRank2(req, res){
-        var rank2 = req.body
+        const rank2 = req.body
+        const date = Date.now()
         let insertQuery = `
             UPDATE public."2021-data"
-            SET rank2='${rank2.rank2}', userrank2='${rank2.userrank2}', obs2='${rank2.obs2}', flow='${rank2.flow}'
-            WHERE parcelid='${rank2.parcelid}';  
+            SET rank2='${rank2.rank2}', userrank2='${rank2.userrank2}', obs2='${rank2.obs2}', flow='${rank2.flow}', rank2date='${date}'
+            WHERE parcelid='${rank2.parcelid}' AND state = '${rank2.state}' AND county = '${rank2.county}';  
         `
         dbClient.query(insertQuery, (err, result)=>{
             if(!err){
@@ -659,11 +661,12 @@ class pgProgram{
     }
 
     editRank3(req, res){
-        var rank3 = req.body
+        const rank3 = req.body
+        const date = Date.now()
         let insertQuery = `
             UPDATE public."2021-data"
-            SET rank3='${rank3.rank3}', userrank3='${rank3.userrank3}', obs3='${rank3.obs3}', buyopt='${rank3.buyopt}', flow='${rank3.flow}'
-            WHERE parcelid='${rank3.parcelid}';  
+            SET rank3='${rank3.rank3}', userrank3='${rank3.userrank3}', obs3='${rank3.obs3}', buyopt='${rank3.buyopt}', flow='${rank3.flow}', rank3date='${date}'
+            WHERE parcelid='${rank3.parcelid}' AND state = '${rank3.state}' AND county = '${rank3.county}';  
         `
         dbClient.query(insertQuery, (err, result)=>{
             if(!err){
@@ -924,8 +927,8 @@ class pgProgram{
     async insertParcelList(parcel, user, state, county){
         const insertQuery = `
             INSERT INTO public.list(
-                parcel, "user", state, county)
-                VALUES ('${parcel}', '${user}', '${state}', '${county}');
+                parcel, "user", state, county, done)
+                VALUES ('${parcel}', '${user}', '${state}', '${county}', 'false');
         `
         try{
             dbClient.query(insertQuery)
@@ -940,7 +943,7 @@ class pgProgram{
         const searchQuery = `
 		    SELECT *           
 	        FROM public.list
-            WHERE "user" = '${user}' AND "date" = '${date}';
+            WHERE "user" = '${user}' AND "done" = 'false';
         `
         try{
             const result = await dbClient.query(searchQuery)
@@ -955,7 +958,7 @@ class pgProgram{
     async clearList(user, date){
         const deleteQuery = `
 		    DELETE FROM public.list
-            WHERE "user" = '${user}' AND "date" = '${date}';
+            WHERE "user" = '${user}' AND "done" = 'false';
         `
         try{
             const result = await dbClient.query(deleteQuery)
@@ -967,8 +970,21 @@ class pgProgram{
         }
     }
 
-
-    
+    async checkDone(user, parcel){
+        const updateQuery= `
+            UPDATE public.list
+            SET "done" = "true"
+            WHERE "parcel" = '${parcel}' AND "user" = '${user}';
+        `
+        try{
+            const result = await dbClient.query(updateQuery)
+            dbClient.end;
+            return result
+        }
+        catch(err){
+            console.log(error)
+        }
+    }
 }
 
 module.exports = new pgProgram

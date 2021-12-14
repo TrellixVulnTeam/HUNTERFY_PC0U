@@ -103,6 +103,13 @@ module.exports = app => {
         res.render('parcellist.ejs', {user : req.session.user})
     })
 
+    app.get('/parcellistbysuper', async(req, res)=>{
+        res.render('parcellistbysuper.ejs', {user : req.session.user})
+    })
+
+    app.get('/calendar', async(req,res)=>{
+        res.render('calendar.ejs', {user : req.session.user})
+    })
         //GET FUNCTIONS
     app.get('/getallusers', (req, res) => {
         pgProgram.getUsers(req, res)
@@ -204,6 +211,7 @@ module.exports = app => {
                     pgProgram.editDB(req.session.user, req, res)
                 }
             }
+            await pgProgram.checkDone(req.session.user, req.body.parcel)
             
         }
         catch(error){
@@ -240,7 +248,7 @@ module.exports = app => {
                 req.session.isAuth = true
                 req.session.user = `${resultado.username}`
                 await pgProgram.add2Log(req.session.user, 'V.A', 'LOGIN');
-                res.send('OK')
+                res.send(resultado)
         }else{
             if(req.body.pass !== resultado.password){
                 console.log('incorrect password')
@@ -477,7 +485,6 @@ module.exports = app => {
         for (let i = 0; i < req.body.length; i++) {
             var index = req.body[i]
             await pgProgram.insertParcelList(index.parcel, index.user, index.state, index.county)
-            
         }
 
     })

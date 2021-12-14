@@ -14,17 +14,33 @@ botaoLogoff.addEventListener('click', async()=>{
 })
 
 document.querySelector('#managerSearchButton').addEventListener('click', ()=>{
-    const listContainer = document.querySelector('.searchOptions')
+    const listContainer = document.querySelector('#searchOptions')
 
     if(listContainer.style.display = 'none'){
         listContainer.style.display = 'block'
     }
 })
 
-document.querySelector('#closeOptions').addEventListener('click', ()=>{
-    const listContainer = document.querySelector('.searchOptions')
+document.querySelector('#managerListButton').addEventListener('click', ()=>{
+    const listContainer = document.querySelector('#listOptions')
 
-    if(listContainer.style.display = 'block'){
-        listContainer.style.display = 'none'
+    if(listContainer.style.display = 'none'){
+        listContainer.style.display = 'block'
     }
 })
+
+document.querySelector('#checkProdButton').addEventListener('click', ()=>{
+    const listContainer = document.querySelector('#prodOptions')
+
+    if(listContainer.style.display = 'none'){
+        listContainer.style.display = 'block'
+    }
+})
+
+function closeThis(element){
+    const window =  element.parentElement.parentElement
+    console.log(window)
+    if(window.style.display = 'block'){
+        window.style.display = "none"
+    }
+}

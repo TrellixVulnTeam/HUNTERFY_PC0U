@@ -16,6 +16,69 @@ document.getElementById('states').addEventListener('change', async()=>{
     postState(selected)
 })
 
+document.querySelector('#get-list').addEventListener("click", async()=>{
+    const user = document.querySelector("#username").innerHTML
+    const str = `
+        {
+            "user":"${user}"
+        }
+    `
+    const json = JSON.parse(str)
+    const result = await postData(json, '/getlistinfo')
+    const container = document.querySelector('.prod-list')
+    container.innerHTML = ''
+    for (var i = 0; i < result.rows.length; i++) {
+        var index = result.rows[i]
+        if(index.done = 'false'){
+            console.log(index)
+            showList(index, container)
+        }
+    }
+
+    const root = document.querySelector('.root-list')
+    if(root.style.display = 'none'){
+        root.style.display = 'flex'
+    }
+})
+
+document.querySelector('#close-list').addEventListener('click', ()=>{
+    const root = document.querySelector('.root-list')
+    if(root.style.display = 'flex'){
+        root.style.display = 'none'
+    }
+})
+
+function showList(element, container){
+    const div = document.createElement('div')
+    const content = `
+        <h2>${element.parcel}</h2>
+        <h2>${element.state}</h2>
+        <h2>${element.county}</h2>
+        <h2>${yyyymmdd(element.date)}</h2>
+    `
+    div.innerHTML = content
+    container.append(div)
+}
+
+async function postData(json, path){
+    try{
+        const options = {
+            method: 'POST',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(json)
+        }
+        const rawResponse = await fetch(path, options)
+        const responseJson = await rawResponse.json();
+        return responseJson
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
+
 async function postState(json){
     try{
         const options = {
@@ -250,6 +313,15 @@ function accordion(item){
     }else{
         hide.style.display = "block";
     }
+}
+
+function yyyymmdd(){
+    const date = new Date()
+    const day = ("0" + date.getDate()).slice(-2)
+    const month = ("0" + (date.getMonth() + 1)).slice(-2)
+    const yyyymmdd = `${date.getFullYear()}-${month}-${day}`
+    
+    return yyyymmdd
 }
 
 

@@ -199,7 +199,7 @@ header div{
 }
 
 .menu-info{
-    height: 30vh;
+    height: 35vh;
     background-color: #ffb429;
     border-radius: 3px;
     color: #000000;
@@ -277,6 +277,21 @@ header div{
 }
 
 .get-logs:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+
+#get-list{
+    width: 70%;
+    border: none;
+    background-color: #000000;
+    border-radius: 3px;
+    color: #ffb429;
+    padding: 1vh 0;
+}
+
+#get-list:hover{
     cursor: pointer;
     transform: scale(1.05);
     transition: 0.5s;
@@ -573,4 +588,65 @@ form button:hover{
     transform: scale(1.01);
     transition: 0.5s;
 }
+
+/*get list*/
+.root-list{
+    background-color: #E0C097;
+    height: 93vh;
+    width: 50vw;
+    position: fixed;
+    top: 0.2vh;
+    left: 15.1vw;
+    border-radius: 3px;
+    z-index: 98;
+    padding: 2vh 2vw;
+    display: none;
+    flex-direction: row-reverse;
+    overflow-y: scroll;
+    
+}
+
+.prod-buttons{
+    width: 10vh;
+    display: flex;
+    align-items: flex-start;
+}
+
+.prod-buttons button{
+    width: 10vh;
+    font-size: 4vh;
+    background-color: transparent;
+    border: none;
+}
+
+.prod-buttons button:hover{
+    transform: scale(1.1);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+
+.prod-list{
+    
+    display: flex;
+    flex-direction: column;
+    font-size: 2vh;
+    width: 90%;
+}
+
+.prod-list div{
+    display: flex;
+    justify-content: space-between;
+    margin: 2vh 0;
+}
+
+.prod-list div h2:nth-child(1){
+    width: 16vw;
+}
+
+
+.prod-list div h2{
+    width: 8vw;
+}
+
 

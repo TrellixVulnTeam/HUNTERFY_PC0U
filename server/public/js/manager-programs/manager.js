@@ -18,13 +18,15 @@ async function postDataManager(json, path){
 }
 
 async function editRank2(item){
-    const superusername = await document.querySelector('#username').innerHTML
+    const superusername = document.querySelector('#username').innerHTML
     const thisCard = item.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement
     const parcel = thisCard.children[0].children[0].children[0].children[1].innerHTML
     const rank2Area = thisCard.children[0].children[1].children[1].children[1]
     const rank2Value = rank2Area.children[2].children[1].value
     const rank2Obs = rank2Area.children[3].children[1].value
     const flow = rank2Area.children[4].children[1].value
+    const state = thisCard.children[0].children[1].children[0].children[0].children[3].children[1].innerHTML
+    const county = thisCard.children[0].children[1].children[0].children[0].children[4].children[1].innerHTML
         
     infoString = `
     {
@@ -32,19 +34,23 @@ async function editRank2(item){
         "userrank2":"${superusername}",
         "rank2":"${rank2Value}",
         "obs2":"${rank2Obs}",
-        "flow":"${flow}"
+        "flow":"${flow}",
+        "state":"${state}",
+        "county":"${county}"
     }
     `
     const json = JSON.parse(infoString)
     console.log(json)
-    await postDataManager(json, '/editrank2').then(alert("success"))
-    thisCard.style.backgroundColor = 'green'
+    await postDataManager(json, '/editrank2').then(alert("success")).then(()=>{
+        thisCard.children[0].style.backgroundColor = 'green'
+    })
+    
         
     
 }
     
 async function editRank3(item){
-    const superusername = await document.querySelector('#username').innerHTML
+    const superusername = document.querySelector('#username').innerHTML
     const thisCard = item.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement
     const parcel = thisCard.children[0].children[0].children[0].children[1].innerHTML
     const rank3Area = thisCard.children[0].children[1].children[1].children[2]
@@ -52,6 +58,8 @@ async function editRank3(item){
     const rank3Obs = rank3Area.children[3].children[1].value
     const buyOpt = rank3Area.children[4].children[1].value
     const flow = rank3Area.children[5].children[1].value
+    const state = thisCard.children[0].children[1].children[0].children[0].children[3].children[1].innerHTML
+    const county = thisCard.children[0].children[1].children[0].children[0].children[4].children[1].innerHTML
      
     infoString = `
     {
@@ -60,15 +68,17 @@ async function editRank3(item){
         "rank3":"${rank3Value}",
         "obs3":"${rank3Obs}",
         "buyopt":"${buyOpt}",
-        "flow":"${flow}"
+        "flow":"${flow}",
+        "state":"${state}",
+        "county":"${county}"
     }
     `
-    var rank3Json = JSON.parse(infoString)
-    await postDataManager(rank3Json, '/editrank3').then(alert("Success!"))
-    thisCard.innerHTML = ''
-    console.log(rank3Json)
-        
-    
+    console.log(infoString)
+    const json = JSON.parse(infoString)
+    console.log(json)
+    await postDataManager(json, '/editrank3').then(alert("Success!")).then(()=>{
+        thisCard.children[0].style.backgroundColor = 'green'
+    })
 }
 
 async function editStatus(item){

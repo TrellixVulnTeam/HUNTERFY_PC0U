@@ -66,7 +66,7 @@ function criarPaginaEdit(){
                     <div><label>OBS:</label><input name="obs" type="text"></div>
                     <div><label>MINIMAL BID:</label><input name="minimalbid" type="text"></div>
                     
-                    <div><button class="save-button">SALVAR</button></div>
+                    <div><button class="save-button">SAVE</button></div>
                 </div>
             </form>
         </div>

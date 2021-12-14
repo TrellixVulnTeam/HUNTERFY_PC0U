@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/calendar.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/managerstyle.css">
+    
+    <script src="https://kit.fontawesome.com/30836ed2bd.js" crossorigin="anonymous"></script>
+    <title>HUNTERFY MANAGER</title>
+</head>
+<body>
+    <header>
+        <div class="janela-header">
+            <div class="logo"><a href="./manager"><img src="./img/Hunterfy.png" alt="Hunterfy logo"></a><h1>MANAGER v1.0</h1></div>
+            <div class="user-container">
+                <h2>My user:</h2>
+                <h3 id="username"><%= user %></h3>
+            </div>
+        </div>
+    </header>
+    <!--<section class="controller janela">
+            <form id="search-form">
+                <div><label>County and state insertion by date:</label><input type="date" id="date" name=""></div>
+                
+                <button class="search-button">SEARCH</button>
+            </form>
+    </section>-->
+    <section class="program janela program-calendar">
+        
+            <div id="container">
+                <div id="header">
+                  <div id="monthDisplay"></div>
+                  <div>
+                    <button id="backButton">Back</button>
+                    <button id="nextButton">Next</button>
+                  </div>
+                </div>
+          
+                <div id="weekdays">
+                  <div>Sun</div>
+                  <div>Mon</div>
+                  <div>Tue</div>
+                  <div>Wed</div>
+                  <div>Thu</div>
+                  <div>Fri</div>
+                  <div>Sat</div>
+                </div>
+          
+                <div id="calendar"></div>
+              </div>
+          
+              <div id="newEventModal">
+                <h2>New Event</h2>
+          
+                <input id="eventTitleInput" placeholder="Event Title" />
+          
+                <button id="saveButton">Save</button>
+                <button id="cancelButton">Cancel</button>
+              </div>
+          
+              <div id="deleteEventModal">
+                <h2>Event</h2>
+          
+                <p id="eventText"></p>
+          
+                <button id="deleteButton">Delete</button>
+                <button id="closeButton">Close</button>
+              </div>
+          
+              <div id="modalBackDrop"></div>
+        
+    
+    <script src="js/manager-programs/manager.js"></script>
+    <script src="js/manager-programs/calendar.js" async></script>
+</body>
+</html>

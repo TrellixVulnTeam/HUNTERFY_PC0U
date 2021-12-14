@@ -84,7 +84,7 @@ function editarCard(card){
                 <div>${checkRank(rank)}</div>
                 <div>${checkValueText(obs)}</div>
                 <div>${checkValueText(minimal)}</div>
-                <div><button class="save-edit">SALVAR</button></div>
+                <div><button class="save-edit">SAVE</button></div>
             </div>
         </form>
     </div>`
@@ -187,7 +187,7 @@ function editarHouse(card){
                 <div>${checkValueText(cadTotalValue)}</div>
                 <div>${checkValueText(needToConfirm)}</div>
                 <div>${checkValueImg(cadImage)}</div>
-                <div><button class="save-house-edit">SALVAR</button></div>
+                <div><button class="save-house-edit">SAVE</button></div>
                 <div></div>
                 <div></div>
             </div>

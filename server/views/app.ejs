@@ -26,7 +26,7 @@
             <div class="menu-info janela-info">
                 <div>
                     <h2>State:</h2>
-                    <!--<input type="text" id="state">-->
+                    
                     <select name="states" id="states">
                     </select>
                 </div>
@@ -34,7 +34,7 @@
                     <h2>County:</h2>
                     <select name="counties" id="counties">
                     </select>
-                    <!--<input type="text" id="county">-->
+                    
                 </div>
                 <div>
                     <h2>List type:</h2>
@@ -43,18 +43,6 @@
                         <option value="struck-off">Struck-Off</option>
                     </select>
                 </div>
-
-                <!--<div class="usertype">
-                    <h2>User type</h2>
-                    <div>
-                        <h3 for="type1">Type1</h3>
-                        <input type="radio" value="username" name="usertype" id="usertype1">
-                    </div>    
-                    <div>
-                        <h3 for="type2">Type2</h3>
-                        <input type="radio" value="username2" name="usertype" id="usertype2">
-                    </div>
-                </div>-->
                 <div>
                     <h2>Username</h2>
                     <h3 id="username"><%= user %></h2>
@@ -64,7 +52,7 @@
                     <h3 class="contador">0</h2>
                 </div>
                 <div>
-
+                    <button id="get-list">Get List</button>
                 </div>
                 
             </div>
@@ -101,6 +89,14 @@
         <div class="area-cards">
             
                 <div class="root-edit">
+                </div>
+                <div class="root-list">
+                    <div class="prod-buttons">
+                        <button id="close-list"><i class="fas fa-times-circle"></i></button>
+                    </div>
+                    <div class="prod-list">
+                        
+                    </div>
                 </div>
         </div>
     </main>

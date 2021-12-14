@@ -667,14 +667,14 @@ form{
     margin: 1vh 0;
 }
 
-#closeButtonDiv{
+body .closeButtonDiv{
     width: 100%;
     display: flex;
     justify-content: flex-end;
     height: fit-content;
 }
 
-#closeButtonDiv button{
+body .closeButtonDiv button{
     height: 3vh;
     border: none;
     border-radius: 1vh;
@@ -682,7 +682,7 @@ form{
     font-size: 4vh;
 }
 
-#closeButtonDiv button:hover{
+body .closeButtonDiv button:hover{
     cursor: pointer;
 }
 
@@ -1309,5 +1309,9 @@ form{
 .program textarea{
     width: 100%;
     border: none;
+}
+
+.program-calendar{
+    padding-left: 0;
 }
 
