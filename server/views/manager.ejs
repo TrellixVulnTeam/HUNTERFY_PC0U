@@ -30,9 +30,11 @@
             <div class="manager-nav"><a href="./allusers"><button><i class="fas fa-id-card"></i></button></a><h2>List All Users</h2></div>
             <div class="manager-nav"><a href="./userlogs"><button><i class="fas fa-users"></i></button></a><h2>User Logs</h2></div>
             <!--<div class="manager-nav"><a href="./searchbyparcel"><button><i class="fas fa-search"></i></button></a><h2>Search By Parcel</h2></div>
-            <div class="manager-nav"><a href="./searchbyuser"><button><i class="fas fa-search"></i></button></a><h2>Search By User</h2></div>-->
+            <div class="manager-nav"><a href="./searchbyuser"><button><i class="fas fa-search"></i></button></a><h2>Search By User</h2></div>
+         <div class="manager-nav"><a href="./metrics"><button><i class="fas fa-chart-pie"></i></button></a><h2>Metrics By User</h2></div>-->
             <div class="manager-nav"><button id="managerListButton"><i class="fas fa-list-ul"></i></button><h2>Parcel List</h2></div>
-            <div class="manager-nav"><a href="./metrics"><button><i class="fas fa-chart-pie"></i></button></a><h2>Metrics By User</h2></div>
+            <div class="manager-nav"><button id="metricsButton"><i class="fas fa-chart-pie"></i></button><h2>Metrics</h2></div>
+           
             <div class="manager-nav"><button id="managerSearchButton"><i class="fas fa-search"></i></button><h2>Search</h2></div>
             
             
@@ -59,7 +61,7 @@
             <div class="manager-nav"><button id="checkProdButton"><i class="fas fa-file-signature"></i></button><h2>Check Production</h2></div>
             
             <div class="manager-nav"><a href="./templates"><button><i class="fas fa-envelope-open-text"></i></button></a><h2>Templates</h2></div>
-            <div class="manager-nav"><a><button class="add-user" id="logoff"></button></a><h2>&nbsp;</h2></div>
+            <div class="manager-nav"><a><button class="add-user"></button></a><h2>&nbsp;</h2></div>
             <div class="manager-nav"><a><button class="add-user" id="logoff"><i class="fas fa-power-off"></i></button></a><h2>Logoff</h2></div>
             
         </div>
@@ -101,6 +103,18 @@
             <ul>
                 <a href="./countycalendarbystate"><li>Production By State</li></a>
                 <a href="./countycalendar"><li>Production By Date</li></a>
+                
+            </ul>
+
+        </div>
+
+        <div class="searchOptions" id="metricsOptions">
+            <div class="closeButtonDiv">
+                <button class="closeOptions" onclick="closeThis(this)"><i class="far fa-times-circle"></i></button>
+            </div>
+            <ul>
+                <a href="./metrics"><li>V.A Metrics</li></a>
+                <a href="./managermetrics"><li>Manager Metrics</li></a>
                 
             </ul>
 

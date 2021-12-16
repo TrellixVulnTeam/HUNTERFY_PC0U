@@ -744,12 +744,42 @@ class pgProgram{
         catch(err){console.log(err)}
     };
 
+    async managerDailySearch(user, date){
+        const searchQuery = `
+        SELECT *
+	    FROM public.parcellogs
+        WHERE "user" = '${user}' AND "date" = '${date}';
+        `
+        try{
+            const result = await dbClient.query(searchQuery)
+            dbClient.end;
+            //console.log(result)
+            return result
+        }
+        catch(err){console.log(err)}
+    };
+
     async resumedSearch(user, month){
         const searchQuery = `
         SELECT parcelid, rank1, rank2, rank3, dateandtime, username, username2, date, date2
         FROM public."2021-data"
         WHERE EXTRACT(MONTH FROM date) = '${month}' AND username= '${user}'
         OR EXTRACT(MONTH FROM date) = '${month}' AND username2= '${user}';
+        `
+        try{
+            const result = await dbClient.query(searchQuery)
+            dbClient.end;
+            //console.log(result)
+            return result
+        }
+        catch(err){console.log(err)}
+    }
+
+    async parcelLogsSearch(user, month){
+        const searchQuery = `
+        SELECT *
+        FROM public.parcellogs
+        WHERE EXTRACT(MONTH FROM date) = '${month}' AND "user" = '${user}';
         `
         try{
             const result = await dbClient.query(searchQuery)
@@ -788,7 +818,7 @@ class pgProgram{
             console.log('successful template insertion')
         }
         catch(err){
-            console.log(error)
+            console.log(err)
         }
     }
 
@@ -817,7 +847,7 @@ class pgProgram{
             console.log('successful template delete')
         }
         catch(err){
-            console.log(error)
+            console.log(err)
         }
     }
 
@@ -849,7 +879,7 @@ class pgProgram{
             console.log('Status edit successful')
         }
         catch(err){
-            console.log(error)
+            console.log(err)
         }
     }
 
@@ -864,7 +894,7 @@ class pgProgram{
             dbClient.end;
         }
         catch(err){
-            console.log(error)
+            console.log(err)
         }
     }
 
@@ -880,7 +910,7 @@ class pgProgram{
             return result
         }
         catch(err){
-            console.log(error)
+            console.log(err)
         }
     }
 
@@ -904,7 +934,7 @@ class pgProgram{
             console.log('Acquisition data updated')
         }
         catch(err){
-            console.log(error)
+            console.log(err)
         }
     }
 
@@ -920,7 +950,7 @@ class pgProgram{
             return result
         }
         catch(err){
-            console.log(error)
+            console.log(err)
         }
     }
 
@@ -935,7 +965,7 @@ class pgProgram{
             dbClient.end;
         }
         catch(err){
-            console.log(error)
+            console.log(err)
         }
     }
 
@@ -951,7 +981,7 @@ class pgProgram{
             return result
         }
         catch(err){
-            console.log(error)
+            console.log(err)
         }
     }
 
@@ -966,23 +996,40 @@ class pgProgram{
             return result
         }
         catch(err){
-            console.log(error)
+            console.log(err)
         }
     }
 
-    async checkDone(user, parcel){
+    async checkDone(user, parcel, state, county){
         const updateQuery= `
             UPDATE public.list
-            SET "done" = "true"
-            WHERE "parcel" = '${parcel}' AND "user" = '${user}';
+            SET done = 'true'
+            WHERE "parcel" = '${parcel}' AND "user" = '${user}' AND "state" = '${state}' AND "county" = '${county}';
         `
         try{
             const result = await dbClient.query(updateQuery)
+            console.log('check done', parcel)
             dbClient.end;
             return result
         }
         catch(err){
-            console.log(error)
+            console.log(err)
+        }
+    }
+
+    async insertParcelLog(parcelid, user, action){
+        const insertQuery = `
+        INSERT INTO public.parcellogs(
+            parcelid, "user", action)
+            VALUES ('${parcelid}', '${user}', '${action}');
+        `
+        try{
+            const result = await dbClient.query(insertQuery)
+            console.log('insert log', parcelid, action, user)
+            dbClient.end;
+        }
+        catch(err){
+            console.log(err)
         }
     }
 }

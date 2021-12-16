@@ -110,6 +110,10 @@ module.exports = app => {
     app.get('/calendar', async(req,res)=>{
         res.render('calendar.ejs', {user : req.session.user})
     })
+    
+    app.get('/managermetrics',  async(req, res)=>{
+        res.render('managerMetrics.ejs', {user : req.session.user})
+    })
         //GET FUNCTIONS
     app.get('/getallusers', (req, res) => {
         pgProgram.getUsers(req, res)
@@ -206,12 +210,14 @@ module.exports = app => {
                 const searchResult = await pgProgram.checkIfExists(req.body.parcelid, req.body.state, req.body.county)
                 if(searchResult.length < 1){
                     pgProgram.addOnDatabase(req.session.user, req, res)
+                    pgProgram.checkDone(req.session.user, req.body.parcelid, req.body.state, req.body.county)
                 }
                 else{
                     pgProgram.editDB(req.session.user, req, res)
+                    pgProgram.checkDone(req.session.user, req.body.parcelid, req.body.state, req.body.county)
                 }
             }
-            await pgProgram.checkDone(req.session.user, req.body.parcel)
+            
             
         }
         catch(error){
@@ -260,11 +266,13 @@ module.exports = app => {
 
     app.post('/editrank2', async(req,res) => {
         pgProgram.editRank2(req, res)
+        pgProgram.insertParcelLog(req.body.parcelid, req.body.userrank2, 'rank 2 edit')
         console.log(req.session.user, 'edited rank 2')
     })
 
     app.post('/editrank3', async(req,res) => {
         pgProgram.editRank3(req, res)
+        pgProgram.insertParcelLog(req.body.parcelid, req.body.userrank3, 'rank 3 edit')
         console.log(req.session.user, 'edited rank 3')
     })
 
@@ -295,6 +303,7 @@ module.exports = app => {
                 req.session.isAuthManager = true
                 req.session.user = `${resultado.username}`
                 res.send('OK')
+                pgProgram.insertParcelLog('0', req.session.user, 'login')
             }
         }
     })
@@ -303,6 +312,7 @@ module.exports = app => {
         await add2Log(req.session.user, 'V.A', 'LOGOUT')
         console.log(req.session.user, 'deslogado')
         req.session.destroy();
+        pgProgram.insertParcelLog('0', req.session.user, 'logout')
     })
 
     app.post('/appgetlogs', async(req, res) => {
@@ -344,6 +354,30 @@ module.exports = app => {
             const date = new Date(req.body.date)
             const month = date.getMonth()+1
             const result = await pgProgram.resumedSearch(req.body.user, month)//month
+            res.send(result.rows)
+        }
+        catch(err){
+            console.log(err)
+        }
+    })
+
+    app.post('/managersdailymetrics', async(req, res)=> {
+        try{
+            console.log('manager daily metrics fetch')
+            const result = await pgProgram.managerDailySearch(req.body.user, req.body.date);
+            res.send(result.rows)
+        }
+        catch(err){
+            console.log(err)
+        }
+    })
+
+    app.post('/managermetrics', async(req, res)=> {
+        try{
+            const date = new Date(req.body.date)
+            const month = date.getMonth()+1
+            const result = await pgProgram.parcelLogsSearch(req.body.user, month)//month
+            console.log(result)
             res.send(result.rows)
         }
         catch(err){
@@ -463,10 +497,12 @@ module.exports = app => {
 
     app.post('/postacqdata', async(req, res)=>{
         pgProgram.postAcqData(req.body.parcelid, req.body.state, req.body.county, req.body.offervalue, req.body.offerdate, req.body.counteroffervalue, req.body.counterofferdate, req.body.pdf, req.body.deeddate)
+        pgProgram.insertParcelLog(req.body.parcelid, req.session.user, 'acquisiton data updated')
     })
 
     app.post('/downloadpdf', async(req, res)=>{
         const result = await pgProgram.getPdf(req.body.parcelid, req.body.state, req.body.county)
+        pgProgram.insertParcelLog('0', req.session.user, 'downloaded deed pdf')
         res.send(result)
     })
 
@@ -485,8 +521,8 @@ module.exports = app => {
         for (let i = 0; i < req.body.length; i++) {
             var index = req.body[i]
             await pgProgram.insertParcelList(index.parcel, index.user, index.state, index.county)
+            pgProgram.insertParcelLog("0", req.session.user, 'list insertion')
         }
-
     })
 
     app.post('/getlistinfo', async(req, res)=>{
@@ -507,6 +543,7 @@ module.exports = app => {
         const yyyymmdd = `${date.getFullYear()}-${month}-${day}`
 
         await pgProgram.clearList(req.body.user, yyyymmdd)
+        pgProgram.insertParcelLog('0', req.session.user, 'list cleared')
 
     })
 }

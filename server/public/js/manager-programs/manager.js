@@ -567,3 +567,11 @@ function yyyymmdd(){
     
     return yyyymmdd
 }
+
+function createOption(element, path){
+    const opt = document.createElement('option')
+    opt.value = element.username
+    opt.innerHTML = element.username
+
+    path.append(opt)
+}

@@ -70,3 +70,14 @@ function resetPage(){
     container.append(page)
 
 }
+
+const selectUser = document.querySelector('#selectuser-parcellist')
+selectUser.addEventListener('focus', async()=>{
+    const result = await fetch('/getallusers')
+    const json = await result.json()
+    selectUser.innerHTML = ""
+    for (let i = 0; i < json.length; i++) {
+        var usersIndex = json[i]
+        createOption(usersIndex, selectUser)
+    }
+})

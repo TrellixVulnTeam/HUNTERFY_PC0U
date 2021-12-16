@@ -132,6 +132,4 @@ function createOption(element, path){
     opt.innerHTML = element.username
 
     path.append(opt)
-    
-
 }

@@ -37,6 +37,14 @@ document.querySelector('#checkProdButton').addEventListener('click', ()=>{
     }
 })
 
+document.querySelector('#metricsButton').addEventListener('click', ()=>{
+    const listContainer = document.querySelector('#metricsOptions')
+
+    if(listContainer.style.display = 'none'){
+        listContainer.style.display = 'block'
+    }
+})
+
 function closeThis(element){
     const window =  element.parentElement.parentElement
     console.log(window)
@@ -44,3 +52,4 @@ function closeThis(element){
         window.style.display = "none"
     }
 }
+

@@ -1,6 +1,64 @@
 //program used on /metrics
+
+export async function postMetricsInfo(json, path){
+    try{
+        const options = {
+            method: 'POST',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(json)
+        }
+        const rawResponse = await fetch(path, options)
+        const content = await rawResponse.json();
+        return content
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
+export async function readCountHourManager(content){//separa os parcels por hora do dia
+    try{
+        var hoursArr = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]//starts 00H, ends on 23H 
+        for (let i = 0; i < content.length; i++) {
+            var contentIndex = content[i]
+            var infodate = new Date(contentIndex.date)
+            var n = infodate.getHours()
+            if (infodate.getHours() == n){
+                hoursArr[n] = hoursArr[n]+1
+            }
+        }
+        console.log('hours array:', hoursArr)
+        return hoursArr
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
+export async function readCountDayManager(content){//separa os parcels por dia do mes
+    try{
+        var daysArr = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]//starts on day "zero" of every month, ends on 31
+        for (let i = 0; i < content.length; i++) {
+            var contentIndex = content[i]
+            var infodate = new Date(contentIndex.date)
+            var y = infodate.getDate()
+            if (infodate.getDate() == y){
+                daysArr[y] = daysArr[y]+1
+            }
+        }
+        console.log('days arr:', daysArr)
+        return daysArr
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
+////OLD
 export async function getDomInfo(){
-    const user = document.querySelector('#user').value 
+    const user = document.querySelector('#selectuser-parcellist').value 
     const date = document.querySelector('#date').value
 
     const infoString = `
