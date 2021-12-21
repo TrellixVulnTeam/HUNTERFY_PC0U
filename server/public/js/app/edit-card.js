@@ -166,32 +166,38 @@ function editarHouse(card){
         <form>
             <div class="campo1">
                 <div>${checkValueText(ownerName)}</div>
-                <div>${checkValueText(propsStream)}</div>
-                <div>${checkValueText(estimatedArv)}</div>
-                <div>${checkValueText(gMapsDate)}</div>
+                <div>${checkValueText(bedroomsNumber)}</div>
+                <div>${checkValueText(builtYear)}</div>
                 <div>${checkValueText(gEarthLink)}</div>
-                <div>${checkValueText(showingBuilding)}</div>
-                <div>${checkValueText(buildingSize)}</div>
+                <div>${checkValueText(propsStream)}</div>
+                <div></div>
+                
             </div>
             <div class="campo2">
-                <div>${checkValueText(builtYear)}</div>
-                <div>${checkValueText(structureType)}</div>
-                <div>${checkValueText(bedroomsNumber)}</div>
+                <div>${checkValueImg(cadImage)}</div>
                 <div>${checkValueText(bathroomsNumber)}</div>
                 <div>${checkValueText(garageSize)}</div>
-                <div>${checkValueText(taxesPerYear)}</div>
-                <div>${checkValueText(cadLandValue)}</div>
+                <div>${checkValueText(showingBuilding)}</div>
+                <div>${checkValueText(structureType)}</div>
+                <div></div>
             </div>
             <div class="campo3">
+                <div>${checkValueText(buildingSize)}</div> 
+                <div>${checkValueText(taxesPerYear)}</div>
+                <div>${checkValueText(cadLandValue)}</div>
                 <div>${checkValueText(cadBuildingValue)}</div>
                 <div>${checkValueText(cadTotalValue)}</div>
-                <div>${checkValueText(needToConfirm)}</div>
-                <div>${checkValueImg(cadImage)}</div>
-                <div><button class="save-house-edit">SAVE</button></div>
+                <div></div>
                 <div></div>
                 <div></div>
             </div>
             <div class="campo4">
+            <div>${checkValueText(needToConfirm)}</div>
+                <div>${checkValueText(estimatedArv)}</div>
+                <div>${checkValueText(gMapsDate)}</div>
+                <div><button class="save-house-edit">SAVE</button></div>
+                <div></div>
+                <div></div>
             </div>
         </form>
     </div>`

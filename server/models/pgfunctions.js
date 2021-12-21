@@ -655,6 +655,7 @@ class pgProgram{
         dbClient.query(insertQuery, (err, result)=>{
             if(!err){
             console.log("rank2 updated on DB")
+            res.send()
             }
             else{console.log(err.message)}
         })
