@@ -114,6 +114,18 @@ module.exports = app => {
     app.get('/managermetrics',  async(req, res)=>{
         res.render('managerMetrics.ejs', {user : req.session.user})
     })
+
+    app.get('/resumedsearchbycountyandrank',  async(req, res)=>{
+        res.render('resumedsearchbycountyandrank.ejs', {user : req.session.user})
+    })
+
+    app.get('/searchbyrankandcounty',  async(req, res)=>{
+        res.render('searchbyrankandcounty.ejs', {user : req.session.user})
+    })
+
+
+
+
         //GET FUNCTIONS
     app.get('/getallusers', (req, res) => {
         pgProgram.getUsers(req, res)
@@ -162,6 +174,38 @@ module.exports = app => {
         res.send(result)
     })
 
+    app.get('/stageCount', async(req, res)=>{
+        const stage1Count = await pgProgram.countStage('Stage 1')
+        const stage2Count = await pgProgram.countStage('Stage 2')
+        const stage3Count = await pgProgram.countStage('Stage 3')
+
+        const result = [stage1Count.rows[0], stage2Count.rows[0], stage3Count.rows[0]]
+        res.send(result)
+    })
+
+    app.get('/stageRankCount', async(req, res)=>{
+        const stage1rank = [await pgProgram.countRankStage('Stage 1', 'rank1', 'A'), await pgProgram.countRankStage('Stage 1', 'rank1', 'B'), await pgProgram.countRankStage('Stage 1', 'rank1', 'C'), await pgProgram.countRankStage('Stage 1', 'rank1', 'HOUSE')]
+        const stage2rank = [await pgProgram.countRankStage('Stage 2', 'rank2', 'A'), await pgProgram.countRankStage('Stage 2', 'rank2', 'B'), await pgProgram.countRankStage('Stage 2', 'rank2', 'C'), await pgProgram.countRankStage('Stage 2', 'rank2', 'HOUSE')]
+        const stage3rank = [await pgProgram.countRankStage('Stage 3', 'rank3', 'A'), await pgProgram.countRankStage('Stage 3', 'rank3', 'B'), await pgProgram.countRankStage('Stage 3', 'rank3', 'C'), await pgProgram.countRankStage('Stage 3', 'rank3', 'HOUSE')]
+        res.send([stage1rank, stage2rank, stage3rank])
+    })
+
+    app.get('/countAll', async(req, res)=>{
+        const result = await pgProgram.countAll()
+        res.send(result)
+    })
+
+    app.get('/getCalendar', async(req,res)=>{
+        const result = await pgProgram.getCalendar()
+        res.send(result)
+    })
+
+    app.get('/getYesterdayTotals', async(req, res)=>{
+        const result = await pgProgram.getTotalLogs()
+        res.send(result)
+    })
+
+    
     //POSTS----------------------->
     app.post('/getallchecked', async(req, res)=>{
         try{
@@ -431,6 +475,13 @@ module.exports = app => {
         res.send(countStr)
     })
 
+    app.post('/countyandrankcount', async(req, res)=>{
+        const count = await pgProgram.countyRankCount(req.body.rank, req.body.ranktype, req.body.state, req.body.county)
+        const countStr = `${count}`
+        console.log(countStr)
+        res.send(countStr)
+    })
+
     app.post('/searchbyrankresumed', async(req, res) => {
         pgProgram.searchTableByRankResumed(req.body.rank, req.body.date, req.body.ranktype, req.body.page, res)
     })
@@ -541,10 +592,25 @@ module.exports = app => {
         const day = ("0" + date.getDate()).slice(-2)
         const month = ("0" + (date.getMonth() + 1)).slice(-2)
         const yyyymmdd = `${date.getFullYear()}-${month}-${day}`
-
         await pgProgram.clearList(req.body.user, yyyymmdd)
         pgProgram.insertParcelLog('0', req.session.user, 'list cleared')
+    })
 
+    app.post('/resumedsearchbycountyandrank', async(req, res)=>{
+        const result = await pgProgram.resumedSearchByCountyAndRank(req.body.state, req.body.county, req.body.ranktype, req.body.rank, req.body.page)
+        res.send(result)
+    })
+
+    app.post('/searchbyrankandcounty', async(req, res)=>{
+        const result = await pgProgram.searchByCountyAndRank(req.body.state, req.body.county, req.body.ranktype, req.body.rank, req.body.page)
+        res.send(result)
+    })
+
+    app.post('/saveCalendar', async(req, res)=>{
+        console.log(req.body)
+        const str = JSON.stringify(req.body)
+        console.log(str)
+        await pgProgram.updateCalendar(str)
     })
 }
 //

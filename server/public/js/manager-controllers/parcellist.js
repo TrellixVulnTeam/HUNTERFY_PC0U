@@ -29,6 +29,7 @@ async function postParcels(){
     const user = document.querySelector('#list-title').innerHTML
     const state = document.querySelector('#state').value
     const county = document.querySelector('#county').value
+    const date = document.querySelector('#auc-date').value
     const arr = str.split('\n')
     var lista = []
     for (let i = 0; i < arr.length; i++) {
@@ -36,10 +37,9 @@ async function postParcels(){
         var item = getList(index, user, state, county)
         lista.push(item)
     }
-    
-    
     console.log(lista)
     postDataManager(lista, '/newlist').then(alert('Success'))
+    saveEventOnCalendar(state, county, date)
 }
 
 async function clearList(){
@@ -48,9 +48,6 @@ async function clearList(){
     const ul = document.querySelector('#ul-parcel-list')
     ul.innerHTML = ''
     await postDataManager(json, '/clearlist').then(alert('success'))
-    
-    
-
 }
 
 function createLi(element, path){
@@ -60,7 +57,7 @@ function createLi(element, path){
         <div>${element.parcel}</div>
         <div>${element.county}</div>
         <div>${element.state}</div>
-        <div>${thisDate}</div>
+        <div>${element.date}</div>
     `
     li.innerHTML = content
     path.append(li)
@@ -108,6 +105,8 @@ function buildPage(json){
                 <textarea name="" id="parcelsList" cols="30" rows="10"></textarea>
                 <div><label>County</label><input type="text" id="county"></div>
                 <div><label>State</label><input type="text" id="state"></div>
+                <div><label>Auction Date</label><input type="date" id="auc-date"></div>
+                <div><label>Upload PDF</label><label for="pdf"><i class="fas fa-upload"></i></label><input type="file" id="pdf"></div>
                 <button id="insert-parcels" onclick="postParcels()">INSERT</button>
             </div>
     `
@@ -133,3 +132,23 @@ function createOption(element, path){
 
     path.append(opt)
 }
+
+async function getEvents(){
+    const result = await fetch('/getCalendar')
+    const json = await result.json()
+    const info = json.rows[0].info
+    const obj = JSON.parse(info);
+    console.log(typeof(obj))
+    return obj
+  }
+
+async function saveEventOnCalendar(state, county, dateinput) {
+    var events = await getEvents()
+    events.push({
+      date: mmddyyyyFormat(dateinput),
+      title: `${state}, ${county}`,
+    });
+    console.log(typeof(events))
+    //localStorage.setItem('events', JSON.stringify(events));
+    await postDataManager(events, '/saveCalendar').then(alert('Event saved on calendar'))
+  }

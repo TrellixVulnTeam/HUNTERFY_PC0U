@@ -5,7 +5,7 @@ BD9354
 E3D18
 */
 
-h1, h2, h3, li, label, button, select{
+h1, h2, h3, li, label, button, select, h4{
     font-family: 'Montserrat', sans-serif;
     color: #F6E9E9;
 }
@@ -126,39 +126,6 @@ body::-webkit-scrollbar-track {
     font-size: 5vh;
     margin-bottom: 3vh;
 }
-
-/*.columns{
-    display: flex;
-    width: 100%;
-    height: 4vh;
-}
-
-.columns li{
-    width: 16.6666666%;
-    font-size: 2vh;
-}
-
-.title{
-    font-weight: 700;
-    margin-bottom: 0.5vh;
-}
-
-.item{
-    background-color: #423f3f;
-    border-radius: 1vh;
-    padding: 3vh;
-    margin: 2vh 0;
-}
-
-.item:hover{
-    background-color: #524e4e;
-    transition: 0.5s;
-}
-
-.values{
-    margin-bottom: 1.5vh;
-}*/
-
 /*new manager item*/
 
 .manager-item{
@@ -602,9 +569,43 @@ form{
     
 }
 
+.manager-section{
+    background-color: rgba(76, 76, 76, 0.455);
+    margin-bottom: 1vh;
+    padding: 2vh;
+    border-radius: 3px;
+}
+
 .manager-line{
     display: flex;
     justify-content: space-between;
+}
+
+.manager-line h1{
+    font-size: 4vh;
+    margin-bottom: 1vh;
+}
+
+.manager-line h2{
+    font-size: 3vh;
+    margin-bottom: 1vh;
+}
+
+.manager-line h3{
+    font-size: 2vh;
+    margin-bottom: 1vh;
+}
+
+.manager-line h4{
+    font-size: 2vh;
+    margin-bottom: 1vh;
+}
+
+.manager-line hr{
+    width: 100%;
+    color: white;
+    background-color: white;
+    
 }
 
 .manager-nav{
@@ -1304,6 +1305,20 @@ body .closeButtonDiv button:hover{
     font-size: 2vh;
     border-radius: 0.5vh;
     padding: 0 1vh;
+    width: 10vw;
+}
+
+.program input[type=date]{
+    border: none;
+    height: 4vh;
+    font-size: 2vh;
+    border-radius: 0.5vh;
+    padding: 0 1vh;
+    width: 10vw;
+}
+
+.program input[type=file]{
+    display: none;
 }
 
 .program textarea{

@@ -654,10 +654,10 @@ class pgProgram{
         `
         dbClient.query(insertQuery, (err, result)=>{
             if(!err){
-            console.log("rank2 updated on DB")
-            res.send()
+                console.log("rank2 updated on DB")
+                res.send()
             }
-            else{console.log(err.message)}
+                else{console.log(err.message)}
         })
     }
 
@@ -671,10 +671,10 @@ class pgProgram{
         `
         dbClient.query(insertQuery, (err, result)=>{
             if(!err){
-            console.log("rank3 updated on DB")
-            res.send()
+                console.log("rank3 updated on DB")
+                res.send()
             }
-            else{console.log(err.message)}
+                else{console.log(err.message)}
         })
     }
 
@@ -1033,6 +1033,163 @@ class pgProgram{
             console.log(err)
         }
     }
+
+    async searchByCountyAndRank(state, county, ranktype, rank, page){
+        const offset = page - 1
+        const searchQuery = `
+		SELECT parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage, listtype, minimalbid, n1name, n2name, n3name, n4name, status, offervalue, offerdate, counteroffervalue, counterofferdate, deeddate, flow
+	    FROM public."2021-data"
+		WHERE "state" = '${state}' AND "county" = '${county}' AND "${ranktype}" = '${rank}'
+        
+        ORDER BY item_id DESC
+        LIMIT 10 OFFSET (10 * ${offset});
+	    `
+        try{
+            const result = await dbClient.query(searchQuery)
+            dbClient.end;
+            return result.rows
+        }
+        catch(err){console.log(err)}
+    }
+
+    async resumedSearchByCountyAndRank(state, county, ranktype, rank, page){
+        const offset = page - 1
+        const searchQuery = `
+		SELECT parcelid, gislink, floodzonetext, mapslink, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, rank2, userrank2, obs2, rank3, userrank3, obs3, item_id, dateandtime, taxowned, county, state, username, buyopt, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, listtype, minimalbid, n1name, n2name, n3name, n4name, status, offervalue, offerdate, counteroffervalue, counterofferdate, deeddate, flow
+	    FROM public."2021-data"
+		WHERE "state" = '${state}' AND "county" = '${county}' AND "${ranktype}" = '${rank}'
+        
+        ORDER BY item_id DESC
+        LIMIT 100 OFFSET (100 * ${offset});
+	    `
+        try{
+            const result = await dbClient.query(searchQuery)
+            dbClient.end;
+            return result.rows
+        }
+        catch(err){console.log(err)}
+    }
+
+    async countyRankCount(rank, ranktype, state, county){
+        const searchQuery = `
+		SELECT parcelid
+	    FROM public."2021-data"
+		WHERE "state" = '${state}' AND "county" = '${county}' AND "${ranktype}" = '${rank}';
+	    `
+        try{
+            const result = await dbClient.query(searchQuery)
+            dbClient.end;
+            //console.log(result)
+            return result.rows.length
+        }
+        catch(err){console.log(err)}
+        dbClient.end
+    }
+
+    async countStage(stage){
+        const searchQuery = `
+		SELECT COUNT(*)
+	    FROM public."2021-data"
+		WHERE flow = '${stage}';
+	    `
+        try{
+            const result = await dbClient.query(searchQuery)
+            dbClient.end;
+            //console.log(result)
+            return result
+        }
+        catch(err){console.log(err)}
+        dbClient.end
+    }
+    async countRankStage(stage, ranktype, rank){
+        const searchQuery = `
+		SELECT COUNT(*)
+	    FROM public."2021-data"
+		WHERE flow = '${stage}' AND "${ranktype}" = '${rank}';
+	    `
+        try{
+            const result = await dbClient.query(searchQuery)
+            dbClient.end;
+            //console.log(result)
+            return result
+        }
+        catch(err){console.log(err)}
+        dbClient.end
+
+    }
+
+    async countAll(){
+        const searchQuery = `
+		SELECT COUNT(*)
+	    FROM public."2021-data";
+	    `
+        try{
+            const result = await dbClient.query(searchQuery)
+            dbClient.end;
+            //console.log(result)
+            return result
+        }
+        catch(err){console.log(err)}
+        dbClient.end
+
+    }
+
+    async updateCalendar(info){
+        //console.log(info)
+        const updateQuery = `
+            UPDATE public.calendar
+            SET "info" = '${info}'
+            WHERE id = '1';
+        `
+        try{
+            const result = await dbClient.query(updateQuery)
+            dbClient.end;
+            //return result
+        }
+        catch(err){console.log(err)}
+    }
+
+    async getCalendar(){
+        const searchQuery = `
+            SELECT * FROM public.calendar
+        `
+        try{
+            const result = await dbClient.query(searchQuery)
+            dbClient.end;
+            return result
+        }
+        catch(err){console.log(err)}
+    }
+
+    async saveTotalLogs(total, stage1, stage2, stage3){
+        const insertQuery = `
+            INSERT INTO public.totallogs(
+            total, stage1, stage2, stage3)
+            VALUES ('${total}', '${stage1}', '${stage2}', '${stage3}');
+        `
+        try{
+            const result = await dbClient.query(insertQuery)
+            dbClient.end;
+            return result
+        }
+        catch(err){console.log(err)}
+    }
+
+    async getTotalLogs(){
+        const selectQuery = `
+            SELECT total, stage1, stage2, stage3, date, id
+            FROM public.totallogs
+            ORDER BY id DESC
+            LIMIT 1;
+        `
+        try{
+            const result = await dbClient.query(selectQuery)
+            dbClient.end;
+            return result
+        }
+        catch(err){console.log(err)}
+    }
+
 }
 
 module.exports = new pgProgram

@@ -575,3 +575,12 @@ function createOption(element, path){
 
     path.append(opt)
 }
+
+function mmddyyyyFormat(dateCont){
+    const date = new Date(dateCont)
+    const day = ("" + date.getDate()).slice(-2)
+    const month = ("" + (date.getMonth() + 1)).slice(-2)
+    const mmddyyyy = `${month}/${day}/${date.getFullYear()}`
+    
+    return mmddyyyy
+}
