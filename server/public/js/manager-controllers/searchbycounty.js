@@ -1,11 +1,18 @@
-document.querySelector('.search-button').addEventListener("click", (event)=>{
+document.querySelector('.search-button').addEventListener("click", async(event)=>{
     event.preventDefault()
-    runUser()
+    const json = await getJson()	
+    buildPage(getJson());
+    await getTotal(json)
+    const result = await postDataManager(json, '/searchbycounty')
+    document.querySelector('.loading-text').style.display = 'none'
+    for (var i = 0; i < result.length; i++) {
+        var index = result[i]
+        createItem(index)
+    }
 })
 
 document.querySelector('.generate-letter').addEventListener("click", async(event)=>{
     event.preventDefault()
-    console.log('oi')
     const itens = document.querySelectorAll('.manager-item')
     for (let i = 0; i < itens.length; i++) {
         var itemIndex = itens[i]
@@ -14,20 +21,14 @@ document.querySelector('.generate-letter').addEventListener("click", async(event
 
 })
 
-async function runUser(){
-    const json = await getJson()	
-    buildPage(getJson());
-    await getTotal(json)
-    await postCounty(json)
-}
-
 function getJson(){
     const state = document.querySelector('#stateinput').value
     const county = document.querySelector('#countyinput').value
     const page = document.querySelector('#page').value
     const jsonModelParcel = `{"county":"${county}", "page":"${page}", "state":"${state}"}`
-    const parceljson = JSON.parse(jsonModelParcel)
-    return parceljson
+    const json = JSON.parse(jsonModelParcel)
+    console.log(json)
+    return json
 }
 
 async function getTotal(json){
@@ -41,7 +42,7 @@ async function getTotal(json){
         }
         const rawResponse = await fetch('/dailyCountyCount', options)
         const content = await rawResponse.json();
-
+        console.log(content)
         const totalH2 = document.querySelector('.production-count')
         const pageCount = document.querySelector('.page-count')
 
@@ -66,28 +67,6 @@ async function buildPage(json){
     `
     var sectionPrograma = document.querySelector('.program')
     sectionPrograma.innerHTML = createItem
-}
-
-async function postCounty(json) {
-    try{
-        const options = {
-            method: 'POST',
-            headers:{
-                'Content-Type':'application/json'
-            },
-            body: JSON.stringify(json)
-        }
-        const rawResponse = await fetch('/searchbycounty', options)
-        const content = await rawResponse.json();
-        document.querySelector('.loading-text').style.display = 'none'
-        for (var i = 0; i < content.length; i++) {
-            var contentIndex = content[i]
-            createItem(contentIndex)
-        }
-    }
-    catch(error){
-        console.log(error)
-    }
 }
 
 

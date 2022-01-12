@@ -46,6 +46,7 @@ function getJson(){
 
     const jsonModelRank = `{"state":"${state}", "rank":"${rank}", "county":"${county}", "page":"${page}", "ranktype":"${ranktype}"}`
     const json = JSON.parse(jsonModelRank)
+    console.log(json)
     return json
 }
 

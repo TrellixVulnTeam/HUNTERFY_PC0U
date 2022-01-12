@@ -4,7 +4,6 @@ document.querySelector('.search-button').addEventListener("click", async(event)=
     const json = await getJson()	
     buildPage(getJson());
     await getTotal(json)
-    
     const content = await postDataManager(json, '/resumedsearchbycountyandrank')
     document.querySelector('.loading-text').style.display = 'none'
     for (var i = 0; i < content.length; i++) {
@@ -51,7 +50,6 @@ async function getTotal(json){
     catch(err){
         console.log(err)
     }
-    
 }
 
 function getJson(){
@@ -71,12 +69,11 @@ async function buildPage(json){
     <div class="manager-window">
         <h2 class="username">County: ${json.county}</h2>
         <h2 class="production-count"></h2>
-        <h2>Displaying 100 itens</h2>
+        <h2>Displaying 10 itens</h2>
         <h2 class="page-count"></h2>
         <h2 class="loading-text">Loading...</h2>
            <div class="itens-container">
-               
-               
+                
            </div>
     </div>
     `

@@ -170,7 +170,7 @@ function criarCard(){
                 <div class="info-card info-text"><h2>NEIGHBOOR 4 EMAIL:</h2> <h2></h2></div>
                 <div class="info-card info-text"><h2>NEIGHBOOR 4 NUMBER:</h2> <h2></h2></div>
             </div>
-        <div>
+        </div>
     </div>  
     `
     areaCards.append(novoCard)

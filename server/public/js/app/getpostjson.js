@@ -1,67 +1,77 @@
 async function getJson(card){
     try{
-        var cardInfo = card.children[1]
-        var parcelid = cardInfo.children[0].children[1].innerHTML
-        var linkgis = cardInfo.children[2].children[1].innerHTML
-        var floodzonetext = cardInfo.children[4].children[1].innerHTML
-        var mapslink = cardInfo.children[6].children[1].innerHTML
-        var taxowned = cardInfo.children[8].children[1].innerHTML
-        var marketvalue = cardInfo.children[9].children[1].innerHTML
-        var latitude = cardInfo.children[10].children[1].innerHTML
-        var longitude = cardInfo.children[11].children[1].innerHTML
-        var acres = cardInfo.children[12].children[1].innerHTML
-        var adress = cardInfo.children[13].children[1].innerHTML
-        var adressn1 = cardInfo.children[14].children[1].innerHTML
-        var adressn2 = cardInfo.children[15].children[1].innerHTML
-        var adressn3 = cardInfo.children[16].children[1].innerHTML
-        var adressn4 = cardInfo.children[17].children[1].innerHTML
-        var rank = cardInfo.children[18].children[1].innerHTML
-        var obs = cardInfo.children[19].children[1].innerHTML
-        var floodzonelink = cardInfo.children[20].children[1].innerHTML
-        var zestimate = cardInfo.children[21].children[1].innerHTML
-        var zillow = cardInfo.children[22].children[1].innerHTML
-        var hoa = cardInfo.children[23].children[1].innerHTML
-        var watersupply = cardInfo.children[24].children[1].innerHTML
-        var elecsupply = cardInfo.children[25].children[1].innerHTML
-        var sewerage = cardInfo.children[26].children[1].innerHTML
-        var minimal = cardInfo.children[27].children[1].innerHTML
-        var n1name = cardInfo.children[28].children[1].innerHTML
-        var n2name = cardInfo.children[29].children[1].innerHTML
-        var n3name = cardInfo.children[30].children[1].innerHTML
-        var n4name = cardInfo.children[31].children[1].innerHTML
+        const cardInfo = card.children[1]
+        const parcelid = cardInfo.children[0].children[1].innerHTML
+        const linkgis = cardInfo.children[2].children[1].innerHTML
+        const floodzonetext = cardInfo.children[4].children[1].innerHTML
+        const mapslink = cardInfo.children[6].children[1].innerHTML
+        const taxowned = cardInfo.children[8].children[1].innerHTML
+        const marketvalue = cardInfo.children[9].children[1].innerHTML
+        const latitude = cardInfo.children[10].children[1].innerHTML
+        const longitude = cardInfo.children[11].children[1].innerHTML
+        const acres = cardInfo.children[12].children[1].innerHTML
+        const adress = cardInfo.children[13].children[1].innerHTML
+        const adressn1 = cardInfo.children[14].children[1].innerHTML
+        const adressn2 = cardInfo.children[15].children[1].innerHTML
+        const adressn3 = cardInfo.children[16].children[1].innerHTML
+        const adressn4 = cardInfo.children[17].children[1].innerHTML
+        const rank = cardInfo.children[18].children[1].innerHTML
+        const obs = cardInfo.children[19].children[1].innerHTML
+        const floodzonelink = cardInfo.children[20].children[1].innerHTML
+        const zestimate = cardInfo.children[21].children[1].innerHTML
+        const zillow = cardInfo.children[22].children[1].innerHTML
+        const hoa = cardInfo.children[23].children[1].innerHTML
+        const watersupply = cardInfo.children[24].children[1].innerHTML
+        const elecsupply = cardInfo.children[25].children[1].innerHTML
+        const sewerage = cardInfo.children[26].children[1].innerHTML
+        const minimal = cardInfo.children[27].children[1].innerHTML
+        const n1name = cardInfo.children[28].children[1].innerHTML
+        const n2name = cardInfo.children[29].children[1].innerHTML
+        const n3name = cardInfo.children[30].children[1].innerHTML
+        const n4name = cardInfo.children[31].children[1].innerHTML
 
-        var houseInfo = card.children[2].children[1]
-        var ownerName = houseInfo.children[0].children[1].innerHTML
-        var propsStream = houseInfo.children[1].children[1].innerHTML
-        var estimatedArv = houseInfo.children[2].children[1].innerHTML
-        var gMapsDate = houseInfo.children[3].children[1].innerHTML
-        var gEarthLink = houseInfo.children[4].children[1].innerHTML
-        var showingBuilding = houseInfo.children[5].children[1].innerHTML
-        var buildingSize = houseInfo.children[6].children[1].innerHTML
-        var builtYear = houseInfo.children[7].children[1].innerHTML
-        var structureType = houseInfo.children[8].children[1].innerHTML
-        var bedroomsNumber = houseInfo.children[9].children[1].innerHTML
-        var bathroomsNumber = houseInfo.children[10].children[1].innerHTML
-        var garageSize = houseInfo.children[11].children[1].innerHTML
-        var taxesPerYear = houseInfo.children[12].children[1].innerHTML
-        var cadLandValue = houseInfo.children[13].children[1].innerHTML
-        var cadBuildingValue = houseInfo.children[14].children[1].innerHTML
-        var cadTotalValue = houseInfo.children[15].children[1].innerHTML
-        var needToConfirm = houseInfo.children[16].children[1].innerHTML
+        const houseInfo = card.children[2].children[1]
+        const ownerName = houseInfo.children[0].children[1].innerHTML
+        const propsStream = houseInfo.children[1].children[1].innerHTML
+        const estimatedArv = houseInfo.children[2].children[1].innerHTML
+        const gMapsDate = houseInfo.children[3].children[1].innerHTML
+        const gEarthLink = houseInfo.children[4].children[1].innerHTML
+        const showingBuilding = houseInfo.children[5].children[1].innerHTML
+        const buildingSize = houseInfo.children[6].children[1].innerHTML
+        const builtYear = houseInfo.children[7].children[1].innerHTML
+        const structureType = houseInfo.children[8].children[1].innerHTML
+        const bedroomsNumber = houseInfo.children[9].children[1].innerHTML
+        const bathroomsNumber = houseInfo.children[10].children[1].innerHTML
+        const garageSize = houseInfo.children[11].children[1].innerHTML
+        const taxesPerYear = houseInfo.children[12].children[1].innerHTML
+        const cadLandValue = houseInfo.children[13].children[1].innerHTML
+        const cadBuildingValue = houseInfo.children[14].children[1].innerHTML
+        const cadTotalValue = houseInfo.children[15].children[1].innerHTML
+        const needToConfirm = houseInfo.children[16].children[1].innerHTML
+
+        const nInfo = card.children[3].children[1]
+        const n1number = nInfo.children[0].children[1].innerHTML
+        const n2number = nInfo.children[1].children[1].innerHTML
+        const n3number = nInfo.children[2].children[1].innerHTML
+        const n4number = nInfo.children[3].children[1].innerHTML
+        const n1email = nInfo.children[4].children[1].innerHTML
+        const n2email = nInfo.children[5].children[1].innerHTML
+        const n3email = nInfo.children[6].children[1].innerHTML
+        const n4email = nInfo.children[7].children[1].innerHTML
 
         //--array name     --input inside info              --label            --class             --cache id
-        var sateliteimage = cardInfo.children[1].children[1].src
-        var floodzoneimage = cardInfo.children[3].children[1].src
-        var mapsimage = cardInfo.children[5].children[1].src
-        var streetviewimage = cardInfo.children[7].children[1].src
+        const sateliteimage = cardInfo.children[1].children[1].src
+        const floodzoneimage = cardInfo.children[3].children[1].src
+        const mapsimage = cardInfo.children[5].children[1].src
+        const streetviewimage = cardInfo.children[7].children[1].src
 
-        var cadImage = houseInfo.children[17].children[1].src
+        const cadImage = houseInfo.children[17].children[1].src
 
         var state = document.querySelector('#states')
         var state = state.options[state.selectedIndex].innerHTML
-        var county = document.querySelector('#counties').value
-        var username = document.querySelector('#username').innerHTML
-        var listType = document.querySelector('#list-type').value
+        const county = document.querySelector('#counties').value
+        const username = document.querySelector('#username').innerHTML
+        const listType = document.querySelector('#list-type').value
 
         //console.log(state)
         //var usertype = document.querySelector('input[name="usertype"]:checked').value
@@ -128,11 +138,21 @@ async function getJson(card){
             "n1name":"${formatString(n1name)}",
             "n2name":"${formatString(n2name)}",
             "n3name":"${formatString(n3name)}",
-            "n4name":"${formatString(n4name)}"
+            "n4name":"${formatString(n4name)}",
+            "n1number":"${formatString(n1number)}",
+            "n2number":"${formatString(n2number)}",
+            "n3number":"${formatString(n3number)}",
+            "n4number":"${formatString(n4number)}",
+            "n1email":"${formatString(n1email)}",
+            "n2email":"${formatString(n2email)}",
+            "n3email":"${formatString(n3email)}",
+            "n4email":"${formatString(n4email)}"
         }`
         var cardJson = JSON.parse(cardString)
         var cardJson = JSON.stringify(cardJson)
+        //console.log(cardJson)
         return cardJson
+
     }
     catch(err){
         console.log('erro de conversao', err)

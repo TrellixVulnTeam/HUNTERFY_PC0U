@@ -640,19 +640,20 @@ form{
     font-size: 2vh;
 }
 
-.searchOptions{
-    position: absolute;
-    width: fit-content;
-    height: fit-content;
-    background-color: rgb(134, 134, 135);
+.options{
+    position: fixed;
+    width: 99vw;
+    height: 99vh;
     padding: 1vh;
-    top: 25%;
-    right: 40%;
-    border-radius: 1vh;
+    top: 0;
+    right: 0;
     display: none;
+
+    justify-content: center;
+    align-items: center;
 }
 
-.searchOptions ul{
+.options ul{
     display: flex;
     flex-direction: column;
     padding: 8vh;
@@ -660,12 +661,19 @@ form{
     align-items: center;
 }
 
-.searchOptions ul a{
+.options ul a{
     text-decoration: none;
 }
 
-.searchOptions ul li{
+.options ul li{
     margin: 1vh 0;
+}
+
+.optContent{
+    width: fit-content;
+    height: fit-content;
+    border-radius: 1vh;
+    background-color: rgb(134, 134, 135);
 }
 
 body .closeButtonDiv{
@@ -1329,4 +1337,5 @@ body .closeButtonDiv button:hover{
 .program-calendar{
     padding-left: 0;
 }
+
 

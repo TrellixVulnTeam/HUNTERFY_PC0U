@@ -69,8 +69,9 @@ function getJson(){
     var page = document.querySelector('#page').value
 
     var jsonModelRank = `{"rank":"${rank}", "date":"${date}", "ranktype":"${ranktype}", "page":"${page}"}`
-    const userDatejson = JSON.parse(jsonModelRank)
-    return userDatejson
+    const json = JSON.parse(jsonModelRank)
+    console.log(json)
+    return json
 }
 
 async function buildPage(json){

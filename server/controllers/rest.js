@@ -461,11 +461,9 @@ module.exports = app => {
     })
 
     app.post('/dailyCountyCount', async(req, res)=>{
-        const info = await req.body
-        const count = await pgProgram.countyCount(info.county)
-        const countStr = `${count}`
-        console.log(countStr)
-        res.send(countStr)
+        console.log(req.body)
+        const count = await pgProgram.countyCount(req.body.county, req.body.state)
+        res.send(count[0].count)
     })
 
     app.post('/dailyCheckedCount', async(req, res)=>{

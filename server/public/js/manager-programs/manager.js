@@ -310,6 +310,40 @@ async function createItem(element){
                                 </div>
                             </div>
                         </div>
+                        <div>
+                            <div class="accordionbutton" onclick="flexAccordion(this.parentElement)"><i class="fas fa-at"></i></div>
+                            <div class="acq plusDiv" style="display: none;">
+                                
+                                <div class="contrast">
+                                    <h1>Neighboor 1</h1>
+                                    <div><h2>Name:&nbsp;</h2><h3 class="value">${element.n1name}</h3></div>
+                                    <div><h2>Adress:&nbsp;</h2><h3 class="value">${element.n1adress}</h3></div>
+                                    <div><h2>Number:&nbsp;</h2><h3 class="value">${element.n1number}</h3></div>
+                                    <div><h2>Email:&nbsp;</h2><h3 class="value">${element.n1email}</h3></div>
+                                </div>
+                                <div class="contrast">
+                                    <h1>Neighboor 2</h1>
+                                    <div><h2>Name:&nbsp;</h2><h3 class="value">${element.n2name}</h3></div>
+                                    <div><h2>Adress:&nbsp;</h2><h3 class="value">${element.n2adress}</h3></div>
+                                    <div><h2>Number:&nbsp;</h2><h3 class="value">${element.n2number}</h3></div>
+                                    <div><h2>Email:&nbsp;</h2><h3 class="value">${element.n2email}</h3></div>
+                                </div>
+                                <div class="contrast">
+                                    <h1>Neighboor 3</h1>
+                                    <div><h2>Name:&nbsp;</h2><h3 class="value">${element.n3name}</h3></div>
+                                    <div><h2>Adress:&nbsp;</h2><h3 class="value">${element.n3adress}</h3></div>
+                                    <div><h2>Number:&nbsp;</h2><h3 class="value">${element.n3number}</h3></div>
+                                    <div><h2>Email:&nbsp;</h2><h3 class="value">${element.n3email}</h3></div>
+                                </div>
+                                <div class="contrast">
+                                    <h1>Neighboor 4</h1>
+                                    <div><h2>Name:&nbsp;</h2><h3 class="value">${element.n4name}</h3></div>
+                                    <div><h2>Adress:&nbsp;</h2><h3 class="value">${element.n4adress}</h3></div>
+                                    <div><h2>Number:&nbsp;</h2><h3 class="value">${element.n4number}</h3></div>
+                                    <div><h2>Email:&nbsp;</h2><h3 class="value">${element.n4email}</h3></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     
                 </div>

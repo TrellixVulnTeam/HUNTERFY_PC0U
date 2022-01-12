@@ -164,7 +164,7 @@ async function getEvents(){
     const obj = JSON.parse(info);
     console.log(typeof(obj))
     return obj
-  }
+}
 
 async function saveEventOnCalendar(state, county, dateinput) {
     var events = await getEvents()
@@ -175,4 +175,4 @@ async function saveEventOnCalendar(state, county, dateinput) {
     console.log(typeof(events))
     //localStorage.setItem('events', JSON.stringify(events));
     await postDataManager(events, '/saveCalendar').then(alert('Event saved on calendar'))
-  }
+}

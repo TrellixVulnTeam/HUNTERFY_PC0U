@@ -18,8 +18,9 @@ function renderResult(element){
         <div class="options">
             <button class="send" onclick="postJson(this.parentElement.parentElement)"><i class="fas fa-share"></i></button>   
             <button class="edit" onclick="editarCard(this.parentElement.parentElement)"><i class="fas fa-pen-square"></i></button>
+            <button class="house-edit" onclick="editarHouse(this.parentElement.parentElement)"><i class="fas fa-home"></i></button>
+            <button class="neigh-edit" onclick="editarNeighboorInfo(this.parentElement.parentElement)"><i class="fas fa-at"></i></button>  
             <button class="exclude" onclick="excluirCard(this.parentElement.parentElement)"><i class="fas fa-trash"></i></i></button> 
-            <button class="house-edit" onclick="editarHouse(this.parentElement.parentElement)"><i class="fas fa-home"></i></button>  
         </div>
         <div class="infos">
             <div class="info-card info-text"><h2>PARCEL ID:</h2> <h2>${element.parcelid}</h2></div>
@@ -56,7 +57,7 @@ function renderResult(element){
             <div class="info-card info-text"><h2>NEIGHBOOR 4 NAME:</h2> <h2>${element.n4name}</h2></div>
         </div>
         <div class="infos">
-            <div onclick="accordion(this.parentElement)"><i class="fas fa-home"></i></div>
+            <div class="house-button" onclick="accordion(this.parentElement)"><i class="fas fa-home"></i></div>
             <div style="display: none;">
                 <div class="info-card info-text"><h2>OWNER NAME:</h2> <h2>${element.ownername}</h2></div>
                 <div class="info-card info-text"><h2>PROPSTREAM MARKET VALUE:</h2> <h2>${element.propstream}</h2></div>
@@ -77,7 +78,24 @@ function renderResult(element){
                 <div class="info-card info-text"><h2>NEED TO CONFIRM CONDITION:</h2> <h2>${element.needtoconfirm}</h2></div>
                 <div class="info-card info-text"><h2>CAD INFO FROM GIS:</h2> <img src="${element.cadimage}"></img></div>
             </div>
-        <div>
+        </div>
+
+        <div class="infos">
+            <div class="house-button at-button" onclick="accordion(this.parentElement)"><i class="fas fa-at"></i></div>
+            <div style="display: none;">
+                <div class="info-card info-text"><h2>NEIGHBOOR 1 EMAIL:</h2> <h2>${element.n1email}</h2></div>
+                <div class="info-card info-text"><h2>NEIGHBOOR 1 NUMBER:</h2> <h2>${element.n1number}</h2></div>
+
+                <div class="info-card info-text"><h2>NEIGHBOOR 2 EMAIL:</h2> <h2>${element.n2email}</h2></div>
+                <div class="info-card info-text"><h2>NEIGHBOOR 2 NUMBER:</h2> <h2>${element.n2number}</h2></div>
+
+                <div class="info-card info-text"><h2>NEIGHBOOR 3 EMAIL:</h2> <h2>${element.n3email}</h2></div>
+                <div class="info-card info-text"><h2>NEIGHBOOR 3 NUMBER:</h2> <h2>${element.n3number}</h2></div>
+
+                <div class="info-card info-text"><h2>NEIGHBOOR 4 EMAIL:</h2> <h2>${element.n4email}</h2></div>
+                <div class="info-card info-text"><h2>NEIGHBOOR 4 NUMBER:</h2> <h2>${element.n4number}</h2></div>
+            </div>
+        </div>
     </div>  
     `
     areaCards.append(searchedCard)

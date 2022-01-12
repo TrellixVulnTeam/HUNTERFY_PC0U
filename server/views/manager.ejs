@@ -68,7 +68,7 @@
             <div class="manager-line">
                 <h2>Stage 1:</h2>
             </div>
-            <hr>
+            
             <div class="manager-line">
                 <div><h3>How Many Parcels:</h3><h4 id="stage1-parcel-quant"></h4></div>
                 <div><h3>On Each Rank:</h3><h4 id="stage1-rank-quant"></h4></div>
@@ -80,7 +80,7 @@
             <div class="manager-line">
                 <h2>Stage 2:</h2>
             </div>
-            <hr>
+            
             <div class="manager-line">
                 <div><h3>How Many Parcels:</h3><h4 id="stage2-parcel-quant"></h4></div>
                 <div><h3>On Each Rank:</h3><h4 id="stage2-rank-quant"></h4></div>
@@ -92,7 +92,7 @@
             <div class="manager-line">
                 <h2>Stage 3:</h2>
             </div>
-            <hr>
+            
             <div class="manager-line">
                 <div><h3>How Many Parcels:</h3><h4 id="stage3-parcel-quant"></h4></div>
                 <div><h3>On Each Rank:</h3><h4 id="stage3-rank-quant"></h4></div>
@@ -104,7 +104,7 @@
             <div class="manager-line">
                 <h2>Total:</h2>
             </div>
-            <hr>
+            
             <div class="manager-line">
                 <div><h3>How Many Parcels:</h3><h4 id="total-parcel-quant"></h4></div>
                 <div><h3>&nbsp;	</h3></div>
@@ -112,60 +112,66 @@
             </div>
         </section>
 
-        <div class="searchOptions" id="searchOptions">
-            <div class="closeButtonDiv">
-                <button class="closeOptions" onclick="closeThis(this)"><i class="far fa-times-circle"></i></button>
+        
+        <div class="options" id="searchOptions">
+            <div class="optContent">
+                <div class="closeButtonDiv">
+                    <button class="closeOptions" onclick="closeThis(this)"><i class="far fa-times-circle"></i></button>
+                </div>
+                <ul>
+                    <a href="./searchbyparcel"><li>Search By Parcel</li></a>
+                    <a href="./searchbyuser"><li>Search By User</li></a>
+                    <a href="./searchbyrank"><li>Search By Rank</li></a>
+                    <a href="./searchbycounty"><li>Search By County</li></a>
+                    <a href="./searchbyrankandcounty"><li>Search By Rank And County</li></a>
+                    <a href="./searchbyflow"><li>Search By Flow</li></a>
+                    <a href="./searchbystatus"><li>Search By Letter Status</li></a>
+                    <a href="./searchbylisttype"><li>Search By List Type</li></a>
+                    <a href="./searchbyrankresumed"><li>Search By Rank (100 itens)</li></a>
+                    <a href="./resumedsearchbycounty"><li>Search By County (100 itens)</li></a>
+                    <a href="./resumedsearchbycountyandrank"><li>Search By Rank And County (100 itens)</li></a>
+                </ul>
             </div>
-            <ul>
-                <a href="./searchbyparcel"><li>Search By Parcel</li></a>
-                <a href="./searchbyuser"><li>Search By User</li></a>
-                <a href="./searchbyrank"><li>Search By Rank</li></a>
-                <a href="./searchbycounty"><li>Search By County</li></a>
-                <a href="./searchbyrankandcounty"><li>Search By Rank And County</li></a>
-                <a href="./searchbyflow"><li>Search By Flow</li></a>
-                <a href="./searchbystatus"><li>Search By Letter Status</li></a>
-                <a href="./searchbylisttype"><li>Search By List Type</li></a>
-                <a href="./searchbyrankresumed"><li>Search By Rank (100 itens)</li></a>
-                <a href="./resumedsearchbycounty"><li>Search By County (100 itens)</li></a>
-                <a href="./resumedsearchbycountyandrank"><li>Search By Rank And County (100 itens)</li></a>
-            </ul>
+        </div>
+
+        <div class="options" id="listOptions">
+            <div class="optContent">
+                <div class="closeButtonDiv">
+                    <button class="closeOptions" onclick="closeThis(this)"><i class="far fa-times-circle"></i></button>
+                </div>
+                <ul>
+                    <a href="./parcellist"><li>List By User</li></a>
+                    <a href="./parcellistbysuper"><li>List By Supervisor</li></a>
+                    
+                </ul>
+            </div>
 
         </div>
 
-        <div class="searchOptions" id="listOptions">
-            <div class="closeButtonDiv">
-                <button class="closeOptions" onclick="closeThis(this)"><i class="far fa-times-circle"></i></button>
-            </div>
-            <ul>
-                <a href="./parcellist"><li>List By User</li></a>
-                <a href="./parcellistbysuper"><li>List By Supervisor</li></a>
-                
-            </ul>
+        <div class="options" id="prodOptions">
+            <div class="optContent">
+                <div class="closeButtonDiv">
+                    <button class="closeOptions" onclick="closeThis(this)"><i class="far fa-times-circle"></i></button>
+                </div>
+                <ul>
+                    <a href="./countycalendarbystate"><li>Production By State</li></a>
+                    <a href="./countycalendar"><li>Production By Date</li></a>
 
+                </ul>
+            </div>
         </div>
 
-        <div class="searchOptions" id="prodOptions">
-            <div class="closeButtonDiv">
-                <button class="closeOptions" onclick="closeThis(this)"><i class="far fa-times-circle"></i></button>
+        <div class="options" id="metricsOptions">
+            <div class="optContent">
+                <div class="closeButtonDiv">
+                    <button class="closeOptions" onclick="closeThis(this)"><i class="far fa-times-circle"></i></button>
+                </div>
+                <ul>
+                    <a href="./metrics"><li>V.A Metrics</li></a>
+                    <a href="./managermetrics"><li>Manager Metrics</li></a>
+
+                </ul>
             </div>
-            <ul>
-                <a href="./countycalendarbystate"><li>Production By State</li></a>
-                <a href="./countycalendar"><li>Production By Date</li></a>
-                
-            </ul>
-
-        </div>
-
-        <div class="searchOptions" id="metricsOptions">
-            <div class="closeButtonDiv">
-                <button class="closeOptions" onclick="closeThis(this)"><i class="far fa-times-circle"></i></button>
-            </div>
-            <ul>
-                <a href="./metrics"><li>V.A Metrics</li></a>
-                <a href="./managermetrics"><li>Manager Metrics</li></a>
-                
-            </ul>
-
         </div>
 
     </section>

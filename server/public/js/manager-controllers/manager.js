@@ -27,11 +27,8 @@ window.addEventListener('load', async()=>{
     document.querySelector('#total-result').innerHTML =  allJson.rows[0].count - yestJson.rows[0].total
 
     console.log(yestJson)
-
-
 })
     
-
 var botaoLogoff = document.querySelector('#logoff')
 botaoLogoff.addEventListener('click', async()=>{
     try{
@@ -51,7 +48,7 @@ document.querySelector('#managerSearchButton').addEventListener('click', ()=>{
     const listContainer = document.querySelector('#searchOptions')
 
     if(listContainer.style.display = 'none'){
-        listContainer.style.display = 'block'
+        listContainer.style.display = 'flex'
     }
 })
 
@@ -59,7 +56,7 @@ document.querySelector('#managerListButton').addEventListener('click', ()=>{
     const listContainer = document.querySelector('#listOptions')
 
     if(listContainer.style.display = 'none'){
-        listContainer.style.display = 'block'
+        listContainer.style.display = 'flex'
     }
 })
 
@@ -67,7 +64,7 @@ document.querySelector('#checkProdButton').addEventListener('click', ()=>{
     const listContainer = document.querySelector('#prodOptions')
 
     if(listContainer.style.display = 'none'){
-        listContainer.style.display = 'block'
+        listContainer.style.display = 'flex'
     }
 })
 
@@ -75,14 +72,14 @@ document.querySelector('#metricsButton').addEventListener('click', ()=>{
     const listContainer = document.querySelector('#metricsOptions')
 
     if(listContainer.style.display = 'none'){
-        listContainer.style.display = 'block'
+        listContainer.style.display = 'flex'
     }
 })
 
 function closeThis(element){
-    const window =  element.parentElement.parentElement
+    const window =  element.parentElement.parentElement.parentElement
     console.log(window)
-    if(window.style.display = 'block'){
+    if(window.style.display = 'flex'){
         window.style.display = "none"
     }
 }
@@ -106,7 +103,5 @@ document.querySelector('#ghost-button').addEventListener('click', async(event)=>
     const yyyymmdd = `${date.getFullYear()}-${month}-${day}`
 
     console.log(stage1Count, stage2Count, stage3Count, allCount, yyyymmdd)
-    
-
 })
 
