@@ -1338,4 +1338,7 @@ body .closeButtonDiv button:hover{
     padding-left: 0;
 }
 
+.process{
+    display: none;
+}
 
