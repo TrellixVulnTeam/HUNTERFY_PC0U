@@ -109,12 +109,12 @@ async function loadCountyInfo(element){
             <div class="insert-file">
                 <div><h2>Insert PDF file:</h2><div>
                 <div class="insert-file-menu">
-                    
-                    <input type="file" style="display:none;" name="pdf-input" id="pdf-input" onchange="convertToBase64(this)">
-                    <input type="text">
+                    <input type="text" id="title-input">
                     <label for="pdf-input"><i class="far fa-file"></i></label>
+                    <input type="file" style="display:none;" name="pdf-input" id="pdf-input" onchange="convertToBase64(this)">
                     <button onclick="sendPdf(this)"><i class="fas fa-share"></i></button>
                 </div>
+                <div style="margin-top:1vh;"><h2>Source link:</h2><input type="text" id="link-input"></div>
             </div>
 
             <div class="check-done">
@@ -155,17 +155,18 @@ async function showDirectoryList(){
     console.log(result)
     for (var i = 0; i < result.length; i++) {
         var directoryIndex = result[i]
-        showDirectoryItem(directoryIndex.title, directoryIndex.date)
+        showDirectoryItem(directoryIndex.title, directoryIndex.date, directoryIndex.link)
     }
 
 
 }
 
-function showDirectoryItem(title, date){
+function showDirectoryItem(title, date, link){
     var novoItem = document.createElement("div")
     novoItem.innerHTML = `
         <div class="pdf-item" onclick="downloadPdf(this)">
             <div><h2>${title}</h2></div>
+            <div><h2>${link}</h2></div>
             <div><h2>${mmddyyyyFormat(date)}</h2></div>
         </div>
     `
@@ -197,17 +198,20 @@ function convertToBase64(element) {
 async function sendPdf(element){
     console.log(element.parentElement.children[1])
 
-    const pdf = element.parentElement.children[0].src
-    const title = element.parentElement.children[1].value
+    const pdf = document.querySelector('#pdf-input').src
+    console.log(pdf)
+    const title = document.querySelector('#title-input').value
     const state = document.querySelector('#state-content').innerHTML
     const county = document.querySelector('#county-content').innerHTML
+    const link = document.querySelector('#link-input').value
 
     const str = `
         {
             "state":"${state}",
             "county":"${county}",
             "pdf":"${pdf}",
-            "title":"${title}"
+            "title":"${title}",
+            "link":"${link}"
         }
     `
     const json = JSON.parse(str)

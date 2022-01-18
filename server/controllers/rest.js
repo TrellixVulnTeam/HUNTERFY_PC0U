@@ -616,7 +616,7 @@ module.exports = app => {
 
     app.post('/savePDFondirectory', async(req, res)=>{
         console.log('pdf saved')
-        await pgProgram.saveOnPDFDirectory(req.body.state, req.body.county, req.body.pdf, req.body.title)
+        await pgProgram.saveOnPDFDirectory(req.body.state, req.body.county, req.body.pdf, req.body.title, req.body.link)
     })
 
     app.post('/getdirectorylist', async(req, res)=>{

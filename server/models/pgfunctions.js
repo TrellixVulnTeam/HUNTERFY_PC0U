@@ -1176,11 +1176,11 @@ class pgProgram{
         catch(err){console.log(err)}
     }
 
-    async saveOnPDFDirectory(state, county, pdf, title){
+    async saveOnPDFDirectory(state, county, pdf, title, link){
         const insertQuery = `
         INSERT INTO public.pdfdirectory(
-            county, state, title, pdf)
-            VALUES ('${county}', '${state}', '${title}', '${pdf}');
+            county, state, title, pdf, link)
+            VALUES ('${county}', '${state}', '${title}', '${pdf}', '${link}');
         `
         try{
             const result = await dbClient.query(insertQuery)
@@ -1192,7 +1192,7 @@ class pgProgram{
 
     async getDirectoryList(state, county){
         const selectQuery = `
-        SELECT county, state, title, id, date
+        SELECT county, state, title, id, date, link
         FROM public.pdfdirectory
         WHERE state = '${state}' AND county = '${county}';
         `

@@ -1715,7 +1715,7 @@ body .closeButtonDiv button:hover{
 .directory .pdf-directory-container{
     background-color: rgba(255, 255, 255, 0.197);
     width: 98%;
-    height: 38vh;
+    height: 30vh;
     border-radius: 3px;
     padding: 1vh;
 }
