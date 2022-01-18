@@ -24,8 +24,8 @@
     </header>
     <section class="controller janela">
              <form id="search-form">
-                 <h2>Manager Metrics By:</h2>
-                <div><label for="user">User:</label><input type="text" id="selectuser-parcellist" name=""></div>
+                <h2>Manager Metrics By:</h2>
+                <div><label for="user">By User:</label><select name="" id="selectuser-parcellist"></select></div>
                 <div><label>And by date:</label><input type="date" id="date" name=""></div>
                 <button class="search-button">Metrics</button>
             </form>
@@ -34,7 +34,9 @@
         
     </section>
     
+    
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/manager-programs/manager.js"></script>
     <script src="/js/manager-controllers/managerMetricsControllers.js" async type="module"></script>
 </body>
 </html>

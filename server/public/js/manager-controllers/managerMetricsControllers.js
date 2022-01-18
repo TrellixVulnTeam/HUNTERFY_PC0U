@@ -6,6 +6,17 @@ document.querySelector('.search-button').addEventListener('click', async(event)=
     buildChartsPage()
 })
 
+const selectUser = document.querySelector('#selectuser-parcellist')
+selectUser.addEventListener('focus', async()=>{
+    const result = await fetch('/getallmanagers')
+    const json = await result.json()
+    selectUser.innerHTML = ""
+    for (let i = 0; i < json.length; i++) {
+        var usersIndex = json[i]
+        createOption(usersIndex, selectUser)
+    }
+})
+
 async function buildChartsPage(){
     const date = new Date(document.querySelector('#date').value)
     const day = date.getDate()+1
@@ -71,3 +82,4 @@ function resetPage(){
     container.append(page)
 
 }
+

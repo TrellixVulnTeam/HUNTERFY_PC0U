@@ -8,7 +8,8 @@ const cookieParser = require("cookie-parser");
 const isAuth = require('../models/is-auth');
 const docx = require("docx");
 const schedule = require('node-schedule');
-const pgProgram = require('../models/pgfunctions')
+const pgProgram = require('../models/pgfunctions');
+
 
 module.exports = () => {
     const app = express()
@@ -37,19 +38,17 @@ module.exports = () => {
 
     app.use(cookieParser());
 
-    schedule.scheduleJob('0 0 * * *', async() => {
-        const stageCount = await fetch('/stageCount')
-        const stagesJson = await stageCount.json()
+    schedule.scheduleJob('1 2 * * *', async() => {
+        const stage1Count = await pgProgram.countStage('Stage 1')
+        const stage2Count = await pgProgram.countStage('Stage 2')
+        const stage3Count = await pgProgram.countStage('Stage 3')
+        
+        const result = await pgProgram.countAll()
 
-        const countAll =  await fetch('/countAll')
-        const allJson = await countAll.json()
+        console.log(stage1Count.rows[0].count, stage2Count.rows[0].count, stage3Count.rows[0].count, result.rows[0].count)
 
-        const stage1Count = stagesJson[0].count
-        const stage2Count = stagesJson[1].count
-        const stage3Count = stagesJson[2].count
-        const allCount = allJson.rows[0].count
-
-        pgProgram.saveTotalLogs(allCount, stage1Count, stage2Count, stage3Count)
+        pgProgram.saveTotalLogs(result.rows[0].count, stage1Count.rows[0].count, stage2Count.rows[0].count, stage3Count.rows[0].count)
+        console.log('Total Logs Saved')
     })
 
     return app

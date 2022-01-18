@@ -652,7 +652,7 @@ class pgProgram{
         const rank3 = req.body
         let insertQuery = `
             UPDATE public."2021-data"
-            SET rank3='${rank3.rank3}', userrank3='${rank3.userrank3}', obs3='${rank3.obs3}', buyopt='${rank3.buyopt}', flow='${rank3.flow}'
+            SET rank3='${rank3.rank3}', userrank3='${rank3.userrank3}', obs3='${rank3.obs3}', buyopt='${rank3.buyopt}', flow='${rank3.flow}'contu
             WHERE parcelid='${rank3.parcelid}' AND state = '${rank3.state}' AND county = '${rank3.county}';  
         `
         dbClient.query(insertQuery, (err, result)=>{
@@ -1176,6 +1176,90 @@ class pgProgram{
         catch(err){console.log(err)}
     }
 
+    async saveOnPDFDirectory(state, county, pdf, title){
+        const insertQuery = `
+        INSERT INTO public.pdfdirectory(
+            county, state, title, pdf)
+            VALUES ('${county}', '${state}', '${title}', '${pdf}');
+        `
+        try{
+            const result = await dbClient.query(insertQuery)
+            dbClient.end;
+            return result
+        }
+        catch(err){console.log(err)}
+    }
+
+    async getDirectoryList(state, county){
+        const selectQuery = `
+        SELECT county, state, title, id, date
+        FROM public.pdfdirectory
+        WHERE state = '${state}' AND county = '${county}';
+        `
+        try{
+            const result = await dbClient.query(selectQuery)
+            dbClient.end;
+            return result
+        }
+        catch(err){console.log(err)}
+    }
+
+    async getDirectoryPDFFile(state, county, title){
+        const selectQuery = `
+        SELECT pdf
+        FROM public.pdfdirectory
+        WHERE state = '${state}' AND county = '${county}' AND title = '${title}';
+        `
+        try{
+            const result = await dbClient.query(selectQuery)
+            dbClient.end;
+            return result
+        }
+        catch(err){console.log(err)}
+    }
+
+    async directoryCheckDone(state, county){
+        const insertQuery = `
+        INSERT INTO public.countycheckdone(
+            state, county)
+            VALUES ('${state}', '${county}');
+        `
+        try{
+            const result = await dbClient.query(insertQuery)
+            dbClient.end;
+            return result
+        }
+        catch(err){console.log(err)}
+    }
+
+    async directoryUncheckDone(state, county){
+        const deleteQuery = `
+        DELETE FROM public.countycheckdone
+	    WHERE state = '${state}' AND county = '${county}';
+        `
+        try{
+            const result = await dbClient.query(deleteQuery)
+            dbClient.end;
+            return result
+        }
+        catch(err){console.log(err)}
+    }
+
+    async checkAllDirectoryDone(state, county){
+        const searchQuery = `
+		SELECT *
+	    FROM public."2021-data";
+	    `
+        try{
+            const result = await dbClient.query(searchQuery)
+            dbClient.end;
+            console.log(result)
+            return result
+        }
+        catch(err){console.log(err)}
+        dbClient.end
+
+    }
 }
 
 module.exports = new pgProgram

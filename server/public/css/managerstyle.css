@@ -1,8 +1,8 @@
 /*
-85603F
-9E7540
-BD9354
-E3D18
+#85603F
+#9E7540
+#BD9354
+#E3D18
 */
 
 h1, h2, h3, li, label, button, select, h4{
@@ -126,7 +126,64 @@ body::-webkit-scrollbar-track {
     font-size: 5vh;
     margin-bottom: 3vh;
 }
-/*new manager item*/
+
+#superusername{
+    border: none;
+    border-bottom: 1px white solid;
+    background-color: transparent;
+    color: white;
+    font-size: 2vh;
+}
+
+.titleslog{
+    display: flex;
+    justify-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 3vh;
+    margin-bottom: 2vh;
+    margin-top: 12vh;
+}
+
+.titleslog li{
+    font-size: 3vh;
+}
+
+.log{
+    display: flex;
+    justify-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 3vh;
+    background-color: #423f3f;
+    margin-bottom: 1vh;    
+}
+
+.log li{
+    width: 20%;
+}
+
+.program-calendar{
+    padding-left: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* manager item*//* manager item*//* manager item*//* manager item*//* manager item*//* manager item*//* manager item*//* manager item*/
 
 .manager-item{
     width: 81vw;
@@ -370,6 +427,439 @@ body::-webkit-scrollbar-track {
     padding: 0 1vh;
 }
 
+.submitrank{
+    border: none;
+    border-radius: 0.5vh;
+    width: 12.5vw;
+    height: 5ch;
+    background-color: #a14418;
+    height: 4vh;
+    font-size: 2vh;
+}
+
+.submitrank:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+
+.addrank2, .addrank3{
+    background-color: #a14418;
+    width: 8vw;
+    height: 5vh;
+    padding:1vh;
+    margin-top: 1vh;
+    margin: 2vh;
+    border: none;
+    border-radius: 0.5vh;
+    color: white;
+    
+}
+
+.addrank2{
+    margin-left: 0;
+}
+
+.addrank2:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
+.addrank3:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
+.rank2data, .rank3data{
+    background-color: rgb(48, 49, 49);
+    width: 15vw;
+    height: 16vh;
+    margin-right: 5vw;
+    border-radius: 1vh;
+    margin: 0;
+    margin-right: 5vw;
+    margin-bottom: 5vh;
+    padding: 1vh;
+    
+}
+
+.rank2data input{
+    width: 7vw;
+}
+
+.rank2data div{
+    display: flex;
+    justify-content: space-around;
+    align-content: baseline;
+}
+
+.rank2data button{
+    width: 6vw;
+    background-color: #a14418;
+    border: none;
+    border-radius: 0.5vh;
+}
+
+.rank2data button:hover{
+    cursor: pointer;
+    
+}
+
+.rank3data input{
+    width: 7vw;
+}
+
+.rank3data div{
+    display: flex;
+    justify-content: space-around;
+    align-content: baseline;
+}
+
+.rank3data button{
+    width: 6vw;
+    background-color: #a14418;
+    border: none;
+    border-radius: 0.5vh;
+}
+
+.rank3data button:hover{
+    cursor: pointer;
+    
+}
+
+.addrankcontainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 60vw;
+}
+
+.accordionbutton{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    font-size: 3vh;
+}
+
+.accordionbutton i {
+    color: #272121;
+    height: 4vh;
+    padding: 1vh;
+}
+
+.accordionbutton i:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
+
+.download-pdf{
+    background-color: transparent;
+    border: none;
+    font-size: 7vh;
+    text-align: left;
+    color: #a14418;
+    text-align: center;
+}
+
+.download-pdf:hover{
+    transform: scale(1.1);
+    transition: 0.5s;
+    cursor: pointer;
+
+}
+
+.letters{
+    display: flex;
+    flex-direction:column;
+    text-align: center;
+    width: 80%;
+}
+
+.letters select{
+    width: 80%;
+    border: none;
+    height: 4vh;
+    font-size: 2vh;
+    border-radius: 0.5vh;
+    padding: 0 1vh;
+    color: black;
+    margin: 0 auto;
+}
+
+.template-item{
+    background-color: #64635e;
+    min-height: 20vh;
+    max-height: fit-content;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    
+    margin: 2vh 0;
+    border-radius: 0.5vh;
+    padding: 2vh;
+
+}
+
+.template-item h2{
+    margin: 0;
+    width: 15vw;
+}
+
+.template-item h3{
+    margin: 0;
+    width: 60vw;
+}
+
+.template-item button{
+    height: 7vh;
+    width: 7vh;
+    font-size: 5vh;
+    background-color: transparent;
+    border: none;
+    
+}
+
+.template-item button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
+.letterlogscontainer{
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    
+}
+
+.letterlogscontainer div{
+    width: 90%;
+    font-size: 1.5vh;
+}
+
+.letterlogscontainer div h3{
+    color: black;
+}
+
+
+
+.statusselect{
+    margin: 1vh 0;
+}
+
+.acq{
+    height: fit-content;
+    display: flex;
+    
+    
+}
+
+.acq label{
+    color: black;
+    margin-right: 0.2vh;
+}
+
+.acq h1{
+    color: black;
+    margin-right: 0.2vh;
+    font-weight: 600;
+    font-size: 3vh;
+}
+
+.acq .contrast{
+    padding: 1vh;
+    width: 19vw;
+}
+
+.acq div div{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin: 1vh 0;
+}
+
+.acq div input[type=text]{
+    width: 5vw;
+    border: none;
+    height: 4vh;
+    font-size: 2vh;
+    border-radius: 0.5vh;
+    padding: 0 1vh;
+}
+
+.acq button{
+    border: none;
+    border-radius: 0.5vh;
+    width: 80%;
+    height: 5vh;
+    background-color: #a14418;
+    margin-top: 1vh;
+
+}
+
+.acq button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
+.pdf-up{
+    color:#a14418;
+    font-size: 3vh;
+
+}
+
+.pdf-up:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+/* manager item*//* manager item*//* manager item*//* manager item*//* manager item*//* manager item*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* login page *//* login page *//* login page *//* login page *//* login page *//* login page *//* login page *//* login page *//* login page *//* login page */
+.login{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width: 99vw;
+    height: 99vh;
+}
+
+.janela-login{
+    background-color: #a14418;
+    border-radius: 1vh;
+    padding: 2vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25vw;
+    box-shadow:  6px -4px 15px black;
+}
+
+.janela-login div{
+    width: 20vw;
+}
+
+.login-form div{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1vh;
+    align-items: center;
+    width: 100%;
+}
+
+.login-form input{
+    border: none;
+    background-color: white;
+    border-radius: 3px;
+    color: rgb(0, 0, 0);
+    font-size: 2vh;
+    width: 50%;
+}
+
+.login-form label{
+    width: 49%;
+}
+
+.login-button{
+    text-align: center;
+    
+}
+
+.login-logo{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-logo img{
+    height: 8vh;
+}
+
+.login-logo h2{
+    margin-top: 3vh;
+}
+
+.login-form .login-button{
+    background-color: #272121;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 2vh 0;
+    margin-top: 2vh;
+    border-radius: 1vh;
+}
+
+.login-form .login-button:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+
+
+/* login page *//* login page *//* login page *//* login page *//* login page *//* login page *//* login page *//* login page *//* login page */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* SEARCH FORMS AND BUTTONS *//* SEARCH FORMS AND BUTTONS *//* SEARCH FORMS AND BUTTONS *//* SEARCH FORMS AND BUTTONS *//* SEARCH FORMS AND BUTTONS *//* SEARCH FORMS AND BUTTONS */
+
 .manager-window{
     margin-top: 10vh;
 }
@@ -476,39 +966,70 @@ form{
     transition: 0.5s;
 }
 
-
-/*new manager item*/
-
-
-.submitrank{
+.program input[type=text]{
     border: none;
-    border-radius: 0.5vh;
-    width: 12.5vw;
-    height: 5ch;
-    background-color: #a14418;
     height: 4vh;
     font-size: 2vh;
+    border-radius: 0.5vh;
+    padding: 0 1vh;
+    width: 10vw;
 }
 
-.submitrank:hover{
-    cursor: pointer;
-    transform: scale(1.05);
-    transition: 0.5s;
-}
-
-/*.columns input{
+.program input[type=date]{
     border: none;
-    border-bottom: 2px white solid;
-    background-color: transparent;
-    color: white;
+    height: 4vh;
     font-size: 2vh;
-    width: 12VW;
+    border-radius: 0.5vh;
+    padding: 0 1vh;
+    width: 10vw;
 }
-  
-.values li{
-    font-size: 2vh;
-}*/
 
+.program input[type=file]{
+    display: none;
+}
+
+.program textarea{
+    width: 100%;
+    border: none;
+}
+
+
+/* SEARCH FORMS AND BUTTONS *//* SEARCH FORMS AND BUTTONS *//* SEARCH FORMS AND BUTTONS *//* SEARCH FORMS AND BUTTONS *//* SEARCH FORMS AND BUTTONS */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* MANAGE USERS *//* MANAGE USERS *//* MANAGE USERS *//* MANAGE USERS *//* MANAGE USERS *//* MANAGE USERS *//* MANAGE USERS *//* MANAGE USERS *//* MANAGE USERS *//* MANAGE USERS */
 .register-program{
     width: 95%;
     display: flex;
@@ -564,6 +1085,74 @@ form{
     transition: 0.5s;
 }
 
+.manage-users input{
+    margin-bottom: 1.5vh;
+    margin-top: 0.5vh;
+}
+
+.manage-users select{
+    margin-bottom: 1.5vh;
+    margin-top: 0.5vh;
+    color: black;
+}
+
+.user-item{
+    width: 100%;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    background-color: #64635e;
+    margin: 2vh 0;
+    padding: 2vh;
+    border-radius: 0.5vh;
+}
+
+.user-item h2{
+    width: 24%;
+}
+
+.user-item h3{
+    width: 24%;
+}
+
+.user-item button{
+    background-color: transparent;
+    font-size: 3vh;
+    border: none;
+}
+
+.user-item button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
+/* MANAGE USERS *//* MANAGE USERS *//* MANAGE USERS *//* MANAGE USERS *//* MANAGE USERS *//* MANAGE USERS *//* MANAGE USERS *//* MANAGE USERS *//* MANAGE USERS */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* MANAGER MAIN PAGE *//* MANAGER MAIN PAGE *//* MANAGER MAIN PAGE *//* MANAGER MAIN PAGE *//* MANAGER MAIN PAGE *//* MANAGER MAIN PAGE */
 .manager {
     padding-top: 15vh;
     
@@ -711,237 +1300,37 @@ body .closeButtonDiv button:hover{
     cursor: pointer;
 }
 
-#superusername{
-    border: none;
-    border-bottom: 1px white solid;
-    background-color: transparent;
-    color: white;
-    font-size: 2vh;
-}
-
-.addrank2, .addrank3{
-    background-color: #a14418;
-    width: 8vw;
-    height: 5vh;
-    padding:1vh;
-    margin-top: 1vh;
-    margin: 2vh;
-    border: none;
-    border-radius: 0.5vh;
-    color: white;
-    
-}
-
-.addrank2{
-    margin-left: 0;
-}
-
-.addrank2:hover{
-    cursor: pointer;
-    transform: scale(1.1);
-    transition: 0.5s;
-}
-
-.addrank3:hover{
-    cursor: pointer;
-    transform: scale(1.1);
-    transition: 0.5s;
-}
-
-.rank2data, .rank3data{
-    background-color: rgb(48, 49, 49);
-    width: 15vw;
-    height: 16vh;
-    margin-right: 5vw;
-    border-radius: 1vh;
-    margin: 0;
-    margin-right: 5vw;
-    margin-bottom: 5vh;
-    padding: 1vh;
-    
-}
-
-.rank2data input{
-    width: 7vw;
-}
-
-.rank2data div{
-    display: flex;
-    justify-content: space-around;
-    align-content: baseline;
-}
-
-.rank2data button{
-    width: 6vw;
-    background-color: #a14418;
-    border: none;
-    border-radius: 0.5vh;
-}
-
-.rank2data button:hover{
-    cursor: pointer;
-    
-}
-
-.rank3data input{
-    width: 7vw;
-}
-
-.rank3data div{
-    display: flex;
-    justify-content: space-around;
-    align-content: baseline;
-}
-
-.rank3data button{
-    width: 6vw;
-    background-color: #a14418;
-    border: none;
-    border-radius: 0.5vh;
-}
-
-.rank3data button:hover{
-    cursor: pointer;
-    
-}
-
-.addrankcontainer{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    width: 60vw;
-}
-
-.titleslog{
-    display: flex;
-    justify-items: center;
-    justify-content: space-around;
-    width: 100%;
-    height: 3vh;
-    margin-bottom: 2vh;
-    margin-top: 12vh;
-}
-
-.titleslog li{
-    font-size: 3vh;
-}
-
-.log{
-    display: flex;
-    justify-items: center;
-    justify-content: space-around;
-    width: 100%;
-    height: 3vh;
-    background-color: #423f3f;
-    margin-bottom: 1vh;    
-}
-
-.log li{
-    width: 20%;
-}
-
-.accordionbutton{
-    width: 90%;
-    display: flex;
-    justify-content: center;
-    font-size: 3vh;
-}
-
-.accordionbutton i {
-    color: #272121;
-    height: 4vh;
-    padding: 1vh;
-}
-
-.accordionbutton i:hover{
-    cursor: pointer;
-    transform: scale(1.1);
-    transition: 0.5s;
-}
 
 
-/* login page */
-.login{
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    width: 99vw;
-    height: 99vh;
-}
 
-.janela-login{
-    background-color: #a14418;
-    border-radius: 1vh;
-    padding: 2vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 25vw;
-    box-shadow:  6px -4px 15px black;
-}
+/* MANAGER MAIN PAGE *//* MANAGER MAIN PAGE *//* MANAGER MAIN PAGE *//* MANAGER MAIN PAGE *//* MANAGER MAIN PAGE *//* MANAGER MAIN PAGE *//* MANAGER MAIN PAGE *//* MANAGER MAIN PAGE */
 
-.janela-login div{
-    width: 20vw;
-}
 
-.login-form div{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1vh;
-    align-items: center;
-    width: 100%;
-}
 
-.login-form input{
-    border: none;
-    background-color: transparent;
-    border-bottom: white 1px solid;
-    color: white;
-    font-size: 2vh;
-    width: 50%;
-}
 
-.login-form label{
-    width: 49%;
-}
 
-.login-button{
-    text-align: center;
-    
-}
 
-.login-logo{
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-}
 
-.login-logo img{
-    height: 8vh;
-}
 
-.login-logo h2{
-    margin-top: 3vh;
-}
 
-.login-form .login-button{
-    background-color: #272121;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 2vh 0;
-    margin-top: 2vh;
-    border-radius: 1vh;
-}
 
-.login-form .login-button:hover{
-    cursor: pointer;
-    transform: scale(1.05);
-    transition: 0.5s;
-}
-/* metrics */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* metrics *//* metrics *//* metrics *//* metrics *//* metrics *//* metrics *//* metrics *//* metrics *//* metrics *//* metrics *//* metrics *//* metrics *//* metrics */
 .pizzas{
     display: flex;
     
@@ -980,122 +1369,38 @@ body .closeButtonDiv button:hover{
     margin-bottom: 1vh;
 }
 
-.download-pdf{
-    background-color: transparent;
-    border: none;
-    font-size: 7vh;
-    text-align: left;
-    color: #a14418;
-    text-align: center;
-}
 
-.download-pdf:hover{
-    transform: scale(1.1);
-    transition: 0.5s;
-    cursor: pointer;
 
-}
+/* metrics *//* metrics *//* metrics *//* metrics *//* metrics *//* metrics *//* metrics *//* metrics *//* metrics *//* metrics *//* metrics *//* metrics *//* metrics *//* metrics *//* metrics */
 
-.letters{
-    display: flex;
-    flex-direction:column;
-    text-align: center;
-    width: 80%;
-}
 
-.letters select{
-    width: 80%;
-    border: none;
-    height: 4vh;
-    font-size: 2vh;
-    border-radius: 0.5vh;
-    padding: 0 1vh;
-    color: black;
-    margin: 0 auto;
-}
 
-.template-item{
-    background-color: #64635e;
-    min-height: 20vh;
-    max-height: fit-content;
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    
-    margin: 2vh 0;
-    border-radius: 0.5vh;
-    padding: 2vh;
 
-}
 
-.template-item h2{
-    margin: 0;
-    width: 15vw;
-}
 
-.template-item h3{
-    margin: 0;
-    width: 60vw;
-}
 
-.template-item button{
-    height: 7vh;
-    width: 7vh;
-    font-size: 5vh;
-    background-color: transparent;
-    border: none;
-    
-}
 
-.template-item button:hover{
-    cursor: pointer;
-    transform: scale(1.1);
-    transition: 0.5s;
-}
 
-.manage-users input{
-    margin-bottom: 1.5vh;
-    margin-top: 0.5vh;
-}
 
-.manage-users select{
-    margin-bottom: 1.5vh;
-    margin-top: 0.5vh;
-    color: black;
-}
 
-.user-item{
-    width: 100%;
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    background-color: #64635e;
-    margin: 2vh 0;
-    padding: 2vh;
-    border-radius: 0.5vh;
-}
 
-.user-item h2{
-    width: 24%;
-}
 
-.user-item h3{
-    width: 24%;
-}
 
-.user-item button{
-    background-color: transparent;
-    font-size: 3vh;
-    border: none;
-}
 
-.user-item button:hover{
-    cursor: pointer;
-    transform: scale(1.1);
-    transition: 0.5s;
-}
 
+
+
+
+
+
+
+
+
+
+
+
+
+/* LETTER TEMPLATES PAGE*//* LETTER TEMPLATES PAGE*//* LETTER TEMPLATES PAGE*//* LETTER TEMPLATES PAGE*//* LETTER TEMPLATES PAGE*//* LETTER TEMPLATES PAGE*//* LETTER TEMPLATES PAGE*//* LETTER TEMPLATES PAGE*/
 .manager-item div .letters{
     display: flex;
     flex-direction: column;
@@ -1153,93 +1458,37 @@ body .closeButtonDiv button:hover{
     cursor: pointer;
 }
 
-.letterlogscontainer{
-    display: flex;
-    flex-direction: column;
-    overflow: scroll;
-    
-}
 
-.letterlogscontainer div{
-    width: 90%;
-    font-size: 1.5vh;
-}
+/* LETTER TEMPLATES PAGE*//* LETTER TEMPLATES PAGE*//* LETTER TEMPLATES PAGE*//* LETTER TEMPLATES PAGE*//* LETTER TEMPLATES PAGE*//* LETTER TEMPLATES PAGE*/
 
-.letterlogscontainer div h3{
-    color: black;
-}
 
-.statusselect{
-    margin: 1vh 0;
-}
 
-.acq{
-    height: fit-content;
-    display: flex;
-    
-    
-}
 
-.acq label{
-    color: black;
-    margin-right: 0.2vh;
-}
 
-.acq h1{
-    color: black;
-    margin-right: 0.2vh;
-    font-weight: 600;
-    font-size: 3vh;
-}
 
-.acq .contrast{
-    padding: 1vh;
-    width: 19vw;
-}
 
-.acq div div{
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-    margin: 1vh 0;
-}
 
-.acq div input[type=text]{
-    width: 5vw;
-    border: none;
-    height: 4vh;
-    font-size: 2vh;
-    border-radius: 0.5vh;
-    padding: 0 1vh;
-}
 
-.acq button{
-    border: none;
-    border-radius: 0.5vh;
-    width: 80%;
-    height: 5vh;
-    background-color: #a14418;
-    margin-top: 1vh;
 
-}
 
-.acq button:hover{
-    cursor: pointer;
-    transform: scale(1.1);
-    transition: 0.5s;
-}
 
-.pdf-up{
-    color:#a14418;
-    font-size: 3vh;
 
-}
 
-.pdf-up:hover{
-    cursor: pointer;
-    transform: scale(1.1);
-    transition: 0.5s;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* PARCEL LIST MANAGER PAGE *//* PARCEL LIST MANAGER PAGE *//* PARCEL LIST MANAGER PAGE *//* PARCEL LIST MANAGER PAGE *//* PARCEL LIST MANAGER PAGE */
 
 .plusDiv{
     background-color: rgba(255, 255, 255, 0.054);
@@ -1307,38 +1556,192 @@ body .closeButtonDiv button:hover{
     width: 6vw;
 }
 
-.program input[type=text]{
-    border: none;
-    height: 4vh;
+
+/* PARCEL LIST MANAGER PAGE *//* PARCEL LIST MANAGER PAGE *//* PARCEL LIST MANAGER PAGE *//* PARCEL LIST MANAGER PAGE *//* PARCEL LIST MANAGER PAGE */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*COUNTY STATUS*//*COUNTY STATUS*//*COUNTY STATUS*//*COUNTY STATUS*//*COUNTY STATUS*//*COUNTY STATUS*//*COUNTY STATUS*//*COUNTY STATUS*//*COUNTY STATUS*//*COUNTY STATUS*/
+
+.countystatus-container {
+    margin: 1vh;
+    margin-top: 10vh;
+    width: 95vw;
+    height: 80vh;
+
+    display: flex;
+    flex-direction: row;
+    
+    
+}
+
+.states-container{
+    overflow-y: scroll;
+    height: 100%;
+    width: 20vw;
+    padding: 1vh;
+    margin-right: 3vh;
+    border-radius: 3px;
+}
+
+.state {
+    background-color: #64635e;
+    margin: 1vh 0;
+    padding: 1vh;
+    border-radius: 3px;
+    
+}
+
+.state:hover{
+    transform: scale(1.02);
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.counties-container{
+    overflow-y: scroll;
+    height: 100%;
+    width: 20vw;
+    padding: 1vh;
+    margin-right: 3vh;
+    border-radius: 3px;
+    
+}
+
+.county {
+    background-color: #64635e;
+    margin: 1vh 0;
+    padding: 1vh;
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.county:hover{
+    transform: scale(1.02);
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.county-window{
+    width: 50vw;
+    height: 80vh;
+    background-color: #64635e;
+    border-radius: 3px;
+    padding: 1vh;
+}
+
+.county-window h2{
+    margin-bottom: 1vh;
+}
+
+.insert-file{
+    margin-top: 4vh;
+}
+
+
+.insert-file label{
+    background-color: #a14418;
+    padding: 1vh 5vh;
+    border-radius: 3px;
     font-size: 2vh;
-    border-radius: 0.5vh;
-    padding: 0 1vh;
-    width: 10vw;
 }
 
-.program input[type=date]{
+.insert-file label:hover{
+    cursor: pointer;
+}
+
+.insert-file input{
     border: none;
+    border-radius: 3px;
     height: 4vh;
-    font-size: 2vh;
-    border-radius: 0.5vh;
-    padding: 0 1vh;
-    width: 10vw;
+
 }
 
-.program input[type=file]{
-    display: none;
-}
-
-.program textarea{
-    width: 100%;
+.insert-file button{
+    background-color: #a14418;
+    padding: 1vh 5vh;
     border: none;
+    border-radius: 3px;
+    font-size: 2vh;
 }
 
-.program-calendar{
-    padding-left: 0;
+.insert-file button:hover{
+    cursor: pointer;
 }
 
-.process{
-    display: none;
+
+.check-done{
+    margin-top: 4vh;
 }
 
+
+.check-done button{
+    background-color: #a14418;
+    padding: 1vh;
+    width: 9vw;
+    border: none;
+    border-radius: 3px;
+    font-size: 2vh;
+}
+
+.check-done button:hover{
+    cursor: pointer;
+}
+
+.directory{
+    margin-top: 4vh;
+}
+
+.directory .pdf-directory-container{
+    background-color: rgba(255, 255, 255, 0.197);
+    width: 98%;
+    height: 38vh;
+    border-radius: 3px;
+    padding: 1vh;
+}
+
+.county-window-line{
+    display: flex;
+}
+
+.pdf-item{
+    width: 98%;
+    padding: 1vh;
+    background-color: #969695;
+
+    display: flex;
+    justify-content: space-between;
+
+    border-radius: 3px;
+}
+
+.pdf-item:hover{
+    transform: scale(1.005);
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+
+
+
+/*COUNTY STATUS*//*COUNTY STATUS*//*COUNTY STATUS*//*COUNTY STATUS*//*COUNTY STATUS*//*COUNTY STATUS*//*COUNTY STATUS*//*COUNTY STATUS*//*COUNTY STATUS*/

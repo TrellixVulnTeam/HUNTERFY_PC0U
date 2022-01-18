@@ -123,8 +123,9 @@ module.exports = app => {
         res.render('searchbyrankandcounty.ejs', {user : req.session.user})
     })
 
-
-
+    app.get('/countystatus',  async(req, res)=>{
+        res.render('countystatus.ejs', {user : req.session.user})
+    })
 
         //GET FUNCTIONS
     app.get('/getallusers', (req, res) => {
@@ -143,7 +144,7 @@ module.exports = app => {
             const day = ("0" + date.getDate()).slice(-2)
             const month = ("0" + (date.getMonth() + 1)).slice(-2)
             const yyyymmdd = `${date.getFullYear()}-${month}-${day}`
-            console.log(yyyymmdd)
+            //console.log(yyyymmdd)
             const result = await pgProgram.dailySearch(req.session.user, yyyymmdd)
             const resultRowCount = `{"rowCount":"${result.rowCount}"}`
             res.send(resultRowCount)
@@ -206,10 +207,12 @@ module.exports = app => {
     })
 
     
+
+    
     //POSTS----------------------->
     app.post('/getallchecked', async(req, res)=>{
         try{
-            console.log(req.body)
+            //console.log(req.body)
             const result = await searchByChecked(req, res)
             res.send(result.rows)
         }
@@ -421,7 +424,7 @@ module.exports = app => {
             const date = new Date(req.body.date)
             const month = date.getMonth()+1
             const result = await pgProgram.parcelLogsSearch(req.body.user, month)//month
-            console.log(result)
+            //console.log(result)
             res.send(result.rows)
         }
         catch(err){
@@ -448,7 +451,7 @@ module.exports = app => {
         const info = await req.body
         const count = await pgProgram.dailyCount(info.user, info.date)
         const countStr = `${count}`
-        console.log(countStr)
+        //console.log(countStr)
         res.send(countStr)
     })
 
@@ -456,12 +459,12 @@ module.exports = app => {
         const info = await req.body
         const count = await pgProgram.rankCount(info.rank, info.date ,info.ranktype)
         const countStr = `${count}`
-        console.log(countStr)
+        //console.log(countStr)
         res.send(countStr)
     })
 
     app.post('/dailyCountyCount', async(req, res)=>{
-        console.log(req.body)
+        //console.log(req.body)
         const count = await pgProgram.countyCount(req.body.county, req.body.state)
         res.send(count[0].count)
     })
@@ -469,14 +472,14 @@ module.exports = app => {
     app.post('/dailyCheckedCount', async(req, res)=>{
         const count = await pgProgram.checkedCount(req)
         const countStr = `${count}`
-        console.log(countStr)
+        //console.log(countStr)
         res.send(countStr)
     })
 
     app.post('/countyandrankcount', async(req, res)=>{
         const count = await pgProgram.countyRankCount(req.body.rank, req.body.ranktype, req.body.state, req.body.county)
         const countStr = `${count}`
-        console.log(countStr)
+        //console.log(countStr)
         res.send(countStr)
     })
 
@@ -503,7 +506,7 @@ module.exports = app => {
         const info = await req.body
         const count = await pgProgram.typeCount(info.listtype, info.date)
         const countStr = `${count}`
-        console.log(countStr)
+        //console.log(countStr)
         res.send(countStr)
     })
 
@@ -605,10 +608,39 @@ module.exports = app => {
     })
 
     app.post('/saveCalendar', async(req, res)=>{
-        console.log(req.body)
+        //console.log(req.body)
         const str = JSON.stringify(req.body)
-        console.log(str)
+        //console.log(str)
         await pgProgram.updateCalendar(str)
     })
+
+    app.post('/savePDFondirectory', async(req, res)=>{
+        console.log('pdf saved')
+        await pgProgram.saveOnPDFDirectory(req.body.state, req.body.county, req.body.pdf, req.body.title)
+    })
+
+    app.post('/getdirectorylist', async(req, res)=>{
+        const result = await pgProgram.getDirectoryList(req.body.state, req.body.county)
+        res.send(result.rows)
+    })
+
+    app.post('/downloaddirectorypdf', async(req, res)=>{
+        const result = await pgProgram.getDirectoryPDFFile(req.body.state, req.body.county, req.body.title)
+        res.send(result.rows[0])
+    })
+
+    app.post('/directorycheckdone', async(req, res)=>{
+        const result = await pgProgram.directoryCheckDone(req.body.state, req.body.county)
+    })
+
+    app.post('/directoryuncheckdone', async(req, res)=>{
+        const result = await pgProgram.directoryUncheckDone(req.body.state, req.body.county)
+    })
+
+    app.post('/seeifisdone', async(req, res)=>{
+        const result = await pgProgram.checkAllDirectoryDone()
+        res.send(result)
+    })
+
 }
 //

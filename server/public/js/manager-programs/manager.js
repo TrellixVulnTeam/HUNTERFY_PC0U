@@ -518,7 +518,7 @@ function showLetterLog(element, container){
 }
 
 function convertToBase64(element) {
-    console.log(element)
+    
     //Read File
     var selectedFile = element.files;
     //Check File is not Empty
