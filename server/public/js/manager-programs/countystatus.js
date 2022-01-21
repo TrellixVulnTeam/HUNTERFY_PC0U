@@ -107,14 +107,22 @@ async function loadCountyInfo(element){
             <div class="county-window-line"><h2>County: </h2> <h2 id="county-content">${county}</h2></div>
             <div><h2>Total: ${total}</h2></div>
             <div class="insert-file">
-                <div><h2>Insert PDF file:</h2><div>
+                <div><h2>Insert PDF title:</h2><div>
                 <div class="insert-file-menu">
                     <input type="text" id="title-input">
-                    <label for="pdf-input"><i class="far fa-file"></i></label>
-                    <input type="file" style="display:none;" name="pdf-input" id="pdf-input" onchange="convertToBase64(this)">
-                    <button onclick="sendPdf(this)"><i class="fas fa-share"></i></button>
+                    
+                    <div style="margin-top:1vh;"><h2>Source link:</h2><input type="text" id="link-input"></div>
+
+
+
+
+                    <div style="margin-top:1vh;">
+                        <input type="file" style="display:none;" name="pdf-input" id="pdf-input" onchange="convertToBase64(this)">
+                        <label for="pdf-input"><i class="far fa-file"></i></label>
+                        <button onclick="sendPdf(this)"><i class="fas fa-share"></i></button>
+                    </div>
                 </div>
-                <div style="margin-top:1vh;"><h2>Source link:</h2><input type="text" id="link-input"></div>
+                
             </div>
 
             <div class="check-done">
@@ -164,10 +172,14 @@ async function showDirectoryList(){
 function showDirectoryItem(title, date, link){
     var novoItem = document.createElement("div")
     novoItem.innerHTML = `
-        <div class="pdf-item" onclick="downloadPdf(this)">
+        <div class="pdf-item">
             <div><h2>${title}</h2></div>
             <div><h2>${link}</h2></div>
             <div><h2>${mmddyyyyFormat(date)}</h2></div>
+            <div class="directory-buttons-container">
+                <button onclick="downloadPdf(this)"><h2><i class="fas fa-download"></i></h2></button>
+                <button onclick="deletePdf(this)"><h2><i class="fas fa-trash"></i></h2></button>
+            </div>
         </div>
     `
     const container = document.querySelector('.pdf-directory-container')
@@ -223,7 +235,9 @@ async function sendPdf(element){
 }
 
 async function downloadPdf(element){
-    const title = element.children[0].children[0].innerHTML
+    console.log(element.parentElement.parentElement.parentElement)
+    const title = element.parentElement.parentElement.children[0].children[0].innerHTML
+    
     const state = document.querySelector('#state-content').innerHTML
     const county = document.querySelector('#county-content').innerHTML
 
@@ -248,6 +262,25 @@ function savePdfFileOnComputer(pdf, title) {
     downloadLink.href = linkSource;
     downloadLink.download = fileName;
     downloadLink.click();
+}
+
+async function deletePdf(element){
+    console.log(element.parentElement.parentElement.parentElement)
+    const title = element.parentElement.parentElement.children[0].children[0].innerHTML
+    
+    const state = document.querySelector('#state-content').innerHTML
+    const county = document.querySelector('#county-content').innerHTML
+
+    const str = `
+    {
+        "state":"${state}",
+        "county":"${county}",
+        "title":"${title}"
+    }
+`
+    const json = JSON.parse(str)
+    const result = await postData(json, '/deletedirectorypdf').then(alert('Deleted'))
+    console.log(result)
 }
 
 function mmddyyyyFormat(dateCont){

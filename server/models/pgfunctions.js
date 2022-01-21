@@ -652,7 +652,7 @@ class pgProgram{
         const rank3 = req.body
         let insertQuery = `
             UPDATE public."2021-data"
-            SET rank3='${rank3.rank3}', userrank3='${rank3.userrank3}', obs3='${rank3.obs3}', buyopt='${rank3.buyopt}', flow='${rank3.flow}'contu
+            SET rank3='${rank3.rank3}', userrank3='${rank3.userrank3}', obs3='${rank3.obs3}', buyopt='${rank3.buyopt}', flow='${rank3.flow}'
             WHERE parcelid='${rank3.parcelid}' AND state = '${rank3.state}' AND county = '${rank3.county}';  
         `
         dbClient.query(insertQuery, (err, result)=>{
@@ -1208,6 +1208,19 @@ class pgProgram{
         const selectQuery = `
         SELECT pdf
         FROM public.pdfdirectory
+        WHERE state = '${state}' AND county = '${county}' AND title = '${title}';
+        `
+        try{
+            const result = await dbClient.query(selectQuery)
+            dbClient.end;
+            return result
+        }
+        catch(err){console.log(err)}
+    }
+
+    async deleteDirectoryPDFFile(state, county, title){
+        const selectQuery = `
+        DELETE FROM public.pdfdirectory
         WHERE state = '${state}' AND county = '${county}' AND title = '${title}';
         `
         try{

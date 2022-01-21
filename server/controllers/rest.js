@@ -629,6 +629,11 @@ module.exports = app => {
         res.send(result.rows[0])
     })
 
+    app.post('/deletedirectorypdf', async(req, res)=>{
+        const result = await pgProgram.deleteDirectoryPDFFile(req.body.state, req.body.county, req.body.title)
+        res.send(result.rows[0])
+    })
+
     app.post('/directorycheckdone', async(req, res)=>{
         const result = await pgProgram.directoryCheckDone(req.body.state, req.body.county)
     })

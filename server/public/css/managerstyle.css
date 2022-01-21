@@ -1715,9 +1715,11 @@ body .closeButtonDiv button:hover{
 .directory .pdf-directory-container{
     background-color: rgba(255, 255, 255, 0.197);
     width: 98%;
-    height: 30vh;
+    height: 25vh;
     border-radius: 3px;
     padding: 1vh;
+
+    overflow-y: scroll;
 }
 
 .county-window-line{
@@ -1728,17 +1730,36 @@ body .closeButtonDiv button:hover{
     width: 98%;
     padding: 1vh;
     background-color: #969695;
+    margin: 1vh 0;
 
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     border-radius: 3px;
 }
 
-.pdf-item:hover{
-    transform: scale(1.005);
+.pdf-item div{
+    width: 25%;
+}
+
+.pdf-item button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+    margin: 0.5vh;
+}
+
+.pdf-item button:hover{
+    transform: scale(1.1);
     transition: 0.2s;
     cursor: pointer;
+}
+
+.directory-buttons-container{
+    display: flex;
+    align-items: center;
 }
 
 
