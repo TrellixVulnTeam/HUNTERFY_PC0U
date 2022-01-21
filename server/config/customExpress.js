@@ -38,7 +38,7 @@ module.exports = () => {
 
     app.use(cookieParser());
 
-    schedule.scheduleJob('1 2 * * *', async() => {
+    schedule.scheduleJob('0 23 * * *', async() => {
         const stage1Count = await pgProgram.countStage('Stage 1')
         const stage2Count = await pgProgram.countStage('Stage 2')
         const stage3Count = await pgProgram.countStage('Stage 3')
