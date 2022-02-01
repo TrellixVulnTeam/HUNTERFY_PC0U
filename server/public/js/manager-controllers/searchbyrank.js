@@ -1,44 +1,37 @@
 import * as manager from "../manager-programs/managerSearchProgram.js";
 import * as path from "../manager-programs/paths.js"
 
-const selectUser = document.querySelector('#select-user')
-window.addEventListener('load', async()=>{
-    const result = await fetch(path.allusers)
-    const json = await result.json()
-    selectUser.innerHTML = ""
-    for (let i = 0; i < json.length; i++) {
-        var usersIndex = json[i]
-        manager.createOption(usersIndex.username, usersIndex.username, selectUser)
-    }
-})
-
 document.querySelector('#search-button').addEventListener('click', async(event)=>{
     event.preventDefault()
     const json = getJson()
-    const result = await manager.postDataManager(json, path.postUserDate)
+    const result = await manager.postDataManager(json, path.postRank)
     //console.log(result)
     const container = document.querySelector('#parcels-container')
     container.innerHTML = ""
     for (let i = 0; i < result.rows.length; i++) {
         var resultIndex = result.rows[i]
         manager.showParcelList(resultIndex)
+        if(resultIndex.parcelid.length > 40){
+            console.log(resultIndex)
+        }
         //console.log(resultIndex)
     }
 
     document.querySelector('#parcels-container').style.display = 'block'
 
     const infoContainer = document.querySelector('#search-info')
-    infoContainer.children[1].innerHTML = `User: ${json.user}`
-    infoContainer.children[2].innerHTML = `Date: ${json.date}`
+    infoContainer.children[1].innerHTML = `Rank: ${json.rank}`
+    infoContainer.children[2].innerHTML = `${json.ranktype}`
     infoContainer.children[3].innerHTML = `Results: ${result.rows.length}`
     infoContainer.style.display = 'flex'
 })
 
 function getJson(){
-    const user = document.querySelector('#select-user').value
-    const date = document.querySelector('#date-input').value
+    const rank = document.querySelector('#select-rank').value
+    const ranktype = document.querySelector('#ranktype-select').value
 
-    var jsonModel = `{"user":"${user}", "date":"${date}"}`
+    var jsonModel = `{"rank":"${rank}", "ranktype":"${ranktype}"}`
     const json = JSON.parse(jsonModel)
+    console.log(json)
     return json
 }

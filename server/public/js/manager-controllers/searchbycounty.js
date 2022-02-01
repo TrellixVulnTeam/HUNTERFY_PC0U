@@ -1,74 +1,57 @@
-document.querySelector('.search-button').addEventListener("click", async(event)=>{
-    event.preventDefault()
-    const json = await getJson()	
-    buildPage(getJson());
-    await getTotal(json)
-    const result = await postDataManager(json, '/searchbycounty')
-    document.querySelector('.loading-text').style.display = 'none'
-    for (var i = 0; i < result.length; i++) {
-        var index = result[i]
-        createItem(index)
+import * as manager from "../manager-programs/managerSearchProgram.js";
+import * as path from "../manager-programs/paths.js"
+
+const selectState = document.querySelector('#select-state')
+window.addEventListener('load', async()=>{
+    const result = await fetch(path.getStates)
+    const json = await result.json()
+    const container = document.querySelector('#select-state')
+    //console.log(json)
+    selectState.innerHTML = ""
+    for (let i = 0; i < json.features.length; i++) {
+        var statesIndex = json.features[i]
+        //console.log(statesIndex.properties)
+        
+        manager.createOption(statesIndex.properties.NAME, statesIndex.properties.STATE, container)
     }
 })
 
-document.querySelector('.generate-letter').addEventListener("click", async(event)=>{
+selectState.addEventListener('change', async()=>{
+    manager.loadCounties()
+})
+
+document.querySelector('#search-button').addEventListener('click', async(event)=>{
     event.preventDefault()
-    const itens = document.querySelectorAll('.manager-item')
-    for (let i = 0; i < itens.length; i++) {
-        var itemIndex = itens[i]
-        runDocxAll(itemIndex)
+    const json = getJson()
+    const result = await manager.postDataManager(json, path.postCounty)
+    const container = document.querySelector('#parcels-container')
+    console.log(result)
+    container.innerHTML = ""
+    for (let i = 0; i < result.rows.length; i++) {
+        var resultIndex = result.rows[i]
+        manager.showParcelList(resultIndex)
+        if(resultIndex.parcelid.length > 40){
+            console.log(resultIndex)
+        }
     }
 
+    document.querySelector('#parcels-container').style.display = 'block'
+    const infoContainer = document.querySelector('#search-info')
+    infoContainer.children[1].innerHTML = `State: ${json.state}`
+    infoContainer.children[2].innerHTML = `County: ${json.county}`
+    infoContainer.children[3].innerHTML = `Results: ${result.rows.length}`
+    infoContainer.style.display = 'flex'
 })
+
+//////////////////////////////////////////////////////////////////////////////
 
 function getJson(){
-    const state = document.querySelector('#stateinput').value
-    const county = document.querySelector('#countyinput').value
-    const page = document.querySelector('#page').value
-    const jsonModelParcel = `{"county":"${county}", "page":"${page}", "state":"${state}"}`
-    const json = JSON.parse(jsonModelParcel)
-    console.log(json)
+    const stateSelect = document.querySelector('#select-state')
+    const state = stateSelect.options[stateSelect.selectedIndex].innerHTML
+    const county = document.querySelector('#select-county').value
+
+    var jsonModel = `{"county":"${county}", "state":"${state}"}`
+    const json = JSON.parse(jsonModel)
     return json
 }
 
-async function getTotal(json){
-    try{
-        const options = {
-            method: 'POST',
-            headers:{
-                'Content-Type':'application/json'
-            },
-            body: JSON.stringify(json)
-        }
-        const rawResponse = await fetch('/dailyCountyCount', options)
-        const content = await rawResponse.json();
-        console.log(content)
-        const totalH2 = document.querySelector('.production-count')
-        const pageCount = document.querySelector('.page-count')
-
-        totalH2.innerHTML = `Total:${content}`
-        pageCount.innerHTML = `${Math.ceil(content/10)} pages`
-    }
-    catch(err){
-        console.log(err)
-    }
-}
-
-//<h2 class="username">Rank: ${json.county}</h2>
-async function buildPage(json){
-    var createItem = `
-            <div class="itens-container" style="margin-top: 10vh">
-            <h2 class="production-count"></h2>
-            <h2>Displaying 10 itens</h2>
-            <h2 class="page-count"></h2>
-            <h2 class="loading-text">Loading...</h2>
-               
-           </div>
-    `
-    var sectionPrograma = document.querySelector('.program')
-    sectionPrograma.innerHTML = createItem
-}
-
-
-
-    

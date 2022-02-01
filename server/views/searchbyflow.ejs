@@ -26,41 +26,42 @@
             </div>
         </div>
     </header>
-    <section class="controller janela">
-             <form id="search-form">
-                <h2>Search</h2>
-                <div>
-                    <label for="parcel">By Flow:</label>
-                    <select id="flowOptions">
-                        <option value="">--</option>
-                        <option value="Stage 1">Stage 1</option>
-                        <option value="Stage 2">Stage 2</option>
-                        <option value="Stage 3">Stage 3</option>
-                        <option value="Purchased">Purchased property</option>
-                        <option value="Sold">Property sold</option>
-                    </select>
-                </div>
-                <div><label>Page:</label><input value="1" type="number" id="page" name=""></div>
-                <button class="search-button">SEARCH</button>
+    <section class="janela">
+        <div id="program-container">
+            <div id="search-container">
+                <form id="search-form">
+                    <div><h2>Search By Rank:</h2></div>
+                    <div>
+                        <label for="">Flow Stage:</label>
+                        <select name="" id="select-stage">
+                            <option value="Stage 1">Stage 1</option>
+                            <option value="Stage 2">Stage 2</option>
+                            <option value="Stage 3">Stage 3</option>
 
-                <h2>Generate Letters For All Parcels</h2>
-                <div>
-                    <label for="">Template:</label>
-                    <select name="" id="templateforall" onfocus="loadTemplates(this)">
-                        <option value="">--</option>
-                    </select>
-                </div>
-                <button class="generate-letter">GENERATE FOR ALL</button>
-            </form>
-    </section>
-    <section class="program janela">
-        <h2 class="username"></h2>
-        <div class="itens-container">
+                        </select>
+                    </div>
+
+                    <div><button id="search-button">SEARCH</button></div>
+                    <div id="search-info" style="display: none;">
+                        <h2>Info:</h2>
+                        <h3></h3>
+                        <h3></h3>
+                        <h3></h3>
+
+                    </div>
+                </form>
+            </div>
+
+            <div id="parcels-container" style="display: none;">
+            </div>
+
+            <div id="result-container">
+            </div>
         </div>
     </section>
 
-    <script src="js/manager-programs/manager.js" async></script>
-    <script src="js/manager-controllers/searchbyflow.js" async></script>
-    <script src="js/manager-programs/docx.js" async></script>
+    
+    <script src="js/manager-controllers/searchbyflow.js" async type="module"></script>
+    <script src="js/manager-programs/onclickevents.js"></script>
 </body>
 </html>

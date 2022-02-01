@@ -12,6 +12,8 @@
     <script src="https://kit.fontawesome.com/30836ed2bd.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/docx@7.1.0/build/index.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
+    
+
     <title>HUNTERFY MANAGER</title>
 </head>
 <body>
@@ -24,36 +26,52 @@
             </div>
         </div>
     </header>
-    <section class="controller janela">
-             <form id="search-form">
-                <h2>Search</h2>
-                <div><label for="user">By Rank:</label><input type="text" id="rank" name="rank"></div>
-                <div class="rankinput" name="ranktype"><h3>Rank type:</h3>
-                    <div><input type="radio" name="ranktype" value="rank1"><label for="">Rank 1</label></div>
-                    <div><input type="radio" name="ranktype" value="rank2"><label for="">Rank 2</label></div>
-                    <div><input type="radio" name="ranktype" value="rank3"><label for="">Rank 3</label></div>
-                </div>
-                <div style="display: none;"><label>And By Date:</label><input type="date" id="date" name=""></div>
-                <div><label>Page:</label><input value="1" type="number" id="page" name=""></div>
-                <button class="search-button">SEARCH</button>
+    <section class="janela">
+        <div id="program-container">
+            <div id="search-container">
+                <form id="search-form">
+                    <div><h2>Search By Rank:</h2></div>
+                    <div>
+                        <label for="">Rank:</label>
+                        <select name="" id="select-rank">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="HOUSE">HOUSE</option>
 
-                <h2>Generate Letters For All Parcels</h2>
-                <div>
-                    <label for="">Template:</label>
-                    <select name="" id="templateforall" onfocus="loadTemplates(this)">
-                        <option value="">--</option>
-                    </select>
-                </div>
-                <button class="generate-letter">GENERATE FOR ALL</button>
-            </form>
-    </section>
-    <section class="program janela">
-        <h2 class="username"></h2>
-        <div class="itens-container">
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="">On Which Rank:</label>
+                        <select name="" id="ranktype-select">
+                            <option value="rank1">Rank 1</option>
+                            <option value="rank2">Rank 2</option>
+                            <option value="rank3">Rank 3</option>
+                        </select>
+                    </div>
+
+                    <div><button id="search-button">SEARCH</button></div>
+                    <div id="search-info" style="display: none;">
+                        <h2>Info:</h2>
+                        <h3></h3>
+                        <h3></h3>
+                        <h3></h3>
+
+                    </div>
+                </form>
+            </div>
+
+            <div id="parcels-container" style="display: none;">
+            </div>
+
+            <div id="result-container">
+            </div>
         </div>
     </section>
-    <script src="js/manager-programs/manager.js" async></script>
-    <script src="js/manager-controllers/searchbyrankone.js" async></script>
-    <script src="js/manager-programs/docx.js" async></script>
+
+    
+    <script src="js/manager-controllers/searchbyrank.js" async type="module"></script>
+    <script src="js/manager-programs/onclickevents.js"></script>
 </body>
 </html>

@@ -1766,3 +1766,188 @@ body .closeButtonDiv button:hover{
 
 
 /*COUNTY STATUS*//*COUNTY STATUS*//*COUNTY STATUS*//*COUNTY STATUS*//*COUNTY STATUS*//*COUNTY STATUS*//*COUNTY STATUS*//*COUNTY STATUS*//*COUNTY STATUS*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM */
+
+#program-container{
+    height: 78vh;
+    width: 100%;
+    display: flex;
+    margin-top: 10vh;
+}
+
+#search-container {
+    background-color: #64635e;
+    width: fit-content;
+    height: 100%;
+
+    padding: 1vh 2vh;
+    border-radius: 3px;
+    margin-right: 3vh;
+}
+
+#parcels-container {
+    height: 100%;
+    width: fit-content;
+    overflow-y: scroll;
+    padding: 1vh 2vh;
+    border-radius: 3px;
+    margin-right: 3vh;
+    background-color: #64635e;
+    
+}
+
+#parcels-container div{
+    width: 20vw;
+    background-color: #ffffff16;
+    margin: 1vh 0;
+    border-radius: 3px;
+    padding: 1vh;
+}
+
+#parcels-container div:hover{
+    transform: scale(1.05);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+#parcels-container div h2{
+    margin: 0.5vh 0;
+}
+
+#result-container{
+    height: 78vh;
+    width: fit-content;
+    
+}
+
+
+#result-container{
+    flex-grow: 1;
+    margin-right: 2vw;
+    
+}
+
+#result-container .parcelbox{
+    background-color: #64635e;
+    height: 100%;
+    width: 100%;
+    padding: 1vh 2vh;
+    border-radius: 3px;
+    overflow-y: scroll;
+
+}
+
+.parcel-content h2{
+    font-size: 3vh;
+    margin: 0.5vh 0;
+}
+
+.parcel-content h3{
+    font-size: 2.3vh;
+    margin-bottom: 1vh;
+    margin-top: 3vh;
+}
+
+.parcel-content h4{
+    font-size: 1.8vh;
+    color: rgba(255, 255, 255, 0.537);
+}
+
+.parcel-content img{
+    margin-bottom: 2vh;
+    border-radius: 3px;
+}
+
+.parcel-content{
+    background-color: #ffffff16;
+    border-radius: 3px;
+    padding: 1vh;
+    margin: 1vh 0;
+
+}
+
+.parcel-content:hover{
+    cursor: pointer;
+    transform: scale(1.005);
+    transition: 0.2s;
+
+}
+
+.parcel-content input[type="text"]{
+    width: 10vw;
+    height: 4vh;
+    color: black;
+    border: none;
+    border-radius: 3px;
+    display: block;
+}
+
+.parcel-content button{
+    width: 10vw;
+    height: 4vh;
+    color: white;
+    background-color:#a14418;
+    border: none;
+    border-radius: 3px;
+    margin-top: 3vh;
+}
+
+.parcel-content button:hover{
+    transform: scale(1.05);
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.select-parcelbox{
+    width: 10vw;
+    height: 4vh;
+    color: black;
+    border: none;
+    border-radius: 3px;
+    display: block;
+}
+
+.acq-menu > input, button{
+    display: block;
+    margin: 0;
+    margin-top: 1vh;
+}
+
+#search-info{
+    width: 100%;
+    height: fit-content;
+    background-color: #ffffff16;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    padding-bottom: 1vh;
+}
+
+.parcellist-parcel h2{
+    width: 100%;
+    display: inline-block;
+}
+
+
+
+/*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM */

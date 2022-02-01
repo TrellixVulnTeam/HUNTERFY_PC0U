@@ -26,21 +26,37 @@
             </div>
         </div>
     </header>
-    <section class="controller janela">
-             <form id="search-form">
-                <h2>Search</h2>
-                <div><label for="parcel">By Parcel:</label><input type="text" id="parcelinput" name="parcel"></div>
-                <button class="search-button">SEARCH</button>
-            </form>
-    </section>
-    <section class="program janela">
-        <h2 class="username"></h2>
-        <div class="itens-container">
+    <section class="janela">
+        <div id="program-container">
+            <div id="search-container">
+                <form id="search-form">
+                    <div><h2>Search By Parcel:</h2></div>
+                    <div>
+                        <label for="">Parcel ID:</label>
+                        <input type="text" id="parcel-input">
+                    </div>
+
+                    <div><button id="search-button">SEARCH</button></div>
+                    <div id="search-info" style="display: none;">
+                        <h2>Info:</h2>
+                        <h3></h3>
+                        <h3></h3>
+                        <h3></h3>
+
+                    </div>
+                </form>
+            </div>
+
+            <div id="parcels-container" style="display: none;">
+            </div>
+
+            <div id="result-container">
+            </div>
         </div>
     </section>
 
-    <script src="js/manager-programs/manager.js" async></script>
-    <script src="js/manager-controllers/searchbyparcel.js" async></script>
-    <script src="js/manager-programs/docx.js" async></script>
+    
+    <script src="js/manager-controllers/searchbyparcel.js" async type="module"></script>
+    <script src="js/manager-programs/onclickevents.js"></script>
 </body>
 </html>

@@ -1,71 +1,59 @@
-document.querySelector('.search-button').addEventListener("click", async(event)=>{
-    event.preventDefault()
+import * as manager from "../manager-programs/managerSearchProgram.js";
+import * as path from "../manager-programs/paths.js"
 
-    const json = await getJson()	
-    buildPage(getJson());
-    await getTotal(json)
-    
-    const content = await postDataManager(json, '/searchbyrankandcounty')
-    document.querySelector('.loading-text').style.display = 'none'
-    for (var i = 0; i < content.length; i++) {
-        var contentIndex = content[i]
-        createItem(contentIndex)
+const selectState = document.querySelector('#select-state')
+window.addEventListener('load', async()=>{
+    const result = await fetch(path.getStates)
+    const json = await result.json()
+    //console.log(json)
+    selectState.innerHTML = ""
+    for (let i = 0; i < json.features.length; i++) {
+        var statesIndex = json.features[i]
+        //console.log(statesIndex.properties)
+        const container = document.querySelector('#select-state')
+        manager.createOption(statesIndex.properties.NAME, statesIndex.properties.STATE, container)
     }
 })
 
-async function getTotal(json){
-    try{
-        const options = {
-            method: 'POST',
-            headers:{
-                'Content-Type':'application/json'
-            },
-            body: JSON.stringify(json)
-        }
-        const rawResponse = await fetch('/countyandrankcount', options)
-        const content = await rawResponse.json();
+selectState.addEventListener('change', async()=>{
+    manager.loadCounties()
+})
 
-        const totalH2 = document.querySelector('.production-count')
-        const pageCount = document.querySelector('.page-count')
-
-        totalH2.innerHTML = `Total:${content}`
-        pageCount.innerHTML = `${Math.ceil(content/100)} pages`
-    }
-    catch(err){
-        console.log(err)
-    }
+document.querySelector('#search-button').addEventListener('click', async(event)=>{
+    event.preventDefault()
+    const json = getJson()
+    const result = await manager.postDataManager(json, path.searchCountyAndRank)
+    const container = document.querySelector('#parcels-container')
     
-}
+    container.innerHTML = ""
+    for (let i = 0; i < result.length; i++) {
+        var resultIndex = result[i]
+        manager.showParcelList(resultIndex)
+        if(resultIndex.parcelid.length > 40){
+            console.log(resultIndex)
+        }
+    }
+
+    document.querySelector('#parcels-container').style.display = 'block'
+    const infoContainer = document.querySelector('#search-info')
+    infoContainer.children[1].innerHTML = `State: ${json.state}`
+    infoContainer.children[2].innerHTML = `County: ${json.county}`
+    infoContainer.children[3].innerHTML = `Rank: ${json.rank} ${json.ranktype}`
+    infoContainer.children[4].innerHTML = `Results: ${result.length}`
+    infoContainer.style.display = 'flex'
+})
+
+//////////////////////////////////////////////////////////////////////////////
 
 function getJson(){
-    const state = document.querySelector('#stateinput').value
-    const county = document.querySelector('#countyinput').value
-    const rank = document.querySelector('#rank').value
-    const ranktype = document.querySelector('input[name="ranktype"]:checked').value
-    const page = document.querySelector('#page').value
+    const stateSelect = document.querySelector('#select-state')
+    const state = stateSelect.options[stateSelect.selectedIndex].innerHTML
+    const county = document.querySelector('#select-county').value
+    const rank = document.querySelector('#select-rank').value
+    const ranktype = document.querySelector('#ranktype-select').value
 
-    const jsonModelRank = `{"state":"${state}", "rank":"${rank}", "county":"${county}", "page":"${page}", "ranktype":"${ranktype}"}`
-    const json = JSON.parse(jsonModelRank)
-    console.log(json)
+    var jsonModel = `{"county":"${county}", "state":"${state}", "rank":"${rank}", "ranktype":"${ranktype}"}`
+    const json = JSON.parse(jsonModel)
     return json
 }
 
-async function buildPage(json){
-    var createItem = `
-    <div class="manager-window">
-        <h2 class="username">County: ${json.county}</h2>
-        <h2 class="username">Rank: ${json.rank}</h2>
-        <h2 class="production-count"></h2>
-        <h2>Displaying 100 itens</h2>
-        <h2 class="page-count"></h2>
-        <h2 class="loading-text">Loading...</h2>
-           <div class="itens-container">
-               
-               
-           </div>
-    </div>
-    `
-    var sectionPrograma = document.querySelector('.program')
-    sectionPrograma.innerHTML = createItem
-}
-    

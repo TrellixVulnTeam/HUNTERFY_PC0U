@@ -1,56 +1,25 @@
-document.querySelector('.search-button').addEventListener("click", async(event)=>{
+import * as manager from "../manager-programs/managerSearchProgram.js";
+import * as path from "../manager-programs/paths.js"
+
+document.querySelector('#search-button').addEventListener('click', async(event)=>{
     event.preventDefault()
-    const json = await getJson()	
-    buildPage(json);
-    const results = await postParcel(json)
-    console.log(results)
-    for (let i = 0; i < results.length; i++) {
-        resultIndex = results[i];
-        createItem(resultIndex)
+    const json = getJson()
+    const result = await manager.postDataManager(json, path.postParcel)
+    //console.log(result)
+    const container = document.querySelector('#parcels-container')
+    container.innerHTML = ""
+    for (let i = 0; i < result.length; i++) {
+        var resultIndex = result[i]
+        manager.showParcelList(resultIndex)
+        //console.log(resultIndex)
     }
-    
+
+    document.querySelector('#parcels-container').style.display = 'block'
 })
 
 function getJson(){
-    var parcel = document.querySelector('#parcelinput').value
-    var jsonModelParcel = `{"parcel":"${parcel}"}`
-    const parceljson = JSON.parse(jsonModelParcel)
-    return parceljson
-}
-
-async function postParcel(json) {
-    try{
-        const options = {
-            method: 'POST',
-            headers:{
-                'Content-Type':'application/json'
-            },
-            body: JSON.stringify(json)
-        }
-        const rawResponse = await fetch('/searchbyparcel', options)
-        const responseJson = await rawResponse.json();
-        return responseJson 
-    }
-    catch(error){
-        console.log(error)
-    }
-}
-
-async function buildPage(json){
-    var createItem = `
-           <div class="itens-container" style="margin-top:15vh;">  
-               
-           </div>
-    `
-    var sectionPrograma = document.querySelector('.program')
-    sectionPrograma.innerHTML = createItem
-}
-
-function accordion(item){
-    var hide = item.children[1]    
-    if (hide.style.display === "block") {
-        hide.style.display = "none";
-    }else{
-        hide.style.display = "block";
-    }
+    const parcel = document.querySelector('#parcel-input').value
+    var jsonModel = `{"parcel":"${parcel}"}`
+    const json = JSON.parse(jsonModel)
+    return json
 }

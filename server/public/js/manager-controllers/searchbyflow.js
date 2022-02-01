@@ -1,76 +1,35 @@
-document.querySelector('.search-button').addEventListener("click", async(event)=>{
-    event.preventDefault()
-    const json = await getJson()	
-    buildPage(json);
-    await getTotal(json)
-    const results = await postDataManager(json, '/searchbyflow')
-    for (let i = 0; i < results.length; i++) {
-        resultIndex = results[i];
-        createItem(resultIndex)
-    }
-})
+import * as manager from "../manager-programs/managerSearchProgram.js";
+import * as path from "../manager-programs/paths.js"
 
-document.querySelector('.generate-letter').addEventListener("click", async(event)=>{
+document.querySelector('#search-button').addEventListener('click', async(event)=>{
     event.preventDefault()
-    const itens = document.querySelectorAll('.manager-item')
-    for (let i = 0; i < itens.length; i++) {
-        var itemIndex = itens[i]
-        runDocxAll(itemIndex)
+    const json = getJson()
+    const result = await manager.postDataManager(json, path.postFlow)
+    //console.log(result)
+    const container = document.querySelector('#parcels-container')
+    container.innerHTML = ""
+    for (let i = 0; i < result.length; i++) {
+        var resultIndex = result[i]
+        manager.showParcelList(resultIndex)
+        if(resultIndex.parcelid.length > 40){
+            console.log(resultIndex)
+        }
+        //console.log(resultIndex)
     }
-})
 
+    document.querySelector('#parcels-container').style.display = 'block'
+
+    const infoContainer = document.querySelector('#search-info')
+    infoContainer.children[1].innerHTML = `Flow: ${json.flow}`
+    infoContainer.children[2].innerHTML = `Results: ${result.length}`
+    infoContainer.style.display = 'flex'
+})
 
 function getJson(){
-    const flow = document.querySelector('#flowOptions').value
-    const page = document.querySelector('#page').value
-    var jsonModelParcel = `{"flow":"${flow}", "page":"${page}"}`
-    const json = JSON.parse(jsonModelParcel)
+    const stage = document.querySelector('#select-stage').value
+
+    var jsonModel = `{"flow":"${stage}"}`
+    const json = JSON.parse(jsonModel)
     console.log(json)
     return json
-}
-
-async function buildPage(json){
-    var createItem = `
-            <div class="itens-container" style="margin-top: 10vh">
-            <h2 class="production-count"></h2>
-            <h2>Displaying 10 itens</h2>
-            <h2 class="page-count"></h2>
-            <h2 class="loading-text">Loading...</h2>
-               
-           </div>
-    `
-    var sectionPrograma = document.querySelector('.program')
-    sectionPrograma.innerHTML = createItem
-}
-
-function accordion(item){
-    var hide = item.children[1]    
-    if (hide.style.display === "block") {
-        hide.style.display = "none";
-    }else{
-        hide.style.display = "block";
-    }
-}
-
-async function getTotal(json){
-    try{
-        const options = {
-            method: 'POST',
-            headers:{
-                'Content-Type':'application/json'
-            },
-            body: JSON.stringify(json)
-        }
-        const rawResponse = await fetch('/searchbyflowcount', options)
-        const content = await rawResponse.json();
-
-        const totalH2 = document.querySelector('.production-count')
-        const pageCount = document.querySelector('.page-count')
-
-        totalH2.innerHTML = `Total:${content}`
-        pageCount.innerHTML = `${Math.ceil(content/10)} pages`
-    }
-    catch(err){
-        console.log(err)
-    }
 }

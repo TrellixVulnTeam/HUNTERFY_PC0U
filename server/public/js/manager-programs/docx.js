@@ -1,5 +1,5 @@
 //using docx library via script tag
-async function runDocx(element){
+async function runDocx(parcelid, adress, n1adr, n1name, n2adr, n2name){
     var parcelid = element.children[0].children[0].children[1].innerHTML
     var adress = element.children[1].children[0].children[1].children[1].children[1].innerHTML
 

@@ -10,7 +10,7 @@ pgProgram = require('../models/pgfunctions')
 
 module.exports = app => {
      //GETS----------------------->
-        //GET VIEWS
+        //GET VIEWS//GET VIEWS//GET VIEWS//GET VIEWS//GET VIEWS//GET VIEWS//GET VIEWS//GET VIEWS//GET VIEWS//GET VIEWS//GET VIEWS
     app.get('/', (req, res) => {
         res.render('index.ejs')
     })
@@ -83,51 +83,57 @@ module.exports = app => {
         res.render('searchbystatus.ejs', {user : req.session.user})
     })
 
-    app.get('/searchbyflow', async(req, res)=>{
+    app.get('/searchbyflow', isAuthManager, async(req, res)=>{
         res.render('searchbyflow.ejs', {user : req.session.user})
     })
 
-    app.get('/templates', async(req, res)=>{
+    app.get('/templates', isAuthManager, async(req, res)=>{
         res.render('templates.ejs', {user : req.session.user})
     })
 
-    app.get('/manageusers', async(req, res)=>{
+    app.get('/manageusers', isAuthManager, async(req, res)=>{
         res.render('manageusers.ejs', {user : req.session.user})
     })
 
-    app.get('/countycalendarbystate', async(req, res)=> {
+    app.get('/countycalendarbystate', isAuthManager, async(req, res)=> {
         res.render('countycalendarbystate.ejs', {user : req.session.user})
     })
 
-    app.get('/parcellist', async(req, res)=>{
+    app.get('/parcellist', isAuthManager, async(req, res)=>{
         res.render('parcellist.ejs', {user : req.session.user})
     })
 
-    app.get('/parcellistbysuper', async(req, res)=>{
+    app.get('/parcellistbysuper', isAuthManager, async(req, res)=>{
         res.render('parcellistbysuper.ejs', {user : req.session.user})
     })
 
-    app.get('/calendar', async(req,res)=>{
+    app.get('/calendar', isAuthManager, async(req,res)=>{
         res.render('calendar.ejs', {user : req.session.user})
     })
     
-    app.get('/managermetrics',  async(req, res)=>{
+    app.get('/managermetrics', isAuthManager,  async(req, res)=>{
         res.render('managerMetrics.ejs', {user : req.session.user})
     })
 
-    app.get('/resumedsearchbycountyandrank',  async(req, res)=>{
+    app.get('/resumedsearchbycountyandrank', isAuthManager,  async(req, res)=>{
         res.render('resumedsearchbycountyandrank.ejs', {user : req.session.user})
     })
 
-    app.get('/searchbyrankandcounty',  async(req, res)=>{
+    app.get('/searchbyrankandcounty', isAuthManager,  async(req, res)=>{
         res.render('searchbyrankandcounty.ejs', {user : req.session.user})
     })
 
-    app.get('/countystatus',  async(req, res)=>{
+    app.get('/countystatus', isAuthManager,  async(req, res)=>{
         res.render('countystatus.ejs', {user : req.session.user})
     })
 
-        //GET FUNCTIONS
+    app.get('/searchPrototype', async(req, res)=>{
+        res.render('newSearch.ejs', {user : req.session.user})
+    })
+
+        //GET VIEWS//GET VIEWS//GET VIEWS//GET VIEWS//GET VIEWS//GET VIEWS//GET VIEWS//GET VIEWS//GET VIEWS//GET VIEWS//GET VIEWS
+
+        //GET FUNCTIONS//GET FUNCTIONS//GET FUNCTIONS//GET FUNCTIONS//GET FUNCTIONS//GET FUNCTIONS//GET FUNCTIONS//GET FUNCTIONS//GET FUNCTIONS//GET FUNCTIONS
     app.get('/getallusers', (req, res) => {
         pgProgram.getUsers(req, res)
         console.log(req.session.user, 'searched all users')
@@ -206,37 +212,20 @@ module.exports = app => {
         res.send(result)
     })
 
-    
+        //GET FUNCTIONS//GET FUNCTIONS//GET FUNCTIONS//GET FUNCTIONS//GET FUNCTIONS//GET FUNCTIONS//GET FUNCTIONS//GET FUNCTIONS
 
     
     //POSTS----------------------->
-    app.post('/getallchecked', async(req, res)=>{
-        try{
-            //console.log(req.body)
-            const result = await searchByChecked(req, res)
-            res.send(result.rows)
-        }
-        catch(err){
-            console.log(err)
-        }
-    })
 
-    app.post('/register', (req, res)=>{
+        //INSERT INFO //INSERT INFO //INSERT INFO //INSERT INFO //INSERT INFO
+
+
+    app.post('/register', (req, res)=>{ //INSERT NEW MANAGER
         try{
             pgProgram.insertNewUser(req, res)
             
         }
         catch(error){console.log(error)}
-    })
-
-    app.post('/registerva', (req, res)=>{
-        try{
-            pgProgram.insertNewVA(req.body.user, req.body.password, req.body.supervisor)
-            console.log('registerVA', req.body)
-        }
-        catch(err){
-            console.log(err)
-        }
     })
 
     app.post('/registermanager', (req, res)=>{
@@ -249,7 +238,28 @@ module.exports = app => {
         }
     })
 
-	app.post('/app', async(req, res) => {
+    app.post('/registerva', (req, res)=>{ //INSERT NEW VA
+        try{
+            pgProgram.insertNewVA(req.body.user, req.body.password, req.body.supervisor)
+            console.log('registerVA', req.body)
+        }
+        catch(err){
+            console.log(err)
+        }
+    })
+
+    app.post('/editrank2', async(req,res) => { //NEW RANK
+        pgProgram.editRank2(req, res)
+        pgProgram.insertParcelLog(req.body.parcelid, req.body.userrank2, 'rank 2 edit')
+        console.log(req.session.user, 'edited rank 2')
+    })
+
+    app.post('/editrank3', async(req,res) => { //NEW RANK
+        pgProgram.editRank3(req, res)
+        pgProgram.insertParcelLog(req.body.parcelid, req.body.userrank3, 'rank 3 edit')
+        console.log(req.session.user, 'edited rank 3')
+    })
+    app.post('/app', async(req, res) => { //NEW PARCEL
         try{
             if(req.session.user == undefined){
                 res.send({"message":"undefined"})
@@ -264,24 +274,91 @@ module.exports = app => {
                     pgProgram.checkDone(req.session.user, req.body.parcelid, req.body.state, req.body.county)
                 }
             }
-            
-            
         }
         catch(error){
-	        console.log(req.session.user, error)
-	    }
+            console.log(req.session.user, error)
+        }
+    })
+    
+    app.post('/savetemplate', async(req, res)=>{ //ADD TEMPLATE
+        pgProgram.addTemplate(req.body.templatename, req.body.template, req.body.envelopeinfo)
     })
 
-	app.post('/searchbyuser', async(req,res) => {
+    app.post('/logoff', async(req, res) => { //ADD LOGOUT LOG
+        await add2Log(req.session.user, 'V.A', 'LOGOUT')
+        console.log(req.session.user, 'deslogado')
+        req.session.destroy();
+        pgProgram.insertParcelLog('0', req.session.user, 'logout')
+    })
+
+    app.post('/editstatus', async(req, res)=>{ 
+        await pgProgram.insertStatus(req.body.status, req.body.parcelid)
+    })
+
+    app.post('/postcalendar', async(req, res)=>{ //ADD CALENDAR ENTRY
+        const calendarInfo = await pgProgram.getCalendar(req.body.date)
+        res.send(calendarInfo)
+    })
+
+    app.post('/saveletterlog', async(req, res)=>{ //ADD LETTERLOG
+        await pgProgram.insertLetterLog(req.body.parcelid, req.body.template)
+    }) 
+
+    app.post('/postacqdata', async(req, res)=>{ //ADD AQC DATA
+        pgProgram.postAcqData(req.body.parcelid, req.body.state, req.body.county, req.body.offervalue, req.body.offerdate, req.body.counteroffervalue, req.body.counterofferdate, req.body.pdf, req.body.deeddate)
+        pgProgram.insertParcelLog(req.body.parcelid, req.session.user, 'acquisiton data updated')
+    })
+
+    app.post('/newlist', async(req, res)=>{ //ADD PARCELS LIST
+        for (let i = 0; i < req.body.length; i++) {
+            var index = req.body[i]
+            await pgProgram.insertParcelList(index.parcel, index.user, index.state, index.county)
+            pgProgram.insertParcelLog("0", req.session.user, 'list insertion')
+        }
+    })
+
+    app.post('/saveCalendar', async(req, res)=>{ //SAVE CALENDAR OBJECT
+        //console.log(req.body)
+        const str = JSON.stringify(req.body)
+        //console.log(str)
+        await pgProgram.updateCalendar(str)
+    })
+
+    app.post('/savePDFondirectory', async(req, res)=>{ //SAVE PDF ON DIRECTORY TABLE
+        console.log('pdf saved')
+        await pgProgram.saveOnPDFDirectory(req.body.state, req.body.county, req.body.pdf, req.body.title, req.body.link)
+    })
+
+        //INSERT INFO //INSERT INFO //INSERT INFO //INSERT INFO //INSERT INFO //INSERT INFO
+
+
+
+
+
+        //SEARCH METHODS //SEARCH METHODS//SEARCH METHODS//SEARCH METHODS//SEARCH METHODS//SEARCH METHODS//SEARCH METHODS
+
+
+    app.post('/searchbyuser', async(req,res) => {
         try{
             const userDate = await req.body
             console.log(req.session.user, 'searched by user', userDate.user)
             const result = await pgProgram.searchTableByUser(userDate.user, userDate.date, userDate.page, res)
             res.send(result)
         }
-            catch(error){
+        catch(error){
             console.log(error)
-	    }
+        }
+    })
+
+    app.post('/searchbyuserdate', async(req, res) => {
+        try{
+            console.log(req.session.user, 'searched by user', req.body.user)
+            const result = await pgProgram.searchByUserDate(req.body.user, req.body.date)
+            res.send(result)
+        }
+        catch(err){
+            console.log(err)
+        }
     })
 
     app.post('/searchbystatus', async(req,res) => {
@@ -292,10 +369,73 @@ module.exports = app => {
         }
             catch(error){
             console.log(error)
-	    }
+        }
+    })
+
+    app.post('/searchbyparcelapp', async(req,res)=>{
+        var searchResult = await pgProgram.searchByParcel(req.body.parcelid, res)
+        console.log(req.session.user, ' searched ', req.body)
+        res.send(searchResult)
     })
     
-    app.post('/', async(req,res) => {
+    app.post('/searchbyparcel', async(req, res) => {
+        const result = await pgProgram.searchByParcel(req.body.parcel, res)
+        console.log(req.body.parcel, 'searched')
+        res.send(result)
+    })
+    
+    app.post('/searchbycounty', async(req, res) => {
+        if(req.body.county == 'all'){
+            const result = await pgProgram.searchByState(req.body.state)
+            res.send(result)
+        }
+        else{
+            const result = await pgProgram.searchByCounty(req.body.county, req.body.state)
+            res.send(result)
+        }
+        
+        console.log(req.session.user, 'searched by county')
+    })
+        
+    app.post('/searchbylisttype', async(req, res)=>{
+        const result = await pgProgram.searchByType(req.body.listtype, req.body.date, req.body.page)
+        res.send(result)
+    })
+    
+    app.post('/searchbyflow', async(req, res)=>{
+        const result = await pgProgram.searchByFlow(req.body.flow)
+        res.send(result)
+    })
+
+    app.post('/searchbyrankandcounty', async(req, res)=>{
+        if(req.body.county == 'all'){
+            const result = await pgProgram.searchByStateAndRank(req.body.state, req.body.ranktype, req.body.rank)
+            res.send(result)
+        }
+        else{
+            const result = await pgProgram.searchByCountyAndRank(req.body.state, req.body.county, req.body.ranktype, req.body.rank)
+            res.send(result)
+        }
+    })
+
+
+        //SEARCH METHODS //SEARCH METHODS//SEARCH METHODS//SEARCH METHODS//SEARCH METHODS//SEARCH METHODS//SEARCH METHODS
+
+
+
+
+    app.post('/getallchecked', async(req, res)=>{
+        try{
+            //console.log(req.body)
+            const result = await searchByChecked(req, res)
+            res.send(result.rows)
+        }
+        catch(err){
+            console.log(err)
+        }
+    })
+
+    app.post('/', async(req,res) => { 
         const resultado = await pgProgram.selectUser(req, res)
         if(req.body.user == resultado.username){
                 req.session.isAuth = true
@@ -311,18 +451,6 @@ module.exports = app => {
         }
     })
 
-    app.post('/editrank2', async(req,res) => {
-        pgProgram.editRank2(req, res)
-        pgProgram.insertParcelLog(req.body.parcelid, req.body.userrank2, 'rank 2 edit')
-        console.log(req.session.user, 'edited rank 2')
-    })
-
-    app.post('/editrank3', async(req,res) => {
-        pgProgram.editRank3(req, res)
-        pgProgram.insertParcelLog(req.body.parcelid, req.body.userrank3, 'rank 3 edit')
-        console.log(req.session.user, 'edited rank 3')
-    })
-
     app.post('/userlogs', (req, res) => {
         pgProgram.searchLogs(req.body.user, req, res)
         console.log(req.session.user, 'searched logs')
@@ -330,9 +458,9 @@ module.exports = app => {
 
     app.post('/searchbyrank', async(req, res) => {
         try{
-            const rankInfo = await req.body
-            pgProgram.searchTableByRank(rankInfo.rank, rankInfo.date, rankInfo.ranktype, rankInfo.page, res)
+            const result = await pgProgram.searchByRank(req.body.ranktype, req.body.rank)
             console.log(req.session.user, 'searched data by rank one')
+            res.send(result)
         }
             catch(error){
             console.log(error)
@@ -355,34 +483,14 @@ module.exports = app => {
         }
     })
 
-    app.post('/logoff', async(req, res) => {
-        await add2Log(req.session.user, 'V.A', 'LOGOUT')
-        console.log(req.session.user, 'deslogado')
-        req.session.destroy();
-        pgProgram.insertParcelLog('0', req.session.user, 'logout')
-    })
+    
 
     app.post('/appgetlogs', async(req, res) => {
         pgProgram.searchLogs(req.session.user, req, res)
     })
 
-    app.post('/searchbyparcelapp', async(req,res)=>{
-        var searchResult = await pgProgram.searchByParcel(req.body.parcelid, res)
-        console.log(req.session.user, ' searched ', req.body)
-        res.send(searchResult)
-    })
 
-    app.post('/searchbyparcel', async(req, res) => {
-        const parcel = await pgProgram.searchByParcel(req.body.parcel, res)
-        //console.log(parcel)
-        res.send(parcel)
-    })
-
-    app.post('/searchbycounty', async(req, res) => {
-        const countyResult = await pgProgram.searchByCounty(req.body.county, req.body.state, req.body.page)
-        console.log(req.session.user, 'searched by county')
-        res.send(countyResult)
-    })
+    
 
     app.post('/dailymetrics', async(req, res)=> {
         try{
@@ -483,24 +591,7 @@ module.exports = app => {
         res.send(countStr)
     })
 
-    app.post('/searchbyrankresumed', async(req, res) => {
-        pgProgram.searchTableByRankResumed(req.body.rank, req.body.date, req.body.ranktype, req.body.page, res)
-    })
-
-    app.post('/searchbycountyresumed', async(req, res) => {
-        const result = await pgProgram.searchByCountyResumed(req.body.county, req.body.page)
-        res.send(result)
-    })
-
-    app.post('/postcalendar', async(req, res)=>{
-        const calendarInfo = await pgProgram.getCalendar(req.body.date)
-        res.send(calendarInfo)
-    })
-
-    app.post('/searchbylisttype', async(req, res)=>{
-        const result = await pgProgram.searchByType(req.body.listtype, req.body.date, req.body.page)
-        res.send(result)
-    })
+    
 
     app.post('/searchbylisttypecount', async(req, res)=>{
         const info = await req.body
@@ -510,9 +601,7 @@ module.exports = app => {
         res.send(countStr)
     })
 
-    app.post('/savetemplate', async(req, res)=>{
-        pgProgram.addTemplate(req.body.templatename, req.body.template, req.body.envelopeinfo)
-    })
+    
 
     app.post('/deletetemplate', async(req, res)=> {
         //console.log(req.body)
@@ -533,13 +622,9 @@ module.exports = app => {
         res.send(info.rows)
     })
 
-    app.post('/editstatus', async(req, res)=>{
-        await pgProgram.insertStatus(req.body.status, req.body.parcelid)
-    })
+    
 
-    app.post('/saveletterlog', async(req, res)=>{
-        await pgProgram.insertLetterLog(req.body.parcelid, req.body.template)
-    })    
+       
 
     app.post('/letterlogs', async(req, res)=>{
         //console.log(req.body)
@@ -547,10 +632,7 @@ module.exports = app => {
         res.send(result)
     })
 
-    app.post('/postacqdata', async(req, res)=>{
-        pgProgram.postAcqData(req.body.parcelid, req.body.state, req.body.county, req.body.offervalue, req.body.offerdate, req.body.counteroffervalue, req.body.counterofferdate, req.body.pdf, req.body.deeddate)
-        pgProgram.insertParcelLog(req.body.parcelid, req.session.user, 'acquisiton data updated')
-    })
+    
 
     app.post('/downloadpdf', async(req, res)=>{
         const result = await pgProgram.getPdf(req.body.parcelid, req.body.state, req.body.county)
@@ -558,23 +640,12 @@ module.exports = app => {
         res.send(result)
     })
 
-    app.post('/searchbyflow', async(req, res)=>{
-        const result = await pgProgram.searchByFlow(req.body.flow, req.body.page)
-        res.send(result)
-    })
+    
 
     app.post('/searchbyflowcount', async(req, res)=>{
         const count = await pgProgram.flowCount(req.body.flow)
         const countStr = `${count}`
         res.send(countStr)
-    })
-
-    app.post('/newlist', async(req, res)=>{
-        for (let i = 0; i < req.body.length; i++) {
-            var index = req.body[i]
-            await pgProgram.insertParcelList(index.parcel, index.user, index.state, index.county)
-            pgProgram.insertParcelLog("0", req.session.user, 'list insertion')
-        }
     })
 
     app.post('/getlistinfo', async(req, res)=>{
@@ -597,27 +668,6 @@ module.exports = app => {
         pgProgram.insertParcelLog('0', req.session.user, 'list cleared')
     })
 
-    app.post('/resumedsearchbycountyandrank', async(req, res)=>{
-        const result = await pgProgram.resumedSearchByCountyAndRank(req.body.state, req.body.county, req.body.ranktype, req.body.rank, req.body.page)
-        res.send(result)
-    })
-
-    app.post('/searchbyrankandcounty', async(req, res)=>{
-        const result = await pgProgram.searchByCountyAndRank(req.body.state, req.body.county, req.body.ranktype, req.body.rank, req.body.page)
-        res.send(result)
-    })
-
-    app.post('/saveCalendar', async(req, res)=>{
-        //console.log(req.body)
-        const str = JSON.stringify(req.body)
-        //console.log(str)
-        await pgProgram.updateCalendar(str)
-    })
-
-    app.post('/savePDFondirectory', async(req, res)=>{
-        console.log('pdf saved')
-        await pgProgram.saveOnPDFDirectory(req.body.state, req.body.county, req.body.pdf, req.body.title, req.body.link)
-    })
 
     app.post('/getdirectorylist', async(req, res)=>{
         const result = await pgProgram.getDirectoryList(req.body.state, req.body.county)
