@@ -19,6 +19,7 @@ document.querySelector('#search-button').addEventListener('click', async(event)=
     //console.log(result)
     const container = document.querySelector('#parcels-container')
     container.innerHTML = ""
+    manager.buttonsOnTopOfParcelList('Copy All Parcel IDs', 'Then CTRL+V Anywhere', 'copy-parcels')
     for (let i = 0; i < result.rows.length; i++) {
         var resultIndex = result.rows[i]
         manager.showParcelList(resultIndex)
@@ -32,6 +33,12 @@ document.querySelector('#search-button').addEventListener('click', async(event)=
     infoContainer.children[2].innerHTML = `Date: ${json.date}`
     infoContainer.children[3].innerHTML = `Results: ${result.rows.length}`
     infoContainer.style.display = 'flex'
+
+    document.querySelector('#copy-parcels').addEventListener('click', (event)=>{
+        event.preventDefault()
+        const allParcels = document.querySelectorAll('.parcelid-searchProgram')
+        manager.toClipboard(allParcels)
+    })
 })
 
 function getJson(){

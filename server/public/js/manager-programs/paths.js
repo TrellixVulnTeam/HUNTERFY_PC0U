@@ -14,5 +14,8 @@ export const postRank = '/searchbyrank'
 export const postCounty = '/searchbycounty'
 export const searchCounties = '/getUsCounties'
 export const searchCountyAndRank = '/searchbyrankandcounty'
+export const searchCountyRankFlow = '/searchbyrankcountyflow'
 export const postFlow = '/searchbyflow'
+export const postChecked = '/getallchecked'
+export const downloadSheetByCountyAndRank =  '/downloadsheetbycountyandrank'
 

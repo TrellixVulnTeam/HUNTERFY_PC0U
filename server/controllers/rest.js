@@ -2,11 +2,13 @@ const session = require('express-session')
 const { searchTable, insertNewUser, getUsers, selectUser, editRank2, addOnDatabase, searchLogs, add2Log, editDB, searchByChecked, resumedSearch, dailySearch, addTemplate } = require('../models/pgfunctions')
 const isAuth = require('../models/is-auth')
 const isAuthManager = require('../models/is-auth-manager')
-const isAuthPost = require('../models/is-auth-post')
 const usStates = require('../database/geojson/us_states.json')
 const usCounties = require('../database/geojson/us_counties.json')
 const { json } = require('body-parser')
-pgProgram = require('../models/pgfunctions')
+const pgProgram = require('../models/pgfunctions')
+const xlsx = require('xlsx')
+const fs = require('fs');
+var json2xls = require('json2xls');
 
 module.exports = app => {
      //GETS----------------------->
@@ -39,7 +41,7 @@ module.exports = app => {
         res.render('getallusers.ejs', {user : req.session.user})
     })
 
-    app.get('/searchbyrank', isAuthManager, (req, res) => {
+    app.get('/searchbyrank', (req, res) => {
         res.render('searchbyrank.ejs', {user : req.session.user})
     })
 
@@ -47,11 +49,11 @@ module.exports = app => {
         res.render('manager-login-page.ejs')
     })
 
-    app.get('/searchbyparcel', (req, res) => {
+    app.get('/searchbyparcel', isAuthManager, (req, res) => {
         res.render('searchbyparcel.ejs', {user : req.session.user})
     })
 
-    app.get('/searchbycounty', (req, res) => {
+    app.get('/searchbycounty', isAuthManager, (req, res) => {
         res.render('searchbycounty.ejs', {user : req.session.user})
     })
 
@@ -119,7 +121,7 @@ module.exports = app => {
         res.render('resumedsearchbycountyandrank.ejs', {user : req.session.user})
     })
 
-    app.get('/searchbyrankandcounty', isAuthManager,  async(req, res)=>{
+    app.get('/searchbyrankandcounty', async(req, res)=>{
         res.render('searchbyrankandcounty.ejs', {user : req.session.user})
     })
 
@@ -127,8 +129,8 @@ module.exports = app => {
         res.render('countystatus.ejs', {user : req.session.user})
     })
 
-    app.get('/searchPrototype', async(req, res)=>{
-        res.render('newSearch.ejs', {user : req.session.user})
+    app.get('/searchbyrankcountyflow', async(req, res) => {
+        res.render('searchbyrankcountyflow.ejs', {user : req.session.user})
     })
 
         //GET VIEWS//GET VIEWS//GET VIEWS//GET VIEWS//GET VIEWS//GET VIEWS//GET VIEWS//GET VIEWS//GET VIEWS//GET VIEWS//GET VIEWS
@@ -418,22 +420,50 @@ module.exports = app => {
         }
     })
 
+    app.post('/searchbyrankcountyflow', async(req, res)=>{
+        if(req.body.county == 'all'){
+            const result = await pgProgram.searchByStateRankFlow(req.body.state, req.body.ranktype, req.body.rank, req.body.flow)
+            res.send(result)
+        }
+        else{
+            const result = await pgProgram.searchByCountyRankFlow(req.body.state, req.body.county, req.body.ranktype, req.body.rank, req.body.flow)
+            res.send(result)
+        }
+    })
+
+    app.post('/getallchecked', async(req, res)=>{
+        try{
+            if(req.body.county == 'all'){
+                const result = await pgProgram.searchByCheckedState(req.body.state)
+                res.send(result)
+            }
+            else{
+                const result = await pgProgram.searchByCheckedCounty(req.body.state, req.body.county)
+                res.send(result)
+            } 
+        }
+        catch(err){
+            console.log(err)
+        }
+    })
+
 
         //SEARCH METHODS //SEARCH METHODS//SEARCH METHODS//SEARCH METHODS//SEARCH METHODS//SEARCH METHODS//SEARCH METHODS
 
 
 
 
-    app.post('/getallchecked', async(req, res)=>{
-        try{
-            //console.log(req.body)
-            const result = await searchByChecked(req, res)
-            res.send(result.rows)
-        }
-        catch(err){
-            console.log(err)
-        }
-    })
+
+
+
+
+
+
+
+
+
+
+
 
     app.post('/', async(req,res) => { 
         const resultado = await pgProgram.selectUser(req, res)
@@ -481,16 +511,11 @@ module.exports = app => {
                 pgProgram.insertParcelLog('0', req.session.user, 'login')
             }
         }
-    })
-
-    
+    })   
 
     app.post('/appgetlogs', async(req, res) => {
         pgProgram.searchLogs(req.session.user, req, res)
     })
-
-
-    
 
     app.post('/dailymetrics', async(req, res)=> {
         try{
@@ -591,8 +616,6 @@ module.exports = app => {
         res.send(countStr)
     })
 
-    
-
     app.post('/searchbylisttypecount', async(req, res)=>{
         const info = await req.body
         const count = await pgProgram.typeCount(info.listtype, info.date)
@@ -600,8 +623,6 @@ module.exports = app => {
         //console.log(countStr)
         res.send(countStr)
     })
-
-    
 
     app.post('/deletetemplate', async(req, res)=> {
         //console.log(req.body)
@@ -620,11 +641,7 @@ module.exports = app => {
     app.post('/getstateinfo', async(req, res)=>{
         const info = await pgProgram.getStateCalendar(req.body.state)
         res.send(info.rows)
-    })
-
-    
-
-       
+    }) 
 
     app.post('/letterlogs', async(req, res)=>{
         //console.log(req.body)
@@ -632,15 +649,11 @@ module.exports = app => {
         res.send(result)
     })
 
-    
-
     app.post('/downloadpdf', async(req, res)=>{
         const result = await pgProgram.getPdf(req.body.parcelid, req.body.state, req.body.county)
         pgProgram.insertParcelLog('0', req.session.user, 'downloaded deed pdf')
         res.send(result)
     })
-
-    
 
     app.post('/searchbyflowcount', async(req, res)=>{
         const count = await pgProgram.flowCount(req.body.flow)
@@ -656,7 +669,6 @@ module.exports = app => {
         
         const result = await pgProgram.getList(req.body.user, yyyymmdd)
         res.send(result)
-
     })
 
     app.post('/clearlist', async(req, res)=>{
@@ -667,7 +679,6 @@ module.exports = app => {
         await pgProgram.clearList(req.body.user, yyyymmdd)
         pgProgram.insertParcelLog('0', req.session.user, 'list cleared')
     })
-
 
     app.post('/getdirectorylist', async(req, res)=>{
         const result = await pgProgram.getDirectoryList(req.body.state, req.body.county)
@@ -697,5 +708,14 @@ module.exports = app => {
         res.send(result)
     })
 
+    app.post('/downloadsheetbycountyandrank', async(req, res)=>{
+        console.log('fetch')
+        const result = await pgProgram.data2DownByRankAndCounty(req.body.state, req.body.county, req.body.ranktype, req.body.rank)
+        res.send(result)
+        
+        
+
+       
+    })
 }
 //

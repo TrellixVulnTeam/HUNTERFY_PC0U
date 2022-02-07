@@ -1,5 +1,6 @@
 import * as path from "./paths.js"
 
+
 export async function postDataManager(json, path){
     try{
         const options = {
@@ -18,8 +19,43 @@ export async function postDataManager(json, path){
     }
 }
 
+export async function postwithoutconvert(json, path){
+    try{
+        const options = {
+            method: 'POST',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(json)
+        }
+        const rawResponse = await fetch(path, options)
+        return rawResponse
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
+export function buttonsOnTopOfParcelList(title, subtitle, id){
+    var novoCard = document.createElement("button")
+
+    novoCard.innerHTML = `
+            
+                <h2>${title}</h2>
+                <h3 style="font-size:1.2vh;">${subtitle}</h3>
+        
+    `
+
+    novoCard.classList.add(`parcellist-button`)
+    novoCard.setAttribute('id', id)
+    
+    const container = document.querySelector('#parcels-container')
+    container.append(novoCard)
+    //novoCard.classList.add(`${formatString(element.parcelid)}`)
+}
 
 export function showParcelList(element){
+
     var novoCard = document.createElement("div")
     
     if(element.rank1 == null){
@@ -37,7 +73,7 @@ export function showParcelList(element){
             <h2>Rank2: ${element.rank2}</h2>
             <h2>Rank3: ${element.rank3}</h2>
             <h2>Flow: ${element.flow}</h2>
-            <h2 style="display:none;">${element.parcelid}<h2>
+            <h2 style="display:none;" class="parcelid-searchProgram">${element.parcelid}<h2>
         
     `
 
@@ -45,12 +81,20 @@ export function showParcelList(element){
     
     const container = document.querySelector('#parcels-container')
     container.append(novoCard)
-    //novoCard.classList.add(`${formatString(element.parcelid)}`)
 
     novoCard.addEventListener('click', ()=>{
         novoCard.classList.add('clicked')
         openParcelBox(element.parcelid)
     })
+}
+
+export function toClipboard(arr){
+    var str = ''
+        for (var i = 0; i <arr.length; i++){
+            var parcelindex = arr[i]
+            str = str + `\n${parcelindex.innerHTML}`
+        }
+        navigator.clipboard.writeText(str);
 }
 
 export function mmddyyyyFormat(dateCont){

@@ -1594,7 +1594,7 @@ body .closeButtonDiv button:hover{
     
 }
 
-.states-container{
+.countystatus-container .states-container{
     overflow-y: scroll;
     height: 100%;
     width: 20vw;
@@ -1603,7 +1603,7 @@ body .closeButtonDiv button:hover{
     border-radius: 3px;
 }
 
-.state {
+.countystatus-container .state {
     background-color: #64635e;
     margin: 1vh 0;
     padding: 1vh;
@@ -1611,13 +1611,13 @@ body .closeButtonDiv button:hover{
     
 }
 
-.state:hover{
+.countystatus-container .state:hover{
     transform: scale(1.02);
     transition: 0.2s;
     cursor: pointer;
 }
 
-.counties-container{
+.countystatus-container .counties-container{
     overflow-y: scroll;
     height: 100%;
     width: 20vw;
@@ -1627,7 +1627,7 @@ body .closeButtonDiv button:hover{
     
 }
 
-.county {
+.countystatus-container .county {
     background-color: #64635e;
     margin: 1vh 0;
     padding: 1vh;
@@ -1636,83 +1636,88 @@ body .closeButtonDiv button:hover{
     justify-content: space-between;
 }
 
-.county:hover{
+.countystatus-container .county:hover{
     transform: scale(1.02);
     transition: 0.2s;
     cursor: pointer;
 }
 
-.county-window{
+.countystatus-container .county-window{
     width: 50vw;
     height: 80vh;
     background-color: #64635e;
     border-radius: 3px;
     padding: 1vh;
+
+    overflow-y: scroll;
 }
 
-.county-window h2{
+.countystatus-container .county-window h2{
     margin-bottom: 1vh;
 }
 
-.insert-file{
+.countystatus-container .insert-file{
     margin-top: 4vh;
 }
 
 
-.insert-file label{
+.countystatus-container .insert-file label button{
     background-color: #a14418;
     padding: 1vh 5vh;
     border-radius: 3px;
     font-size: 2vh;
+    width: 12vw;
 }
 
-.insert-file label:hover{
+.countystatus-container .insert-file label:hover{
     cursor: pointer;
 }
 
-.insert-file input{
+.countystatus-container .insert-file input{
     border: none;
     border-radius: 3px;
     height: 4vh;
-
 }
 
-.insert-file button{
+.countystatus-container .insert-file button{
     background-color: #a14418;
     padding: 1vh 5vh;
     border: none;
     border-radius: 3px;
     font-size: 2vh;
+    width: 12vw;
 }
 
-.insert-file button:hover{
+.countystatus-container .insert-file button:hover{
     cursor: pointer;
 }
 
 
-.check-done{
+.countystatus-container .check-done{
     margin-top: 4vh;
 }
 
 
-.check-done button{
+
+
+.countystatus-container .check-done button{
     background-color: #a14418;
     padding: 1vh;
-    width: 9vw;
+    width: 12vw;
     border: none;
     border-radius: 3px;
     font-size: 2vh;
 }
 
-.check-done button:hover{
+.countystatus-container .check-done button:hover{
     cursor: pointer;
 }
 
-.directory{
+.countystatus-container .directory{
     margin-top: 4vh;
 }
 
-.directory .pdf-directory-container{
+.countystatus-container .directory .pdf-directory-container{
     background-color: rgba(255, 255, 255, 0.197);
     width: 98%;
     height: 25vh;
@@ -1722,11 +1727,11 @@ body .closeButtonDiv button:hover{
     overflow-y: scroll;
 }
 
-.county-window-line{
+.countystatus-container .county-window-line{
     display: flex;
 }
 
-.pdf-item{
+.countystatus-container .pdf-item{
     width: 98%;
     padding: 1vh;
     background-color: #969695;
@@ -1739,11 +1744,11 @@ body .closeButtonDiv button:hover{
     border-radius: 3px;
 }
 
-.pdf-item div{
+.countystatus-container .pdf-item div{
     width: 25%;
 }
 
-.pdf-item button{
+.countystatus-container .pdf-item button{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1751,17 +1756,24 @@ body .closeButtonDiv button:hover{
     margin: 0.5vh;
 }
 
-.pdf-item button:hover{
+.countystatus-container .pdf-item button:hover{
     transform: scale(1.1);
     transition: 0.2s;
     cursor: pointer;
 }
 
-.directory-buttons-container{
+.countystatus-container .directory-buttons-container{
     display: flex;
     align-items: center;
 }
 
+.countystatus-container #title-input{
+    width: 12vw;
+}
+
+.countystatus-container #link-input{
+    width: 12vw;
+}
 
 
 
@@ -1793,7 +1805,7 @@ body .closeButtonDiv button:hover{
     margin-top: 10vh;
 }
 
-#search-container {
+#program-container #search-container {
     background-color: #64635e;
     width: fit-content;
     height: 100%;
@@ -1803,7 +1815,7 @@ body .closeButtonDiv button:hover{
     margin-right: 3vh;
 }
 
-#parcels-container {
+#program-container #parcels-container {
     height: 100%;
     width: fit-content;
     overflow-y: scroll;
@@ -1814,7 +1826,7 @@ body .closeButtonDiv button:hover{
     
 }
 
-#parcels-container div{
+#program-container #parcels-container div{
     width: 20vw;
     background-color: #ffffff16;
     margin: 1vh 0;
@@ -1822,30 +1834,29 @@ body .closeButtonDiv button:hover{
     padding: 1vh;
 }
 
-#parcels-container div:hover{
+#program-container #parcels-container div:hover{
     transform: scale(1.05);
     transition: 0.5s;
     cursor: pointer;
 }
 
-#parcels-container div h2{
+#program-container #parcels-container div h2{
     margin: 0.5vh 0;
 }
 
-#result-container{
+#program-container #result-container{
     height: 78vh;
     width: fit-content;
     
 }
 
-
-#result-container{
+#program-container #result-container{
     flex-grow: 1;
     margin-right: 2vw;
     
 }
 
-#result-container .parcelbox{
+#program-container #result-container .parcelbox{
     background-color: #64635e;
     height: 100%;
     width: 100%;
@@ -1855,28 +1866,28 @@ body .closeButtonDiv button:hover{
 
 }
 
-.parcel-content h2{
+#program-container .parcel-content h2{
     font-size: 3vh;
     margin: 0.5vh 0;
 }
 
-.parcel-content h3{
+#program-container .parcel-content h3{
     font-size: 2.3vh;
     margin-bottom: 1vh;
     margin-top: 3vh;
 }
 
-.parcel-content h4{
+#program-container .parcel-content h4{
     font-size: 1.8vh;
     color: rgba(255, 255, 255, 0.537);
 }
 
-.parcel-content img{
+#program-container .parcel-content img{
     margin-bottom: 2vh;
     border-radius: 3px;
 }
 
-.parcel-content{
+#program-container .parcel-content{
     background-color: #ffffff16;
     border-radius: 3px;
     padding: 1vh;
@@ -1884,14 +1895,14 @@ body .closeButtonDiv button:hover{
 
 }
 
-.parcel-content:hover{
+#program-container .parcel-content:hover{
     cursor: pointer;
     transform: scale(1.005);
     transition: 0.2s;
 
 }
 
-.parcel-content input[type="text"]{
+#program-container .parcel-content input[type="text"]{
     width: 10vw;
     height: 4vh;
     color: black;
@@ -1900,7 +1911,7 @@ body .closeButtonDiv button:hover{
     display: block;
 }
 
-.parcel-content button{
+#program-container .parcel-content button{
     width: 10vw;
     height: 4vh;
     color: white;
@@ -1910,13 +1921,13 @@ body .closeButtonDiv button:hover{
     margin-top: 3vh;
 }
 
-.parcel-content button:hover{
+#program-container .parcel-content button:hover{
     transform: scale(1.05);
     transition: 0.2s;
     cursor: pointer;
 }
 
-.select-parcelbox{
+#program-container .select-parcelbox{
     width: 10vw;
     height: 4vh;
     color: black;
@@ -1925,13 +1936,13 @@ body .closeButtonDiv button:hover{
     display: block;
 }
 
-.acq-menu > input, button{
+#program-container .acq-menu > input, button{
     display: block;
     margin: 0;
     margin-top: 1vh;
 }
 
-#search-info{
+#program-container #search-info{
     width: 100%;
     height: fit-content;
     background-color: #ffffff16;
@@ -1943,11 +1954,25 @@ body .closeButtonDiv button:hover{
     padding-bottom: 1vh;
 }
 
-.parcellist-parcel h2{
+#program-container .parcellist-parcel h2{
     width: 100%;
     display: inline-block;
 }
 
+#program-container .parcellist-button{
+    width: 100%;
+    background-color: #a14418;
+    color: white;
+    margin: 1vh 0;
+    border-radius: 3px;
+    padding: 1vh;
+    border: none;
+}
 
+#program-container .parcellist-button:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.4s;
+}
 
 /*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM */

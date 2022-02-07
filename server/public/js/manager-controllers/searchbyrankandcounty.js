@@ -1,5 +1,8 @@
 import * as manager from "../manager-programs/managerSearchProgram.js";
 import * as path from "../manager-programs/paths.js"
+import * as sheet from "../manager-programs/xlsx.js"
+//import * as fileSaver from "../manager-programs/FileSaver.js"
+
 
 const selectState = document.querySelector('#select-state')
 window.addEventListener('load', async()=>{
@@ -26,6 +29,27 @@ document.querySelector('#search-button').addEventListener('click', async(event)=
     const container = document.querySelector('#parcels-container')
     
     container.innerHTML = ""
+
+    if(result.length > 0){
+        manager.buttonsOnTopOfParcelList('Copy All Parcel IDs', 'Then CTRL+V Anywhere', 'copy-parcels')
+
+        document.querySelector('#copy-parcels').addEventListener('click', (event)=>{
+            event.preventDefault()
+            const allParcels = document.querySelectorAll('.parcelid-searchProgram')
+            manager.toClipboard(allParcels)
+        })
+    }
+    
+    if(json.county != 'all' && result.length > 0){
+        manager.buttonsOnTopOfParcelList('Download Sheet', '.xlsx format', 'download-sheet')
+
+        document.querySelector('#download-sheet').addEventListener('click', async(event)=>{
+            event.preventDefault()
+            const result = await manager.postDataManager(json, path.downloadSheetByCountyAndRank)
+            convert(result, json)
+        })
+    }
+    
     for (let i = 0; i < result.length; i++) {
         var resultIndex = result[i]
         manager.showParcelList(resultIndex)
@@ -34,13 +58,15 @@ document.querySelector('#search-button').addEventListener('click', async(event)=
         }
     }
 
-    document.querySelector('#parcels-container').style.display = 'block'
-    const infoContainer = document.querySelector('#search-info')
-    infoContainer.children[1].innerHTML = `State: ${json.state}`
-    infoContainer.children[2].innerHTML = `County: ${json.county}`
-    infoContainer.children[3].innerHTML = `Rank: ${json.rank} ${json.ranktype}`
-    infoContainer.children[4].innerHTML = `Results: ${result.length}`
-    infoContainer.style.display = 'flex'
+    if(result.length > 0){
+        document.querySelector('#parcels-container').style.display = 'block'
+        const infoContainer = document.querySelector('#search-info')
+        infoContainer.children[1].innerHTML = `State: ${json.state}`
+        infoContainer.children[2].innerHTML = `County: ${json.county}`
+        infoContainer.children[3].innerHTML = `Rank: ${json.rank} ${json.ranktype}`
+        infoContainer.children[4].innerHTML = `Results: ${result.length}`
+        infoContainer.style.display = 'flex'
+    }  
 })
 
 //////////////////////////////////////////////////////////////////////////////
@@ -57,3 +83,11 @@ function getJson(){
     return json
 }
 
+function convert(file, info){
+    const fileName = 'output.xlsx';
+    const ws = XLSX.utils.json_to_sheet(file);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'output');
+    XLSX.writeFile(wb, fileName);
+    
+}

@@ -15,6 +15,7 @@ document.querySelector('#search-button').addEventListener('click', async(event)=
     }
 
     document.querySelector('#parcels-container').style.display = 'block'
+
 })
 
 function getJson(){

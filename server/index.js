@@ -9,10 +9,10 @@ dbClient.connect(error => {
         console.log(console.log(error))
     }
     else{
-        console.log('conectado no banco de dados')
-        tables.init(dbClient)
+        console.log('conectado no banco de dados <-----------')
+        //tables.init(dbClient)
     }
 })
-app.listen(process.env.PORT, ()=> console.log(`servidor rodando na porta ${process.env.PORT}`))////////////
+app.listen(process.env.PORT, ()=> console.log(`servidor rodando na porta ${process.env.PORT} <-----------`))////////////
 
 

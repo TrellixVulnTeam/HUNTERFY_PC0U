@@ -112,33 +112,31 @@ async function loadCountyInfo(element){
                     <input type="text" id="title-input">
                     
                     <div style="margin-top:1vh;"><h2>Source link:</h2><input type="text" id="link-input"></div>
-
-
-
-
                     <div style="margin-top:1vh;">
                         <input type="file" style="display:none;" name="pdf-input" id="pdf-input" onchange="convertToBase64(this)">
-                        <label for="pdf-input"><i class="far fa-file"></i></label>
-                        <button onclick="sendPdf(this)"><i class="fas fa-share"></i></button>
+                        
+                            <button>
+                                <label class="directory-button" style="width:12vw;" for="pdf-input">
+                                <i class="far fa-file"></i>
+                                </label>
+                            </button>
+                        
+                        <button class="directory-button" onclick="sendPdf(this)"><i class="fas fa-share"></i></button>
                     </div>
                 </div>
                 
             </div>
-
             <div class="check-done">
-
                 <div><h2>County Status:</h2></div>
                 <div>
-                    <button onclick="checkDone()">CHECK DONE</button>
-                    <button onclick="uncheckDone()">UNCHECK DONE</button>
+                    <button class="directory-button" onclick="checkDone()">CHECK DONE</button>
+                    <button class="directory-button" onclick="uncheckDone()">UNCHECK DONE</button>
                 </div>
             </div>
-
             <div class="directory">
                 <h2>PDF Directory:</h2>
                 <div class="pdf-directory-container"></div>
             </div>
-
         </div>
     `
     const container = document.querySelector('.county-info')
@@ -208,10 +206,7 @@ function convertToBase64(element) {
 }
 
 async function sendPdf(element){
-    console.log(element.parentElement.children[1])
-
     const pdf = document.querySelector('#pdf-input').src
-    console.log(pdf)
     const title = document.querySelector('#title-input').value
     const state = document.querySelector('#state-content').innerHTML
     const county = document.querySelector('#county-content').innerHTML
@@ -230,8 +225,6 @@ async function sendPdf(element){
     console.log(json)
 
     postData(json, '/savePDFondirectory').then(alert('SUCCESS'))
-    
-
 }
 
 async function downloadPdf(element){
@@ -252,7 +245,6 @@ async function downloadPdf(element){
     const result = await postData(json, '/downloaddirectorypdf')
     savePdfFileOnComputer(result.pdf, title)
     console.log(result)
-
 }
 
 function savePdfFileOnComputer(pdf, title) {
