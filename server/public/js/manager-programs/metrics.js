@@ -38,13 +38,15 @@ export async function readCountHourManager(content){//separa os parcels por hora
 }
 
 export async function readCountDayManager(content){//separa os parcels por dia do mes
+   
     try{
         var daysArr = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]//starts on day "zero" of every month, ends on 31
+        
         for (let i = 0; i < content.length; i++) {
-            var contentIndex = content[i]
-            var infodate = new Date(contentIndex.date)
+            const contentIndex = content[i]
+            const infodate = new Date(contentIndex.date)
             var y = infodate.getDate()
-            if (infodate.getDate() == y){
+            if (infodate.getDate() === y){
                 daysArr[y] = daysArr[y]+1
             }
         }
@@ -229,15 +231,39 @@ export async function readCountHour(content){//separa os parcels por hora do dia
 
 export async function readCountDay(content){//separa os parcels por dia do mes
     try{
+        console.log(content)
         var daysArr = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]//starts on day "zero" of every month, ends on 31
         for (let i = 0; i < content.length; i++) {
             var contentIndex = content[i]
             var infodate = new Date(contentIndex.dateandtime)
             var y = infodate.getDate()
-            if (infodate.getDate() == y){
-                daysArr[y] = daysArr[y]+1
-            }
+            console.log(`1databasedate: ${contentIndex.dateandtime}, new date:${infodate}, newdate day:${y}`)
+            daysArr[y]++
+            
         }
+        console.log('days arr:', daysArr)
+        return daysArr
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
+export async function readCountDayEdit(content){//separa os parcels por dia do mes
+    try{
+        console.log(content)
+        var daysArr = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]//starts on day "zero" of every month, ends on 31
+        for (let i = 0; i < content.length; i++) {
+            var contentIndex = content[i]
+            if(contentIndex.dateandtime2 !== null){
+                var infodate = new Date(contentIndex.dateandtime2)
+                var y = infodate.getDate()
+                //console.log([`2databasedate: ${contentIndex.dateandtime2}`, `new date:${infodate}`, `newdate day:${y}`])
+                daysArr[y]++
+            }else{}
+        }
+
+        
         console.log('days arr:', daysArr)
         return daysArr
     }

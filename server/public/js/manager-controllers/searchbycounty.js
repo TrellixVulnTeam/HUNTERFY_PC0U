@@ -6,18 +6,21 @@ window.addEventListener('load', async()=>{
     const result = await fetch(path.getStates)
     const json = await result.json()
     const container = document.querySelector('#select-state')
-    //console.log(json)
+    
     selectState.innerHTML = ""
     for (let i = 0; i < json.features.length; i++) {
         var statesIndex = json.features[i]
-        //console.log(statesIndex.properties)
-        
         manager.createOption(statesIndex.properties.NAME, statesIndex.properties.STATE, container)
     }
+
+    const select = document.querySelector('#select-state')
+    manager.sortSelect(select)
 })
 
 selectState.addEventListener('change', async()=>{
     manager.loadCounties()
+    const select = document.querySelector('#select-county')
+    manager.sortSelect(select)
 })
 
 document.querySelector('#search-button').addEventListener('click', async(event)=>{

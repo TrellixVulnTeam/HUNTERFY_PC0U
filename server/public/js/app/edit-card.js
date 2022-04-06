@@ -19,7 +19,7 @@ function editarCard(card){
     const obs = [cardInfo.children[19].children[1], `<label>OBS:</label><input name="obs" type="text">`, `obs`, `OBS:`]
     const floodzonelink = [cardInfo.children[20].children[1], `<label>FLOODZONE LINK:</label><input name="floodzonelink" type="text">`, `floodzonelink`, `FLOODZONE LINK:`]
     const zestimate = [cardInfo.children[21].children[1], `<label>ZESTIMATE:</label><input name="zestimate" type="text">`, `zestimate`, `ZESTIMATE:`]
-    const zillow = [cardInfo.children[22].children[1], `<label>ZILLOW LINK:</label><input name="zillow" type="text">`, `zillow`, `ZILLOW LINK:`]
+    const zillow = [cardInfo.children[22].children[1], `<label>ZILLOW/REALTOR LINK:</label><input name="zillow" type="text">`, `zillow`, `ZILLOW/REALTOR LINK:`]
     const hoa = [cardInfo.children[23].children[1], `<label>HOA:</label><input name="hoa" type="text">`, `hoa`, `HOA:`]
     const watersupply = [cardInfo.children[24].children[1], 'WATER SUPPLY:', 'watersupply']
     const elecsupply = [cardInfo.children[25].children[1], 'ELECTRICITY SUPPLY:', 'elecsupply']

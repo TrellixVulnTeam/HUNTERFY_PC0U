@@ -1975,4 +1975,11 @@ body .closeButtonDiv button:hover{
     transition: 0.4s;
 }
 
+.parcelbox img:hover{
+    transform: scale(2);
+    transition: 0.5s;
+    z-index: 1111111111;
+
+}
+
 /*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM *//*NEW PROGRAM */

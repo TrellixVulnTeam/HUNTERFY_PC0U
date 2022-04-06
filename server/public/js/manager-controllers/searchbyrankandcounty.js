@@ -1,25 +1,24 @@
 import * as manager from "../manager-programs/managerSearchProgram.js";
 import * as path from "../manager-programs/paths.js"
 import * as sheet from "../manager-programs/xlsx.js"
-//import * as fileSaver from "../manager-programs/FileSaver.js"
 
 
 const selectState = document.querySelector('#select-state')
-window.addEventListener('load', async()=>{
+window.addEventListener('load', async()=>{ //quando a pagina carregar, a aplicação vai criar um select opt para caada estado
     const result = await fetch(path.getStates)
     const json = await result.json()
-    //console.log(json)
     selectState.innerHTML = ""
-    for (let i = 0; i < json.features.length; i++) {
+    for (let i = 0; i < json.features.length; i++) { //para cada estado, cria um option
         var statesIndex = json.features[i]
-        //console.log(statesIndex.properties)
         const container = document.querySelector('#select-state')
-        manager.createOption(statesIndex.properties.NAME, statesIndex.properties.STATE, container)
+        manager.createOption(statesIndex.properties.NAME, statesIndex.properties.STATE, container) //cria um option
     }
+    const select = document.querySelector('#select-state')
+    manager.sortSelect(select) //função que coloca as options em ordem alfabetica
 })
 
 selectState.addEventListener('change', async()=>{
-    manager.loadCounties()
+    manager.loadCounties() 
 })
 
 document.querySelector('#search-button').addEventListener('click', async(event)=>{

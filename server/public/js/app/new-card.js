@@ -39,7 +39,7 @@ function criarPaginaEdit(){
                 </div>
                 <div class="campo3">
                     <div><label>ZESTIMATE:</label><input name="zestimate" type="text"></div>
-                    <div><label>ZILLOW LINK:</label><input name="zillow" type="text"></div>
+                    <div><label>ZILLOW/REALTOR LINK:</label><input name="zillow" type="text"></div>
                     <div><label>FLOODZONE LINK:</label><input name="floodzonelink" type="text"></div>
                     <div><label>NEIGHBOOR 1 NAME:</label><input name="n1name" type="text"></div>
                     <div><label>NEIGHBOOR 2 NAME:</label><input name="n2name" type="text"></div>
@@ -117,7 +117,7 @@ function criarCard(){
             <div class="info-card info-text"><h2>OBS:</h2> <h2>${formatString(checkValue(form.obs.value))}</h2></div>
             <div class="info-card info-text"><h2>FLOODZONE LINK:</h2> <h2>${formatString(checkValue(form.floodzonelink.value))}</h2></div>
             <div class="info-card info-text"><h2>ZESTIMATE:</h2> <h2>${formatString(checkValue(form.zestimate.value))}</h2></div>
-            <div class="info-card info-text"><h2>ZILLOW LINK:</h2> <h2>${formatString(checkValue(form.zillow.value))}</h2></div>
+            <div class="info-card info-text"><h2>ZILLOW/REALTOR LINK:</h2> <h2>${formatString(checkValue(form.zillow.value))}</h2></div>
             <div class="info-card info-text"><h2>HOA:</h2> <h2>${formatString(checkValue(form.hoa.value))}</h2></div>
             <div class="info-card info-text"><h2>WATER SUPPLY:</h2> <h2>${formatString(checkValue(form.watersupply.value))}</h2></div>
             <div class="info-card info-text"><h2>ELECTRICITY SUPPLY:</h2> <h2>${formatString(checkValue(form.elecsupply.value))}</h2></div>

@@ -15,7 +15,15 @@ async function getJson(card){
         const adressn2 = cardInfo.children[15].children[1].innerHTML
         const adressn3 = cardInfo.children[16].children[1].innerHTML
         const adressn4 = cardInfo.children[17].children[1].innerHTML
+
         const rank = cardInfo.children[18].children[1].innerHTML
+        let rank1date
+        if(rank.length > 0){
+            rank1date = new Date()
+        } else {
+            rank1date = ''
+        }
+
         const obs = cardInfo.children[19].children[1].innerHTML
         const floodzonelink = cardInfo.children[20].children[1].innerHTML
         const zestimate = cardInfo.children[21].children[1].innerHTML
@@ -105,6 +113,7 @@ async function getJson(card){
             "adressn3":"${formatString(adressn3)}",
             "adressn4":"${formatString(adressn4)}",
             "rank":"${rank}",
+            "rank1date":"${rank1date}",
             "obs":"${formatString(obs)}",
             "taxowned":"${formatString(taxowned)}",
             "state":"${formatString(state)}",

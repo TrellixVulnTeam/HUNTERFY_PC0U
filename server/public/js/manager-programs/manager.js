@@ -616,5 +616,11 @@ function mmddyyyyFormat(dateCont){
     const month = ("" + (date.getMonth() + 1)).slice(-2)
     const mmddyyyy = `${month}/${day}/${date.getFullYear()}`
     
-    return mmddyyyy
+    console.log(mmddyyyy)
+    if (mmddyyyy == '12/31/1969'){
+        return ''
+    }else{
+        return mmddyyyy
+    }
+    
 }

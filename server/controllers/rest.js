@@ -6,9 +6,6 @@ const usStates = require('../database/geojson/us_states.json')
 const usCounties = require('../database/geojson/us_counties.json')
 const { json } = require('body-parser')
 const pgProgram = require('../models/pgfunctions')
-const xlsx = require('xlsx')
-const fs = require('fs');
-var json2xls = require('json2xls');
 
 module.exports = app => {
      //GETS----------------------->
@@ -21,7 +18,7 @@ module.exports = app => {
         res.render('app.ejs', {user : req.session.user})
     })
 
-    app.get('/manager', isAuthManager, (req, res) => {
+    app.get('/manager', (req, res) => {
         res.render('manager.ejs', {user : req.session.user})
     })
     
@@ -53,11 +50,11 @@ module.exports = app => {
         res.render('searchbyparcel.ejs', {user : req.session.user})
     })
 
-    app.get('/searchbycounty', isAuthManager, (req, res) => {
+    app.get('/searchbycounty', (req, res) => {
         res.render('searchbycounty.ejs', {user : req.session.user})
     })
 
-    app.get('/metrics', isAuthManager,(req, res)=>{
+    app.get('/metrics', (req, res)=>{
         res.render('metrics.ejs', {user : req.session.user})
     })
 
@@ -65,20 +62,8 @@ module.exports = app => {
         res.render('getchecked.ejs', {user : req.session.user})
     })
 
-    app.get('/searchbyrankresumed', isAuthManager, async(req, res) => {
-        res.render('searchbyrankresumed.ejs', {user : req.session.user})
-    })
-
     app.get('/countycalendar', isAuthManager, async(req, res)=> {
         res.render('countycalendar.ejs', {user : req.session.user})
-    })
-
-    app.get('/resumedsearchbycounty', isAuthManager, async(req, res)=>{
-        res.render('resumedsearchbycounty.ejs', {user : req.session.user})
-    })
-
-    app.get('/searchbylisttype', isAuthManager, async(req, res)=>{
-        res.render('searchbytype.ejs', {user : req.session.user})
     })
 
     app.get('/searchbystatus', isAuthManager, async(req, res)=>{
@@ -174,6 +159,7 @@ module.exports = app => {
     })
 
     app.get('/getUsStates', async(req, res)=>{
+        console.log(typeof usStates)
         res.send(usStates)
     })
 

@@ -16,6 +16,8 @@ window.addEventListener('load', async()=>{
         const container = document.querySelector('#select-state')
         manager.createOption(statesIndex.properties.NAME, statesIndex.properties.STATE, container)
     }
+    const select = document.querySelector('#select-state')
+    manager.sortSelect(select) //função que coloca as options em ordem alfabetica
 })
 
 selectState.addEventListener('change', async()=>{

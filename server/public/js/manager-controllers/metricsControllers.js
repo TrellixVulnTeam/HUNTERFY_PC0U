@@ -23,12 +23,14 @@ async function buildChartsPage(){
     chartsProgram.buildPizzaPerDay(perDayRank2, 'count-rank2-per-day')
     chartsProgram.buildPizzaPerDay(perDayRank3, 'count-rank3-per-day')
     
-    const perDayProdCount = await metricsProgram.readCountDay(result)//função que trata o numero de parcels por dia
+    const perDayProdCount = await metricsProgram.readCountDay(result)
+    const perDayEditCount = await metricsProgram.readCountDayEdit(result)//função que trata o numero de parcels por dia
     const perMonthRank1 = await metricsProgram.readDataRank1(result)//função que trata a separação de ranks por dia do mes inteiro
     const perMonthRank2 = await metricsProgram.readDataRank2(result)
     const perMonthRank3 = await metricsProgram.readDataRank3(result)
 
-    chartsProgram.buildChartProdPerDay(perDayProdCount,'count-per-month')//grafico parcels por dia
+    chartsProgram.buildChartProdPerDay(perDayProdCount,'count-per-month')
+    chartsProgram.buildChartProdPerDay(perDayEditCount,'count-per-month-edit')//grafico parcels por dia
     chartsProgram.buildPizzaPerDay(perMonthRank1, 'count-rank1-per-month')//grafico pizza do rank mensal
     chartsProgram.buildPizzaPerDay(perMonthRank2, 'count-rank2-per-month')
     chartsProgram.buildPizzaPerDay(perMonthRank3, 'count-rank3-per-month')
@@ -54,8 +56,12 @@ function resetPage(){
     <div class="monthlyranks-container">
         <h1>Metrics by month production:</h1>
         <div>
-            <h2>Production count per day:</h2>
+            <h2>INSERT count per day:</h2>
             <canvas id="count-per-month"></canvas>
+        </div>
+        <div>
+            <h2>EDIT count per day:</h2>
+            <canvas id="count-per-month-edit"></canvas>
         </div>
         <h2>Rank count per month: rank1/rank2/rank3</h2>
         <div class="pizzas">

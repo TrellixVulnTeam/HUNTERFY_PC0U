@@ -6,7 +6,7 @@ class pgProgram{
         let insertQuery = 
         `
         INSERT INTO public."2021-data"(
-            username, parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, taxowned, state, county, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage, listtype, minimalbid, n1name, n2name, n3name, n4name, flow, n1number, n2number, n3number, n4number, n1email, n2email, n3email, n4email
+            username, parcelid, gisimg, gislink, floodzoneimg, floodzonetext, mapsimg, mapslink, streetviewimg, marketvalue, latitude, longitude, acres, adress, n1adress, n2adress, n3adress, n4adress, rank1, obs1, taxowned, state, county, floodzonelink, zillowlink, zestimate, hoa, watersupply, electricitysupply, sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage, listtype, minimalbid, n1name, n2name, n3name, n4name, flow, n1number, n2number, n3number, n4number, n1email, n2email, n3email, n4email, rank1date
             )
 
             VALUES (
@@ -72,7 +72,8 @@ class pgProgram{
             '${terreno.n1email}',
             '${terreno.n2email}',
             '${terreno.n3email}',
-            '${terreno.n4email}'
+            '${terreno.n4email}',
+            '${terreno.rank1date}'
             );
         `
 
@@ -90,7 +91,8 @@ class pgProgram{
         var newInfo = req.body	    
         var date = new Date()
         var yyyymmdd = `${date.getFullYear()}-${("0" + (date.getMonth() + 1)).slice(-2)}-${("0" + date.getDate()).slice(-2)}`
-        var editQuery = `
+
+        const editQueryWithoutRankDate = `
             UPDATE public."2021-data"
 	        SET 
             username2 = '${newInfo.userinfo[0].username}',
@@ -157,6 +159,81 @@ class pgProgram{
     
 	        WHERE parcelid = '${newInfo.parcelid}' AND state = '${newInfo.state}' AND county = '${newInfo.county}';
         `
+        const editQueryWithRankDate = `
+            UPDATE public."2021-data"
+            SET 
+            username2 = '${newInfo.userinfo[0].username}',
+            dateandtime2 = '${date}',
+            date2 = '${yyyymmdd}',
+            gisimg='${newInfo.gis[0].gisimg}',
+            gislink='${newInfo.gis[0].gislink}', 
+            floodzoneimg='${newInfo.floodzone[0].floodzoneimg}', 
+            floodzonetext='${newInfo.floodzone[0].floodzonetext}', 
+            mapsimg='${newInfo.maps[0].mapsimg}', 
+            mapslink='${newInfo.maps[0].mapslink}', 
+            streetviewimg='${newInfo.streetviewimg}', 
+            marketvalue='${newInfo.marketvalue}', 
+            latitude='${newInfo.longitude}', 
+            longitude='${newInfo.longitude}', 
+            acres='${newInfo.acres}', 
+            adress='${newInfo.adress}', 
+            n1adress='${newInfo.adressn1}', 
+            n2adress='${newInfo.adressn2}', 
+            n3adress='${newInfo.adressn3}', 
+            n4adress='${newInfo.adressn4}', 
+            rank1='${newInfo.rank}', 
+            obs1='${newInfo.obs}',  
+            taxowned='${newInfo.taxowned}',
+            floodzonelink='${newInfo.floodzone[0].floodzonelink}',
+            zestimate='${newInfo.zestimate}',
+            zillowlink='${newInfo.zillow}',
+            hoa = '${newInfo.hoa}',
+            watersupply = '${newInfo.watersupply}',
+            electricitysupply = '${newInfo.elecsupply}',
+            sewerage = '${newInfo.sewerage}',
+            ownername = '${newInfo.ownername}', 
+            propstream = '${newInfo.propsstream}', 
+            estimatedarv = '${newInfo.estimatedarv}', 
+            gmapdate = '${newInfo.gmapsdate}', 
+            gearthlink = '${newInfo.gearthlink}', 
+            showingbuilding = '${newInfo.showingbuilding}', 
+            buildingsize = '${newInfo.buildingsize}', 
+            yearbuilt = '${newInfo.builtyear}', 
+            structuretype = '${newInfo.structuretype}', 
+            bedrooms = '${newInfo.bedroomsnumber}', 
+            bathrooms = '${newInfo.bathroomsnumber}', 
+            garage = '${newInfo.garagesize}', 
+            taxesperyear = '${newInfo.taxesperyear}', 
+            cadlandvalue = '${newInfo.cadlandvalue}', 
+            cadbuildingvalue = '${newInfo.cadbuildingvalue}', 
+            cadtotalvalue = '${newInfo.cadtotalvalue}', 
+            needtoconfirm = '${newInfo.needtoconfirm}', 
+            cadimage = '${newInfo.cadimage}',
+            listtype = '${newInfo.listtype}',
+            minimalbid = '${newInfo.minimalbid}',
+            n1name = '${newInfo.n1name}',
+            n2name = '${newInfo.n2name}',
+            n3name = '${newInfo.n3name}',
+            n4name = '${newInfo.n4name}',
+            n1number = '${newInfo.n1number}',
+            n2number = '${newInfo.n2number}',
+            n3number = '${newInfo.n3number}',
+            n4number = '${newInfo.n4number}',
+            n1email = '${newInfo.n1email}',
+            n2email = '${newInfo.n2email}',
+            n3email = '${newInfo.n3email}',
+            n4email = '${newInfo.n4email}',
+            rank1date = '${newInfo.rank1date}'
+
+            WHERE parcelid = '${newInfo.parcelid}' AND state = '${newInfo.state}' AND county = '${newInfo.county}';
+        `
+        let editQuery
+        if(newInfo.rank.length > 0){
+            editQuery = editQueryWithRankDate
+        } else {
+            editQuery = editQueryWithoutRankDate
+        }
+
         dbClient.query(editQuery, (err, result)=>{
             if(!err){
                 console.log(newInfo.userinfo[0].username, 'Edit was successful. Parcel:', newInfo.parcelid)
@@ -169,7 +246,7 @@ class pgProgram{
 
     async searchByUserDate(user, date){
         const searchQuery = `
-		SELECT parcelid, rank1, rank2, rank3, flow
+		SELECT parcelid, rank1, rank2, rank3, flow, rank1date, rank2date, rank3date
 	    FROM public."2021-data"
 		WHERE "username" = '${user}' AND date = '${date}'
         OR "username2" = '${user}' AND date2 = '${date}'
@@ -202,7 +279,7 @@ class pgProgram{
 
     async searchByRank(ranktype, rank){
         const searchQuery = `
-		SELECT parcelid, rank1, rank2, rank3, flow
+		SELECT parcelid, rank1, rank2, rank3, flow, rank1date, rank2date, rank3date
 	    FROM public."2021-data"
 		WHERE "${ranktype}" = '${rank}'
         ORDER BY item_id DESC;
@@ -218,7 +295,7 @@ class pgProgram{
 
     async searchByCounty(county, state){
         const searchQuery = `
-        SELECT parcelid, rank1, rank2, rank3, flow
+        SELECT parcelid, rank1, rank2, rank3, flow, rank1date, rank2date, rank3date
 	    FROM public."2021-data"
 		WHERE "county" = '${county}' AND "state" = '${state}'
         ORDER BY item_id DESC;
@@ -234,7 +311,7 @@ class pgProgram{
 
     async searchByState(state){
         const searchQuery = `
-        SELECT parcelid, rank1, rank2, rank3, flow
+        SELECT parcelid, rank1, rank2, rank3, flow, rank1date, rank2date, rank3date
 	    FROM public."2021-data"
 		WHERE "state" = '${state}'
         ORDER BY item_id DESC;
@@ -265,7 +342,7 @@ class pgProgram{
 
     async searchByFlow(flow){
         const searchQuery = `
-        SELECT parcelid, rank1, rank2, rank3, flow
+        SELECT parcelid, rank1, rank2, rank3, flow, rank1date, rank2date, rank3date
 	    FROM public."2021-data"
 		WHERE "flow" = '${flow}'
         ORDER BY item_id DESC;
@@ -299,7 +376,7 @@ class pgProgram{
 
     async searchByCheckedCounty(state, county){
         const searchQuery = `
-        SELECT parcelid, rank1, rank2, rank3, flow
+        SELECT parcelid, rank1, rank2, rank3, flow, rank1date, rank2date, rank3date
 	    FROM public."2021-data"
 		WHERE "buyopt" = 'yes' AND "state" = '${state}' AND "county" = '${county}'
         ORDER BY item_id DESC;
@@ -314,7 +391,7 @@ class pgProgram{
 
     async searchByCheckedState(state){
         const searchQuery = `
-        SELECT parcelid, rank1, rank2, rank3, flow
+        SELECT parcelid, rank1, rank2, rank3, flow, rank1date, rank2date, rank3date
 	    FROM public."2021-data"
 		WHERE "buyopt" = 'yes' AND "state" = '${state}'
         ORDER BY item_id DESC;
@@ -361,46 +438,7 @@ class pgProgram{
 
     async searchByParcel(parcel, res){
         const searchQuery = `
-		SELECT parcelid,
-        gisimg, 
-        gislink, 
-        floodzoneimg, 
-        floodzonetext, 
-        mapsimg, 
-        mapslink, 
-        streetviewimg, 
-        marketvalue, 
-        latitude, 
-        longitude, 
-        acres, 
-        adress, 
-        n1adress, 
-        n2adress, 
-        n3adress, 
-        n4adress, 
-        rank1, 
-        obs1, 
-        rank2, 
-        userrank2, 
-        obs2, 
-        rank3, 
-        userrank3, 
-        obs3, 
-        item_id, 
-        dateandtime, 
-        taxowned, 
-        user, 
-        state, 
-        county,
-        username,
-        buyopt,
-        floodzonelink,
-        zillowlink,
-        zestimate,
-        hoa,
-        watersupply,
-        electricitysupply,
-        sewerage, ownername, propstream, estimatedarv, gmapdate, gearthlink, showingbuilding, buildingsize, yearbuilt, structuretype, bedrooms, bathrooms, garage, taxesperyear, cadlandvalue, cadbuildingvalue, cadtotalvalue, needtoconfirm, cadimage, listtype, minimalbid, n1name, n2name, n3name, n4name, status, offervalue, offerdate, counteroffervalue, counterofferdate, deeddate, flow, n1number, n2number, n3number, n4number, n1email, n2email, n3email, n4email
+		SELECT *
 	    FROM public."2021-data"
 		WHERE "parcelid" = '${parcel}';
 	    `
@@ -569,7 +607,7 @@ class pgProgram{
         const rank2 = req.body
         let insertQuery = `
             UPDATE public."2021-data"
-            SET rank2='${rank2.rank2}', userrank2='${rank2.userrank2}', obs2='${rank2.obs2}', flow='${rank2.flow}'
+            SET rank2='${rank2.rank2}', userrank2='${rank2.userrank2}', obs2='${rank2.obs2}', flow='${rank2.flow}', rank2date='${rank2.rank2date}'
             WHERE parcelid='${rank2.parcelid}' AND state = '${rank2.state}' AND county = '${rank2.county}';  
         `
         dbClient.query(insertQuery, (err, result)=>{
@@ -585,7 +623,7 @@ class pgProgram{
         const rank3 = req.body
         let insertQuery = `
             UPDATE public."2021-data"
-            SET rank3='${rank3.rank3}', userrank3='${rank3.userrank3}', obs3='${rank3.obs3}', buyopt='${rank3.buyopt}', flow='${rank3.flow}'
+            SET rank3='${rank3.rank3}', userrank3='${rank3.userrank3}', obs3='${rank3.obs3}', buyopt='${rank3.buyopt}', flow='${rank3.flow}', rank3date='${rank3.rank3date}'
             WHERE parcelid='${rank3.parcelid}' AND state = '${rank3.state}' AND county = '${rank3.county}';  
         `
         dbClient.query(insertQuery, (err, result)=>{
@@ -681,7 +719,7 @@ class pgProgram{
 
     async resumedSearch(user, month){
         const searchQuery = `
-        SELECT parcelid, rank1, rank2, rank3, dateandtime, username, username2, date, date2
+        SELECT parcelid, rank1, rank2, rank3, dateandtime, dateandtime2, username, username2, date, date2
         FROM public."2021-data"
         WHERE EXTRACT(MONTH FROM date) = '${month}' AND username= '${user}'
         OR EXTRACT(MONTH FROM date) = '${month}' AND username2= '${user}';
@@ -970,7 +1008,7 @@ class pgProgram{
 
     async searchByCountyAndRank(state, county, ranktype, rank){
         const searchQuery = `
-		SELECT parcelid, rank1, rank2, rank3, flow
+		SELECT parcelid, rank1, rank2, rank3, flow, rank1date, rank2date, rank3date
 	    FROM public."2021-data"
 		WHERE "state" = '${state}' AND "county" = '${county}' AND "${ranktype}" = '${rank}'
         ORDER BY item_id DESC;
@@ -985,7 +1023,7 @@ class pgProgram{
 
     async searchByStateAndRank(state, ranktype, rank){
         const searchQuery = `
-		SELECT parcelid, rank1, rank2, rank3, flow
+		SELECT parcelid, rank1, rank2, rank3, flow, rank1date, rank2date, rank3date
 	    FROM public."2021-data"
 		WHERE "state" = '${state}' AND "${ranktype}" = '${rank}'
         ORDER BY item_id DESC;
@@ -1000,7 +1038,7 @@ class pgProgram{
 
     async searchByCountyRankFlow(state, county, ranktype, rank, flow){
         const searchQuery = `
-		SELECT parcelid, rank1, rank2, rank3, flow
+		SELECT parcelid, rank1, rank2, rank3, flow, rank1date, rank2date, rank3date
 	    FROM public."2021-data"
 		WHERE "state" = '${state}' AND "county" = '${county}' AND "${ranktype}" = '${rank}' AND "flow" = '${flow}'
         ORDER BY item_id DESC;
@@ -1015,7 +1053,7 @@ class pgProgram{
 
     async searchByStateRankFlow(state, ranktype, rank, flow){
         const searchQuery = `
-		SELECT parcelid, rank1, rank2, rank3, flow
+		SELECT parcelid, rank1, rank2, rank3, flow, rank1date, rank2date, rank3date
 	    FROM public."2021-data"
 		WHERE "state" = '${state}' AND "${ranktype}" = '${rank}' AND "flow" = '${flow}'
         ORDER BY item_id DESC;

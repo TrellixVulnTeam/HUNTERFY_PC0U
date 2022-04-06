@@ -55,7 +55,7 @@ export function buttonsOnTopOfParcelList(title, subtitle, id){
 }
 
 export function showParcelList(element){
-
+    console.log(element)
     var novoCard = document.createElement("div")
     
     if(element.rank1 == null){
@@ -102,8 +102,12 @@ export function mmddyyyyFormat(dateCont){
     const day = ("" + date.getDate()).slice(-2)
     const month = ("" + (date.getMonth() + 1)).slice(-2)
     const mmddyyyy = `${month}/${day}/${date.getFullYear()}`
-    
-    return mmddyyyy
+
+    if (mmddyyyy == '12/31/1969'){
+        return 'none'
+    }else{
+        return mmddyyyy
+    }
 }
 
 export async function sendRank2(parcelid, state, county){
@@ -111,6 +115,8 @@ export async function sendRank2(parcelid, state, county){
     const rank2 = document.querySelector('#select-rank2').value
     const obs2 = document.querySelector('#input-obs2').value
     const flow = document.querySelector('#select-flow-rank2').value
+    let date = new Date()
+    date = mmddyyyyFormat(date)
 
     const str = `
         {
@@ -120,7 +126,8 @@ export async function sendRank2(parcelid, state, county){
             "parcelid":"${parcelid}",
             "state":"${state}",
             "county":"${county}",
-            "userrank2":"${superusername}"
+            "userrank2":"${superusername}",
+            "rank2date":"${date}"
         }
     `
 
@@ -147,6 +154,8 @@ export async function sendRank3(parcelid, state, county){
     const obs3 = document.querySelector('#input-obs3').value
     const flow = document.querySelector('#select-flow-rank3').value
     const buyopt = document.querySelector('#select-buyopt').value
+    let date = new Date()
+    date = mmddyyyyFormat(date)
 
     const str = `
         {
@@ -157,7 +166,8 @@ export async function sendRank3(parcelid, state, county){
             "state":"${state}",
             "county":"${county}",
             "userrank3":"${superusername}",
-            "buyopt":"${buyopt}"
+            "buyopt":"${buyopt}",
+            "rank3date":"${date}"
         }
     `
 
@@ -245,6 +255,8 @@ export async function loadCounties(){
         var index = response.data[i]
         createOption(index.name, index.name, container)
     }  
+
+    sortSelect(container)
 }
 
 export async function openParcelBox(parcelid){
@@ -256,7 +268,7 @@ export async function openParcelBox(parcelid){
     const json = JSON.parse(str)
 
     const result = await postDataManager(json, path.postParcel)
-    //console.log(result)
+    console.log(result)
 
     const parcelBox = document.createElement('section')
     parcelBox.classList.add('parcelbox')
@@ -290,16 +302,16 @@ export async function openParcelBox(parcelid){
                 <div onclick="accordion(this)"><h2>Links:</h3></div>
                 <div style="display:none;">
                     <h3>GIS Link:</h3>
-                    <h4>${result[0].gislink}</h4>
+                    <h4>${fixLink(result[0].gislink)}</h4>
 
                     <h3>Maps Link:</h3>
-                    <h4>${result[0].mapslink}</h4>
+                    <h4>${fixLink(result[0].mapslink)}</h4>
 
                     <h3>Floodzone Link:</h3>
-                    <h4>${result[0].floodzonelink}</h4>
+                    <h4>${fixLink(result[0].floodzonelink)}</h4>
 
-                    <h3>Zillow Link:</h3>
-                    <h4>${result[0].zillowlink}</h4>
+                    <h3>Zillow/Realtor Link:</h3>
+                    <h4>${fixLink(result[0].zillowlink)}</h4>
                 </div>
             </div>
 
@@ -499,11 +511,14 @@ export async function openParcelBox(parcelid){
                     <h3>User Edit:</h3>
                     <h4>${result[0].username2}</h4>
                     
-                    <h3>Date:</h3>
+                    <h3>Edit Date:</h3>
                     <h4>${mmddyyyyFormat(result[0].dateandtime2)}</h4>
 
                     <h3>Rank 1:</h3>
                     <h4>${result[0].rank1}</h4>
+
+                    <h3>Rank 1 Date:</h3>
+                    <h4>${mmddyyyyFormat(result[0].rank1date)}</h4>
 
                     <h3>Obs:</h3>
                     <h4>${result[0].obs1}</h4>
@@ -516,6 +531,9 @@ export async function openParcelBox(parcelid){
 
                     <h3>User:</h3>
                     <h4>${result[0].userrank2}</h4>
+
+                    <h3>Rank 2 Date:</h3>
+                    <h4>${mmddyyyyFormat(result[0].rank2date)}</h4>
                 
                     <h3>Rank 2:</h3>
                     <select id="select-rank2" class="select-parcelbox">
@@ -548,6 +566,9 @@ export async function openParcelBox(parcelid){
                 <div style="display:none;">
                     <h3>User:</h3>
                     <h4>${result[0].userrank3}</h4>
+
+                    <h3>Rank 3 Date:</h3>
+                    <h4>${mmddyyyyFormat(result[0].rank3date)}</h4>
 
                     <h3>Rank 3:</h3>
                     <select id="select-rank3" class="select-parcelbox">
@@ -652,4 +673,34 @@ export async function openParcelBox(parcelid){
     //templateSelect.addEventListener('focus', async()=>{
     //loadTemplates(templateSelect)
     //})
+}
+
+export function sortSelect(selElem) {
+    var tmpAry = new Array();
+    for (var i=0;i<selElem.options.length;i++) {
+        tmpAry[i] = new Array();
+        tmpAry[i][0] = selElem.options[i].text;
+        tmpAry[i][1] = selElem.options[i].value;
+    }
+    tmpAry.sort();
+    while (selElem.options.length > 0) {
+        selElem.options[0] = null;
+    }
+    for (var i=0;i<tmpAry.length;i++) {
+        var op = new Option(tmpAry[i][0], tmpAry[i][1]);
+        selElem.options[i] = op;
+    }
+    return;
+}
+
+function fixLink(str){
+    let a
+    if(str.length > 1 && str !== 'undefined'){
+        const arr = str.split('//')
+        a = `<a href="https://${arr[1]}">Link</a>`
+    }else{
+        a = 'none'
+    }
+    return a
+    
 }
