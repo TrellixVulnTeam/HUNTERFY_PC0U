@@ -18,7 +18,7 @@ module.exports = app => {
         res.render('app.ejs', {user : req.session.user})
     })
 
-    app.get('/manager', (req, res) => {
+    app.get('/manager',isAuthManager, (req, res) => {
         res.render('manager.ejs', {user : req.session.user})
     })
     
@@ -38,7 +38,7 @@ module.exports = app => {
         res.render('getallusers.ejs', {user : req.session.user})
     })
 
-    app.get('/searchbyrank', (req, res) => {
+    app.get('/searchbyrank',isAuthManager, (req, res) => {
         res.render('searchbyrank.ejs', {user : req.session.user})
     })
 
@@ -50,15 +50,15 @@ module.exports = app => {
         res.render('searchbyparcel.ejs', {user : req.session.user})
     })
 
-    app.get('/searchbycounty', (req, res) => {
+    app.get('/searchbycounty',isAuthManager, (req, res) => {
         res.render('searchbycounty.ejs', {user : req.session.user})
     })
 
-    app.get('/metrics', (req, res)=>{
+    app.get('/metrics',isAuthManager, (req, res)=>{
         res.render('metrics.ejs', {user : req.session.user})
     })
 
-    app.get('/getchecked', async(req, res)=>{
+    app.get('/getchecked',isAuthManager, async(req, res)=>{
         res.render('getchecked.ejs', {user : req.session.user})
     })
 
@@ -106,7 +106,7 @@ module.exports = app => {
         res.render('resumedsearchbycountyandrank.ejs', {user : req.session.user})
     })
 
-    app.get('/searchbyrankandcounty', async(req, res)=>{
+    app.get('/searchbyrankandcounty', isAuthManager, async(req, res)=>{
         res.render('searchbyrankandcounty.ejs', {user : req.session.user})
     })
 
@@ -114,7 +114,7 @@ module.exports = app => {
         res.render('countystatus.ejs', {user : req.session.user})
     })
 
-    app.get('/searchbyrankcountyflow', async(req, res) => {
+    app.get('/searchbyrankcountyflow', isAuthManager, async(req, res) => {
         res.render('searchbyrankcountyflow.ejs', {user : req.session.user})
     })
 
